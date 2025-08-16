@@ -13,12 +13,11 @@ namespace Farmacy.Mapiranja
         public LekSekundarnaMap()
         {
             Table("Lek_Sekundarna");
-            CompositeId()
-                .KeyProperty(x => x.LekId, "lek_id")
-                .KeyProperty(x => x.KategorijaId, "kategorija_id");
 
-            References(x => x.Lek, "lek_id").Not.Nullable();
-            References(x => x.Kategorija, "kategorija_id").Not.Nullable();
+            CompositeId()
+                .KeyReference(x => x.Lek, "lek_id")
+                .KeyReference(x => x.Kategorija, "kategorija_id");
+
         }
     }
 }
