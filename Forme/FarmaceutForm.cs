@@ -1,0 +1,112 @@
+using System;
+using System.Windows.Forms;
+using Farmacy.Entiteti;
+
+namespace Farmacy.Forme
+{
+    public partial class FarmaceutForm : Form
+    {
+        private Farmaceut farmaceut;
+
+        public FarmaceutForm()
+        {
+            InitializeComponent();
+            InitializeForm();
+        }
+
+        public FarmaceutForm(Farmaceut farmaceut) : this()
+        {
+            this.farmaceut = farmaceut;
+            LoadFarmaceutData();
+        }
+
+        private void InitializeForm()
+        {
+            // Form initialization logic will be in Designer file
+        }
+
+        private void LoadFarmaceutData()
+        {
+            if (farmaceut != null)
+            {
+                txtMBr.Text = farmaceut.MBr.ToString();
+                txtPrezime.Text = farmaceut.Prezime;
+                txtIme.Text = farmaceut.Ime;
+                dtpDatumRodj.Value = farmaceut.DatumRodj;
+                txtAdresa.Text = farmaceut.Adresa ?? string.Empty;
+                txtTelefon.Text = farmaceut.Telefon ?? string.Empty;
+                dtpDatumZaposlenja.Value = farmaceut.DatumZaposlenja;
+                dtpDatumDiplomiranja.Value = farmaceut.DatumDiplomiranja;
+                txtBrLicence.Text = farmaceut.BrLicence;
+                dtpDatumPoslObnoveLicence.Value = farmaceut.DatumPoslObnoveLicence;
+                txtSpecijalnost.Text = farmaceut.Specijalnost ?? string.Empty;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                SaveFarmaceut();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private bool ValidateForm()
+        {
+            if (string.IsNullOrWhiteSpace(txtPrezime.Text))
+            {
+                MessageBox.Show("Prezime je obavezno!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPrezime.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtIme.Text))
+            {
+                MessageBox.Show("Ime je obavezno!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtIme.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtBrLicence.Text))
+            {
+                MessageBox.Show("Broj licence je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBrLicence.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private void SaveFarmaceut()
+        {
+            if (farmaceut == null)
+            {
+                farmaceut = new Farmaceut();
+            }
+
+            farmaceut.Prezime = txtPrezime.Text.Trim();
+            farmaceut.Ime = txtIme.Text.Trim();
+            farmaceut.DatumRodj = dtpDatumRodj.Value;
+            farmaceut.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
+            farmaceut.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
+            farmaceut.DatumZaposlenja = dtpDatumZaposlenja.Value;
+            farmaceut.DatumDiplomiranja = dtpDatumDiplomiranja.Value;
+            farmaceut.BrLicence = txtBrLicence.Text.Trim();
+            farmaceut.DatumPoslObnoveLicence = dtpDatumPoslObnoveLicence.Value;
+            farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
+        }
+
+        public Farmaceut GetFarmaceut()
+        {
+            return farmaceut;
+        }
+    }
+}
