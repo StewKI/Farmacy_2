@@ -23,7 +23,7 @@ namespace Farmacy_2.Forme
             txtBroj.Text = prodajnaJedinica.Broj;
             txtPostanskiBroj.Text = prodajnaJedinica.PostanskiBroj;
             txtMesto.Text = prodajnaJedinica.Mesto;
-            txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceut?.MBr ?? "Nije postavljen";
+            txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceut?.MBr.ToString() ?? "Nije postavljen";
         }
 
         private bool ValidateForm()

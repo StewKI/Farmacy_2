@@ -1,4 +1,4 @@
-namespace Farmacy_2.Forme
+namespace Farmacy.Forme
 {
     partial class ReceptStavkaEditForm
     {

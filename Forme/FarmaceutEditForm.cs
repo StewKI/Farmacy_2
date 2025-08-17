@@ -1,14 +1,15 @@
 using System;
 using System.Windows.Forms;
-using Farmacy.Entiteti;
+using Farmacy;
+
 
 namespace Farmacy_2.Forme
 {
     public partial class FarmaceutEditForm : Form
     {
-        private Farmaceut farmaceut;
+        private FarmaceutBasic farmaceut;
 
-        public FarmaceutEditForm(Farmaceut farmaceut)
+        public FarmaceutEditForm(FarmaceutBasic farmaceut)
         {
             InitializeComponent();
             this.farmaceut = farmaceut ?? throw new ArgumentNullException(nameof(farmaceut));
@@ -25,11 +26,11 @@ namespace Farmacy_2.Forme
             txtAdresa.Text = farmaceut.Adresa ?? "";
             txtTelefon.Text = farmaceut.Telefon ?? "";
             dtpDatumZaposlenja.Value = farmaceut.DatumZaposlenja;
-            
+
             // Load Farmaceut-specific properties
             dtpDatumDiplomiranja.Value = farmaceut.DatumDiplomiranja;
             txtBrLicence.Text = farmaceut.BrLicence;
-            dtpDatumPoslObnoveLicence.Value = farmaceut.DatumPoslObnoveLicence;
+            dtpDatumPoslObnoveLicence.Value = farmaceut.DatumPoslednjeObnoveLicence;
             txtSpecijalnost.Text = farmaceut.Specijalnost ?? "";
         }
 
@@ -124,12 +125,14 @@ namespace Farmacy_2.Forme
             farmaceut.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             farmaceut.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             farmaceut.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            
+
             // Save Farmaceut-specific properties
             farmaceut.DatumDiplomiranja = dtpDatumDiplomiranja.Value;
             farmaceut.BrLicence = txtBrLicence.Text.Trim();
-            farmaceut.DatumPoslObnoveLicence = dtpDatumPoslObnoveLicence.Value;
+            farmaceut.DatumPoslednjeObnoveLicence = dtpDatumPoslObnoveLicence.Value;
             farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
+
+            DTOManager.UpdateFarmaceuta(farmaceut);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -148,9 +151,14 @@ namespace Farmacy_2.Forme
             Close();
         }
 
-        public Farmaceut GetFarmaceut()
+        public FarmaceutBasic GetFarmaceut()
         {
             return farmaceut;
+        }
+
+        private void FarmaceutEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Mapiranja
 {
-    public class FarmaceutMap : SubclassMap<Farmaceut>
+    public class FarmaceutMap : SubclassMap<Entiteti.FarmaceutBasic>
     {
         public FarmaceutMap()
         {

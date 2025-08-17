@@ -25,15 +25,15 @@ namespace Farmacy.Forme
             txtPrezime.Text = tehnicar.Prezime;
             txtIme.Text = tehnicar.Ime;
             dtpDatumRodj.Value = tehnicar.DatumRodj;
-            
+
             if (!string.IsNullOrEmpty(tehnicar.Adresa))
                 txtAdresa.Text = tehnicar.Adresa;
-            
+
             if (!string.IsNullOrEmpty(tehnicar.Telefon))
                 txtTelefon.Text = tehnicar.Telefon;
-            
+
             dtpDatumZaposlenja.Value = tehnicar.DatumZaposlenja;
-            
+
             if (!string.IsNullOrEmpty(tehnicar.NivoObrazovanja))
                 txtNivoObrazovanja.Text = tehnicar.NivoObrazovanja;
         }
@@ -107,21 +107,31 @@ namespace Farmacy.Forme
 
         private void SaveTehnicar()
         {
+           
+            TehnicarBasic t= new TehnicarBasic();
+
             if (long.TryParse(txtMBr.Text, out long mbr))
-                tehnicar.MBr = mbr;
-            
-            tehnicar.Prezime = txtPrezime.Text.Trim();
-            tehnicar.Ime = txtIme.Text.Trim();
-            tehnicar.DatumRodj = dtpDatumRodj.Value;
-            tehnicar.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
-            tehnicar.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
-            tehnicar.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            tehnicar.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
+                t.MBr = mbr;
+
+            t.Prezime = txtPrezime.Text.Trim();
+            t.Ime = txtIme.Text.Trim();
+            t.DatumRodj = dtpDatumRodj.Value;
+            t.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
+            t.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
+            t.DatumZaposlenja = dtpDatumZaposlenja.Value;
+            t.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
+
+            DTOManager.UpdateTehnicara(t);
         }
 
         public Tehnicar GetTehnicar()
         {
             return tehnicar;
+        }
+
+        private void TehnicarEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

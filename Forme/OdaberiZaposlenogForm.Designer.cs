@@ -1,6 +1,6 @@
-﻿namespace Farmacy
+﻿namespace Farmacy.Forme
 {
-    partial class PocetnaStranica
+    partial class OdaberiZaposlenogForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,73 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            imageList1 = new ImageList(components);
-            label1 = new Label();
+            button4 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(170, 270);
+            button1.Location = new Point(32, 99);
             button1.Name = "button1";
-            button1.Size = new Size(119, 48);
+            button1.Size = new Size(91, 49);
             button1.TabIndex = 0;
-            button1.Text = "Apoteke";
+            button1.Text = "Zaposleni";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(170, 379);
+            button2.Location = new Point(167, 99);
             button2.Name = "button2";
-            button2.Size = new Size(119, 48);
+            button2.Size = new Size(91, 49);
             button2.TabIndex = 1;
-            button2.Text = "Zaposleni";
+            button2.Text = "Farmaceut";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += btnZaposleni;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(170, 476);
+            button3.Location = new Point(314, 99);
             button3.Name = "button3";
-            button3.Size = new Size(119, 48);
+            button3.Size = new Size(91, 49);
             button3.TabIndex = 2;
-            button3.Text = "Lekovi";
+            button3.Text = "Menadzer";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
-            // imageList1
+            // button4
             // 
-            imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageSize = new Size(16, 16);
-            imageList1.TransparentColor = Color.Transparent;
+            button4.Location = new Point(460, 99);
+            button4.Name = "button4";
+            button4.Size = new Size(91, 49);
+            button4.TabIndex = 3;
+            button4.Text = "Tehnicar";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 35F);
-            label1.Location = new Point(61, 135);
-            label1.Name = "label1";
-            label1.Size = new Size(381, 62);
-            label1.TabIndex = 3;
-            label1.Text = "LANAC APOTEKA";
-            // 
-            // PocetnaStranica
+            // OdaberiZaposlenogForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(491, 618);
-            Controls.Add(label1);
+            ClientSize = new Size(606, 259);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Name = "PocetnaStranica";
-            Text = "PocetnaStranica";
-            Load += PocetnaStranica_Load;
+            Name = "OdaberiZaposlenogForm";
+            Text = "OdaberiZaposlenogForm";
+            Load += OdaberiZaposlenogForm_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -102,7 +94,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private ImageList imageList1;
-        private Label label1;
+        private Button button4;
     }
 }

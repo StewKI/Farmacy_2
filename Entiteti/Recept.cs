@@ -20,6 +20,6 @@ namespace Farmacy.Entiteti
         // FKs (nullable in schema)
         public virtual ProdajnaJedinica? RealizovanaProdajnaJedinica { get; set; }
         public virtual DateTime? RealizacijaDatum { get; set; } // DATE
-        public virtual Farmaceut? RealizovaoFarmaceut { get; set; }
+        public virtual FarmaceutBasic? RealizovaoFarmaceut { get; set; }
     }
 }

@@ -6,9 +6,9 @@ namespace Farmacy.Forme
 {
     public partial class MenadzerEditForm : Form
     {
-        private Menadzer menadzer;
+        private MenadzerBasic menadzer;
 
-        public MenadzerEditForm(Menadzer menadzer)
+        public MenadzerEditForm(MenadzerBasic menadzer)
         {
             if (menadzer == null)
                 throw new ArgumentNullException(nameof(menadzer));
@@ -25,13 +25,13 @@ namespace Farmacy.Forme
             txtPrezime.Text = menadzer.Prezime;
             txtIme.Text = menadzer.Ime;
             dtpDatumRodj.Value = menadzer.DatumRodj;
-            
+
             if (!string.IsNullOrEmpty(menadzer.Adresa))
                 txtAdresa.Text = menadzer.Adresa;
-            
+
             if (!string.IsNullOrEmpty(menadzer.Telefon))
                 txtTelefon.Text = menadzer.Telefon;
-            
+
             dtpDatumZaposlenja.Value = menadzer.DatumZaposlenja;
         }
 
@@ -96,18 +96,25 @@ namespace Farmacy.Forme
         {
             if (long.TryParse(txtMBr.Text, out long mbr))
                 menadzer.MBr = mbr;
-            
+
             menadzer.Prezime = txtPrezime.Text.Trim();
             menadzer.Ime = txtIme.Text.Trim();
             menadzer.DatumRodj = dtpDatumRodj.Value;
             menadzer.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             menadzer.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             menadzer.DatumZaposlenja = dtpDatumZaposlenja.Value;
+
+            DTOManager.UpdateMenadzera(menadzer);
         }
 
-        public Menadzer GetMenadzer()
+        public MenadzerBasic GetMenadzer()
         {
             return menadzer;
+        }
+
+        private void MenadzerEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

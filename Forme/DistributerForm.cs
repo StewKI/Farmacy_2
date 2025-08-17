@@ -66,7 +66,7 @@ namespace Farmacy.Forme
         {
             if (long.TryParse(txtId.Text, out long id))
                 distributer.Id = id;
-            
+
             distributer.Naziv = txtNaziv.Text.Trim();
             distributer.Kontakt = txtKontakt.Text.Trim();
         }
@@ -74,6 +74,11 @@ namespace Farmacy.Forme
         public Distributer GetDistributer()
         {
             return distributer;
+        }
+
+        private void DistributerForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

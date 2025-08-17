@@ -13,7 +13,8 @@ namespace Farmacy.Mapiranja
         public ZaposleniMap()
         {
             Table("Zaposleni");
-            Id(x => x.MBr, "m_br").GeneratedBy.Assigned();
+            Id(x => x.MBr).Column("M_BR")
+            .GeneratedBy.Sequence("ZAPOSLENI_SEQ");
             Map(x => x.Ime, "ime").Not.Nullable();
             Map(x => x.Prezime, "prezime").Not.Nullable();
             Map(x => x.DatumRodj, "datum_rodj").CustomType("date").Not.Nullable();

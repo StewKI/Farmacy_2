@@ -24,14 +24,14 @@ namespace Farmacy.Forme
             if (radnoVreme.ProdajnaJedinica != null)
                 txtProdajnaJedinica.Text = radnoVreme.ProdajnaJedinica.Id.ToString();
             
-            if (!string.IsNullOrEmpty(radnoVreme.Dan))
-                cmbDan.Text = radnoVreme.Dan;
+            if (radnoVreme.Dan > 0)
+                cmbDan.SelectedValue = radnoVreme.Dan;
+
             
-            if (radnoVreme.VremeOd.HasValue)
-                dtpVremeOd.Value = radnoVreme.VremeOd.Value;
+                dtpVremeOd.Value = DateTime.Today.Add(radnoVreme.VremeOd);
+
             
-            if (radnoVreme.VremeDo.HasValue)
-                dtpVremeDo.Value = radnoVreme.VremeDo.Value;
+                dtpVremeOd.Value = DateTime.Today.Add(radnoVreme.VremeOd);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -70,10 +70,10 @@ namespace Farmacy.Forme
 
         private void SaveRadnoVreme()
         {
-            radnoVreme.Dan = cmbDan.Text;
-            radnoVreme.VremeOd = dtpVremeOd.Value;
-            radnoVreme.VremeDo = dtpVremeDo.Value;
-            
+            radnoVreme.Dan = int.Parse(cmbDan.SelectedValue.ToString());
+            radnoVreme.VremeOd = dtpVremeOd.Value.TimeOfDay;
+            radnoVreme.VremeDo = dtpVremeDo.Value.TimeOfDay;
+
             // Napomena: ProdajnaJedinica treba postaviti spolja
         }
 

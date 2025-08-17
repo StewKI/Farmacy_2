@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class TehnicarForm : Form
     {
-        private Tehnicar tehnicar;
+        private TehnicarBasic tehnicar;
 
         public TehnicarForm()
         {
@@ -14,7 +14,7 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public TehnicarForm(Tehnicar tehnicar) : this()
+        public TehnicarForm(TehnicarBasic tehnicar) : this()
         {
             this.tehnicar = tehnicar;
             LoadTehnicarData();
@@ -100,7 +100,7 @@ namespace Farmacy.Forme
         {
             if (tehnicar == null)
             {
-                tehnicar = new Tehnicar();
+                tehnicar = new TehnicarBasic();
             }
 
             tehnicar.Prezime = txtPrezime.Text.Trim();
@@ -110,11 +110,23 @@ namespace Farmacy.Forme
             tehnicar.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             tehnicar.DatumZaposlenja = dtpDatumZaposlenja.Value;
             tehnicar.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
+
+            DTOManager.DodajTehnicara(tehnicar);
         }
 
-        public Tehnicar GetTehnicar()
+        //public Tehnicar GetTehnicar()
+        //{
+        //    return tehnicar;
+        //}
+
+        private void txtMBr_TextChanged(object sender, EventArgs e)
         {
-            return tehnicar;
+
+        }
+
+        private void TehnicarForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

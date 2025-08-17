@@ -28,109 +28,110 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblNaziv = new System.Windows.Forms.Label();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.lblKontakt = new System.Windows.Forms.Label();
-            this.txtKontakt = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblId = new Label();
+            txtId = new TextBox();
+            lblNaziv = new Label();
+            txtNaziv = new TextBox();
+            lblKontakt = new Label();
+            txtKontakt = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblId
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(30, 30);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 15);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID:";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(30, 30);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(21, 15);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(120, 27);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(200, 23);
-            this.txtId.TabIndex = 1;
-            this.txtId.TabStop = false;
+            txtId.Location = new Point(120, 27);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(200, 23);
+            txtId.TabIndex = 1;
+            txtId.TabStop = false;
             // 
             // lblNaziv
             // 
-            this.lblNaziv.AutoSize = true;
-            this.lblNaziv.Location = new System.Drawing.Point(30, 70);
-            this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(43, 15);
-            this.lblNaziv.TabIndex = 2;
-            this.lblNaziv.Text = "Naziv:";
+            lblNaziv.AutoSize = true;
+            lblNaziv.Location = new Point(30, 70);
+            lblNaziv.Name = "lblNaziv";
+            lblNaziv.Size = new Size(39, 15);
+            lblNaziv.TabIndex = 2;
+            lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(120, 67);
-            this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(200, 23);
-            this.txtNaziv.TabIndex = 3;
+            txtNaziv.Location = new Point(120, 67);
+            txtNaziv.Name = "txtNaziv";
+            txtNaziv.Size = new Size(200, 23);
+            txtNaziv.TabIndex = 3;
             // 
             // lblKontakt
             // 
-            this.lblKontakt.AutoSize = true;
-            this.lblKontakt.Location = new System.Drawing.Point(30, 110);
-            this.lblKontakt.Name = "lblKontakt";
-            this.lblKontakt.Size = new System.Drawing.Size(52, 15);
-            this.lblKontakt.TabIndex = 4;
-            this.lblKontakt.Text = "Kontakt:";
+            lblKontakt.AutoSize = true;
+            lblKontakt.Location = new Point(30, 110);
+            lblKontakt.Name = "lblKontakt";
+            lblKontakt.Size = new Size(51, 15);
+            lblKontakt.TabIndex = 4;
+            lblKontakt.Text = "Kontakt:";
             // 
             // txtKontakt
             // 
-            this.txtKontakt.Location = new System.Drawing.Point(120, 107);
-            this.txtKontakt.Name = "txtKontakt";
-            this.txtKontakt.Size = new System.Drawing.Size(200, 23);
-            this.txtKontakt.TabIndex = 5;
+            txtKontakt.Location = new Point(120, 107);
+            txtKontakt.Name = "txtKontakt";
+            txtKontakt.Size = new Size(200, 23);
+            txtKontakt.TabIndex = 5;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 150);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(120, 150);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 6;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(220, 150);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(220, 150);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // DistributerForm
             // 
-            this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(384, 200);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtKontakt);
-            this.Controls.Add(this.lblKontakt);
-            this.Controls.Add(this.txtNaziv);
-            this.Controls.Add(this.lblNaziv);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "DistributerForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Distributer";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSave;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
+            ClientSize = new Size(384, 200);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(txtKontakt);
+            Controls.Add(lblKontakt);
+            Controls.Add(txtNaziv);
+            Controls.Add(lblNaziv);
+            Controls.Add(txtId);
+            Controls.Add(lblId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "DistributerForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Distributer";
+            Load += DistributerForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

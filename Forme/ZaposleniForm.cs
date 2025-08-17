@@ -47,6 +47,18 @@ namespace Farmacy.Forme
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            try
+            {
+                // ovde pozivaš svoj DTOManager ili ORM
+
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri snimanju u bazu: " + ex.Message);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -101,11 +113,22 @@ namespace Farmacy.Forme
             zaposleni.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             zaposleni.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             zaposleni.DatumZaposlenja = dtpDatumZaposlenja.Value;
+            DTOManager.DodajZaposlenog(zaposleni);
         }
 
         public Zaposleni GetZaposleni()
         {
             return zaposleni;
+        }
+
+        private void txtMBr_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ZaposleniForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

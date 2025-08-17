@@ -6,16 +6,16 @@ namespace Farmacy.Forme
 {
     public partial class MenadzerForm : Form
     {
-        private Menadzer menadzer;
+        private MenadzerBasic menadzer;
 
         public MenadzerForm()
         {
             InitializeComponent();
-            menadzer = new Menadzer();
-            LoadMenadzerData();
+            menadzer = new MenadzerBasic();
+            
         }
 
-        public MenadzerForm(Menadzer menadzer)
+        public MenadzerForm(MenadzerBasic menadzer)
         {
             InitializeComponent();
             this.menadzer = menadzer;
@@ -28,13 +28,13 @@ namespace Farmacy.Forme
             txtPrezime.Text = menadzer.Prezime;
             txtIme.Text = menadzer.Ime;
             dtpDatumRodj.Value = menadzer.DatumRodj;
-            
+
             if (!string.IsNullOrEmpty(menadzer.Adresa))
                 txtAdresa.Text = menadzer.Adresa;
-            
+
             if (!string.IsNullOrEmpty(menadzer.Telefon))
                 txtTelefon.Text = menadzer.Telefon;
-            
+
             dtpDatumZaposlenja.Value = menadzer.DatumZaposlenja;
         }
 
@@ -56,11 +56,7 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrWhiteSpace(txtMBr.Text))
-            {
-                MessageBox.Show("Matični broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            
 
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
@@ -97,20 +93,26 @@ namespace Farmacy.Forme
 
         private void SaveMenadzer()
         {
-            if (long.TryParse(txtMBr.Text, out long mbr))
-                menadzer.MBr = mbr;
             
+
             menadzer.Prezime = txtPrezime.Text.Trim();
             menadzer.Ime = txtIme.Text.Trim();
             menadzer.DatumRodj = dtpDatumRodj.Value;
             menadzer.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             menadzer.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             menadzer.DatumZaposlenja = dtpDatumZaposlenja.Value;
+
+            DTOManager.DodajMenadzera(menadzer);
         }
 
-        public Menadzer GetMenadzer()
+        //public Entiteti.MenadzerBasic GetMenadzer()
+        //{
+        //    return menadzer;
+        //}
+
+        private void MenadzerForm_Load(object sender, EventArgs e)
         {
-            return menadzer;
+
         }
     }
 }

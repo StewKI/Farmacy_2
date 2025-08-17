@@ -27,8 +27,8 @@ namespace Farmacy.Forme
             if (!string.IsNullOrEmpty(tehnicarSpecifikacija.Naziv))
                 txtNaziv.Text = tehnicarSpecifikacija.Naziv;
             
-            if (tehnicarSpecifikacija.Datum.HasValue)
-                dtpDatum.Value = tehnicarSpecifikacija.Datum.Value;
+            
+                dtpDatum.Value = tehnicarSpecifikacija.Datum;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

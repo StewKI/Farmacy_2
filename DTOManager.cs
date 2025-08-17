@@ -16,7 +16,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var f = new Farmaceut
+                var f = new Entiteti.FarmaceutBasic
                 {
                     MBr = dto.MBr,
                     Ime = dto.Ime,
@@ -33,11 +33,52 @@ namespace Farmacy
                 s.Save(f);
                 s.Flush();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // log or rethrow as needed
+                MessageBox.Show($"Greška pri dodavanju farmaceuta: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void UpdateFarmaceuta(FarmaceutBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                var farmaceut = s.Get<Entiteti.FarmaceutBasic>(dto.MBr);
+
+                if (farmaceut == null)
+                {
+                    MessageBox.Show("Farmaceut sa datim MBr ne postoji!", "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                farmaceut.Ime = dto.Ime;
+                farmaceut.Prezime = dto.Prezime;
+                farmaceut.DatumRodj = dto.DatumRodj;
+                farmaceut.Adresa = dto.Adresa;
+                farmaceut.Telefon = dto.Telefon;
+                farmaceut.DatumZaposlenja = dto.DatumZaposlenja;
+                farmaceut.DatumDiplomiranja = dto.DatumDiplomiranja;
+                farmaceut.BrLicence = dto.BrLicence;
+                farmaceut.DatumPoslObnoveLicence = dto.DatumPoslednjeObnoveLicence;
+                farmaceut.Specijalnost = dto.Specijalnost;
+
+                s.Update(farmaceut);
+                s.Flush();
+
+                MessageBox.Show("Farmaceut uspešno ažuriran!", "Uspeh",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri ažuriranju farmaceuta: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         public static void DodajTehnicara(TehnicarBasic dto)
         {
@@ -46,7 +87,7 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var t = new Tehnicar
                 {
-                    MBr = dto.MBr,
+                   // MBr = dto.MBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
                     DatumRodj = dto.DatumRodj,
@@ -70,17 +111,73 @@ namespace Farmacy
 
                 s.Flush();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show($"Greška pri dodavanju tehničara: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public static void UpdateTehnicara(TehnicarBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                var tehnicar = s.Get<Tehnicar>(dto.MBr);
+
+                if (tehnicar == null)
+                {
+                    MessageBox.Show("Tehničar sa datim MBr ne postoji!", "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                tehnicar.Ime = dto.Ime;
+                tehnicar.Prezime = dto.Prezime;
+                tehnicar.DatumRodj = dto.DatumRodj;
+                tehnicar.Adresa = dto.Adresa;
+                tehnicar.Telefon = dto.Telefon;
+                tehnicar.DatumZaposlenja = dto.DatumZaposlenja;
+                tehnicar.NivoObrazovanja = dto.NivoObrazovanja;
+
+                // Brišemo stare sertifikate
+                foreach (var stari in tehnicar.Sertifikacije.ToList())
+                {
+                    s.Delete(stari);
+                }
+
+                // Dodajemo nove
+                foreach (var cert in dto.Sertifikacije)
+                {
+                    var c = new TehnicarSertifikacija
+                    {
+                        Naziv = cert.Naziv,
+                        Datum = cert.Datum,
+                        Tehnicar = tehnicar
+                    };
+                    s.Save(c);
+                }
+
+                s.Update(tehnicar);
+                s.Flush();
+
+                MessageBox.Show("Tehničar uspešno ažuriran!", "Uspeh",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri ažuriranju tehničara: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         public static void DodajMenadzera(MenadzerBasic dto)
         {
             try
             {
                 using var s = DataLayer.GetSession();
-                var m = new Menadzer
+                var m = new Entiteti.MenadzerBasic
                 {
                     MBr = dto.MBr,
                     Ime = dto.Ime,
@@ -98,6 +195,115 @@ namespace Farmacy
             }
         }
 
+        public static void UpdateMenadzera(MenadzerBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                var menadzer = s.Get<Entiteti.MenadzerBasic>(dto.MBr);
+
+                if (menadzer == null)
+                {
+                    MessageBox.Show("Menadžer sa datim MBr ne postoji!", "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                menadzer.Ime = dto.Ime;
+                menadzer.Prezime = dto.Prezime;
+                menadzer.DatumRodj = dto.DatumRodj;
+                menadzer.Adresa = dto.Adresa;
+                menadzer.Telefon = dto.Telefon;
+                menadzer.DatumZaposlenja = dto.DatumZaposlenja;
+
+                s.Update(menadzer);
+                s.Flush();
+
+                MessageBox.Show("Menadžer uspešno ažuriran!", "Uspeh",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri ažuriranju menadžera: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void DodajZaposlenog(Zaposleni dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var m = new Zaposleni
+                {
+                    MBr = dto.MBr,
+                    Ime = dto.Ime,
+                    Prezime = dto.Prezime,
+                    DatumRodj = dto.DatumRodj,
+                    Adresa = dto.Adresa,
+                    Telefon = dto.Telefon,
+                    DatumZaposlenja = dto.DatumZaposlenja
+                };
+                s.Save(m);
+                s.Flush();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+            $"Greška pri dodavanju zaposlenog: {ex.Message}",
+            "Greška",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+            }
+        }
+        public static void UpdateZaposlenog(Zaposleni dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                // Pronađi postojećeg zaposlenog u bazi
+                var zaposleni = s.Get<Zaposleni>(dto.MBr);
+
+                if (zaposleni == null)
+                {
+                    MessageBox.Show(
+                        "Zaposleni sa datim MBr ne postoji u bazi!",
+                        "Greška",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Ažuriraj polja
+                zaposleni.Ime = dto.Ime;
+                zaposleni.Prezime = dto.Prezime;
+                zaposleni.DatumRodj = dto.DatumRodj;
+                zaposleni.Adresa = dto.Adresa;
+                zaposleni.Telefon = dto.Telefon;
+                zaposleni.DatumZaposlenja = dto.DatumZaposlenja;
+
+                // Sačuvaj izmene
+                s.Update(zaposleni);
+                s.Flush();
+
+                MessageBox.Show(
+                    "Podaci o zaposlenom su uspešno ažurirani!",
+                    "Uspeh",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Greška pri ažuriranju zaposlenog: {ex.Message}",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         public static ZaposleniBasic VratiZaposlenog(long mbr)
         {
             try
@@ -105,7 +311,7 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
 
                 // NH polimorfno: prvo probaj specifičan tip
-                var f = s.Get<Farmaceut>(mbr);
+                var f = s.Get<Entiteti.FarmaceutBasic>(mbr);
                 if (f != null)
                 {
                     return new FarmaceutBasic
@@ -151,7 +357,7 @@ namespace Farmacy
                     return tb;
                 }
 
-                var m = s.Get<Menadzer>(mbr);
+                var m = s.Get<Entiteti.MenadzerBasic>(mbr);
                 if (m != null)
                 {
                     return new MenadzerBasic
@@ -234,7 +440,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var odgovorni = s.Load<Farmaceut>(dto.OdgovorniFarmaceutMbr);
+                var odgovorni = s.Load<Entiteti.FarmaceutBasic>(dto.OdgovorniFarmaceutMbr);
 
                 var pj = new ProdajnaJedinica
                 {
@@ -311,7 +517,7 @@ namespace Farmacy
                 pj.Broj = dto.Broj;
                 pj.PostanskiBroj = dto.PostanskiBroj;
                 pj.Mesto = dto.Mesto;
-                pj.OdgovorniFarmaceut = s.Load<Farmaceut>(dto.OdgovorniFarmaceutMbr);
+                pj.OdgovorniFarmaceut = s.Load<Entiteti.FarmaceutBasic>(dto.OdgovorniFarmaceutMbr);
 
                 s.Update(pj);
                 s.Flush();
@@ -341,7 +547,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var m = s.Load<Menadzer>(dto.MBrMenadzera);
+                var m = s.Load<Entiteti.MenadzerBasic>(dto.MBrMenadzera);
                 var pj = s.Load<ProdajnaJedinica>(dto.ProdajnaJedinicaId);
 
                 var veza = new MenadzerApoteka

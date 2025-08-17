@@ -1,22 +1,24 @@
 using System;
 using System.Windows.Forms;
+using Farmacy;
 using Farmacy.Entiteti;
 
 namespace Farmacy_2.Forme
 {
     public partial class ZaposleniEditForm : Form
     {
-        private Zaposleni zaposleni;
+        private ZaposleniBasic zaposleni;
 
-        public ZaposleniEditForm(Zaposleni zaposleni)
+        public ZaposleniEditForm(ZaposleniBasic zaposleni1)
         {
             InitializeComponent();
-            this.zaposleni = zaposleni ?? throw new ArgumentNullException(nameof(zaposleni));
+            this.zaposleni = zaposleni1;
             LoadZaposleniData();
         }
 
         private void LoadZaposleniData()
         {
+
             txtMBr.Text = zaposleni.MBr.ToString();
             txtPrezime.Text = zaposleni.Prezime;
             txtIme.Text = zaposleni.Ime;
@@ -75,12 +77,17 @@ namespace Farmacy_2.Forme
 
         private void SaveZaposleni()
         {
-            zaposleni.Prezime = txtPrezime.Text.Trim();
-            zaposleni.Ime = txtIme.Text.Trim();
-            zaposleni.DatumRodj = dtpDatumRodj.Value;
-            zaposleni.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
-            zaposleni.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
-            zaposleni.DatumZaposlenja = dtpDatumZaposlenja.Value;
+
+            Zaposleni z = new Zaposleni();
+
+            z.Prezime = txtPrezime.Text.Trim();
+            z.Ime = txtIme.Text.Trim();
+            z.DatumRodj = dtpDatumRodj.Value;
+            z.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
+            z.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
+            z.DatumZaposlenja = dtpDatumZaposlenja.Value;
+
+            DTOManager.UpdateZaposlenog(z);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -99,9 +106,24 @@ namespace Farmacy_2.Forme
             Close();
         }
 
-        public Zaposleni GetZaposleni()
+        //public Zaposleni GetZaposleni()
+        //{
+        //    return zaposleni;
+        //}
+
+        private void txtTelefon_TextChanged(object sender, EventArgs e)
         {
-            return zaposleni;
+
+        }
+
+        private void ZaposleniEditForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMBr_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

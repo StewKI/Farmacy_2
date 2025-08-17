@@ -24,8 +24,10 @@ namespace Farmacy_2.Forme
             txtBroj.Text = apotekaSaLab.Broj;
             txtPostanskiBroj.Text = apotekaSaLab.PostanskiBroj;
             txtMesto.Text = apotekaSaLab.Mesto;
-            txtOdgovorniFarmaceut.Text = apotekaSaLab.OdgovorniFarmaceut?.MBr ?? "Nije postavljen";
-            
+            txtOdgovorniFarmaceut.Text = apotekaSaLab.OdgovorniFarmaceut != null
+    ? apotekaSaLab.OdgovorniFarmaceut.MBr.ToString()
+    : "Nije postavljen";
+
             // Load ApotekaSaLab-specific properties
             txtNapomena.Text = apotekaSaLab.Napomena ?? "";
         }

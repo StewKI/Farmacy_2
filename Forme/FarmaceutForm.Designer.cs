@@ -28,273 +28,274 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMBr = new System.Windows.Forms.Label();
-            this.txtMBr = new System.Windows.Forms.TextBox();
-            this.lblPrezime = new System.Windows.Forms.Label();
-            this.txtPrezime = new System.Windows.Forms.TextBox();
-            this.lblIme = new System.Windows.Forms.Label();
-            this.txtIme = new System.Windows.Forms.TextBox();
-            this.lblDatumRodj = new System.Windows.Forms.Label();
-            this.dtpDatumRodj = new System.Windows.Forms.DateTimePicker();
-            this.lblAdresa = new System.Windows.Forms.Label();
-            this.txtAdresa = new System.Windows.Forms.TextBox();
-            this.lblTelefon = new System.Windows.Forms.Label();
-            this.txtTelefon = new System.Windows.Forms.TextBox();
-            this.lblDatumZaposlenja = new System.Windows.Forms.Label();
-            this.dtpDatumZaposlenja = new System.Windows.Forms.DateTimePicker();
-            this.lblDatumDiplomiranja = new System.Windows.Forms.Label();
-            this.dtpDatumDiplomiranja = new System.Windows.Forms.DateTimePicker();
-            this.lblBrLicence = new System.Windows.Forms.Label();
-            this.txtBrLicence = new System.Windows.Forms.TextBox();
-            this.lblDatumPoslObnoveLicence = new System.Windows.Forms.Label();
-            this.dtpDatumPoslObnoveLicence = new System.Windows.Forms.DateTimePicker();
-            this.lblSpecijalnost = new System.Windows.Forms.Label();
-            this.txtSpecijalnost = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblMBr = new Label();
+            txtMBr = new TextBox();
+            lblPrezime = new Label();
+            txtPrezime = new TextBox();
+            lblIme = new Label();
+            txtIme = new TextBox();
+            lblDatumRodj = new Label();
+            dtpDatumRodj = new DateTimePicker();
+            lblAdresa = new Label();
+            txtAdresa = new TextBox();
+            lblTelefon = new Label();
+            txtTelefon = new TextBox();
+            lblDatumZaposlenja = new Label();
+            dtpDatumZaposlenja = new DateTimePicker();
+            lblDatumDiplomiranja = new Label();
+            dtpDatumDiplomiranja = new DateTimePicker();
+            lblBrLicence = new Label();
+            txtBrLicence = new TextBox();
+            lblDatumPoslObnoveLicence = new Label();
+            dtpDatumPoslObnoveLicence = new DateTimePicker();
+            lblSpecijalnost = new Label();
+            txtSpecijalnost = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblMBr
             // 
-            this.lblMBr.AutoSize = true;
-            this.lblMBr.Location = new System.Drawing.Point(30, 30);
-            this.lblMBr.Name = "lblMBr";
-            this.lblMBr.Size = new System.Drawing.Size(35, 15);
-            this.lblMBr.TabIndex = 0;
-            this.lblMBr.Text = "M.Br:";
+            lblMBr.AutoSize = true;
+            lblMBr.Location = new Point(30, 30);
+            lblMBr.Name = "lblMBr";
+            lblMBr.Size = new Size(35, 15);
+            lblMBr.TabIndex = 0;
+            lblMBr.Text = "M.Br:";
             // 
             // txtMBr
             // 
-            this.txtMBr.Location = new System.Drawing.Point(150, 27);
-            this.txtMBr.Name = "txtMBr";
-            this.txtMBr.ReadOnly = true;
-            this.txtMBr.Size = new System.Drawing.Size(200, 23);
-            this.txtMBr.TabIndex = 1;
-            this.txtMBr.TabStop = false;
+            txtMBr.Location = new Point(150, 27);
+            txtMBr.Name = "txtMBr";
+            txtMBr.ReadOnly = true;
+            txtMBr.Size = new Size(200, 23);
+            txtMBr.TabIndex = 1;
+            txtMBr.TabStop = false;
             // 
             // lblPrezime
             // 
-            this.lblPrezime.AutoSize = true;
-            this.lblPrezime.Location = new System.Drawing.Point(30, 70);
-            this.lblPrezime.Name = "lblPrezime";
-            this.lblPrezime.Size = new System.Drawing.Size(55, 15);
-            this.lblPrezime.TabIndex = 2;
-            this.lblPrezime.Text = "Prezime:";
+            lblPrezime.AutoSize = true;
+            lblPrezime.Location = new Point(30, 70);
+            lblPrezime.Name = "lblPrezime";
+            lblPrezime.Size = new Size(52, 15);
+            lblPrezime.TabIndex = 2;
+            lblPrezime.Text = "Prezime:";
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(150, 67);
-            this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(200, 23);
-            this.txtPrezime.TabIndex = 3;
+            txtPrezime.Location = new Point(150, 67);
+            txtPrezime.Name = "txtPrezime";
+            txtPrezime.Size = new Size(200, 23);
+            txtPrezime.TabIndex = 3;
             // 
             // lblIme
             // 
-            this.lblIme.AutoSize = true;
-            this.lblIme.Location = new System.Drawing.Point(30, 110);
-            this.lblIme.Name = "lblIme";
-            this.lblIme.Size = new System.Drawing.Size(30, 15);
-            this.lblIme.TabIndex = 4;
-            this.lblIme.Text = "Ime:";
+            lblIme.AutoSize = true;
+            lblIme.Location = new Point(30, 110);
+            lblIme.Name = "lblIme";
+            lblIme.Size = new Size(30, 15);
+            lblIme.TabIndex = 4;
+            lblIme.Text = "Ime:";
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(150, 107);
-            this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(200, 23);
-            this.txtIme.TabIndex = 5;
+            txtIme.Location = new Point(150, 107);
+            txtIme.Name = "txtIme";
+            txtIme.Size = new Size(200, 23);
+            txtIme.TabIndex = 5;
             // 
             // lblDatumRodj
             // 
-            this.lblDatumRodj.AutoSize = true;
-            this.lblDatumRodj.Location = new System.Drawing.Point(30, 150);
-            this.lblDatumRodj.Name = "lblDatumRodj";
-            this.lblDatumRodj.Size = new System.Drawing.Size(85, 15);
-            this.lblDatumRodj.TabIndex = 6;
-            this.lblDatumRodj.Text = "Datum rođenja:";
+            lblDatumRodj.AutoSize = true;
+            lblDatumRodj.Location = new Point(30, 150);
+            lblDatumRodj.Name = "lblDatumRodj";
+            lblDatumRodj.Size = new Size(89, 15);
+            lblDatumRodj.TabIndex = 6;
+            lblDatumRodj.Text = "Datum rođenja:";
             // 
             // dtpDatumRodj
             // 
-            this.dtpDatumRodj.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumRodj.Location = new System.Drawing.Point(150, 147);
-            this.dtpDatumRodj.Name = "dtpDatumRodj";
-            this.dtpDatumRodj.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumRodj.TabIndex = 7;
+            dtpDatumRodj.Format = DateTimePickerFormat.Short;
+            dtpDatumRodj.Location = new Point(150, 147);
+            dtpDatumRodj.Name = "dtpDatumRodj";
+            dtpDatumRodj.Size = new Size(200, 23);
+            dtpDatumRodj.TabIndex = 7;
             // 
             // lblAdresa
             // 
-            this.lblAdresa.AutoSize = true;
-            this.lblAdresa.Location = new System.Drawing.Point(30, 190);
-            this.lblAdresa.Name = "lblAdresa";
-            this.lblAdresa.Size = new System.Drawing.Size(50, 15);
-            this.lblAdresa.TabIndex = 8;
-            this.lblAdresa.Text = "Adresa:";
+            lblAdresa.AutoSize = true;
+            lblAdresa.Location = new Point(30, 190);
+            lblAdresa.Name = "lblAdresa";
+            lblAdresa.Size = new Size(46, 15);
+            lblAdresa.TabIndex = 8;
+            lblAdresa.Text = "Adresa:";
             // 
             // txtAdresa
             // 
-            this.txtAdresa.Location = new System.Drawing.Point(150, 187);
-            this.txtAdresa.Name = "txtAdresa";
-            this.txtAdresa.Size = new System.Drawing.Size(200, 23);
-            this.txtAdresa.TabIndex = 9;
+            txtAdresa.Location = new Point(150, 187);
+            txtAdresa.Name = "txtAdresa";
+            txtAdresa.Size = new Size(200, 23);
+            txtAdresa.TabIndex = 9;
             // 
             // lblTelefon
             // 
-            this.lblTelefon.AutoSize = true;
-            this.lblTelefon.Location = new System.Drawing.Point(30, 230);
-            this.lblTelefon.Name = "lblTelefon";
-            this.lblTelefon.Size = new System.Drawing.Size(50, 15);
-            this.lblTelefon.TabIndex = 10;
-            this.lblTelefon.Text = "Telefon:";
+            lblTelefon.AutoSize = true;
+            lblTelefon.Location = new Point(30, 230);
+            lblTelefon.Name = "lblTelefon";
+            lblTelefon.Size = new Size(49, 15);
+            lblTelefon.TabIndex = 10;
+            lblTelefon.Text = "Telefon:";
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Location = new System.Drawing.Point(150, 227);
-            this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(200, 23);
-            this.txtTelefon.TabIndex = 11;
+            txtTelefon.Location = new Point(150, 227);
+            txtTelefon.Name = "txtTelefon";
+            txtTelefon.Size = new Size(200, 23);
+            txtTelefon.TabIndex = 11;
             // 
             // lblDatumZaposlenja
             // 
-            this.lblDatumZaposlenja.AutoSize = true;
-            this.lblDatumZaposlenja.Location = new System.Drawing.Point(30, 270);
-            this.lblDatumZaposlenja.Name = "lblDatumZaposlenja";
-            this.lblDatumZaposlenja.Size = new System.Drawing.Size(100, 15);
-            this.lblDatumZaposlenja.TabIndex = 12;
-            this.lblDatumZaposlenja.Text = "Datum zaposlenja:";
+            lblDatumZaposlenja.AutoSize = true;
+            lblDatumZaposlenja.Location = new Point(30, 270);
+            lblDatumZaposlenja.Name = "lblDatumZaposlenja";
+            lblDatumZaposlenja.Size = new Size(104, 15);
+            lblDatumZaposlenja.TabIndex = 12;
+            lblDatumZaposlenja.Text = "Datum zaposlenja:";
             // 
             // dtpDatumZaposlenja
             // 
-            this.dtpDatumZaposlenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZaposlenja.Location = new System.Drawing.Point(150, 267);
-            this.dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
-            this.dtpDatumZaposlenja.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumZaposlenja.TabIndex = 13;
+            dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
+            dtpDatumZaposlenja.Location = new Point(150, 267);
+            dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
+            dtpDatumZaposlenja.Size = new Size(200, 23);
+            dtpDatumZaposlenja.TabIndex = 13;
             // 
             // lblDatumDiplomiranja
             // 
-            this.lblDatumDiplomiranja.AutoSize = true;
-            this.lblDatumDiplomiranja.Location = new System.Drawing.Point(30, 310);
-            this.lblDatumDiplomiranja.Name = "lblDatumDiplomiranja";
-            this.lblDatumDiplomiranja.Size = new System.Drawing.Size(110, 15);
-            this.lblDatumDiplomiranja.TabIndex = 14;
-            this.lblDatumDiplomiranja.Text = "Datum diplomiranja:";
+            lblDatumDiplomiranja.AutoSize = true;
+            lblDatumDiplomiranja.Location = new Point(30, 310);
+            lblDatumDiplomiranja.Name = "lblDatumDiplomiranja";
+            lblDatumDiplomiranja.Size = new Size(116, 15);
+            lblDatumDiplomiranja.TabIndex = 14;
+            lblDatumDiplomiranja.Text = "Datum diplomiranja:";
             // 
             // dtpDatumDiplomiranja
             // 
-            this.dtpDatumDiplomiranja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumDiplomiranja.Location = new System.Drawing.Point(150, 307);
-            this.dtpDatumDiplomiranja.Name = "dtpDatumDiplomiranja";
-            this.dtpDatumDiplomiranja.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumDiplomiranja.TabIndex = 15;
+            dtpDatumDiplomiranja.Format = DateTimePickerFormat.Short;
+            dtpDatumDiplomiranja.Location = new Point(150, 307);
+            dtpDatumDiplomiranja.Name = "dtpDatumDiplomiranja";
+            dtpDatumDiplomiranja.Size = new Size(200, 23);
+            dtpDatumDiplomiranja.TabIndex = 15;
             // 
             // lblBrLicence
             // 
-            this.lblBrLicence.AutoSize = true;
-            this.lblBrLicence.Location = new System.Drawing.Point(30, 350);
-            this.lblBrLicence.Name = "lblBrLicence";
-            this.lblBrLicence.Size = new System.Drawing.Size(75, 15);
-            this.lblBrLicence.TabIndex = 16;
-            this.lblBrLicence.Text = "Broj licence:";
+            lblBrLicence.AutoSize = true;
+            lblBrLicence.Location = new Point(30, 350);
+            lblBrLicence.Name = "lblBrLicence";
+            lblBrLicence.Size = new Size(71, 15);
+            lblBrLicence.TabIndex = 16;
+            lblBrLicence.Text = "Broj licence:";
             // 
             // txtBrLicence
             // 
-            this.txtBrLicence.Location = new System.Drawing.Point(150, 347);
-            this.txtBrLicence.Name = "txtBrLicence";
-            this.txtBrLicence.Size = new System.Drawing.Size(200, 23);
-            this.txtBrLicence.TabIndex = 17;
+            txtBrLicence.Location = new Point(150, 347);
+            txtBrLicence.Name = "txtBrLicence";
+            txtBrLicence.Size = new Size(200, 23);
+            txtBrLicence.TabIndex = 17;
             // 
             // lblDatumPoslObnoveLicence
             // 
-            this.lblDatumPoslObnoveLicence.AutoSize = true;
-            this.lblDatumPoslObnoveLicence.Location = new System.Drawing.Point(30, 390);
-            this.lblDatumPoslObnoveLicence.Name = "lblDatumPoslObnoveLicence";
-            this.lblDatumPoslObnoveLicence.Size = new System.Drawing.Size(140, 15);
-            this.lblDatumPoslObnoveLicence.TabIndex = 18;
-            this.lblDatumPoslObnoveLicence.Text = "Poslednja obnova licence:";
+            lblDatumPoslObnoveLicence.AutoSize = true;
+            lblDatumPoslObnoveLicence.Location = new Point(30, 390);
+            lblDatumPoslObnoveLicence.Name = "lblDatumPoslObnoveLicence";
+            lblDatumPoslObnoveLicence.Size = new Size(144, 15);
+            lblDatumPoslObnoveLicence.TabIndex = 18;
+            lblDatumPoslObnoveLicence.Text = "Poslednja obnova licence:";
             // 
             // dtpDatumPoslObnoveLicence
             // 
-            this.dtpDatumPoslObnoveLicence.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumPoslObnoveLicence.Location = new System.Drawing.Point(150, 387);
-            this.dtpDatumPoslObnoveLicence.Name = "dtpDatumPoslObnoveLicence";
-            this.dtpDatumPoslObnoveLicence.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumPoslObnoveLicence.TabIndex = 19;
+            dtpDatumPoslObnoveLicence.Format = DateTimePickerFormat.Short;
+            dtpDatumPoslObnoveLicence.Location = new Point(150, 387);
+            dtpDatumPoslObnoveLicence.Name = "dtpDatumPoslObnoveLicence";
+            dtpDatumPoslObnoveLicence.Size = new Size(200, 23);
+            dtpDatumPoslObnoveLicence.TabIndex = 19;
             // 
             // lblSpecijalnost
             // 
-            this.lblSpecijalnost.AutoSize = true;
-            this.lblSpecijalnost.Location = new System.Drawing.Point(30, 430);
-            this.lblSpecijalnost.Name = "lblSpecijalnost";
-            this.lblSpecijalnost.Size = new System.Drawing.Size(80, 15);
-            this.lblSpecijalnost.TabIndex = 20;
-            this.lblSpecijalnost.Text = "Specijalnost:";
+            lblSpecijalnost.AutoSize = true;
+            lblSpecijalnost.Location = new Point(30, 430);
+            lblSpecijalnost.Name = "lblSpecijalnost";
+            lblSpecijalnost.Size = new Size(73, 15);
+            lblSpecijalnost.TabIndex = 20;
+            lblSpecijalnost.Text = "Specijalnost:";
             // 
             // txtSpecijalnost
             // 
-            this.txtSpecijalnost.Location = new System.Drawing.Point(150, 427);
-            this.txtSpecijalnost.Name = "txtSpecijalnost";
-            this.txtSpecijalnost.Size = new System.Drawing.Size(200, 23);
-            this.txtSpecijalnost.TabIndex = 21;
+            txtSpecijalnost.Location = new Point(150, 427);
+            txtSpecijalnost.Name = "txtSpecijalnost";
+            txtSpecijalnost.Size = new Size(200, 23);
+            txtSpecijalnost.TabIndex = 21;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 470);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 22;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(150, 470);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 22;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 470);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 23;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(275, 470);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 23;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // FarmaceutForm
             // 
-            this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(384, 520);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtSpecijalnost);
-            this.Controls.Add(this.lblSpecijalnost);
-            this.Controls.Add(this.dtpDatumPoslObnoveLicence);
-            this.Controls.Add(this.lblDatumPoslObnoveLicence);
-            this.Controls.Add(this.txtBrLicence);
-            this.Controls.Add(this.lblBrLicence);
-            this.Controls.Add(this.dtpDatumDiplomiranja);
-            this.Controls.Add(this.lblDatumDiplomiranja);
-            this.Controls.Add(this.dtpDatumZaposlenja);
-            this.Controls.Add(this.lblDatumZaposlenja);
-            this.Controls.Add(this.txtTelefon);
-            this.Controls.Add(this.lblTelefon);
-            this.Controls.Add(this.txtAdresa);
-            this.Controls.Add(this.lblAdresa);
-            this.Controls.Add(this.dtpDatumRodj);
-            this.Controls.Add(this.lblDatumRodj);
-            this.Controls.Add(this.txtIme);
-            this.Controls.Add(this.lblIme);
-            this.Controls.Add(this.txtPrezime);
-            this.Controls.Add(this.lblPrezime);
-            this.Controls.Add(this.txtMBr);
-            this.Controls.Add(this.lblMBr);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FarmaceutForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Farmaceut";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSave;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
+            ClientSize = new Size(384, 520);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(txtSpecijalnost);
+            Controls.Add(lblSpecijalnost);
+            Controls.Add(dtpDatumPoslObnoveLicence);
+            Controls.Add(lblDatumPoslObnoveLicence);
+            Controls.Add(txtBrLicence);
+            Controls.Add(lblBrLicence);
+            Controls.Add(dtpDatumDiplomiranja);
+            Controls.Add(lblDatumDiplomiranja);
+            Controls.Add(dtpDatumZaposlenja);
+            Controls.Add(lblDatumZaposlenja);
+            Controls.Add(txtTelefon);
+            Controls.Add(lblTelefon);
+            Controls.Add(txtAdresa);
+            Controls.Add(lblAdresa);
+            Controls.Add(dtpDatumRodj);
+            Controls.Add(lblDatumRodj);
+            Controls.Add(txtIme);
+            Controls.Add(lblIme);
+            Controls.Add(txtPrezime);
+            Controls.Add(lblPrezime);
+            Controls.Add(txtMBr);
+            Controls.Add(lblMBr);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FarmaceutForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Farmaceut";
+            Load += FarmaceutForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

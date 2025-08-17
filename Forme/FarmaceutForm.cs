@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class FarmaceutForm : Form
     {
-        private Farmaceut farmaceut;
+        private FarmaceutBasic farmaceut;
 
         public FarmaceutForm()
         {
@@ -14,7 +14,7 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public FarmaceutForm(Farmaceut farmaceut) : this()
+        public FarmaceutForm(  FarmaceutBasic farmaceut) : this()
         {
             this.farmaceut = farmaceut;
             LoadFarmaceutData();
@@ -38,7 +38,7 @@ namespace Farmacy.Forme
                 dtpDatumZaposlenja.Value = farmaceut.DatumZaposlenja;
                 dtpDatumDiplomiranja.Value = farmaceut.DatumDiplomiranja;
                 txtBrLicence.Text = farmaceut.BrLicence;
-                dtpDatumPoslObnoveLicence.Value = farmaceut.DatumPoslObnoveLicence;
+                dtpDatumPoslObnoveLicence.Value = farmaceut.DatumPoslednjeObnoveLicence;
                 txtSpecijalnost.Text = farmaceut.Specijalnost ?? string.Empty;
             }
         }
@@ -89,7 +89,7 @@ namespace Farmacy.Forme
         {
             if (farmaceut == null)
             {
-                farmaceut = new Farmaceut();
+                farmaceut = new FarmaceutBasic();
             }
 
             farmaceut.Prezime = txtPrezime.Text.Trim();
@@ -100,13 +100,21 @@ namespace Farmacy.Forme
             farmaceut.DatumZaposlenja = dtpDatumZaposlenja.Value;
             farmaceut.DatumDiplomiranja = dtpDatumDiplomiranja.Value;
             farmaceut.BrLicence = txtBrLicence.Text.Trim();
-            farmaceut.DatumPoslObnoveLicence = dtpDatumPoslObnoveLicence.Value;
+            farmaceut.DatumPoslednjeObnoveLicence = dtpDatumPoslObnoveLicence.Value;
             farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
+
+            DTOManager.DodajFarmaceuta(farmaceut);
+
         }
 
-        public Farmaceut GetFarmaceut()
+        public FarmaceutBasic GetFarmaceut()
         {
             return farmaceut;
+        }
+
+        private void FarmaceutForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
