@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class ProdajnaJedinicaForm : Form
     {
-        private ProdajnaJedinica prodajnaJedinica;
+        private ProdajnaJedinicaBasic prodajnaJedinica;
 
         public ProdajnaJedinicaForm()
         {
@@ -14,7 +14,7 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public ProdajnaJedinicaForm(ProdajnaJedinica prodajnaJedinica) : this()
+        public ProdajnaJedinicaForm(ProdajnaJedinicaBasic prodajnaJedinica) : this()
         {
             this.prodajnaJedinica = prodajnaJedinica;
             LoadProdajnaJedinicaData();
@@ -35,9 +35,9 @@ namespace Farmacy.Forme
                 txtBroj.Text = prodajnaJedinica.Broj;
                 txtPostanskiBroj.Text = prodajnaJedinica.PostanskiBroj;
                 txtMesto.Text = prodajnaJedinica.Mesto;
-                
-                if (prodajnaJedinica.OdgovorniFarmaceut != null)
-                    txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceut.ToString();
+
+                if (prodajnaJedinica.OdgovorniFarmaceutMbr != null)
+                    txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceutMbr.ToString();
             }
         }
 
@@ -101,7 +101,7 @@ namespace Farmacy.Forme
         {
             if (prodajnaJedinica == null)
             {
-                prodajnaJedinica = new ProdajnaJedinica();
+                prodajnaJedinica = new ProdajnaJedinicaBasic();
             }
 
             prodajnaJedinica.Naziv = txtNaziv.Text.Trim();
@@ -109,11 +109,24 @@ namespace Farmacy.Forme
             prodajnaJedinica.Broj = txtBroj.Text.Trim();
             prodajnaJedinica.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
+            prodajnaJedinica.OdgovorniFarmaceutMbr = long.Parse(txtOdgovorniFarmaceut.Text.Trim());
+            DTOManager.DodajProdajnuJedinicu(prodajnaJedinica);
+
         }
 
-        public ProdajnaJedinica GetProdajnaJedinica()
+        public ProdajnaJedinicaBasic GetProdajnaJedinica()
         {
             return prodajnaJedinica;
+        }
+
+        private void ProdajnaJedinicaForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOdgovorniFarmaceut_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

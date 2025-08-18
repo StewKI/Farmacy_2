@@ -15,114 +15,205 @@ namespace Farmacy_2.Forme
 
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblNaziv = new System.Windows.Forms.Label();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.lblUlica = new System.Windows.Forms.Label();
-            this.txtUlica = new System.Windows.Forms.TextBox();
-            this.lblBroj = new System.Windows.Forms.Label();
-            this.txtBroj = new System.Windows.Forms.TextBox();
-            this.lblPostanskiBroj = new System.Windows.Forms.Label();
-            this.txtPostanskiBroj = new System.Windows.Forms.TextBox();
-            this.lblMesto = new System.Windows.Forms.Label();
-            this.txtMesto = new System.Windows.Forms.TextBox();
-            this.lblOdgovorniFarmaceut = new System.Windows.Forms.Label();
-            this.txtOdgovorniFarmaceut = new System.Windows.Forms.TextBox();
-            this.lblNapomena = new System.Windows.Forms.Label();
-            this.txtNapomena = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            
-            // Controls setup
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(12, 15);
-            this.lblId.Text = "ID:";
-            
-            this.txtId.Location = new System.Drawing.Point(120, 12);
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(200, 23);
-            
-            this.lblNaziv.AutoSize = true;
-            this.lblNaziv.Location = new System.Drawing.Point(12, 44);
-            this.lblNaziv.Text = "Naziv:";
-            
-            this.txtNaziv.Location = new System.Drawing.Point(120, 41);
-            this.txtNaziv.Size = new System.Drawing.Size(200, 23);
-            
-            this.lblUlica.AutoSize = true;
-            this.lblUlica.Location = new System.Drawing.Point(12, 73);
-            this.lblUlica.Text = "Ulica:";
-            
-            this.txtUlica.Location = new System.Drawing.Point(120, 70);
-            this.txtUlica.Size = new System.Drawing.Size(200, 23);
-            
-            this.lblBroj.AutoSize = true;
-            this.lblBroj.Location = new System.Drawing.Point(12, 102);
-            this.lblBroj.Text = "Broj:";
-            
-            this.txtBroj.Location = new System.Drawing.Point(120, 99);
-            this.txtBroj.Size = new System.Drawing.Size(200, 23);
-            
-            this.lblPostanskiBroj.AutoSize = true;
-            this.lblPostanskiBroj.Location = new System.Drawing.Point(12, 131);
-            this.lblPostanskiBroj.Text = "Poštanski broj:";
-            
-            this.txtPostanskiBroj.Location = new System.Drawing.Point(120, 128);
-            this.txtPostanskiBroj.Size = new System.Drawing.Size(200, 23);
-            
-            this.lblMesto.AutoSize = true;
-            this.lblMesto.Location = new System.Drawing.Point(12, 160);
-            this.lblMesto.Text = "Mesto:";
-            
-            this.txtMesto.Location = new System.Drawing.Point(120, 157);
-            this.txtMesto.Size = new System.Drawing.Size(200, 23);
-            
-            this.lblOdgovorniFarmaceut.AutoSize = true;
-            this.lblOdgovorniFarmaceut.Location = new System.Drawing.Point(12, 189);
-            this.lblOdgovorniFarmaceut.Text = "Odgovorni farmaceut:";
-            
-            this.txtOdgovorniFarmaceut.Location = new System.Drawing.Point(140, 186);
-            this.txtOdgovorniFarmaceut.ReadOnly = true;
-            this.txtOdgovorniFarmaceut.Size = new System.Drawing.Size(180, 23);
-            
-            this.lblNapomena.AutoSize = true;
-            this.lblNapomena.Location = new System.Drawing.Point(12, 218);
-            this.lblNapomena.Text = "Napomena:";
-            
-            this.txtNapomena.Location = new System.Drawing.Point(120, 215);
-            this.txtNapomena.Size = new System.Drawing.Size(200, 23);
-            
-            this.btnSave.Location = new System.Drawing.Point(120, 254);
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            
-            this.btnCancel.Location = new System.Drawing.Point(245, 254);
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            
-            // Form setup
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 295);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Izmena apoteke sa laboratorijom";
-            
-            // Add controls
-            this.Controls.AddRange(new System.Windows.Forms.Control[] {
-                this.lblId, this.txtId, this.lblNaziv, this.txtNaziv, this.lblUlica, this.txtUlica, this.lblBroj, this.txtBroj,
-                this.lblPostanskiBroj, this.txtPostanskiBroj, this.lblMesto, this.txtMesto, this.lblOdgovorniFarmaceut, this.txtOdgovorniFarmaceut,
-                this.lblNapomena, this.txtNapomena, this.btnSave, this.btnCancel
-            });
-            
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            lblId = new Label();
+            txtId = new TextBox();
+            lblNaziv = new Label();
+            txtNaziv = new TextBox();
+            lblUlica = new Label();
+            txtUlica = new TextBox();
+            lblBroj = new Label();
+            txtBroj = new TextBox();
+            lblPostanskiBroj = new Label();
+            txtPostanskiBroj = new TextBox();
+            lblMesto = new Label();
+            txtMesto = new TextBox();
+            lblOdgovorniFarmaceut = new Label();
+            txtOdgovorniFarmaceut = new TextBox();
+            lblNapomena = new Label();
+            txtNapomena = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Location = new Point(12, 15);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(21, 15);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(120, 12);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(200, 23);
+            txtId.TabIndex = 1;
+            // 
+            // lblNaziv
+            // 
+            lblNaziv.AutoSize = true;
+            lblNaziv.Location = new Point(12, 44);
+            lblNaziv.Name = "lblNaziv";
+            lblNaziv.Size = new Size(39, 15);
+            lblNaziv.TabIndex = 2;
+            lblNaziv.Text = "Naziv:";
+            // 
+            // txtNaziv
+            // 
+            txtNaziv.Location = new Point(120, 41);
+            txtNaziv.Name = "txtNaziv";
+            txtNaziv.Size = new Size(200, 23);
+            txtNaziv.TabIndex = 3;
+            // 
+            // lblUlica
+            // 
+            lblUlica.AutoSize = true;
+            lblUlica.Location = new Point(12, 73);
+            lblUlica.Name = "lblUlica";
+            lblUlica.Size = new Size(36, 15);
+            lblUlica.TabIndex = 4;
+            lblUlica.Text = "Ulica:";
+            // 
+            // txtUlica
+            // 
+            txtUlica.Location = new Point(120, 70);
+            txtUlica.Name = "txtUlica";
+            txtUlica.Size = new Size(200, 23);
+            txtUlica.TabIndex = 5;
+            // 
+            // lblBroj
+            // 
+            lblBroj.AutoSize = true;
+            lblBroj.Location = new Point(12, 102);
+            lblBroj.Name = "lblBroj";
+            lblBroj.Size = new Size(31, 15);
+            lblBroj.TabIndex = 6;
+            lblBroj.Text = "Broj:";
+            // 
+            // txtBroj
+            // 
+            txtBroj.Location = new Point(120, 99);
+            txtBroj.Name = "txtBroj";
+            txtBroj.Size = new Size(200, 23);
+            txtBroj.TabIndex = 7;
+            // 
+            // lblPostanskiBroj
+            // 
+            lblPostanskiBroj.AutoSize = true;
+            lblPostanskiBroj.Location = new Point(12, 131);
+            lblPostanskiBroj.Name = "lblPostanskiBroj";
+            lblPostanskiBroj.Size = new Size(84, 15);
+            lblPostanskiBroj.TabIndex = 8;
+            lblPostanskiBroj.Text = "Poštanski broj:";
+            // 
+            // txtPostanskiBroj
+            // 
+            txtPostanskiBroj.Location = new Point(120, 128);
+            txtPostanskiBroj.Name = "txtPostanskiBroj";
+            txtPostanskiBroj.Size = new Size(200, 23);
+            txtPostanskiBroj.TabIndex = 9;
+            // 
+            // lblMesto
+            // 
+            lblMesto.AutoSize = true;
+            lblMesto.Location = new Point(12, 160);
+            lblMesto.Name = "lblMesto";
+            lblMesto.Size = new Size(43, 15);
+            lblMesto.TabIndex = 10;
+            lblMesto.Text = "Mesto:";
+            // 
+            // txtMesto
+            // 
+            txtMesto.Location = new Point(120, 157);
+            txtMesto.Name = "txtMesto";
+            txtMesto.Size = new Size(200, 23);
+            txtMesto.TabIndex = 11;
+            // 
+            // lblOdgovorniFarmaceut
+            // 
+            lblOdgovorniFarmaceut.AutoSize = true;
+            lblOdgovorniFarmaceut.Location = new Point(12, 189);
+            lblOdgovorniFarmaceut.Name = "lblOdgovorniFarmaceut";
+            lblOdgovorniFarmaceut.Size = new Size(124, 15);
+            lblOdgovorniFarmaceut.TabIndex = 12;
+            lblOdgovorniFarmaceut.Text = "Odgovorni farmaceut:";
+            // 
+            // txtOdgovorniFarmaceut
+            // 
+            txtOdgovorniFarmaceut.Location = new Point(135, 186);
+            txtOdgovorniFarmaceut.Name = "txtOdgovorniFarmaceut";
+            txtOdgovorniFarmaceut.ReadOnly = true;
+            txtOdgovorniFarmaceut.Size = new Size(185, 23);
+            txtOdgovorniFarmaceut.TabIndex = 13;
+            // 
+            // lblNapomena
+            // 
+            lblNapomena.AutoSize = true;
+            lblNapomena.Location = new Point(12, 218);
+            lblNapomena.Name = "lblNapomena";
+            lblNapomena.Size = new Size(69, 15);
+            lblNapomena.TabIndex = 14;
+            lblNapomena.Text = "Napomena:";
+            // 
+            // txtNapomena
+            // 
+            txtNapomena.Location = new Point(120, 215);
+            txtNapomena.Name = "txtNapomena";
+            txtNapomena.Size = new Size(200, 23);
+            txtNapomena.TabIndex = 15;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(120, 254);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 16;
+            btnSave.Text = "Sačuvaj";
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(245, 254);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 17;
+            btnCancel.Text = "Otkaži";
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // ApotekaSaLabEditForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(344, 295);
+            Controls.Add(lblId);
+            Controls.Add(txtId);
+            Controls.Add(lblNaziv);
+            Controls.Add(txtNaziv);
+            Controls.Add(lblUlica);
+            Controls.Add(txtUlica);
+            Controls.Add(lblBroj);
+            Controls.Add(txtBroj);
+            Controls.Add(lblPostanskiBroj);
+            Controls.Add(txtPostanskiBroj);
+            Controls.Add(lblMesto);
+            Controls.Add(txtMesto);
+            Controls.Add(lblOdgovorniFarmaceut);
+            Controls.Add(txtOdgovorniFarmaceut);
+            Controls.Add(lblNapomena);
+            Controls.Add(txtNapomena);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "ApotekaSaLabEditForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Izmena apoteke sa laboratorijom";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.Label lblId;

@@ -6,9 +6,9 @@ namespace Farmacy_2.Forme
 {
     public partial class ApotekaSaLabEditForm : Form
     {
-        private ApotekaSaLab apotekaSaLab;
+        private ApotekaSaLabBasic apotekaSaLab;
 
-        public ApotekaSaLabEditForm(ApotekaSaLab apotekaSaLab)
+        public ApotekaSaLabEditForm(ApotekaSaLabBasic apotekaSaLab)
         {
             InitializeComponent();
             this.apotekaSaLab = apotekaSaLab ?? throw new ArgumentNullException(nameof(apotekaSaLab));
@@ -101,7 +101,7 @@ namespace Farmacy_2.Forme
             Close();
         }
 
-        public ApotekaSaLab GetApotekaSaLab()
+        public ApotekaSaLabBasic GetApotekaSaLab()
         {
             return apotekaSaLab;
         }

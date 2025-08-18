@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Entiteti
 {
-    public class ProdajnaJedinica
+    public class ProdajnaJedinicaBasic
     {
         public virtual long Id { get; set; }
         public virtual string Naziv { get; set; } = default!;

@@ -8,7 +8,7 @@ namespace Farmacy.Entiteti
 {
     public class RadnoVreme : IEquatable<RadnoVreme>
     {
-        public virtual ProdajnaJedinica ProdajnaJedinica { get; set; } = default!;
+        public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
         public virtual int Dan { get; set; }            // 1..7
         public virtual TimeSpan VremeOd { get; set; }   // INTERVAL DAY TO SECOND
         public virtual TimeSpan VremeDo { get; set; }   // INTERVAL DAY TO SECOND

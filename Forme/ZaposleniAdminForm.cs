@@ -31,7 +31,7 @@ namespace Farmacy.Forme
 
         public void popuniPodacima()
         {
-            
+
 
             try
             {
@@ -48,8 +48,8 @@ namespace Farmacy.Forme
                 dgvZaposleni.DataSource = false;   // osveži binding
                 dgvZaposleni.DataSource = lista;
 
-                
-                
+
+
 
                 if (dgvZaposleni.Columns.Count == 0)
                 {
@@ -91,19 +91,16 @@ namespace Farmacy.Forme
 
         }
 
-        private void ZaposleniPrikazForm_Load_1(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnObrisiZaposlenog_Click(object sender, EventArgs e)
         {
             long mbr = 0;
             if (dgvZaposleni.SelectedRows.Count > 0)
             {
-                mbr  = Convert.ToInt64(dgvZaposleni.CurrentRow.Cells[0].Value);
+                mbr = Convert.ToInt64(dgvZaposleni.CurrentRow.Cells[0].Value);
                 MessageBox.Show("Selektovan MBr: " + mbr);
-                
+
             }
             else
             {
@@ -136,7 +133,7 @@ namespace Farmacy.Forme
 
             ZaposleniBasic selektovaniZaposleni = DTOManager.VratiZaposlenog(mbr);
             // Pozovi formu za editovanje i prosledi zaposlenog
-            
+
             ZaposleniEditForm form = new ZaposleniEditForm(selektovaniZaposleni);
             form.ShowDialog();
 
@@ -146,10 +143,15 @@ namespace Farmacy.Forme
         private void btnDodajNovog_Click(object sender, EventArgs e)
         {
 
-            
+
             OdaberiZaposlenogForm form = new OdaberiZaposlenogForm();
             form.ShowDialog();
             popuniPodacima();
+        }
+
+        private void ZaposleniAdminForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

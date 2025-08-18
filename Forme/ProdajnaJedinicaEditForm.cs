@@ -6,9 +6,9 @@ namespace Farmacy_2.Forme
 {
     public partial class ProdajnaJedinicaEditForm : Form
     {
-        private ProdajnaJedinica prodajnaJedinica;
+        private ProdajnaJedinicaBasic prodajnaJedinica;
 
-        public ProdajnaJedinicaEditForm(ProdajnaJedinica prodajnaJedinica)
+        public ProdajnaJedinicaEditForm(ProdajnaJedinicaBasic prodajnaJedinica)
         {
             InitializeComponent();
             this.prodajnaJedinica = prodajnaJedinica ?? throw new ArgumentNullException(nameof(prodajnaJedinica));
@@ -91,7 +91,7 @@ namespace Farmacy_2.Forme
             Close();
         }
 
-        public ProdajnaJedinica GetProdajnaJedinica()
+        public ProdajnaJedinicaBasic GetProdajnaJedinica()
         {
             return prodajnaJedinica;
         }

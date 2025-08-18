@@ -65,7 +65,6 @@
             dgvZaposleni.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvZaposleni.Size = new Size(650, 425);
             dgvZaposleni.TabIndex = 0;
-           // dgvZaposleni.CellContentClick += this.dgvZaposleni_CellContentClick_1;
             // 
             // panelDesno
             // 
@@ -78,7 +77,6 @@
             panelDesno.Padding = new Padding(15);
             panelDesno.Size = new Size(230, 461);
             panelDesno.TabIndex = 1;
-            //panelDesno.Paint += this.panelDesno_Paint_1;
             // 
             // btnObrisiZaposlenog
             // 
@@ -92,7 +90,7 @@
             btnObrisiZaposlenog.TabIndex = 2;
             btnObrisiZaposlenog.Text = "Obriši zaposlenog";
             btnObrisiZaposlenog.UseVisualStyleBackColor = true;
-            btnObrisiZaposlenog.Click += this.btnObrisiZaposlenog_Click;
+            btnObrisiZaposlenog.Click += btnObrisiZaposlenog_Click;
             // 
             // btnIzmeniZaposlenog
             // 
@@ -106,7 +104,7 @@
             btnIzmeniZaposlenog.TabIndex = 1;
             btnIzmeniZaposlenog.Text = "Izmeni zaposlenog";
             btnIzmeniZaposlenog.UseVisualStyleBackColor = true;
-            btnIzmeniZaposlenog.Click += this.btnIzmeniZaposlenog_Click;
+            btnIzmeniZaposlenog.Click += btnIzmeniZaposlenog_Click;
             // 
             // btnDodajNovog
             // 
@@ -120,7 +118,7 @@
             btnDodajNovog.TabIndex = 0;
             btnDodajNovog.Text = "Dodaj novog zaposlenog";
             btnDodajNovog.UseVisualStyleBackColor = true;
-            btnDodajNovog.Click += this.btnDodajNovog_Click;
+            btnDodajNovog.Click += btnDodajNovog_Click;
             // 
             // ZaposleniAdminForm
             // 
@@ -135,7 +133,7 @@
             Name = "ZaposleniAdminForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Apoteka";
-            Load += ZaposleniPrikazForm_Load_1;
+            Load += ZaposleniAdminForm_Load;
             groupBoxZaposleni.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvZaposleni).EndInit();
             panelDesno.ResumeLayout(false);
