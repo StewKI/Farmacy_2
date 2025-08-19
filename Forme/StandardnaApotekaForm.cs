@@ -36,7 +36,7 @@ namespace Farmacy.Forme
                 txtPostanskiBroj.Text = standardnaApoteka.PostanskiBroj;
                 txtMesto.Text = standardnaApoteka.Mesto;
                 txtNapomena.Text = standardnaApoteka.Napomena ?? string.Empty;
-                
+
                 if (standardnaApoteka.OdgovorniFarmaceut != null)
                     txtOdgovorniFarmaceut.Text = standardnaApoteka.OdgovorniFarmaceut.ToString();
             }
@@ -110,12 +110,20 @@ namespace Farmacy.Forme
             standardnaApoteka.Broj = txtBroj.Text.Trim();
             standardnaApoteka.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             standardnaApoteka.Mesto = txtMesto.Text.Trim();
+            standardnaApoteka.OdgovorniFarmaceut = DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
             standardnaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
+
+            DTOManager.DodajStandardnuApoteku(standardnaApoteka);
         }
 
         public StandardnaApoteka GetStandardnaApoteka()
         {
             return standardnaApoteka;
+        }
+
+        private void StandardnaApotekaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

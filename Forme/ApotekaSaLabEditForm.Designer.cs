@@ -212,6 +212,7 @@ namespace Farmacy_2.Forme
             Name = "ApotekaSaLabEditForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Izmena apoteke sa laboratorijom";
+            Load += ApotekaSaLabEditForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

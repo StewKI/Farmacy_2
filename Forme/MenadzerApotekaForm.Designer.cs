@@ -28,139 +28,153 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMenadzerId = new System.Windows.Forms.Label();
-            this.txtMenadzerId = new System.Windows.Forms.TextBox();
-            this.lblProdajnaJedinicaId = new System.Windows.Forms.Label();
-            this.txtProdajnaJedinicaId = new System.Windows.Forms.TextBox();
-            this.lblOd = new System.Windows.Forms.Label();
-            this.dtpOd = new System.Windows.Forms.DateTimePicker();
-            this.lblDo = new System.Windows.Forms.Label();
-            this.dtpDo = new System.Windows.Forms.DateTimePicker();
-            this.chkDo = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblMenadzerId = new Label();
+            txtMenadzerId = new TextBox();
+            lblProdajnaJedinicaId = new Label();
+            txtProdajnaJedinicaId = new TextBox();
+            lblOd = new Label();
+            dtpOd = new DateTimePicker();
+            lblDo = new Label();
+            dtpDo = new DateTimePicker();
+            chkDo = new CheckBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblMenadzerId
             // 
-            this.lblMenadzerId.AutoSize = true;
-            this.lblMenadzerId.Location = new System.Drawing.Point(12, 15);
-            this.lblMenadzerId.Name = "lblMenadzerId";
-            this.lblMenadzerId.Size = new System.Drawing.Size(82, 13);
-            this.lblMenadzerId.TabIndex = 0;
-            this.lblMenadzerId.Text = "ID Menadžera:";
+            lblMenadzerId.AutoSize = true;
+            lblMenadzerId.Location = new Point(14, 17);
+            lblMenadzerId.Margin = new Padding(4, 0, 4, 0);
+            lblMenadzerId.Name = "lblMenadzerId";
+            lblMenadzerId.Size = new Size(82, 15);
+            lblMenadzerId.TabIndex = 0;
+            lblMenadzerId.Text = "ID Menadžera:";
             // 
             // txtMenadzerId
             // 
-            this.txtMenadzerId.Location = new System.Drawing.Point(120, 12);
-            this.txtMenadzerId.Name = "txtMenadzerId";
-            this.txtMenadzerId.Size = new System.Drawing.Size(150, 20);
-            this.txtMenadzerId.TabIndex = 1;
+            txtMenadzerId.Location = new Point(140, 14);
+            txtMenadzerId.Margin = new Padding(4, 3, 4, 3);
+            txtMenadzerId.Name = "txtMenadzerId";
+            txtMenadzerId.Size = new Size(174, 23);
+            txtMenadzerId.TabIndex = 1;
             // 
             // lblProdajnaJedinicaId
             // 
-            this.lblProdajnaJedinicaId.AutoSize = true;
-            this.lblProdajnaJedinicaId.Location = new System.Drawing.Point(12, 41);
-            this.lblProdajnaJedinicaId.Name = "lblProdajnaJedinicaId";
-            this.lblProdajnaJedinicaId.Size = new System.Drawing.Size(105, 13);
-            this.lblProdajnaJedinicaId.TabIndex = 2;
-            this.lblProdajnaJedinicaId.Text = "ID Prodajne Jedinice:";
+            lblProdajnaJedinicaId.AutoSize = true;
+            lblProdajnaJedinicaId.Location = new Point(14, 47);
+            lblProdajnaJedinicaId.Margin = new Padding(4, 0, 4, 0);
+            lblProdajnaJedinicaId.Name = "lblProdajnaJedinicaId";
+            lblProdajnaJedinicaId.Size = new Size(116, 15);
+            lblProdajnaJedinicaId.TabIndex = 2;
+            lblProdajnaJedinicaId.Text = "ID Prodajne Jedinice:";
             // 
             // txtProdajnaJedinicaId
             // 
-            this.txtProdajnaJedinicaId.Location = new System.Drawing.Point(120, 38);
-            this.txtProdajnaJedinicaId.Name = "txtProdajnaJedinicaId";
-            this.txtProdajnaJedinicaId.Size = new System.Drawing.Size(150, 20);
-            this.txtProdajnaJedinicaId.TabIndex = 3;
+            txtProdajnaJedinicaId.Location = new Point(140, 44);
+            txtProdajnaJedinicaId.Margin = new Padding(4, 3, 4, 3);
+            txtProdajnaJedinicaId.Name = "txtProdajnaJedinicaId";
+            txtProdajnaJedinicaId.ReadOnly = true;
+            txtProdajnaJedinicaId.Size = new Size(174, 23);
+            txtProdajnaJedinicaId.TabIndex = 3;
             // 
             // lblOd
             // 
-            this.lblOd.AutoSize = true;
-            this.lblOd.Location = new System.Drawing.Point(12, 67);
-            this.lblOd.Name = "lblOd";
-            this.lblOd.Size = new System.Drawing.Size(23, 13);
-            this.lblOd.TabIndex = 4;
-            this.lblOd.Text = "Od:";
+            lblOd.AutoSize = true;
+            lblOd.Location = new Point(14, 77);
+            lblOd.Margin = new Padding(4, 0, 4, 0);
+            lblOd.Name = "lblOd";
+            lblOd.Size = new Size(26, 15);
+            lblOd.TabIndex = 4;
+            lblOd.Text = "Od:";
             // 
             // dtpOd
             // 
-            this.dtpOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpOd.Location = new System.Drawing.Point(120, 64);
-            this.dtpOd.Name = "dtpOd";
-            this.dtpOd.Size = new System.Drawing.Size(150, 20);
-            this.dtpOd.TabIndex = 5;
+            dtpOd.Format = DateTimePickerFormat.Short;
+            dtpOd.Location = new Point(140, 74);
+            dtpOd.Margin = new Padding(4, 3, 4, 3);
+            dtpOd.Name = "dtpOd";
+            dtpOd.Size = new Size(174, 23);
+            dtpOd.TabIndex = 5;
             // 
             // lblDo
             // 
-            this.lblDo.AutoSize = true;
-            this.lblDo.Location = new System.Drawing.Point(12, 93);
-            this.lblDo.Name = "lblDo";
-            this.lblDo.Size = new System.Drawing.Size(23, 13);
-            this.lblDo.TabIndex = 6;
-            this.lblDo.Text = "Do:";
+            lblDo.AutoSize = true;
+            lblDo.Location = new Point(14, 107);
+            lblDo.Margin = new Padding(4, 0, 4, 0);
+            lblDo.Name = "lblDo";
+            lblDo.Size = new Size(25, 15);
+            lblDo.TabIndex = 6;
+            lblDo.Text = "Do:";
             // 
             // dtpDo
             // 
-            this.dtpDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDo.Location = new System.Drawing.Point(120, 90);
-            this.dtpDo.Name = "dtpDo";
-            this.dtpDo.Size = new System.Drawing.Size(150, 20);
-            this.dtpDo.TabIndex = 7;
+            dtpDo.Format = DateTimePickerFormat.Short;
+            dtpDo.Location = new Point(140, 104);
+            dtpDo.Margin = new Padding(4, 3, 4, 3);
+            dtpDo.Name = "dtpDo";
+            dtpDo.Size = new Size(174, 23);
+            dtpDo.TabIndex = 7;
             // 
             // chkDo
             // 
-            this.chkDo.AutoSize = true;
-            this.chkDo.Location = new System.Drawing.Point(276, 92);
-            this.chkDo.Name = "chkDo";
-            this.chkDo.Size = new System.Drawing.Size(15, 14);
-            this.chkDo.TabIndex = 8;
-            this.chkDo.UseVisualStyleBackColor = true;
-            this.chkDo.CheckedChanged += new System.EventHandler(this.chkDo_CheckedChanged);
+            chkDo.AutoSize = true;
+            chkDo.Location = new Point(322, 106);
+            chkDo.Margin = new Padding(4, 3, 4, 3);
+            chkDo.Name = "chkDo";
+            chkDo.Size = new Size(15, 14);
+            chkDo.TabIndex = 8;
+            chkDo.UseVisualStyleBackColor = true;
+            chkDo.CheckedChanged += chkDo_CheckedChanged;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 126);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(140, 145);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(88, 27);
+            btnSave.TabIndex = 9;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(201, 126);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(234, 145);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(88, 27);
+            btnCancel.TabIndex = 10;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // MenadzerApotekaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 161);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.chkDo);
-            this.Controls.Add(this.dtpDo);
-            this.Controls.Add(this.lblDo);
-            this.Controls.Add(this.dtpOd);
-            this.Controls.Add(this.lblOd);
-            this.Controls.Add(this.txtProdajnaJedinicaId);
-            this.Controls.Add(this.lblProdajnaJedinicaId);
-            this.Controls.Add(this.txtMenadzerId);
-            this.Controls.Add(this.lblMenadzerId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "MenadzerApotekaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Menadžer Apoteka";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(350, 186);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(chkDo);
+            Controls.Add(dtpDo);
+            Controls.Add(lblDo);
+            Controls.Add(dtpOd);
+            Controls.Add(lblOd);
+            Controls.Add(txtProdajnaJedinicaId);
+            Controls.Add(lblProdajnaJedinicaId);
+            Controls.Add(txtMenadzerId);
+            Controls.Add(lblMenadzerId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "MenadzerApotekaForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Menadžer Apoteka";
+            Load += MenadzerApotekaForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

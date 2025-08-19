@@ -6,9 +6,9 @@ namespace Farmacy.Forme
 {
     public partial class TehnicarEditForm : Form
     {
-        private Tehnicar tehnicar;
+        private TehnicarBasic tehnicar;
 
-        public TehnicarEditForm(Tehnicar tehnicar)
+        public TehnicarEditForm(TehnicarBasic tehnicar)
         {
             if (tehnicar == null)
                 throw new ArgumentNullException(nameof(tehnicar));
@@ -124,7 +124,7 @@ namespace Farmacy.Forme
             DTOManager.UpdateTehnicara(t);
         }
 
-        public Tehnicar GetTehnicar()
+        public TehnicarBasic GetTehnicar()
         {
             return tehnicar;
         }

@@ -143,5 +143,10 @@ namespace Farmacy.Forme
                 this.Close();
             }
         }
+
+        private void ApotekaSaLabForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

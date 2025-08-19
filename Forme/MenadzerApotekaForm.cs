@@ -1,37 +1,46 @@
 using System;
 using System.Windows.Forms;
-using Farmacy.Entiteti;
+using Farmacy;
 
 namespace Farmacy.Forme
 {
     public partial class MenadzerApotekaForm : Form
     {
-        private MenadzerApoteka menadzerApoteka;
-
+        private MenadzerApotekaBasic menadzerApoteka;
+        long idApoteke = 0;
         public MenadzerApotekaForm()
         {
             InitializeComponent();
-            menadzerApoteka = new MenadzerApoteka();
+            menadzerApoteka = new MenadzerApotekaBasic();
             LoadMenadzerApotekaData();
         }
 
-        public MenadzerApotekaForm(MenadzerApoteka menadzerApoteka)
+        public MenadzerApotekaForm(MenadzerApotekaBasic menadzerApoteka)
         {
             InitializeComponent();
             this.menadzerApoteka = menadzerApoteka;
             LoadMenadzerApotekaData();
         }
 
+        public MenadzerApotekaForm(long id)
+        {
+            InitializeComponent();
+            menadzerApoteka = new MenadzerApotekaBasic();
+            idApoteke = id;
+            LoadMenadzerApotekaData();
+        }
+
         private void LoadMenadzerApotekaData()
         {
-            if (menadzerApoteka.Menadzer != null)
-                txtMenadzerId.Text = menadzerApoteka.Menadzer.MBr.ToString();
+            if (menadzerApoteka.MBrMenadzera != null)
+                txtMenadzerId.Text = menadzerApoteka.MBrMenadzera.ToString();
+
+            //if (menadzerApoteka.ProdajnaJedinica != null)
+            //    txtProdajnaJedinicaId.Text = menadzerApoteka.ProdajnaJedinica.Id.ToString();
+
+            txtProdajnaJedinicaId.Text = idApoteke.ToString();
             
-            if (menadzerApoteka.ProdajnaJedinica != null)
-                txtProdajnaJedinicaId.Text = menadzerApoteka.ProdajnaJedinica.Id.ToString();
-            
-            dtpOd.Value = menadzerApoteka.Od;
-            
+
             if (menadzerApoteka.Do.HasValue)
                 dtpDo.Value = menadzerApoteka.Do.Value;
             else
@@ -88,11 +97,19 @@ namespace Farmacy.Forme
             // jer ova forma samo prikazuje ID-ove
             menadzerApoteka.Od = dtpOd.Value;
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
+            menadzerApoteka.ProdajnaJedinicaId =idApoteke;
+            menadzerApoteka.MBrMenadzera = long.Parse(txtMenadzerId.Text);
+            DTOManager.DodeliMenadzeraApoteci(menadzerApoteka);
         }
 
-        public MenadzerApoteka GetMenadzerApoteka()
+        public MenadzerApotekaBasic GetMenadzerApoteka()
         {
             return menadzerApoteka;
+        }
+
+        private void MenadzerApotekaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

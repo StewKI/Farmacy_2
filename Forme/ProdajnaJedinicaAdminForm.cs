@@ -1,4 +1,6 @@
-﻿using NHibernate.Mapping;
+﻿using Farmacy.Entiteti;
+using Farmacy_2.Forme;
+using NHibernate.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,8 +35,6 @@ namespace Farmacy.Forme
 
         public void popuniPodacima()
         {
-
-
             try
             {
                 // 1) Učitaj podatke
@@ -125,6 +125,134 @@ namespace Farmacy.Forme
         private void groupBoxLista_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati prodajnu jedinicu!");
+                return;
+            }
+            long id = 0;
+            if (dgvApoteke.SelectedRows.Count > 0)
+            {
+                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                MessageBox.Show("Selektovan id: " + id);
+
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati radnika prvo!");
+                return;
+            }
+
+
+
+            var selektovanaJedinica = DTOManager.VratiProdajnuJedinicuTip(id);
+
+            if (selektovanaJedinica is SpecijalizovanaApoteka specijalizovana)
+            {
+                SpecijalizovanaApotekaEditForm form = new SpecijalizovanaApotekaEditForm(specijalizovana);
+                form.ShowDialog();
+            }
+            else if (selektovanaJedinica is ApotekaSaLabBasic saLab)
+            {
+                ApotekaSaLabEditForm form = new ApotekaSaLabEditForm(saLab);
+                form.ShowDialog();
+            }
+            else if (selektovanaJedinica is StandardnaApoteka sApoteka)
+            {
+                StandardnaApotekaEditForm form = new StandardnaApotekaEditForm(sApoteka);
+                form.ShowDialog();
+            }
+            else // osnovna prodajna jedinica
+            {
+
+                ProdajnaJedinicaEditForm form = new ProdajnaJedinicaEditForm(DTOManager.VratiProdajnuJedinicu(id));
+                form.ShowDialog();
+            }
+
+
+            popuniPodacima();
+        }
+
+        private void btnZaposleni_Click(object sender, EventArgs e)
+        {
+            ZaposleniPrikaz form = new ZaposleniPrikaz();
+            form.ShowDialog();
+        }
+
+        private void btnSuplementi_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati apoteku!");
+                return;
+            }
+            long id = 0;
+            if (dgvApoteke.SelectedRows.Count > 0)
+            {
+                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                MessageBox.Show("Selektovan id: " + id);
+
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati apoteku kojoj dodeljujete menadzera prvo!");
+                return;
+            }
+
+            MenadzerApotekaForm form = new MenadzerApotekaForm(id);
+            form.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati apoteku!");
+                return;
+            }
+            long id = 0;
+            if (dgvApoteke.SelectedRows.Count > 0)
+            {
+                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                MessageBox.Show("Selektovan id: " + id);
+
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati apoteku kojoj dodeljujete menadzera prvo!");
+                return;
+            }
+            OdaberiMenadzeraForm1 form = new OdaberiMenadzeraForm1(id);
+            form.ShowDialog();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati apoteku!");
+                return;
+            }
+            long id = 0;
+            if (dgvApoteke.SelectedRows.Count > 0)
+            {
+                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                MessageBox.Show("Selektovan id: " + id);
+
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati apoteku kojoj dodeljujete menadzera prvo!");
+                return;
+            }
+
+            MenadzerApotekaEditForm form = new MenadzerApotekaEditForm(id);
+            form.ShowDialog();
         }
     }
 }

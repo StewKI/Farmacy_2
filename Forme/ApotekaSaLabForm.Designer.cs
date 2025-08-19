@@ -215,6 +215,7 @@ namespace Farmacy.Forme
             Name = "ApotekaSaLabForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Apoteka sa laboratorijom";
+            Load += ApotekaSaLabForm_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }

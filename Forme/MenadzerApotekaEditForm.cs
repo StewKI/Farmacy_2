@@ -6,9 +6,9 @@ namespace Farmacy.Forme
 {
     public partial class MenadzerApotekaEditForm : Form
     {
-        private MenadzerApoteka menadzerApoteka;
-
-        public MenadzerApotekaEditForm(MenadzerApoteka menadzerApoteka)
+        private MenadzerApotekaBasic menadzerApoteka;
+        long idA;
+        public MenadzerApotekaEditForm(MenadzerApotekaBasic menadzerApoteka)
         {
             if (menadzerApoteka == null)
                 throw new ArgumentNullException(nameof(menadzerApoteka));
@@ -18,17 +18,29 @@ namespace Farmacy.Forme
             LoadMenadzerApotekaData();
         }
 
+        public MenadzerApotekaEditForm(long id)
+        {
+
+
+            InitializeComponent();
+            menadzerApoteka = new MenadzerApotekaBasic();
+            idA = id;
+            LoadMenadzerApotekaData();
+        }
+
+
+
         private void LoadMenadzerApotekaData()
         {
             // Učitavamo postojeće podatke
-            if (menadzerApoteka.Menadzer != null)
-                txtMenadzerId.Text = menadzerApoteka.Menadzer.MBr.ToString();
-            
-            if (menadzerApoteka.ProdajnaJedinica != null)
-                txtProdajnaJedinicaId.Text = menadzerApoteka.ProdajnaJedinica.Id.ToString();
-            
-            dtpOd.Value = menadzerApoteka.Od;
-            
+            if (menadzerApoteka.MBrMenadzera != null)
+                txtMenadzerId.Text = menadzerApoteka.MBrMenadzera.ToString();
+
+
+            txtProdajnaJedinicaId.Text = idA.ToString();
+
+            //dtpOd.Value = menadzerApoteka.Od;
+
             if (menadzerApoteka.Do.HasValue)
                 dtpDo.Value = menadzerApoteka.Do.Value;
             else
@@ -85,11 +97,21 @@ namespace Farmacy.Forme
             // jer ova forma samo prikazuje ID-ove
             menadzerApoteka.Od = dtpOd.Value;
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
+            menadzerApoteka.MBrMenadzera = long.Parse(txtMenadzerId.Text);
+            menadzerApoteka.ProdajnaJedinicaId = idA;
+            DTOManager.IzmeniMenadzerApoteka(menadzerApoteka);
+
+            
         }
 
-        public MenadzerApoteka GetMenadzerApoteka()
+        public MenadzerApotekaBasic GetMenadzerApoteka()
         {
             return menadzerApoteka;
+        }
+
+        private void MenadzerApotekaEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

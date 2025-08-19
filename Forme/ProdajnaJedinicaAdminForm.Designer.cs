@@ -30,7 +30,6 @@
         private GroupBox grpServisi;
         private Button btnReceptura;
         private Button btnGalenskiLab;
-        private Button btnSuplementi;
         private GroupBox grpZaposleni;
         private Button btnZaposleni;
 
@@ -54,9 +53,11 @@
             dgvApoteke = new DataGridView();
             panelDesno = new Panel();
             grpZaposleni = new GroupBox();
+            button2 = new Button();
+            button1 = new Button();
+            btnSuplementi = new Button();
             btnZaposleni = new Button();
             grpServisi = new GroupBox();
-            btnSuplementi = new Button();
             btnGalenskiLab = new Button();
             btnReceptura = new Button();
             grpPodaci = new GroupBox();
@@ -114,16 +115,52 @@
             // 
             // grpZaposleni
             // 
+            grpZaposleni.Controls.Add(button2);
+            grpZaposleni.Controls.Add(button1);
+            grpZaposleni.Controls.Add(btnSuplementi);
             grpZaposleni.Controls.Add(btnZaposleni);
             grpZaposleni.Dock = DockStyle.Top;
-            grpZaposleni.Location = new Point(12, 412);
+            grpZaposleni.Location = new Point(12, 337);
             grpZaposleni.Margin = new Padding(0, 12, 0, 0);
             grpZaposleni.Name = "grpZaposleni";
             grpZaposleni.Padding = new Padding(12);
-            grpZaposleni.Size = new Size(296, 100);
+            grpZaposleni.Size = new Size(296, 264);
             grpZaposleni.TabIndex = 0;
             grpZaposleni.TabStop = false;
             grpZaposleni.Text = "Zaposleni";
+            // 
+            // button2
+            // 
+            button2.Dock = DockStyle.Top;
+            button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button2.Location = new Point(12, 166);
+            button2.Name = "button2";
+            button2.Size = new Size(272, 46);
+            button2.TabIndex = 3;
+            button2.Text = "Izmeni menadzera";
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Top;
+            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button1.Location = new Point(12, 120);
+            button1.Name = "button1";
+            button1.Size = new Size(272, 46);
+            button1.TabIndex = 2;
+            button1.Text = "Ukloni menadzera";
+            button1.Click += button1_Click;
+            // 
+            // btnSuplementi
+            // 
+            btnSuplementi.Dock = DockStyle.Top;
+            btnSuplementi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnSuplementi.Location = new Point(12, 74);
+            btnSuplementi.Name = "btnSuplementi";
+            btnSuplementi.Size = new Size(272, 46);
+            btnSuplementi.TabIndex = 1;
+            btnSuplementi.Text = "Dodaj menadzera";
+            btnSuplementi.Click += btnSuplementi_Click;
             // 
             // btnZaposleni
             // 
@@ -134,10 +171,10 @@
             btnZaposleni.Size = new Size(272, 46);
             btnZaposleni.TabIndex = 0;
             btnZaposleni.Text = "Zaposleni";
+            btnZaposleni.Click += btnZaposleni_Click;
             // 
             // grpServisi
             // 
-            grpServisi.Controls.Add(btnSuplementi);
             grpServisi.Controls.Add(btnGalenskiLab);
             grpServisi.Controls.Add(btnReceptura);
             grpServisi.Dock = DockStyle.Top;
@@ -145,20 +182,10 @@
             grpServisi.Margin = new Padding(0, 12, 0, 0);
             grpServisi.Name = "grpServisi";
             grpServisi.Padding = new Padding(12);
-            grpServisi.Size = new Size(296, 220);
+            grpServisi.Size = new Size(296, 145);
             grpServisi.TabIndex = 1;
             grpServisi.TabStop = false;
             grpServisi.Text = "Servisi";
-            // 
-            // btnSuplementi
-            // 
-            btnSuplementi.Dock = DockStyle.Top;
-            btnSuplementi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnSuplementi.Location = new Point(12, 120);
-            btnSuplementi.Name = "btnSuplementi";
-            btnSuplementi.Size = new Size(272, 46);
-            btnSuplementi.TabIndex = 0;
-            btnSuplementi.Text = "Dodatci ishrani (OTC)";
             // 
             // btnGalenskiLab
             // 
@@ -168,7 +195,7 @@
             btnGalenskiLab.Name = "btnGalenskiLab";
             btnGalenskiLab.Size = new Size(272, 46);
             btnGalenskiLab.TabIndex = 1;
-            btnGalenskiLab.Text = "Galenski laboratorij";
+            btnGalenskiLab.Text = "Isporuke";
             // 
             // btnReceptura
             // 
@@ -178,7 +205,7 @@
             btnReceptura.Name = "btnReceptura";
             btnReceptura.Size = new Size(272, 46);
             btnReceptura.TabIndex = 2;
-            btnReceptura.Text = "Receptura";
+            btnReceptura.Text = "Recepti";
             // 
             // grpPodaci
             // 
@@ -204,6 +231,7 @@
             btnIzmeni.Size = new Size(272, 46);
             btnIzmeni.TabIndex = 0;
             btnIzmeni.Text = "Izmeni apoteku";
+            btnIzmeni.Click += btnIzmeni_Click;
             // 
             // btnObrisi
             // 
@@ -253,5 +281,9 @@
         }
 
         #endregion
+
+        private Button btnSuplementi;
+        private Button button2;
+        private Button button1;
     }
 }

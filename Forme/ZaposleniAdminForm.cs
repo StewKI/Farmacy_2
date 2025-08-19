@@ -131,13 +131,36 @@ namespace Farmacy.Forme
                 return;
             }
 
-            ZaposleniBasic selektovaniZaposleni = DTOManager.VratiZaposlenog(mbr);
-            // Pozovi formu za editovanje i prosledi zaposlenog
 
-            ZaposleniEditForm form = new ZaposleniEditForm(selektovaniZaposleni);
-            form.ShowDialog();
+            var selektovaniZaposleni = DTOManager.VratiZaposlenog(mbr);
+            if(selektovaniZaposleni is FarmaceutBasic faramaceut)
+            {
+                FarmaceutEditForm form = new FarmaceutEditForm(faramaceut);
+                form.ShowDialog();
+            }
+            else if (selektovaniZaposleni is TehnicarBasic tehnicar)
+            {
+                TehnicarEditForm form = new TehnicarEditForm(tehnicar);
+                form.ShowDialog();
 
-            // Nakon zatvaranja forme, možeš refreshovati grid
+            }
+            else if (selektovaniZaposleni is MenadzerBasic menadzer)
+            { 
+                MenadzerEditForm form=new MenadzerEditForm(menadzer);
+                form.ShowDialog();
+            }
+            else
+            {
+                
+                //// Pozovi formu za editovanje i prosledi zaposlenog
+
+                ZaposleniEditForm form = new ZaposleniEditForm(selektovaniZaposleni);
+                form.ShowDialog();
+
+                //// Nakon zatvaranja forme, možeš refreshovati grid
+            }
+           
+
             popuniPodacima();
         }
         private void btnDodajNovog_Click(object sender, EventArgs e)

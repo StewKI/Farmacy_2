@@ -27,10 +27,10 @@ namespace Farmacy.Forme
             txtBroj.Text = standardnaApoteka.Broj;
             txtPostanskiBroj.Text = standardnaApoteka.PostanskiBroj;
             txtMesto.Text = standardnaApoteka.Mesto;
-            
+
             if (standardnaApoteka.OdgovorniFarmaceut != null)
                 txtOdgovorniFarmaceut.Text = standardnaApoteka.OdgovorniFarmaceut.MBr.ToString();
-            
+
             if (!string.IsNullOrEmpty(standardnaApoteka.Napomena))
                 txtNapomena.Text = standardnaApoteka.Napomena;
         }
@@ -95,20 +95,27 @@ namespace Farmacy.Forme
         {
             if (long.TryParse(txtId.Text, out long id))
                 standardnaApoteka.Id = id;
-            
+
             standardnaApoteka.Naziv = txtNaziv.Text.Trim();
             standardnaApoteka.Ulica = txtUlica.Text.Trim();
             standardnaApoteka.Broj = txtBroj.Text.Trim();
             standardnaApoteka.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             standardnaApoteka.Mesto = txtMesto.Text.Trim();
             standardnaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
-            
+            standardnaApoteka.OdgovorniFarmaceut= DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
             // Napomena: OdgovorniFarmaceut treba postaviti spolja
+
+            DTOManager.IzmeniSApoetku(standardnaApoteka);
         }
 
         public StandardnaApoteka GetStandardnaApoteka()
         {
             return standardnaApoteka;
+        }
+
+        private void StandardnaApotekaEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

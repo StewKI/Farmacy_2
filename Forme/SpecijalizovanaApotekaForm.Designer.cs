@@ -249,6 +249,7 @@ namespace Farmacy.Forme
             Name = "SpecijalizovanaApotekaForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Specijalizovana apoteka";
+            Load += SpecijalizovanaApotekaForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

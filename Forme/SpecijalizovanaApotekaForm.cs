@@ -37,7 +37,7 @@ namespace Farmacy.Forme
                 txtMesto.Text = specijalizovanaApoteka.Mesto;
                 txtSpecijalnostTipa.Text = specijalizovanaApoteka.SpecijalnostTipa ?? string.Empty;
                 txtNapomena.Text = specijalizovanaApoteka.Napomena ?? string.Empty;
-                
+
                 if (specijalizovanaApoteka.OdgovorniFarmaceut != null)
                     txtOdgovorniFarmaceut.Text = specijalizovanaApoteka.OdgovorniFarmaceut.ToString();
             }
@@ -120,11 +120,19 @@ namespace Farmacy.Forme
             specijalizovanaApoteka.Mesto = txtMesto.Text.Trim();
             specijalizovanaApoteka.SpecijalnostTipa = txtSpecijalnostTipa.Text.Trim();
             specijalizovanaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
+            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+
+            DTOManager.DodajSpecApoteku(specijalizovanaApoteka);
         }
 
         public SpecijalizovanaApoteka GetSpecijalizovanaApoteka()
         {
             return specijalizovanaApoteka;
+        }
+
+        private void SpecijalizovanaApotekaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

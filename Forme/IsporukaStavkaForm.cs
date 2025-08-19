@@ -26,10 +26,10 @@ namespace Farmacy.Forme
         {
             if (isporukaStavka.Isporuka != null)
                 txtIsporukaId.Text = isporukaStavka.Isporuka.Id.ToString();
-            
+
             if (isporukaStavka.Pakovanje != null)
                 txtPakovanjeId.Text = isporukaStavka.Pakovanje.Id.ToString();
-            
+
             numKolicina.Value = isporukaStavka.Kolicina;
         }
 
@@ -82,6 +82,11 @@ namespace Farmacy.Forme
         public IsporukaStavka GetIsporukaStavka()
         {
             return isporukaStavka;
+        }
+
+        private void IsporukaStavkaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

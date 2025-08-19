@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Farmacy;
 using Farmacy.Entiteti;
 
 namespace Farmacy_2.Forme
@@ -80,9 +81,11 @@ namespace Farmacy_2.Forme
             apotekaSaLab.Broj = txtBroj.Text.Trim();
             apotekaSaLab.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
-            
+            apotekaSaLab.OdgovorniFarmaceut= DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim())); ;
             // Save ApotekaSaLab-specific properties
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
+
+            DTOManager.IzmeniApoetkuSaLab(apotekaSaLab);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -104,6 +107,11 @@ namespace Farmacy_2.Forme
         public ApotekaSaLabBasic GetApotekaSaLab()
         {
             return apotekaSaLab;
+        }
+
+        private void ApotekaSaLabEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

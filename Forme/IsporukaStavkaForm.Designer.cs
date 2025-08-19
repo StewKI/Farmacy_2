@@ -28,122 +28,120 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblIsporukaId = new System.Windows.Forms.Label();
-            this.txtIsporukaId = new System.Windows.Forms.TextBox();
-            this.lblPakovanjeId = new System.Windows.Forms.Label();
-            this.txtPakovanjeId = new System.Windows.Forms.TextBox();
-            this.lblKolicina = new System.Windows.Forms.Label();
-            this.numKolicina = new System.Windows.Forms.NumericUpDown();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).BeginInit();
-            this.SuspendLayout();
+            lblIsporukaId = new Label();
+            txtIsporukaId = new TextBox();
+            lblPakovanjeId = new Label();
+            txtPakovanjeId = new TextBox();
+            lblKolicina = new Label();
+            numKolicina = new NumericUpDown();
+            btnSave = new Button();
+            btnCancel = new Button();
+            ((System.ComponentModel.ISupportInitialize)numKolicina).BeginInit();
+            SuspendLayout();
             // 
             // lblIsporukaId
             // 
-            this.lblIsporukaId.AutoSize = true;
-            this.lblIsporukaId.Location = new System.Drawing.Point(12, 15);
-            this.lblIsporukaId.Name = "lblIsporukaId";
-            this.lblIsporukaId.Size = new System.Drawing.Size(70, 13);
-            this.lblIsporukaId.TabIndex = 0;
-            this.lblIsporukaId.Text = "ID Isporuke:";
+            lblIsporukaId.AutoSize = true;
+            lblIsporukaId.Location = new Point(14, 17);
+            lblIsporukaId.Margin = new Padding(4, 0, 4, 0);
+            lblIsporukaId.Name = "lblIsporukaId";
+            lblIsporukaId.Size = new Size(69, 15);
+            lblIsporukaId.TabIndex = 0;
+            lblIsporukaId.Text = "ID Isporuke:";
             // 
             // txtIsporukaId
             // 
-            this.txtIsporukaId.Location = new System.Drawing.Point(120, 12);
-            this.txtIsporukaId.Name = "txtIsporukaId";
-            this.txtIsporukaId.Size = new System.Drawing.Size(150, 20);
-            this.txtIsporukaId.TabIndex = 1;
+            txtIsporukaId.Location = new Point(140, 14);
+            txtIsporukaId.Margin = new Padding(4, 3, 4, 3);
+            txtIsporukaId.Name = "txtIsporukaId";
+            txtIsporukaId.Size = new Size(174, 23);
+            txtIsporukaId.TabIndex = 1;
             // 
             // lblPakovanjeId
             // 
-            this.lblPakovanjeId.AutoSize = true;
-            this.lblPakovanjeId.Location = new System.Drawing.Point(12, 41);
-            this.lblPakovanjeId.Name = "lblPakovanjeId";
-            this.lblPakovanjeId.Size = new System.Drawing.Size(82, 13);
-            this.lblPakovanjeId.TabIndex = 2;
-            this.lblPakovanjeId.Text = "ID Pakovanja:";
+            lblPakovanjeId.AutoSize = true;
+            lblPakovanjeId.Location = new Point(14, 47);
+            lblPakovanjeId.Margin = new Padding(4, 0, 4, 0);
+            lblPakovanjeId.Name = "lblPakovanjeId";
+            lblPakovanjeId.Size = new Size(78, 15);
+            lblPakovanjeId.TabIndex = 2;
+            lblPakovanjeId.Text = "ID Pakovanja:";
             // 
             // txtPakovanjeId
             // 
-            this.txtPakovanjeId.Location = new System.Drawing.Point(120, 38);
-            this.txtPakovanjeId.Name = "txtPakovanjeId";
-            this.txtPakovanjeId.Size = new System.Drawing.Size(150, 20);
-            this.txtPakovanjeId.TabIndex = 3;
+            txtPakovanjeId.Location = new Point(140, 44);
+            txtPakovanjeId.Margin = new Padding(4, 3, 4, 3);
+            txtPakovanjeId.Name = "txtPakovanjeId";
+            txtPakovanjeId.Size = new Size(174, 23);
+            txtPakovanjeId.TabIndex = 3;
             // 
             // lblKolicina
             // 
-            this.lblKolicina.AutoSize = true;
-            this.lblKolicina.Location = new System.Drawing.Point(12, 67);
-            this.lblKolicina.Name = "lblKolicina";
-            this.lblKolicina.Size = new System.Drawing.Size(47, 13);
-            this.lblKolicina.TabIndex = 4;
-            this.lblKolicina.Text = "Količina:";
+            lblKolicina.AutoSize = true;
+            lblKolicina.Location = new Point(14, 77);
+            lblKolicina.Margin = new Padding(4, 0, 4, 0);
+            lblKolicina.Name = "lblKolicina";
+            lblKolicina.Size = new Size(52, 15);
+            lblKolicina.TabIndex = 4;
+            lblKolicina.Text = "Količina:";
             // 
             // numKolicina
             // 
-            this.numKolicina.Location = new System.Drawing.Point(120, 64);
-            this.numKolicina.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numKolicina.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numKolicina.Name = "numKolicina";
-            this.numKolicina.Size = new System.Drawing.Size(150, 20);
-            this.numKolicina.TabIndex = 5;
-            this.numKolicina.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numKolicina.Location = new Point(140, 74);
+            numKolicina.Margin = new Padding(4, 3, 4, 3);
+            numKolicina.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            numKolicina.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numKolicina.Name = "numKolicina";
+            numKolicina.Size = new Size(175, 23);
+            numKolicina.TabIndex = 5;
+            numKolicina.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 100);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(140, 115);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(88, 27);
+            btnSave.TabIndex = 6;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(201, 100);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(234, 115);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(88, 27);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // IsporukaStavkaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 135);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.numKolicina);
-            this.Controls.Add(this.lblKolicina);
-            this.Controls.Add(this.txtPakovanjeId);
-            this.Controls.Add(this.lblPakovanjeId);
-            this.Controls.Add(this.txtIsporukaId);
-            this.Controls.Add(this.lblIsporukaId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "IsporukaStavkaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Isporuka Stavka";
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(331, 156);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(numKolicina);
+            Controls.Add(lblKolicina);
+            Controls.Add(txtPakovanjeId);
+            Controls.Add(lblPakovanjeId);
+            Controls.Add(txtIsporukaId);
+            Controls.Add(lblIsporukaId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "IsporukaStavkaForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Isporuka Stavka";
+            Load += IsporukaStavkaForm_Load;
+            ((System.ComponentModel.ISupportInitialize)numKolicina).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

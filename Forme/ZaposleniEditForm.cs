@@ -79,7 +79,10 @@ namespace Farmacy_2.Forme
         {
 
             Zaposleni z = new Zaposleni();
+            if (long.TryParse(txtMBr.Text, out long mbr))
+                z.MBr = mbr;
 
+           
             z.Prezime = txtPrezime.Text.Trim();
             z.Ime = txtIme.Text.Trim();
             z.DatumRodj = dtpDatumRodj.Value;

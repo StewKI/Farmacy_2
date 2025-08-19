@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Farmacy.Entiteti;
+using Farmacy;
 
 namespace Farmacy_2.Forme
 {
@@ -23,7 +23,7 @@ namespace Farmacy_2.Forme
             txtBroj.Text = prodajnaJedinica.Broj;
             txtPostanskiBroj.Text = prodajnaJedinica.PostanskiBroj;
             txtMesto.Text = prodajnaJedinica.Mesto;
-            txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceut?.MBr.ToString() ?? "Nije postavljen";
+            txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceutMbr.ToString();
         }
 
         private bool ValidateForm()
@@ -73,6 +73,9 @@ namespace Farmacy_2.Forme
             prodajnaJedinica.Broj = txtBroj.Text.Trim();
             prodajnaJedinica.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
+            prodajnaJedinica.OdgovorniFarmaceutMbr= long.Parse(txtOdgovorniFarmaceut.Text.Trim());
+
+            DTOManager.IzmeniProdajnuJedinicu(prodajnaJedinica);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -94,6 +97,11 @@ namespace Farmacy_2.Forme
         public ProdajnaJedinicaBasic GetProdajnaJedinica()
         {
             return prodajnaJedinica;
+        }
+
+        private void ProdajnaJedinicaEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
