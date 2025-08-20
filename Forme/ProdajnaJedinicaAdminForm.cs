@@ -176,7 +176,11 @@ namespace Farmacy.Forme
 
             popuniPodacima();
         }
-
+        private void btnLekovi_Click(object sender, EventArgs e)
+        {
+            LekAdminForm form = new LekAdminForm();
+            form.ShowDialog();
+        }
         private void btnZaposleni_Click(object sender, EventArgs e)
         {
             ZaposleniPrikaz form = new ZaposleniPrikaz();

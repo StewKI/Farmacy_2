@@ -1099,6 +1099,54 @@ namespace Farmacy
             return 0;
         }
 
+        // Dodajte ove metode u DTOManager klasu
+        public static Farmacy.Entiteti.Lek? VratiLekEntitet(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var lek = s.Get<Lek>(id);
+                return lek; // Vraća direktno entitet
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri učitavanju leka: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+        public static LekBasic? VratiLek(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var lek = s.Get<Lek>(id);
+                if (lek == null) return null;
+
+                // Učitaj sekundarne kategorije
+                var secIds = s.Query<LekSekundarna>()
+                              .Where(x => x.Lek.Id == id)
+                              .Select(x => x.Kategorija.Id)
+                              .ToList();
+
+                return new LekBasic
+                {
+                    Id = lek.Id,
+                    HemijskiNaziv = lek.HemijskiNaziv,
+                    KomercijalniNaziv = lek.KomercijalniNaziv,
+                    Dejstvo = lek.Dejstvo,
+                    ProizvodjacId = lek.Proizvodjac.Id,
+                    PrimarnaGrupaId = lek.PrimarnaGrupa.Id,
+                    SekundarneKategorijeIds = secIds
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri učitavanju leka: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
         public static IList<LekBasic> VratiSveLekove()
         {
             var list = new List<LekBasic>();
@@ -1127,6 +1175,93 @@ namespace Farmacy
             }
             catch (Exception) { }
             return list;
+        }
+        public static void IzmeniLek(LekBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var lek = s.Get<Lek>(dto.Id);
+
+                if (lek == null)
+                {
+                    MessageBox.Show("Lek sa datim ID ne postoji!", "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Ažuriraj osnovne podatke
+                lek.HemijskiNaziv = dto.HemijskiNaziv;
+                lek.KomercijalniNaziv = dto.KomercijalniNaziv;
+                lek.Dejstvo = dto.Dejstvo;
+                lek.Proizvodjac = s.Load<Proizvodjac>(dto.ProizvodjacId);
+                lek.PrimarnaGrupa = s.Load<PrimarnaGrupa>(dto.PrimarnaGrupaId);
+
+                // Obriši stare sekundarne kategorije
+                var stareSekundarne = s.Query<LekSekundarna>()
+                                       .Where(x => x.Lek.Id == dto.Id)
+                                       .ToList();
+                foreach (var ls in stareSekundarne)
+                {
+                    s.Delete(ls);
+                }
+
+                // Dodaj nove sekundarne kategorije
+                foreach (var katId in dto.SekundarneKategorijeIds.Distinct())
+                {
+                    var kategorija = s.Load<SekundarnaKategorija>(katId);
+                    var ls = new LekSekundarna
+                    {
+                        Lek = lek,
+                        Kategorija = kategorija
+                    };
+                    s.Save(ls);
+                }
+
+                s.Update(lek);
+                s.Flush();
+
+                MessageBox.Show("Lek je uspešno ažuriran!", "Uspeh",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri ažuriranju leka: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void ObrisiLek(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                // Prvo obriši sve sekundarne kategorije
+                var sekundarne = s.Query<LekSekundarna>()
+                                  .Where(x => x.Lek.Id == id)
+                                  .ToList();
+                foreach (var ls in sekundarne)
+                {
+                    s.Delete(ls);
+                }
+
+                // Zatim obriši lek
+                var lek = s.Get<Lek>(id);
+                if (lek != null)
+                {
+                    s.Delete(lek);
+                    s.Flush();
+
+                    MessageBox.Show("Lek je uspešno obrisan!", "Uspeh",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri brisanju leka: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // ========== ISPORUKA & ZALIHE ==========

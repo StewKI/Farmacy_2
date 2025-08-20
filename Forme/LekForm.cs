@@ -7,6 +7,19 @@ namespace Farmacy.Forme
     public partial class LekForm : Form
     {
         private Lek lek;
+        private LekBasic ConvertToBasic(Lek lek)
+        {
+            return new LekBasic
+            {
+                Id = lek.Id,
+                HemijskiNaziv = lek.HemijskiNaziv,
+                KomercijalniNaziv = lek.KomercijalniNaziv,
+                Dejstvo = lek.Dejstvo,
+                ProizvodjacId = lek.Proizvodjac?.Id ?? 0,
+                PrimarnaGrupaId = lek.PrimarnaGrupa?.Id ?? 0,
+                SekundarneKategorijeIds = new List<long>() // kasnije možeš dodati iz forme
+            };
+        }
 
         public LekForm()
         {
@@ -43,13 +56,35 @@ namespace Farmacy.Forme
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+            if (!ValidateForm())
+                return;
+
+            SaveLek(); // popunjava lek objekt
+
+            try
             {
-                SaveLek();
+                LekBasic lekBasic = ConvertToBasic(lek); // konverzija
+
+                if (lek.Id == 0)
+                {
+                    DTOManager.DodajLek(lekBasic);
+                }
+                else
+                {
+                    DTOManager.IzmeniLek(lekBasic);
+                }
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri čuvanju leka:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

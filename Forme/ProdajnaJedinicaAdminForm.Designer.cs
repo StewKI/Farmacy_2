@@ -32,6 +32,7 @@
         private Button btnGalenskiLab;
         private GroupBox grpZaposleni;
         private Button btnZaposleni;
+        private Button btnLekovi;
 
         // kolone grida
         private DataGridViewTextBoxColumn colId;
@@ -278,6 +279,17 @@
             grpServisi.ResumeLayout(false);
             grpPodaci.ResumeLayout(false);
             ResumeLayout(false);
+
+            btnLekovi = new Button();
+            btnLekovi.Dock = DockStyle.Top;
+            btnLekovi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLekovi.Location = new Point(12, 166); // pozicija zavisi od ostalih dugmadi
+            btnLekovi.Name = "btnLekovi";
+            btnLekovi.Size = new Size(272, 46);
+            btnLekovi.TabIndex = 3;
+            btnLekovi.Text = "Lekovi";
+            btnLekovi.Click += btnLekovi_Click;
+            grpPodaci.Controls.Add(btnLekovi);
         }
 
         #endregion
