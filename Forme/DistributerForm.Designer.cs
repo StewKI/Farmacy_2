@@ -80,6 +80,7 @@ namespace Farmacy.Forme
             lblKontakt.Size = new Size(51, 15);
             lblKontakt.TabIndex = 4;
             lblKontakt.Text = "Kontakt:";
+            lblKontakt.Click += lblKontakt_Click;
             // 
             // txtKontakt
             // 

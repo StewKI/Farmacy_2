@@ -1,12 +1,14 @@
 using System;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
+using Microsoft.Data.SqlClient;
 
 namespace Farmacy.Forme
 {
     public partial class LekForm : Form
     {
         private LekBasic lek;
+        private IList<PrimarnaGrupaBasic> list;
         private LekBasic ConvertToBasic(Lek lek)
         {
             return new LekBasic
@@ -25,6 +27,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             InitializeForm();
+            LoadPrimarneGrupeAsync();
         }
 
         public LekForm(LekBasic lek) : this()
@@ -54,14 +57,7 @@ namespace Farmacy.Forme
         //    }
         //}
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!ValidateForm())
-                return;
-
-            SaveLek(); // popunjava lek objekt
-
-        }
+      
 
 
 
@@ -73,17 +69,17 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrWhiteSpace(txtHemijskiNaziv.Text))
+            if (string.IsNullOrWhiteSpace(txtHemijski.Text))
             {
                 MessageBox.Show("Hemijski naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHemijskiNaziv.Focus();
+                txtHemijski.Focus();
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtKomercijalniNaziv.Text))
+            if (string.IsNullOrWhiteSpace(txtKomercijalni.Text))
             {
                 MessageBox.Show("Komercijalni naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtKomercijalniNaziv.Focus();
+                txtKomercijalni.Focus();
                 return false;
             }
 
@@ -97,24 +93,34 @@ namespace Farmacy.Forme
                 lek = new LekBasic();
             }
 
-            lek.HemijskiNaziv = txtHemijskiNaziv.Text.Trim();
-            lek.KomercijalniNaziv = txtKomercijalniNaziv.Text.Trim();
+            lek.HemijskiNaziv = txtHemijski.Text.Trim();
+            lek.KomercijalniNaziv = txtKomercijalni.Text.Trim();
             lek.Dejstvo = string.IsNullOrWhiteSpace(txtDejstvo.Text) ? null : txtDejstvo.Text.Trim();
             lek.ProizvodjacId = long.Parse(txtProizvodjac.Text);
-            if (radioButton1.Checked)
-            {
-                lek.PrimarnaGrupaId = 1;
-            }
-            else if (radioButton2.Checked)
-            {
-                lek.PrimarnaGrupaId = 2;
-            }
-            else if (radioButton3.Checked)
-            {
-                lek.PrimarnaGrupaId= 3; 
-            }
+
+            string target = cmbPrimarnaGrupa.Text;
+
+            //long id1= nadjiId(target);
+            lek.PrimarnaGrupaId = list
+                                .First(x => string.Equals(x.Naziv, target, StringComparison.OrdinalIgnoreCase))
+                                   .Id;
+
 
             DTOManager.DodajLek(lek);
+        }
+
+        private long nadjiId(string naziv)
+        {
+            long id = 0;
+            foreach(PrimarnaGrupaBasic x in list)
+            {
+                if(x.Naziv == naziv)
+                {
+                    id = x.Id; 
+                    return id;
+                }
+            }
+            return id;
         }
 
         public LekBasic GetLek()
@@ -140,6 +146,42 @@ namespace Farmacy.Forme
         private void LekForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbPrimarnaGrupa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async Task LoadPrimarneGrupeAsync()
+        {
+            try
+            {
+                list = DTOManager.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
+
+
+
+                cmbPrimarnaGrupa.Items.Clear();
+                cmbPrimarnaGrupa.Items.AddRange(
+                    list.Select(x => x.Naziv).OrderBy(n => n).ToArray()
+                );
+                cmbPrimarnaGrupa.SelectedIndex = 1;
+
+                // čitanje
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju primarnih grupa: " + ex.Message);
+            }
+        }
+
+        private void btnSacuvaj_Click(object sender, EventArgs e)
+        {
+            if (!ValidateForm())
+                return;
+
+            SaveLek(); // popunjava lek objekt
         }
     }
 }

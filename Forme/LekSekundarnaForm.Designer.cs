@@ -28,85 +28,94 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblLekId = new System.Windows.Forms.Label();
-            this.txtLekId = new System.Windows.Forms.TextBox();
-            this.lblKategorijaId = new System.Windows.Forms.Label();
-            this.txtKategorijaId = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblLekId = new Label();
+            txtLekId = new TextBox();
+            lblKategorijaId = new Label();
+            txtKategorijaId = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblLekId
             // 
-            this.lblLekId.AutoSize = true;
-            this.lblLekId.Location = new System.Drawing.Point(12, 15);
-            this.lblLekId.Name = "lblLekId";
-            this.lblLekId.Size = new System.Drawing.Size(45, 13);
-            this.lblLekId.TabIndex = 0;
-            this.lblLekId.Text = "ID Leka:";
+            lblLekId.AutoSize = true;
+            lblLekId.Location = new Point(14, 17);
+            lblLekId.Margin = new Padding(4, 0, 4, 0);
+            lblLekId.Name = "lblLekId";
+            lblLekId.Size = new Size(48, 15);
+            lblLekId.TabIndex = 0;
+            lblLekId.Text = "ID Leka:";
             // 
             // txtLekId
             // 
-            this.txtLekId.Location = new System.Drawing.Point(120, 12);
-            this.txtLekId.Name = "txtLekId";
-            this.txtLekId.Size = new System.Drawing.Size(150, 20);
-            this.txtLekId.TabIndex = 1;
+            txtLekId.Location = new Point(140, 14);
+            txtLekId.Margin = new Padding(4, 3, 4, 3);
+            txtLekId.Name = "txtLekId";
+            txtLekId.ReadOnly = true;
+            txtLekId.Size = new Size(174, 23);
+            txtLekId.TabIndex = 1;
             // 
             // lblKategorijaId
             // 
-            this.lblKategorijaId.AutoSize = true;
-            this.lblKategorijaId.Location = new System.Drawing.Point(12, 41);
-            this.lblKategorijaId.Name = "lblKategorijaId";
-            this.lblKategorijaId.Size = new System.Drawing.Size(75, 13);
-            this.lblKategorijaId.TabIndex = 2;
-            this.lblKategorijaId.Text = "ID Kategorije:";
+            lblKategorijaId.AutoSize = true;
+            lblKategorijaId.Location = new Point(14, 47);
+            lblKategorijaId.Margin = new Padding(4, 0, 4, 0);
+            lblKategorijaId.Name = "lblKategorijaId";
+            lblKategorijaId.Size = new Size(77, 15);
+            lblKategorijaId.TabIndex = 2;
+            lblKategorijaId.Text = "ID Kategorije:";
             // 
             // txtKategorijaId
             // 
-            this.txtKategorijaId.Location = new System.Drawing.Point(120, 38);
-            this.txtKategorijaId.Name = "txtKategorijaId";
-            this.txtKategorijaId.Size = new System.Drawing.Size(150, 20);
-            this.txtKategorijaId.TabIndex = 3;
+            txtKategorijaId.Location = new Point(140, 44);
+            txtKategorijaId.Margin = new Padding(4, 3, 4, 3);
+            txtKategorijaId.Name = "txtKategorijaId";
+            txtKategorijaId.Size = new Size(174, 23);
+            txtKategorijaId.TabIndex = 3;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 74);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(140, 85);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(88, 27);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(201, 74);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(234, 85);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(88, 27);
+            btnCancel.TabIndex = 5;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // LekSekundarnaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 109);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtKategorijaId);
-            this.Controls.Add(this.lblKategorijaId);
-            this.Controls.Add(this.txtLekId);
-            this.Controls.Add(this.lblLekId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "LekSekundarnaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Lek Sekundarna";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(331, 126);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(txtKategorijaId);
+            Controls.Add(lblKategorijaId);
+            Controls.Add(txtLekId);
+            Controls.Add(lblLekId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "LekSekundarnaForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Lek Sekundarna";
+            Load += LekSekundarnaForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

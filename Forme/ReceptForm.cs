@@ -43,15 +43,15 @@ namespace Farmacy.Forme
                 dtpDatumIzd.Value = recept.DatumIzd;
                 cboStatus.SelectedItem = recept.Status;
                 txtNazivUstanove.Text = recept.NazivUstanove;
-                
+
                 if (recept.RealizovanaProdajnaJedinica != null)
                     txtRealizovanaProdajnaJedinica.Text = recept.RealizovanaProdajnaJedinica.ToString();
-                
+
                 if (recept.RealizacijaDatum.HasValue)
                     dtpRealizacijaDatum.Value = recept.RealizacijaDatum.Value;
                 else
                     dtpRealizacijaDatum.Value = DateTime.Today;
-                
+
                 if (recept.RealizovaoFarmaceut != null)
                     txtRealizovaoFarmaceut.Text = recept.RealizovaoFarmaceut.ToString();
             }
@@ -132,12 +132,24 @@ namespace Farmacy.Forme
             recept.DatumIzd = dtpDatumIzd.Value;
             recept.Status = cboStatus.SelectedItem.ToString();
             recept.NazivUstanove = txtNazivUstanove.Text.Trim();
-            recept.RealizacijaDatum = dtpRealizacijaDatum.Value;
+            //recept.RealizacijaDatum = dtpRealizacijaDatum.Value;
+
+            DTOManager.DodajRecept(recept);
         }
 
         public Recept GetRecept()
         {
             return recept;
+        }
+
+        private void ReceptForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpRealizacijaDatum_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

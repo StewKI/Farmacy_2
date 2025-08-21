@@ -108,8 +108,8 @@ namespace Farmacy
         public string VelicinaPakovanja { get; set; }
         public decimal KolicinaAktivne { get; set; }
         public string JedinicaMere { get; set; }
-        public string Ambalaza { get; set; }
-        public string NacinCuvanja { get; set; }
+        public string? Ambalaza { get; set; }
+        public string? NacinCuvanja { get; set; }
         public int? PreporuceniRokDana { get; set; }
     }
 

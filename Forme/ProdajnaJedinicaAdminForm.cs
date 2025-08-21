@@ -258,5 +258,25 @@ namespace Farmacy.Forme
             MenadzerApotekaEditForm form = new MenadzerApotekaEditForm(id);
             form.ShowDialog();
         }
+
+        private void btnReceptura_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati apoteku!");
+                return;
+            }
+            long id = 0;
+            if (dgvApoteke.SelectedRows.Count > 0)
+            {
+                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                MessageBox.Show("Selektovan id: " + id);
+
+            }
+            
+
+            RealizujReceptForm form = new RealizujReceptForm(DTOManager.VratiProdajnuJedinicu(id));
+            form.ShowDialog();
+        }
     }
 }

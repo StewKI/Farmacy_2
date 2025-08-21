@@ -65,6 +65,7 @@
             btnIzmeni = new Button();
             btnObrisi = new Button();
             btnDodaj = new Button();
+            btnLekovi = new Button();
             groupBoxLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvApoteke).BeginInit();
             panelDesno.SuspendLayout();
@@ -196,7 +197,7 @@
             btnGalenskiLab.Name = "btnGalenskiLab";
             btnGalenskiLab.Size = new Size(272, 46);
             btnGalenskiLab.TabIndex = 1;
-            btnGalenskiLab.Text = "Isporuke";
+            btnGalenskiLab.Text = "Prodaj recept";
             // 
             // btnReceptura
             // 
@@ -206,13 +207,15 @@
             btnReceptura.Name = "btnReceptura";
             btnReceptura.Size = new Size(272, 46);
             btnReceptura.TabIndex = 2;
-            btnReceptura.Text = "Recepti";
+            btnReceptura.Text = "Realizuj recept";
+            btnReceptura.Click += btnReceptura_Click;
             // 
             // grpPodaci
             // 
             grpPodaci.Controls.Add(btnIzmeni);
             grpPodaci.Controls.Add(btnObrisi);
             grpPodaci.Controls.Add(btnDodaj);
+            grpPodaci.Controls.Add(btnLekovi);
             grpPodaci.Dock = DockStyle.Top;
             grpPodaci.Location = new Point(12, 12);
             grpPodaci.Name = "grpPodaci";
@@ -226,7 +229,7 @@
             // 
             btnIzmeni.Dock = DockStyle.Top;
             btnIzmeni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnIzmeni.Location = new Point(12, 120);
+            btnIzmeni.Location = new Point(12, 166);
             btnIzmeni.Margin = new Padding(6);
             btnIzmeni.Name = "btnIzmeni";
             btnIzmeni.Size = new Size(272, 46);
@@ -238,7 +241,7 @@
             // 
             btnObrisi.Dock = DockStyle.Top;
             btnObrisi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnObrisi.Location = new Point(12, 74);
+            btnObrisi.Location = new Point(12, 120);
             btnObrisi.Margin = new Padding(6);
             btnObrisi.Name = "btnObrisi";
             btnObrisi.Size = new Size(272, 46);
@@ -250,13 +253,24 @@
             // 
             btnDodaj.Dock = DockStyle.Top;
             btnDodaj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnDodaj.Location = new Point(12, 28);
+            btnDodaj.Location = new Point(12, 74);
             btnDodaj.Margin = new Padding(6);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(272, 46);
             btnDodaj.TabIndex = 2;
             btnDodaj.Text = "Dodaj apoteku";
             btnDodaj.Click += btnDodaj_Click;
+            // 
+            // btnLekovi
+            // 
+            btnLekovi.Dock = DockStyle.Top;
+            btnLekovi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLekovi.Location = new Point(12, 28);
+            btnLekovi.Name = "btnLekovi";
+            btnLekovi.Size = new Size(272, 46);
+            btnLekovi.TabIndex = 3;
+            btnLekovi.Text = "Lekovi";
+            btnLekovi.Click += btnLekovi_Click;
             // 
             // ProdajnaJedinicaAdminForm
             // 
@@ -279,17 +293,6 @@
             grpServisi.ResumeLayout(false);
             grpPodaci.ResumeLayout(false);
             ResumeLayout(false);
-
-            btnLekovi = new Button();
-            btnLekovi.Dock = DockStyle.Top;
-            btnLekovi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnLekovi.Location = new Point(12, 166); // pozicija zavisi od ostalih dugmadi
-            btnLekovi.Name = "btnLekovi";
-            btnLekovi.Size = new Size(272, 46);
-            btnLekovi.TabIndex = 3;
-            btnLekovi.Text = "Lekovi";
-            btnLekovi.Click += btnLekovi_Click;
-            grpPodaci.Controls.Add(btnLekovi);
         }
 
         #endregion

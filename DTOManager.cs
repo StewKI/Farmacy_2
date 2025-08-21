@@ -741,6 +741,21 @@ namespace Farmacy
                     };
                         
                 }
+                var p= s.Get<ProdajnaJedinicaBasic>(id);
+                if(p != null)
+                {
+                    return new Entiteti.ProdajnaJedinicaBasic
+                    {
+                        Id = standardna.Id,
+                        Naziv = standardna.Naziv,
+                        Ulica = standardna.Ulica,
+                        Broj = standardna.Broj,
+                        PostanskiBroj = standardna.PostanskiBroj,
+                        Mesto = standardna.Mesto,
+                        OdgovorniFarmaceut = standardna.OdgovorniFarmaceut,
+                    };
+                }
+                
 
 
             }
@@ -1023,7 +1038,13 @@ namespace Farmacy
                 dto.Id = k.Id;
                 return k.Id;
             }
-            catch (Exception) { }
+            catch (Exception ex) {
+                MessageBox.Show(
+                      $"Greška pri dodavanju nove sekundarne kategorije : {ex.Message}",
+                      "Greška",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error);
+            }
             return 0;
         }
 
@@ -1084,7 +1105,14 @@ namespace Farmacy
                 dto.Id = o.Id;
                 return o.Id;
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                   $"Greška pri dodavanju novog oblika leka : {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
             return 0;
         }
 
@@ -1102,14 +1130,20 @@ namespace Farmacy
                     JedinicaMere = dto.JedinicaMere,
                     Ambalaza = dto.Ambalaza,
                     NacinCuvanja = dto.NacinCuvanja,
-                    PreporuceniRokDana = dto.PreporuceniRokDana
+                    PreporuceniRokDana = dto.PreporuceniRokDana                    
                 };
                 s.Save(p);
                 s.Flush();
                 dto.Id = p.Id;
                 return p.Id;
             }
-            catch (Exception) { }
+            catch (Exception ex) {
+                MessageBox.Show(
+                   $"Greška pri dodavanju novog pakovanja: {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
             return 0;
         }
 
@@ -1190,6 +1224,29 @@ namespace Farmacy
             catch (Exception) { }
             return list;
         }
+        public static IList<Oblik> VratiSveOblikeLekova()
+        {
+            var list = new List<Oblik>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var lekovi = s.Query<Oblik>().ToList();
+
+                foreach (var l in lekovi)
+                {
+                    list.Add(new Oblik
+                    {
+                        Id = l.Id,
+                        Naziv =l.Naziv,
+
+                    });
+                }
+                    
+                
+            }
+            catch (Exception) { }
+            return list;
+        }
         public static void IzmeniLek(LekBasic dto)
         {
             try
@@ -1212,26 +1269,33 @@ namespace Farmacy
                 lek.PrimarnaGrupa = s.Load<PrimarnaGrupa>(dto.PrimarnaGrupaId);
 
                 // Obriši stare sekundarne kategorije
-                var stareSekundarne = s.Query<LekSekundarna>()
+                if(lek.Sekundarne.Count>0)
+                {
+                    var stareSekundarne = s.Query<LekSekundarna>()
                                        .Where(x => x.Lek.Id == dto.Id)
                                        .ToList();
-                foreach (var ls in stareSekundarne)
-                {
-                    s.Delete(ls);
+                    foreach (var ls in stareSekundarne)
+                    {
+                        s.Delete(ls);
+                    }
                 }
+
 
                 // Dodaj nove sekundarne kategorije
-                foreach (var katId in dto.SekundarneKategorijeIds.Distinct())
+                if (dto.SekundarneKategorijeIds.Count > 0)
                 {
-                    var kategorija = s.Load<SekundarnaKategorija>(katId);
-                    var ls = new LekSekundarna
+                    foreach (var katId in dto.SekundarneKategorijeIds.Distinct())
                     {
-                        Lek = lek,
-                        Kategorija = kategorija
-                    };
-                    s.Save(ls);
+                        var kategorija = s.Load<SekundarnaKategorija>(katId);
+                        var ls = new LekSekundarna
+                        {
+                            Lek = lek,
+                            Kategorija = kategorija
+                        };
+                        s.Save(ls);
+                    }
                 }
-
+                
                 s.Update(lek);
                 s.Flush();
 
@@ -1361,5 +1425,187 @@ namespace Farmacy
             catch (Exception) { }
             return list;
         }
+
+        public static IList<PrimarnaGrupaBasic> VratiPrimarneGrupe()
+        {
+            var list = new List<PrimarnaGrupaBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupe = s.Query<PrimarnaGrupa>().ToList();
+                foreach (var z in grupe)
+                {
+                    list.Add(new PrimarnaGrupaBasic
+                    {
+                       Naziv=z.Naziv,   
+                       Id=z.Id,
+                    });
+                }
+            }
+            catch (Exception) { }
+            return list;
+        }
+        public static SekundarnaKategorija? VratiSekundarnuKategoriju(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var sk= s.Get<SekundarnaKategorija>(id);
+                if (sk == null) return null;
+
+                // Učitaj sekundarne kategorije
+               
+                
+
+                return new SekundarnaKategorija
+                {
+                   Id=sk.Id,
+                   Naziv=sk.Naziv,
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri učitavanju sekundarne kategorije: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
+        public static void  DodajLekSekundarna(long skId,long lekId)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var sk = s.Get<SekundarnaKategorija>(skId);
+                var lek = s.Get<Lek>(lekId);
+                var veza = new LekSekundarna
+                {
+                    Lek=lek,
+                    Kategorija=sk,
+                };
+                s.Save(veza);
+                s.Flush();
+
+                MessageBox.Show(
+            $": Uspesno je dodata kategorija",
+            "Uspesno",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+           $"Greška pri dodavanju LekSekundarnaKategorija: {ex.Message}",
+           "Greška",
+           MessageBoxButtons.OK,
+           MessageBoxIcon.Error);
+            }
+            
+        }
+
+        public static void DodajDistributera(DistributerBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                
+                var d1 = new Distributer
+                {
+                    Naziv=dto.Naziv,
+                    Kontakt=dto.Kontakt,
+                };
+                s.Save(d1);
+                s.Flush();
+
+                MessageBox.Show(
+            $"Uspesno je dodat distributer",
+            "Uspesno",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+           $"Greška pri dodavanju LekSekundarnaKategorija: {ex.Message}",
+           "Greška",
+           MessageBoxButtons.OK,
+           MessageBoxIcon.Error);
+            }
+        }
+
+        public static void DodajRecept(Recept r)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                var d1 = new Recept
+                {
+                    SerijskiBroj=r.SerijskiBroj,
+                    SifraLekara=r.SifraLekara,
+                    DatumIzd=r.DatumIzd,
+                    Status=r.Status,
+                    NazivUstanove=r.NazivUstanove,
+                };
+                s.Save(d1);
+                s.Flush();
+
+                MessageBox.Show(
+            $"Uspesno je dodat recept",
+            "Uspesno",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+           $"Greška pri dodavanju Recepta: {ex.Message}",
+           "Greška",
+           MessageBoxButtons.OK,
+           MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void RealizujRecept(string idR, ProdajnaJedinicaBasic p,DateTime d)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var r = s.Get<Recept>(idR);
+                var p1=s.Get<Entiteti.ProdajnaJedinicaBasic>(p.Id);
+                if (r.RealizovaoFarmaceut != null)
+                {
+                    throw new Exception("Recept je vec realizovan");
+                    
+                }
+                if(r !=null)
+                {
+                    r.RealizovanaProdajnaJedinica = p1;
+                    r.RealizovaoFarmaceut = VratiOdgovornogFarmaceuta(p.OdgovorniFarmaceutMbr);
+                    r.RealizacijaDatum = d;
+
+                }
+                s.Update(r);
+                s.Flush();
+
+                MessageBox.Show(
+            $"Uspesno je realizovan recept",
+            "Uspesno",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+           $"Greška pri realizaciji Recepta: {ex.Message}",
+           "Greška",
+           MessageBoxButtons.OK,
+           MessageBoxIcon.Error);
+            }
+
+        }
+
+
     }
+
 }

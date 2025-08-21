@@ -28,85 +28,94 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblNaziv = new System.Windows.Forms.Label();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblId = new Label();
+            txtId = new TextBox();
+            lblNaziv = new Label();
+            txtNaziv = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblId
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(12, 15);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(21, 13);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID:";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(14, 17);
+            lblId.Margin = new Padding(4, 0, 4, 0);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(21, 15);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(120, 12);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(150, 20);
-            this.txtId.TabIndex = 1;
+            txtId.Location = new Point(140, 14);
+            txtId.Margin = new Padding(4, 3, 4, 3);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(174, 23);
+            txtId.TabIndex = 1;
             // 
             // lblNaziv
             // 
-            this.lblNaziv.AutoSize = true;
-            this.lblNaziv.Location = new System.Drawing.Point(12, 41);
-            this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(41, 13);
-            this.lblNaziv.TabIndex = 2;
-            this.lblNaziv.Text = "Naziv:";
+            lblNaziv.AutoSize = true;
+            lblNaziv.Location = new Point(14, 47);
+            lblNaziv.Margin = new Padding(4, 0, 4, 0);
+            lblNaziv.Name = "lblNaziv";
+            lblNaziv.Size = new Size(39, 15);
+            lblNaziv.TabIndex = 2;
+            lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(120, 38);
-            this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(150, 20);
-            this.txtNaziv.TabIndex = 3;
+            txtNaziv.Location = new Point(140, 44);
+            txtNaziv.Margin = new Padding(4, 3, 4, 3);
+            txtNaziv.Name = "txtNaziv";
+            txtNaziv.Size = new Size(174, 23);
+            txtNaziv.TabIndex = 3;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 74);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(140, 85);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(88, 27);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(201, 74);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(234, 85);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(88, 27);
+            btnCancel.TabIndex = 5;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // OblikForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 109);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtNaziv);
-            this.Controls.Add(this.lblNaziv);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "OblikForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Oblik";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(331, 126);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(txtNaziv);
+            Controls.Add(lblNaziv);
+            Controls.Add(txtId);
+            Controls.Add(lblId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "OblikForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Oblik";
+            Load += OblikForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

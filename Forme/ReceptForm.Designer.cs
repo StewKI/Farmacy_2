@@ -28,213 +28,216 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblSerijskiBroj = new System.Windows.Forms.Label();
-            this.txtSerijskiBroj = new System.Windows.Forms.TextBox();
-            this.lblSifraLekara = new System.Windows.Forms.Label();
-            this.txtSifraLekara = new System.Windows.Forms.TextBox();
-            this.lblDatumIzd = new System.Windows.Forms.Label();
-            this.dtpDatumIzd = new System.Windows.Forms.DateTimePicker();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.lblNazivUstanove = new System.Windows.Forms.Label();
-            this.txtNazivUstanove = new System.Windows.Forms.TextBox();
-            this.lblRealizovanaProdajnaJedinica = new System.Windows.Forms.Label();
-            this.txtRealizovanaProdajnaJedinica = new System.Windows.Forms.TextBox();
-            this.lblRealizacijaDatum = new System.Windows.Forms.Label();
-            this.dtpRealizacijaDatum = new System.Windows.Forms.DateTimePicker();
-            this.lblRealizovaoFarmaceut = new System.Windows.Forms.Label();
-            this.txtRealizovaoFarmaceut = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblSerijskiBroj = new Label();
+            txtSerijskiBroj = new TextBox();
+            lblSifraLekara = new Label();
+            txtSifraLekara = new TextBox();
+            lblDatumIzd = new Label();
+            dtpDatumIzd = new DateTimePicker();
+            lblStatus = new Label();
+            cboStatus = new ComboBox();
+            lblNazivUstanove = new Label();
+            txtNazivUstanove = new TextBox();
+            lblRealizovanaProdajnaJedinica = new Label();
+            txtRealizovanaProdajnaJedinica = new TextBox();
+            lblRealizacijaDatum = new Label();
+            dtpRealizacijaDatum = new DateTimePicker();
+            lblRealizovaoFarmaceut = new Label();
+            txtRealizovaoFarmaceut = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblSerijskiBroj
             // 
-            this.lblSerijskiBroj.AutoSize = true;
-            this.lblSerijskiBroj.Location = new System.Drawing.Point(30, 30);
-            this.lblSerijskiBroj.Name = "lblSerijskiBroj";
-            this.lblSerijskiBroj.Size = new System.Drawing.Size(80, 15);
-            this.lblSerijskiBroj.TabIndex = 0;
-            this.lblSerijskiBroj.Text = "Serijski broj:";
+            lblSerijskiBroj.AutoSize = true;
+            lblSerijskiBroj.Location = new Point(30, 30);
+            lblSerijskiBroj.Name = "lblSerijskiBroj";
+            lblSerijskiBroj.Size = new Size(70, 15);
+            lblSerijskiBroj.TabIndex = 0;
+            lblSerijskiBroj.Text = "Serijski broj:";
             // 
             // txtSerijskiBroj
             // 
-            this.txtSerijskiBroj.Location = new System.Drawing.Point(150, 27);
-            this.txtSerijskiBroj.Name = "txtSerijskiBroj";
-            this.txtSerijskiBroj.Size = new System.Drawing.Size(200, 23);
-            this.txtSerijskiBroj.TabIndex = 1;
+            txtSerijskiBroj.Location = new Point(150, 27);
+            txtSerijskiBroj.Name = "txtSerijskiBroj";
+            txtSerijskiBroj.Size = new Size(200, 23);
+            txtSerijskiBroj.TabIndex = 1;
             // 
             // lblSifraLekara
             // 
-            this.lblSifraLekara.AutoSize = true;
-            this.lblSifraLekara.Location = new System.Drawing.Point(30, 70);
-            this.lblSifraLekara.Name = "lblSifraLekara";
-            this.lblSifraLekara.Size = new System.Drawing.Size(75, 15);
-            this.lblSifraLekara.TabIndex = 2;
-            this.lblSifraLekara.Text = "Šifra lekara:";
+            lblSifraLekara.AutoSize = true;
+            lblSifraLekara.Location = new Point(30, 70);
+            lblSifraLekara.Name = "lblSifraLekara";
+            lblSifraLekara.Size = new Size(67, 15);
+            lblSifraLekara.TabIndex = 2;
+            lblSifraLekara.Text = "Šifra lekara:";
             // 
             // txtSifraLekara
             // 
-            this.txtSifraLekara.Location = new System.Drawing.Point(150, 67);
-            this.txtSifraLekara.Name = "txtSifraLekara";
-            this.txtSifraLekara.Size = new System.Drawing.Size(200, 23);
-            this.txtSifraLekara.TabIndex = 3;
+            txtSifraLekara.Location = new Point(150, 67);
+            txtSifraLekara.Name = "txtSifraLekara";
+            txtSifraLekara.Size = new Size(200, 23);
+            txtSifraLekara.TabIndex = 3;
             // 
             // lblDatumIzd
             // 
-            this.lblDatumIzd.AutoSize = true;
-            this.lblDatumIzd.Location = new System.Drawing.Point(30, 110);
-            this.lblDatumIzd.Name = "lblDatumIzd";
-            this.lblDatumIzd.Size = new System.Drawing.Size(95, 15);
-            this.lblDatumIzd.TabIndex = 4;
-            this.lblDatumIzd.Text = "Datum izdavanja:";
+            lblDatumIzd.AutoSize = true;
+            lblDatumIzd.Location = new Point(30, 110);
+            lblDatumIzd.Name = "lblDatumIzd";
+            lblDatumIzd.Size = new Size(98, 15);
+            lblDatumIzd.TabIndex = 4;
+            lblDatumIzd.Text = "Datum izdavanja:";
             // 
             // dtpDatumIzd
             // 
-            this.dtpDatumIzd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumIzd.Location = new System.Drawing.Point(150, 107);
-            this.dtpDatumIzd.Name = "dtpDatumIzd";
-            this.dtpDatumIzd.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumIzd.TabIndex = 5;
+            dtpDatumIzd.Format = DateTimePickerFormat.Short;
+            dtpDatumIzd.Location = new Point(150, 107);
+            dtpDatumIzd.Name = "dtpDatumIzd";
+            dtpDatumIzd.Size = new Size(200, 23);
+            dtpDatumIzd.TabIndex = 5;
             // 
             // lblStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(30, 150);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(46, 15);
-            this.lblStatus.TabIndex = 6;
-            this.lblStatus.Text = "Status:";
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(30, 150);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(42, 15);
+            lblStatus.TabIndex = 6;
+            lblStatus.Text = "Status:";
             // 
             // cboStatus
             // 
-            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(150, 147);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(200, 23);
-            this.cboStatus.TabIndex = 7;
+            cboStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboStatus.FormattingEnabled = true;
+            cboStatus.Location = new Point(150, 147);
+            cboStatus.Name = "cboStatus";
+            cboStatus.Size = new Size(200, 23);
+            cboStatus.TabIndex = 7;
             // 
             // lblNazivUstanove
             // 
-            this.lblNazivUstanove.AutoSize = true;
-            this.lblNazivUstanove.Location = new System.Drawing.Point(30, 190);
-            this.lblNazivUstanove.Name = "lblNazivUstanove";
-            this.lblNazivUstanove.Size = new System.Drawing.Size(95, 15);
-            this.lblNazivUstanove.TabIndex = 8;
-            this.lblNazivUstanove.Text = "Naziv ustanove:";
+            lblNazivUstanove.AutoSize = true;
+            lblNazivUstanove.Location = new Point(30, 190);
+            lblNazivUstanove.Name = "lblNazivUstanove";
+            lblNazivUstanove.Size = new Size(90, 15);
+            lblNazivUstanove.TabIndex = 8;
+            lblNazivUstanove.Text = "Naziv ustanove:";
             // 
             // txtNazivUstanove
             // 
-            this.txtNazivUstanove.Location = new System.Drawing.Point(150, 187);
-            this.txtNazivUstanove.Name = "txtNazivUstanove";
-            this.txtNazivUstanove.Size = new System.Drawing.Size(200, 23);
-            this.txtNazivUstanove.TabIndex = 9;
+            txtNazivUstanove.Location = new Point(150, 187);
+            txtNazivUstanove.Name = "txtNazivUstanove";
+            txtNazivUstanove.Size = new Size(200, 23);
+            txtNazivUstanove.TabIndex = 9;
             // 
             // lblRealizovanaProdajnaJedinica
             // 
-            this.lblRealizovanaProdajnaJedinica.AutoSize = true;
-            this.lblRealizovanaProdajnaJedinica.Location = new System.Drawing.Point(30, 230);
-            this.lblRealizovanaProdajnaJedinica.Name = "lblRealizovanaProdajnaJedinica";
-            this.lblRealizovanaProdajnaJedinica.Size = new System.Drawing.Size(160, 15);
-            this.lblRealizovanaProdajnaJedinica.TabIndex = 10;
-            this.lblRealizovanaProdajnaJedinica.Text = "Realizovana prodajna jedinica:";
+            lblRealizovanaProdajnaJedinica.AutoSize = true;
+            lblRealizovanaProdajnaJedinica.Location = new Point(30, 230);
+            lblRealizovanaProdajnaJedinica.Name = "lblRealizovanaProdajnaJedinica";
+            lblRealizovanaProdajnaJedinica.Size = new Size(166, 15);
+            lblRealizovanaProdajnaJedinica.TabIndex = 10;
+            lblRealizovanaProdajnaJedinica.Text = "Realizovana prodajna jedinica:";
             // 
             // txtRealizovanaProdajnaJedinica
             // 
-            this.txtRealizovanaProdajnaJedinica.Location = new System.Drawing.Point(200, 227);
-            this.txtRealizovanaProdajnaJedinica.Name = "txtRealizovanaProdajnaJedinica";
-            this.txtRealizovanaProdajnaJedinica.ReadOnly = true;
-            this.txtRealizovanaProdajnaJedinica.Size = new System.Drawing.Size(150, 23);
-            this.txtRealizovanaProdajnaJedinica.TabIndex = 11;
-            this.txtRealizovanaProdajnaJedinica.TabStop = false;
+            txtRealizovanaProdajnaJedinica.Location = new Point(200, 227);
+            txtRealizovanaProdajnaJedinica.Name = "txtRealizovanaProdajnaJedinica";
+            txtRealizovanaProdajnaJedinica.ReadOnly = true;
+            txtRealizovanaProdajnaJedinica.Size = new Size(150, 23);
+            txtRealizovanaProdajnaJedinica.TabIndex = 11;
+            txtRealizovanaProdajnaJedinica.TabStop = false;
             // 
             // lblRealizacijaDatum
             // 
-            this.lblRealizacijaDatum.AutoSize = true;
-            this.lblRealizacijaDatum.Location = new System.Drawing.Point(30, 270);
-            this.lblRealizacijaDatum.Name = "lblRealizacijaDatum";
-            this.lblRealizacijaDatum.Size = new System.Drawing.Size(110, 15);
-            this.lblRealizacijaDatum.TabIndex = 12;
-            this.lblRealizacijaDatum.Text = "Datum realizacije:";
+            lblRealizacijaDatum.AutoSize = true;
+            lblRealizacijaDatum.Location = new Point(30, 270);
+            lblRealizacijaDatum.Name = "lblRealizacijaDatum";
+            lblRealizacijaDatum.Size = new Size(100, 15);
+            lblRealizacijaDatum.TabIndex = 12;
+            lblRealizacijaDatum.Text = "Datum realizacije:";
             // 
             // dtpRealizacijaDatum
             // 
-            this.dtpRealizacijaDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRealizacijaDatum.Location = new System.Drawing.Point(150, 267);
-            this.dtpRealizacijaDatum.Name = "dtpRealizacijaDatum";
-            this.dtpRealizacijaDatum.Size = new System.Drawing.Size(200, 23);
-            this.dtpRealizacijaDatum.TabIndex = 13;
+            dtpRealizacijaDatum.Enabled = false;
+            dtpRealizacijaDatum.Format = DateTimePickerFormat.Short;
+            dtpRealizacijaDatum.Location = new Point(150, 267);
+            dtpRealizacijaDatum.Name = "dtpRealizacijaDatum";
+            dtpRealizacijaDatum.Size = new Size(200, 23);
+            dtpRealizacijaDatum.TabIndex = 13;
+            dtpRealizacijaDatum.ValueChanged += dtpRealizacijaDatum_ValueChanged;
             // 
             // lblRealizovaoFarmaceut
             // 
-            this.lblRealizovaoFarmaceut.AutoSize = true;
-            this.lblRealizovaoFarmaceut.Location = new System.Drawing.Point(30, 310);
-            this.lblRealizovaoFarmaceut.Name = "lblRealizovaoFarmaceut";
-            this.lblRealizovaoFarmaceut.Size = new System.Drawing.Size(120, 15);
-            this.lblRealizovaoFarmaceut.TabIndex = 14;
-            this.lblRealizovaoFarmaceut.Text = "Realizovao farmaceut:";
+            lblRealizovaoFarmaceut.AutoSize = true;
+            lblRealizovaoFarmaceut.Location = new Point(30, 310);
+            lblRealizovaoFarmaceut.Name = "lblRealizovaoFarmaceut";
+            lblRealizovaoFarmaceut.Size = new Size(123, 15);
+            lblRealizovaoFarmaceut.TabIndex = 14;
+            lblRealizovaoFarmaceut.Text = "Realizovao farmaceut:";
             // 
             // txtRealizovaoFarmaceut
             // 
-            this.txtRealizovaoFarmaceut.Location = new System.Drawing.Point(160, 307);
-            this.txtRealizovaoFarmaceut.Name = "txtRealizovaoFarmaceut";
-            this.txtRealizovaoFarmaceut.ReadOnly = true;
-            this.txtRealizovaoFarmaceut.Size = new System.Drawing.Size(190, 23);
-            this.txtRealizovaoFarmaceut.TabIndex = 15;
-            this.txtRealizovaoFarmaceut.TabStop = false;
+            txtRealizovaoFarmaceut.Location = new Point(160, 307);
+            txtRealizovaoFarmaceut.Name = "txtRealizovaoFarmaceut";
+            txtRealizovaoFarmaceut.ReadOnly = true;
+            txtRealizovaoFarmaceut.Size = new Size(190, 23);
+            txtRealizovaoFarmaceut.TabIndex = 15;
+            txtRealizovaoFarmaceut.TabStop = false;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 360);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(150, 360);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 16;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 360);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 17;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(275, 360);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 17;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // ReceptForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 411);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtRealizovaoFarmaceut);
-            this.Controls.Add(this.lblRealizovaoFarmaceut);
-            this.Controls.Add(this.dtpRealizacijaDatum);
-            this.Controls.Add(this.lblRealizacijaDatum);
-            this.Controls.Add(this.txtRealizovanaProdajnaJedinica);
-            this.Controls.Add(this.lblRealizovanaProdajnaJedinica);
-            this.Controls.Add(this.txtNazivUstanove);
-            this.Controls.Add(this.lblNazivUstanove);
-            this.Controls.Add(this.cboStatus);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.dtpDatumIzd);
-            this.Controls.Add(this.lblDatumIzd);
-            this.Controls.Add(this.txtSifraLekara);
-            this.Controls.Add(this.lblSifraLekara);
-            this.Controls.Add(this.txtSerijskiBroj);
-            this.Controls.Add(this.lblSerijskiBroj);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ReceptForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Recept";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(384, 411);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(txtRealizovaoFarmaceut);
+            Controls.Add(lblRealizovaoFarmaceut);
+            Controls.Add(dtpRealizacijaDatum);
+            Controls.Add(lblRealizacijaDatum);
+            Controls.Add(txtRealizovanaProdajnaJedinica);
+            Controls.Add(lblRealizovanaProdajnaJedinica);
+            Controls.Add(txtNazivUstanove);
+            Controls.Add(lblNazivUstanove);
+            Controls.Add(cboStatus);
+            Controls.Add(lblStatus);
+            Controls.Add(dtpDatumIzd);
+            Controls.Add(lblDatumIzd);
+            Controls.Add(txtSifraLekara);
+            Controls.Add(lblSifraLekara);
+            Controls.Add(txtSerijskiBroj);
+            Controls.Add(lblSerijskiBroj);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "ReceptForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Recept";
+            Load += ReceptForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

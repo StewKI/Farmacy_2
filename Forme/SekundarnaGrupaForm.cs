@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class SekundarnaGrupaForm : Form
     {
-        private SekundarnaKategorija sekundarnaGrupa;
+        private SekundarnaKategorijaBasic sekundarnaGrupa;
 
         public SekundarnaGrupaForm()
         {
@@ -14,7 +14,7 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public SekundarnaGrupaForm(SekundarnaKategorija sekundarnaGrupa) : this()
+        public SekundarnaGrupaForm(SekundarnaKategorijaBasic sekundarnaGrupa) : this()
         {
             this.sekundarnaGrupa = sekundarnaGrupa;
             LoadSekundarnaGrupaData();
@@ -66,13 +66,15 @@ namespace Farmacy.Forme
         {
             if (sekundarnaGrupa == null)
             {
-                sekundarnaGrupa = new SekundarnaKategorija();
+                sekundarnaGrupa = new SekundarnaKategorijaBasic();
             }
 
             sekundarnaGrupa.Naziv = txtNaziv.Text.Trim();
+
+            DTOManager.DodajSekundarnuKategoriju(sekundarnaGrupa);
         }
 
-        public SekundarnaKategorija GetSekundarnaGrupa()
+        public SekundarnaKategorijaBasic GetSekundarnaGrupa()
         {
             return sekundarnaGrupa;
         }

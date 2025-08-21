@@ -28,250 +28,258 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblLekId = new System.Windows.Forms.Label();
-            this.txtLekId = new System.Windows.Forms.TextBox();
-            this.lblOblikId = new System.Windows.Forms.Label();
-            this.txtOblikId = new System.Windows.Forms.TextBox();
-            this.lblVelicinaPakovanja = new System.Windows.Forms.Label();
-            this.txtVelicinaPakovanja = new System.Windows.Forms.TextBox();
-            this.lblKolicinaAktivne = new System.Windows.Forms.Label();
-            this.numKolicinaAktivne = new System.Windows.Forms.NumericUpDown();
-            this.lblJedinicaMere = new System.Windows.Forms.Label();
-            this.txtJedinicaMere = new System.Windows.Forms.TextBox();
-            this.lblAmbalaza = new System.Windows.Forms.Label();
-            this.txtAmbalaza = new System.Windows.Forms.TextBox();
-            this.lblNacinCuvanja = new System.Windows.Forms.Label();
-            this.txtNacinCuvanja = new System.Windows.Forms.TextBox();
-            this.lblPreporuceniRokDana = new System.Windows.Forms.Label();
-            this.numPreporuceniRokDana = new System.Windows.Forms.NumericUpDown();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicinaAktivne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPreporuceniRokDana)).BeginInit();
-            this.SuspendLayout();
+            lblId = new Label();
+            txtId = new TextBox();
+            lblLekId = new Label();
+            txtLekId = new TextBox();
+            lblOblikId = new Label();
+            txtOblikId = new TextBox();
+            lblVelicinaPakovanja = new Label();
+            txtVelicinaPakovanja = new TextBox();
+            lblKolicinaAktivne = new Label();
+            numKolicinaAktivne = new NumericUpDown();
+            lblJedinicaMere = new Label();
+            txtJedinicaMere = new TextBox();
+            lblAmbalaza = new Label();
+            txtAmbalaza = new TextBox();
+            lblNacinCuvanja = new Label();
+            txtNacinCuvanja = new TextBox();
+            lblPreporuceniRokDana = new Label();
+            numPreporuceniRokDana = new NumericUpDown();
+            btnSave = new Button();
+            btnCancel = new Button();
+            ((System.ComponentModel.ISupportInitialize)numKolicinaAktivne).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numPreporuceniRokDana).BeginInit();
+            SuspendLayout();
             // 
             // lblId
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(12, 15);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(21, 13);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID:";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(14, 17);
+            lblId.Margin = new Padding(4, 0, 4, 0);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(21, 15);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(120, 12);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(150, 20);
-            this.txtId.TabIndex = 1;
+            txtId.Location = new Point(140, 14);
+            txtId.Margin = new Padding(4, 3, 4, 3);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(174, 23);
+            txtId.TabIndex = 1;
             // 
             // lblLekId
             // 
-            this.lblLekId.AutoSize = true;
-            this.lblLekId.Location = new System.Drawing.Point(12, 41);
-            this.lblLekId.Name = "lblLekId";
-            this.lblLekId.Size = new System.Drawing.Size(45, 13);
-            this.lblLekId.TabIndex = 2;
-            this.lblLekId.Text = "ID Leka:";
+            lblLekId.AutoSize = true;
+            lblLekId.Location = new Point(14, 47);
+            lblLekId.Margin = new Padding(4, 0, 4, 0);
+            lblLekId.Name = "lblLekId";
+            lblLekId.Size = new Size(48, 15);
+            lblLekId.TabIndex = 2;
+            lblLekId.Text = "ID Leka:";
             // 
             // txtLekId
             // 
-            this.txtLekId.Location = new System.Drawing.Point(120, 38);
-            this.txtLekId.Name = "txtLekId";
-            this.txtLekId.Size = new System.Drawing.Size(150, 20);
-            this.txtLekId.TabIndex = 3;
+            txtLekId.Location = new Point(140, 44);
+            txtLekId.Margin = new Padding(4, 3, 4, 3);
+            txtLekId.Name = "txtLekId";
+            txtLekId.ReadOnly = true;
+            txtLekId.Size = new Size(174, 23);
+            txtLekId.TabIndex = 3;
             // 
             // lblOblikId
             // 
-            this.lblOblikId.AutoSize = true;
-            this.lblOblikId.Location = new System.Drawing.Point(12, 67);
-            this.lblOblikId.Name = "lblOblikId";
-            this.lblOblikId.Size = new System.Drawing.Size(52, 13);
-            this.lblOblikId.TabIndex = 4;
-            this.lblOblikId.Text = "ID Oblika:";
+            lblOblikId.AutoSize = true;
+            lblOblikId.Location = new Point(14, 77);
+            lblOblikId.Margin = new Padding(4, 0, 4, 0);
+            lblOblikId.Name = "lblOblikId";
+            lblOblikId.Size = new Size(58, 15);
+            lblOblikId.TabIndex = 4;
+            lblOblikId.Text = "ID Oblika:";
             // 
             // txtOblikId
             // 
-            this.txtOblikId.Location = new System.Drawing.Point(120, 64);
-            this.txtOblikId.Name = "txtOblikId";
-            this.txtOblikId.Size = new System.Drawing.Size(150, 20);
-            this.txtOblikId.TabIndex = 5;
+            txtOblikId.Location = new Point(140, 74);
+            txtOblikId.Margin = new Padding(4, 3, 4, 3);
+            txtOblikId.Name = "txtOblikId";
+            txtOblikId.ReadOnly = true;
+            txtOblikId.Size = new Size(174, 23);
+            txtOblikId.TabIndex = 5;
             // 
             // lblVelicinaPakovanja
             // 
-            this.lblVelicinaPakovanja.AutoSize = true;
-            this.lblVelicinaPakovanja.Location = new System.Drawing.Point(12, 93);
-            this.lblVelicinaPakovanja.Name = "lblVelicinaPakovanja";
-            this.lblVelicinaPakovanja.Size = new System.Drawing.Size(95, 13);
-            this.lblVelicinaPakovanja.TabIndex = 6;
-            this.lblVelicinaPakovanja.Text = "Veličina pakovanja:";
+            lblVelicinaPakovanja.AutoSize = true;
+            lblVelicinaPakovanja.Location = new Point(14, 107);
+            lblVelicinaPakovanja.Margin = new Padding(4, 0, 4, 0);
+            lblVelicinaPakovanja.Name = "lblVelicinaPakovanja";
+            lblVelicinaPakovanja.Size = new Size(107, 15);
+            lblVelicinaPakovanja.TabIndex = 6;
+            lblVelicinaPakovanja.Text = "Veličina pakovanja:";
             // 
             // txtVelicinaPakovanja
             // 
-            this.txtVelicinaPakovanja.Location = new System.Drawing.Point(120, 90);
-            this.txtVelicinaPakovanja.Name = "txtVelicinaPakovanja";
-            this.txtVelicinaPakovanja.Size = new System.Drawing.Size(150, 20);
-            this.txtVelicinaPakovanja.TabIndex = 7;
+            txtVelicinaPakovanja.Location = new Point(140, 104);
+            txtVelicinaPakovanja.Margin = new Padding(4, 3, 4, 3);
+            txtVelicinaPakovanja.Name = "txtVelicinaPakovanja";
+            txtVelicinaPakovanja.Size = new Size(174, 23);
+            txtVelicinaPakovanja.TabIndex = 7;
             // 
             // lblKolicinaAktivne
             // 
-            this.lblKolicinaAktivne.AutoSize = true;
-            this.lblKolicinaAktivne.Location = new System.Drawing.Point(12, 119);
-            this.lblKolicinaAktivne.Name = "lblKolicinaAktivne";
-            this.lblKolicinaAktivne.Size = new System.Drawing.Size(89, 13);
-            this.lblKolicinaAktivne.TabIndex = 8;
-            this.lblKolicinaAktivne.Text = "Količina aktivne:";
+            lblKolicinaAktivne.AutoSize = true;
+            lblKolicinaAktivne.Location = new Point(14, 137);
+            lblKolicinaAktivne.Margin = new Padding(4, 0, 4, 0);
+            lblKolicinaAktivne.Name = "lblKolicinaAktivne";
+            lblKolicinaAktivne.Size = new Size(93, 15);
+            lblKolicinaAktivne.TabIndex = 8;
+            lblKolicinaAktivne.Text = "Količina aktivne:";
             // 
             // numKolicinaAktivne
             // 
-            this.numKolicinaAktivne.DecimalPlaces = 2;
-            this.numKolicinaAktivne.Location = new System.Drawing.Point(120, 116);
-            this.numKolicinaAktivne.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numKolicinaAktivne.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numKolicinaAktivne.Name = "numKolicinaAktivne";
-            this.numKolicinaAktivne.Size = new System.Drawing.Size(150, 20);
-            this.numKolicinaAktivne.TabIndex = 9;
-            this.numKolicinaAktivne.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numKolicinaAktivne.DecimalPlaces = 2;
+            numKolicinaAktivne.Location = new Point(140, 134);
+            numKolicinaAktivne.Margin = new Padding(4, 3, 4, 3);
+            numKolicinaAktivne.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            numKolicinaAktivne.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numKolicinaAktivne.Name = "numKolicinaAktivne";
+            numKolicinaAktivne.Size = new Size(175, 23);
+            numKolicinaAktivne.TabIndex = 9;
+            numKolicinaAktivne.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // lblJedinicaMere
             // 
-            this.lblJedinicaMere.AutoSize = true;
-            this.lblJedinicaMere.Location = new System.Drawing.Point(12, 145);
-            this.lblJedinicaMere.Name = "lblJedinicaMere";
-            this.lblJedinicaMere.Size = new System.Drawing.Size(75, 13);
-            this.lblJedinicaMere.TabIndex = 10;
-            this.lblJedinicaMere.Text = "Jedinica mere:";
+            lblJedinicaMere.AutoSize = true;
+            lblJedinicaMere.Location = new Point(14, 167);
+            lblJedinicaMere.Margin = new Padding(4, 0, 4, 0);
+            lblJedinicaMere.Name = "lblJedinicaMere";
+            lblJedinicaMere.Size = new Size(82, 15);
+            lblJedinicaMere.TabIndex = 10;
+            lblJedinicaMere.Text = "Jedinica mere:";
             // 
             // txtJedinicaMere
             // 
-            this.txtJedinicaMere.Location = new System.Drawing.Point(120, 142);
-            this.txtJedinicaMere.Name = "txtJedinicaMere";
-            this.txtJedinicaMere.Size = new System.Drawing.Size(150, 20);
-            this.txtJedinicaMere.TabIndex = 11;
+            txtJedinicaMere.Location = new Point(140, 164);
+            txtJedinicaMere.Margin = new Padding(4, 3, 4, 3);
+            txtJedinicaMere.Name = "txtJedinicaMere";
+            txtJedinicaMere.Size = new Size(174, 23);
+            txtJedinicaMere.TabIndex = 11;
             // 
             // lblAmbalaza
             // 
-            this.lblAmbalaza.AutoSize = true;
-            this.lblAmbalaza.Location = new System.Drawing.Point(12, 171);
-            this.lblAmbalaza.Name = "lblAmbalaza";
-            this.lblAmbalaza.Size = new System.Drawing.Size(55, 13);
-            this.lblAmbalaza.TabIndex = 12;
-            this.lblAmbalaza.Text = "Ambalaza:";
+            lblAmbalaza.AutoSize = true;
+            lblAmbalaza.Location = new Point(14, 197);
+            lblAmbalaza.Margin = new Padding(4, 0, 4, 0);
+            lblAmbalaza.Name = "lblAmbalaza";
+            lblAmbalaza.Size = new Size(62, 15);
+            lblAmbalaza.TabIndex = 12;
+            lblAmbalaza.Text = "Ambalaza:";
             // 
             // txtAmbalaza
             // 
-            this.txtAmbalaza.Location = new System.Drawing.Point(120, 168);
-            this.txtAmbalaza.Name = "txtAmbalaza";
-            this.txtAmbalaza.Size = new System.Drawing.Size(150, 20);
-            this.txtAmbalaza.TabIndex = 13;
+            txtAmbalaza.Location = new Point(140, 194);
+            txtAmbalaza.Margin = new Padding(4, 3, 4, 3);
+            txtAmbalaza.Name = "txtAmbalaza";
+            txtAmbalaza.Size = new Size(174, 23);
+            txtAmbalaza.TabIndex = 13;
             // 
             // lblNacinCuvanja
             // 
-            this.lblNacinCuvanja.AutoSize = true;
-            this.lblNacinCuvanja.Location = new System.Drawing.Point(12, 197);
-            this.lblNacinCuvanja.Name = "lblNacinCuvanja";
-            this.lblNacinCuvanja.Size = new System.Drawing.Size(82, 13);
-            this.lblNacinCuvanja.TabIndex = 14;
-            this.lblNacinCuvanja.Text = "Način čuvanja:";
+            lblNacinCuvanja.AutoSize = true;
+            lblNacinCuvanja.Location = new Point(14, 227);
+            lblNacinCuvanja.Margin = new Padding(4, 0, 4, 0);
+            lblNacinCuvanja.Name = "lblNacinCuvanja";
+            lblNacinCuvanja.Size = new Size(85, 15);
+            lblNacinCuvanja.TabIndex = 14;
+            lblNacinCuvanja.Text = "Način čuvanja:";
             // 
             // txtNacinCuvanja
             // 
-            this.txtNacinCuvanja.Location = new System.Drawing.Point(120, 194);
-            this.txtNacinCuvanja.Name = "txtNacinCuvanja";
-            this.txtNacinCuvanja.Size = new System.Drawing.Size(150, 20);
-            this.txtNacinCuvanja.TabIndex = 15;
+            txtNacinCuvanja.Location = new Point(140, 224);
+            txtNacinCuvanja.Margin = new Padding(4, 3, 4, 3);
+            txtNacinCuvanja.Name = "txtNacinCuvanja";
+            txtNacinCuvanja.Size = new Size(174, 23);
+            txtNacinCuvanja.TabIndex = 15;
             // 
             // lblPreporuceniRokDana
             // 
-            this.lblPreporuceniRokDana.AutoSize = true;
-            this.lblPreporuceniRokDana.Location = new System.Drawing.Point(12, 223);
-            this.lblPreporuceniRokDana.Name = "lblPreporuceniRokDana";
-            this.lblPreporuceniRokDana.Size = new System.Drawing.Size(105, 13);
-            this.lblPreporuceniRokDana.TabIndex = 16;
-            this.lblPreporuceniRokDana.Text = "Preporučeni rok (d):";
+            lblPreporuceniRokDana.AutoSize = true;
+            lblPreporuceniRokDana.Location = new Point(14, 257);
+            lblPreporuceniRokDana.Margin = new Padding(4, 0, 4, 0);
+            lblPreporuceniRokDana.Name = "lblPreporuceniRokDana";
+            lblPreporuceniRokDana.Size = new Size(112, 15);
+            lblPreporuceniRokDana.TabIndex = 16;
+            lblPreporuceniRokDana.Text = "Preporučeni rok (d):";
             // 
             // numPreporuceniRokDana
             // 
-            this.numPreporuceniRokDana.Location = new System.Drawing.Point(120, 220);
-            this.numPreporuceniRokDana.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numPreporuceniRokDana.Name = "numPreporuceniRokDana";
-            this.numPreporuceniRokDana.Size = new System.Drawing.Size(150, 20);
-            this.numPreporuceniRokDana.TabIndex = 17;
+            numPreporuceniRokDana.Location = new Point(140, 254);
+            numPreporuceniRokDana.Margin = new Padding(4, 3, 4, 3);
+            numPreporuceniRokDana.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            numPreporuceniRokDana.Name = "numPreporuceniRokDana";
+            numPreporuceniRokDana.Size = new Size(175, 23);
+            numPreporuceniRokDana.TabIndex = 17;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 256);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(140, 295);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(88, 27);
+            btnSave.TabIndex = 18;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(201, 256);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 19;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(234, 295);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(88, 27);
+            btnCancel.TabIndex = 19;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // PakovanjeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 291);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.numPreporuceniRokDana);
-            this.Controls.Add(this.lblPreporuceniRokDana);
-            this.Controls.Add(this.txtNacinCuvanja);
-            this.Controls.Add(this.lblNacinCuvanja);
-            this.Controls.Add(this.txtAmbalaza);
-            this.Controls.Add(this.lblAmbalaza);
-            this.Controls.Add(this.txtJedinicaMere);
-            this.Controls.Add(this.lblJedinicaMere);
-            this.Controls.Add(this.numKolicinaAktivne);
-            this.Controls.Add(this.lblKolicinaAktivne);
-            this.Controls.Add(this.txtVelicinaPakovanja);
-            this.Controls.Add(this.lblVelicinaPakovanja);
-            this.Controls.Add(this.txtOblikId);
-            this.Controls.Add(this.lblOblikId);
-            this.Controls.Add(this.txtLekId);
-            this.Controls.Add(this.lblLekId);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "PakovanjeForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Pakovanje";
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicinaAktivne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPreporuceniRokDana)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(331, 336);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(numPreporuceniRokDana);
+            Controls.Add(lblPreporuceniRokDana);
+            Controls.Add(txtNacinCuvanja);
+            Controls.Add(lblNacinCuvanja);
+            Controls.Add(txtAmbalaza);
+            Controls.Add(lblAmbalaza);
+            Controls.Add(txtJedinicaMere);
+            Controls.Add(lblJedinicaMere);
+            Controls.Add(numKolicinaAktivne);
+            Controls.Add(lblKolicinaAktivne);
+            Controls.Add(txtVelicinaPakovanja);
+            Controls.Add(lblVelicinaPakovanja);
+            Controls.Add(txtOblikId);
+            Controls.Add(lblOblikId);
+            Controls.Add(txtLekId);
+            Controls.Add(lblLekId);
+            Controls.Add(txtId);
+            Controls.Add(lblId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "PakovanjeForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Pakovanje";
+            ((System.ComponentModel.ISupportInitialize)numKolicinaAktivne).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numPreporuceniRokDana).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
