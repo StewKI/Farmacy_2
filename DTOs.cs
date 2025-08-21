@@ -29,7 +29,7 @@ namespace Farmacy
     {
         // 'SREDNJI' / 'VISI'
         public string NivoObrazovanja { get; set; }
-        //public IList<TehnicarSertifikacijaBasic> Sertifikacije { get; set; } = new List<TehnicarSertifikacijaBasic>();
+        public IList<TehnicarSertifikacijaBasic> Sertifikacije { get; set; } = new List<TehnicarSertifikacijaBasic>();
     }
 
     public class TehnicarSertifikacijaBasic

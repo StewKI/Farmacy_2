@@ -46,6 +46,7 @@ namespace Farmacy.Forme
             txtNivoObrazovanja = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            btnDodajSertifikaciju = new Button();
             SuspendLayout();
             // 
             // lblMBr
@@ -183,7 +184,7 @@ namespace Farmacy.Forme
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(150, 360);
+            btnSave.Location = new Point(171, 360);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 16;
@@ -201,11 +202,22 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // btnDodajSertifikaciju
+            // 
+            btnDodajSertifikaciju.Location = new Point(15, 352);
+            btnDodajSertifikaciju.Name = "btnDodajSertifikaciju";
+            btnDodajSertifikaciju.Size = new Size(104, 39);
+            btnDodajSertifikaciju.TabIndex = 18;
+            btnDodajSertifikaciju.Text = "Dodaj sertifikaciju";
+            btnDodajSertifikaciju.UseVisualStyleBackColor = true;
+            btnDodajSertifikaciju.Click += btnDodajSertifikaciju_Click;
+            // 
             // TehnicarForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 411);
+            Controls.Add(btnDodajSertifikaciju);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtNivoObrazovanja);
@@ -255,5 +267,6 @@ namespace Farmacy.Forme
         private System.Windows.Forms.TextBox txtNivoObrazovanja;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private Button btnDodajSertifikaciju;
     }
 }

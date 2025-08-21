@@ -28,173 +28,202 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblHemijskiNaziv = new System.Windows.Forms.Label();
-            this.txtHemijskiNaziv = new System.Windows.Forms.TextBox();
-            this.lblKomercijalniNaziv = new System.Windows.Forms.Label();
-            this.txtKomercijalniNaziv = new System.Windows.Forms.TextBox();
-            this.lblDejstvo = new System.Windows.Forms.Label();
-            this.txtDejstvo = new System.Windows.Forms.TextBox();
-            this.lblProizvodjac = new System.Windows.Forms.Label();
-            this.txtProizvodjac = new System.Windows.Forms.TextBox();
-            this.lblPrimarnaGrupa = new System.Windows.Forms.Label();
-            this.txtPrimarnaGrupa = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblId = new Label();
+            txtId = new TextBox();
+            lblHemijskiNaziv = new Label();
+            txtHemijskiNaziv = new TextBox();
+            lblKomercijalniNaziv = new Label();
+            txtKomercijalniNaziv = new TextBox();
+            lblDejstvo = new Label();
+            txtDejstvo = new TextBox();
+            lblProizvodjac = new Label();
+            txtProizvodjac = new TextBox();
+            lblPrimarnaGrupa = new Label();
+            btnSave = new Button();
+            btnCancel = new Button();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton3 = new RadioButton();
+            SuspendLayout();
             // 
             // lblId
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(30, 30);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 15);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID:";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(30, 30);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(21, 15);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(150, 27);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(200, 23);
-            this.txtId.TabIndex = 1;
-            this.txtId.TabStop = false;
+            txtId.Location = new Point(150, 27);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(200, 23);
+            txtId.TabIndex = 1;
+            txtId.TabStop = false;
             // 
             // lblHemijskiNaziv
             // 
-            this.lblHemijskiNaziv.AutoSize = true;
-            this.lblHemijskiNaziv.Location = new System.Drawing.Point(30, 70);
-            this.lblHemijskiNaziv.Name = "lblHemijskiNaziv";
-            this.lblHemijskiNaziv.Size = new System.Drawing.Size(100, 15);
-            this.lblHemijskiNaziv.TabIndex = 2;
-            this.lblHemijskiNaziv.Text = "Hemijski naziv:";
+            lblHemijskiNaziv.AutoSize = true;
+            lblHemijskiNaziv.Location = new Point(30, 70);
+            lblHemijskiNaziv.Name = "lblHemijskiNaziv";
+            lblHemijskiNaziv.Size = new Size(86, 15);
+            lblHemijskiNaziv.TabIndex = 2;
+            lblHemijskiNaziv.Text = "Hemijski naziv:";
             // 
             // txtHemijskiNaziv
             // 
-            this.txtHemijskiNaziv.Location = new System.Drawing.Point(150, 67);
-            this.txtHemijskiNaziv.Name = "txtHemijskiNaziv";
-            this.txtHemijskiNaziv.Size = new System.Drawing.Size(200, 23);
-            this.txtHemijskiNaziv.TabIndex = 3;
+            txtHemijskiNaziv.Location = new Point(150, 67);
+            txtHemijskiNaziv.Name = "txtHemijskiNaziv";
+            txtHemijskiNaziv.Size = new Size(200, 23);
+            txtHemijskiNaziv.TabIndex = 3;
             // 
             // lblKomercijalniNaziv
             // 
-            this.lblKomercijalniNaziv.AutoSize = true;
-            this.lblKomercijalniNaziv.Location = new System.Drawing.Point(30, 110);
-            this.lblKomercijalniNaziv.Name = "lblKomercijalniNaziv";
-            this.lblKomercijalniNaziv.Size = new System.Drawing.Size(110, 15);
-            this.lblKomercijalniNaziv.TabIndex = 4;
-            this.lblKomercijalniNaziv.Text = "Komercijalni naziv:";
+            lblKomercijalniNaziv.AutoSize = true;
+            lblKomercijalniNaziv.Location = new Point(30, 110);
+            lblKomercijalniNaziv.Name = "lblKomercijalniNaziv";
+            lblKomercijalniNaziv.Size = new Size(106, 15);
+            lblKomercijalniNaziv.TabIndex = 4;
+            lblKomercijalniNaziv.Text = "Komercijalni naziv:";
             // 
             // txtKomercijalniNaziv
             // 
-            this.txtKomercijalniNaziv.Location = new System.Drawing.Point(150, 107);
-            this.txtKomercijalniNaziv.Name = "txtKomercijalniNaziv";
-            this.txtKomercijalniNaziv.Size = new System.Drawing.Size(200, 23);
-            this.txtKomercijalniNaziv.TabIndex = 5;
+            txtKomercijalniNaziv.Location = new Point(150, 107);
+            txtKomercijalniNaziv.Name = "txtKomercijalniNaziv";
+            txtKomercijalniNaziv.Size = new Size(200, 23);
+            txtKomercijalniNaziv.TabIndex = 5;
             // 
             // lblDejstvo
             // 
-            this.lblDejstvo.AutoSize = true;
-            this.lblDejstvo.Location = new System.Drawing.Point(30, 150);
-            this.lblDejstvo.Name = "lblDejstvo";
-            this.lblDejstvo.Size = new System.Drawing.Size(55, 15);
-            this.lblDejstvo.TabIndex = 6;
-            this.lblDejstvo.Text = "Dejstvo:";
+            lblDejstvo.AutoSize = true;
+            lblDejstvo.Location = new Point(30, 150);
+            lblDejstvo.Name = "lblDejstvo";
+            lblDejstvo.Size = new Size(49, 15);
+            lblDejstvo.TabIndex = 6;
+            lblDejstvo.Text = "Dejstvo:";
             // 
             // txtDejstvo
             // 
-            this.txtDejstvo.Location = new System.Drawing.Point(150, 147);
-            this.txtDejstvo.Name = "txtDejstvo";
-            this.txtDejstvo.Size = new System.Drawing.Size(200, 23);
-            this.txtDejstvo.TabIndex = 7;
+            txtDejstvo.Location = new Point(150, 147);
+            txtDejstvo.Name = "txtDejstvo";
+            txtDejstvo.Size = new Size(200, 23);
+            txtDejstvo.TabIndex = 7;
             // 
             // lblProizvodjac
             // 
-            this.lblProizvodjac.AutoSize = true;
-            this.lblProizvodjac.Location = new System.Drawing.Point(30, 190);
-            this.lblProizvodjac.Name = "lblProizvodjac";
-            this.lblProizvodjac.Size = new System.Drawing.Size(75, 15);
-            this.lblProizvodjac.TabIndex = 8;
-            this.lblProizvodjac.Text = "Proizvođač:";
+            lblProizvodjac.AutoSize = true;
+            lblProizvodjac.Location = new Point(30, 190);
+            lblProizvodjac.Name = "lblProizvodjac";
+            lblProizvodjac.Size = new Size(68, 15);
+            lblProizvodjac.TabIndex = 8;
+            lblProizvodjac.Text = "Proizvođač:";
             // 
             // txtProizvodjac
             // 
-            this.txtProizvodjac.Location = new System.Drawing.Point(150, 187);
-            this.txtProizvodjac.Name = "txtProizvodjac";
-            this.txtProizvodjac.ReadOnly = true;
-            this.txtProizvodjac.Size = new System.Drawing.Size(200, 23);
-            this.txtProizvodjac.TabIndex = 9;
-            this.txtProizvodjac.TabStop = false;
+            txtProizvodjac.Location = new Point(150, 187);
+            txtProizvodjac.Name = "txtProizvodjac";
+            txtProizvodjac.Size = new Size(200, 23);
+            txtProizvodjac.TabIndex = 9;
+            txtProizvodjac.TabStop = false;
             // 
             // lblPrimarnaGrupa
             // 
-            this.lblPrimarnaGrupa.AutoSize = true;
-            this.lblPrimarnaGrupa.Location = new System.Drawing.Point(30, 230);
-            this.lblPrimarnaGrupa.Name = "lblPrimarnaGrupa";
-            this.lblPrimarnaGrupa.Size = new System.Drawing.Size(95, 15);
-            this.lblPrimarnaGrupa.TabIndex = 10;
-            this.lblPrimarnaGrupa.Text = "Primarna grupa:";
-            // 
-            // txtPrimarnaGrupa
-            // 
-            this.txtPrimarnaGrupa.Location = new System.Drawing.Point(150, 227);
-            this.txtPrimarnaGrupa.Name = "txtPrimarnaGrupa";
-            this.txtPrimarnaGrupa.ReadOnly = true;
-            this.txtPrimarnaGrupa.Size = new System.Drawing.Size(200, 23);
-            this.txtPrimarnaGrupa.TabIndex = 11;
-            this.txtPrimarnaGrupa.TabStop = false;
+            lblPrimarnaGrupa.AutoSize = true;
+            lblPrimarnaGrupa.Location = new Point(24, 232);
+            lblPrimarnaGrupa.Name = "lblPrimarnaGrupa";
+            lblPrimarnaGrupa.Size = new Size(92, 15);
+            lblPrimarnaGrupa.TabIndex = 10;
+            lblPrimarnaGrupa.Text = "Primarna grupa:";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 270);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 12;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(199, 275);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 12;
+            btnSave.Text = "Sačuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 270);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(288, 275);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 13;
+            btnCancel.Text = "Otkaži";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(131, 230);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(75, 19);
+            radioButton1.TabIndex = 14;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Analgetik";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(212, 230);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(77, 19);
+            radioButton2.TabIndex = 15;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Antibiotik";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.Location = new Point(301, 230);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(66, 19);
+            radioButton3.TabIndex = 16;
+            radioButton3.TabStop = true;
+            radioButton3.Text = "Diuretik";
+            radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
             // 
             // LekForm
             // 
-            this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(384, 320);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtPrimarnaGrupa);
-            this.Controls.Add(this.lblPrimarnaGrupa);
-            this.Controls.Add(this.txtProizvodjac);
-            this.Controls.Add(this.lblProizvodjac);
-            this.Controls.Add(this.txtDejstvo);
-            this.Controls.Add(this.lblDejstvo);
-            this.Controls.Add(this.txtKomercijalniNaziv);
-            this.Controls.Add(this.lblKomercijalniNaziv);
-            this.Controls.Add(this.txtHemijskiNaziv);
-            this.Controls.Add(this.lblHemijskiNaziv);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "LekForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Lek";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSave;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
+            ClientSize = new Size(375, 312);
+            Controls.Add(radioButton3);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(lblPrimarnaGrupa);
+            Controls.Add(txtProizvodjac);
+            Controls.Add(lblProizvodjac);
+            Controls.Add(txtDejstvo);
+            Controls.Add(lblDejstvo);
+            Controls.Add(txtKomercijalniNaziv);
+            Controls.Add(lblKomercijalniNaziv);
+            Controls.Add(txtHemijskiNaziv);
+            Controls.Add(lblHemijskiNaziv);
+            Controls.Add(txtId);
+            Controls.Add(lblId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "LekForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Lek";
+            Load += LekForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -210,8 +239,10 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblProizvodjac;
         private System.Windows.Forms.TextBox txtProizvodjac;
         private System.Windows.Forms.Label lblPrimarnaGrupa;
-        private System.Windows.Forms.TextBox txtPrimarnaGrupa;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton3;
     }
 }

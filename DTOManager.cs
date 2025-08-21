@@ -99,16 +99,19 @@ namespace Farmacy
                 };
                 s.Save(t);
 
-                //foreach (var cert in dto.Sertifikacije)
-                //{
-                //    var c = new TehnicarSertifikacija
-                //    {
-                //        Naziv = cert.Naziv,
-                //        Datum = cert.Datum,
-                //        Tehnicar = t
-                //    };
-                //    s.Save(c);
-                //}
+                if (dto.Sertifikacije.Count > 0)
+                {
+                    foreach (var cert in dto.Sertifikacije)
+                    {
+                        var c = new TehnicarSertifikacija
+                        {
+                            Naziv = cert.Naziv,
+                            Datum = cert.Datum,
+                            Tehnicar = t
+                        };
+                        s.Save(c);
+                    }
+                }
 
                 s.Flush();
             }
@@ -1040,22 +1043,33 @@ namespace Farmacy
                 s.Save(lek);
 
                 // M:N sekundarne kategorije
-                foreach (var kid in dto.SekundarneKategorijeIds.Distinct())
+                if (dto.SekundarneKategorijeIds.Count>0)
                 {
-                    var kat = s.Load<SekundarnaKategorija>(kid);
-                    var ls = new LekSekundarna
+                    foreach (var kid in dto.SekundarneKategorijeIds.Distinct())
                     {
-                        Lek = lek,
-                        Kategorija = kat,
-                    };
-                    s.Save(ls);
+                        var kat = s.Load<SekundarnaKategorija>(kid);
+                        var ls = new LekSekundarna
+                        {
+                            Lek = lek,
+                            Kategorija = kat,
+                        };
+                        s.Save(ls);
+                    }
                 }
+                
 
                 s.Flush();
                 dto.Id = lek.Id;
                 return lek.Id;
             }
-            catch (Exception) { }
+            catch (Exception ex) {
+                MessageBox.Show(
+                   $"Greška pri dodavanju novog leka : {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+
+            }
             return 0;
         }
 

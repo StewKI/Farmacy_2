@@ -17,6 +17,6 @@ namespace Farmacy.Entiteti
         public virtual PrimarnaGrupa PrimarnaGrupa { get; set; } = default!;
 
         public virtual ISet<LekSekundarna> Sekundarne { get; set; } = new HashSet<LekSekundarna>();
-        public virtual ISet<Pakovanje> Pakovanja { get; set; } = new HashSet<Pakovanje>();
+       public virtual ISet<Pakovanje> Pakovanja { get; set; } = new HashSet<Pakovanje>();
     }
 }

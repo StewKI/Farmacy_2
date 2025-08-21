@@ -122,8 +122,7 @@ namespace Farmacy.Forme
 
         private void btnDodajNoviLek_Click(object sender, EventArgs e)
         {
-            var noviLek = new Lek();
-            LekEditForm form = new LekEditForm(noviLek);
+            LekForm form = new LekForm();
             form.ShowDialog();
             popuniPodacima();
         }

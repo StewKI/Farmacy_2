@@ -11,6 +11,7 @@ namespace Farmacy.Forme
         public TehnicarForm()
         {
             InitializeComponent();
+            tehnicar = new TehnicarBasic();
             InitializeForm();
         }
 
@@ -98,10 +99,7 @@ namespace Farmacy.Forme
 
         private void SaveTehnicar()
         {
-            if (tehnicar == null)
-            {
-                tehnicar = new TehnicarBasic();
-            }
+           
 
             tehnicar.Prezime = txtPrezime.Text.Trim();
             tehnicar.Ime = txtIme.Text.Trim();
@@ -127,6 +125,12 @@ namespace Farmacy.Forme
         private void TehnicarForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDodajSertifikaciju_Click(object sender, EventArgs e)
+        {
+            DodajSertifikacijuForm form=new DodajSertifikacijuForm(tehnicar);
+            form.ShowDialog();
         }
     }
 }

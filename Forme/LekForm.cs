@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class LekForm : Form
     {
-        private Lek lek;
+        private LekBasic lek;
         private LekBasic ConvertToBasic(Lek lek)
         {
             return new LekBasic
@@ -27,10 +27,10 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public LekForm(Lek lek) : this()
+        public LekForm(LekBasic lek) : this()
         {
             this.lek = lek;
-            LoadLekData();
+            //LoadLekData();
         }
 
         private void InitializeForm()
@@ -38,21 +38,21 @@ namespace Farmacy.Forme
             // Form initialization logic will be in Designer file
         }
 
-        private void LoadLekData()
-        {
-            if (lek != null)
-            {
-                txtId.Text = lek.Id.ToString();
-                txtHemijskiNaziv.Text = lek.HemijskiNaziv;
-                txtKomercijalniNaziv.Text = lek.KomercijalniNaziv;
-                txtDejstvo.Text = lek.Dejstvo ?? string.Empty;
-                
-                if (lek.Proizvodjac != null)
-                    txtProizvodjac.Text = lek.Proizvodjac.ToString();
-                if (lek.PrimarnaGrupa != null)
-                    txtPrimarnaGrupa.Text = lek.PrimarnaGrupa.ToString();
-            }
-        }
+        //private void LoadLekData()
+        //{
+        //    if (lek != null)
+        //    {
+        //        txtId.Text = lek.Id.ToString();
+        //        txtHemijskiNaziv.Text = lek.HemijskiNaziv;
+        //        txtKomercijalniNaziv.Text = lek.KomercijalniNaziv;
+        //        txtDejstvo.Text = lek.Dejstvo ?? string.Empty;
+
+        //        if (lek.Proizvodjac != null)
+        //            txtProizvodjac.Text = lek.Proizvodjac.ToString();
+        //        if (lek.PrimarnaGrupa != null)
+        //            txtPrimarnaGrupa.Text = lek.PrimarnaGrupa.ToString();
+        //    }
+        //}
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -61,27 +61,6 @@ namespace Farmacy.Forme
 
             SaveLek(); // popunjava lek objekt
 
-            try
-            {
-                LekBasic lekBasic = ConvertToBasic(lek); // konverzija
-
-                if (lek.Id == 0)
-                {
-                    DTOManager.DodajLek(lekBasic);
-                }
-                else
-                {
-                    DTOManager.IzmeniLek(lekBasic);
-                }
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška pri čuvanju leka:\n" + ex.Message, "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
 
@@ -115,17 +94,52 @@ namespace Farmacy.Forme
         {
             if (lek == null)
             {
-                lek = new Lek();
+                lek = new LekBasic();
             }
 
             lek.HemijskiNaziv = txtHemijskiNaziv.Text.Trim();
             lek.KomercijalniNaziv = txtKomercijalniNaziv.Text.Trim();
             lek.Dejstvo = string.IsNullOrWhiteSpace(txtDejstvo.Text) ? null : txtDejstvo.Text.Trim();
+            lek.ProizvodjacId = long.Parse(txtProizvodjac.Text);
+            if (radioButton1.Checked)
+            {
+                lek.PrimarnaGrupaId = 1;
+            }
+            else if (radioButton2.Checked)
+            {
+                lek.PrimarnaGrupaId = 2;
+            }
+            else if (radioButton3.Checked)
+            {
+                lek.PrimarnaGrupaId= 3; 
+            }
+
+            DTOManager.DodajLek(lek);
         }
 
-        public Lek GetLek()
+        public LekBasic GetLek()
         {
             return lek;
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LekForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

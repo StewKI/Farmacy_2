@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class ProizvodjacForm : Form
     {
-        private Proizvodjac proizvodjac;
+        private ProizvodjacBasic proizvodjac;
 
         public ProizvodjacForm()
         {
@@ -14,7 +14,7 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public ProizvodjacForm(Proizvodjac proizvodjac) : this()
+        public ProizvodjacForm(ProizvodjacBasic proizvodjac) : this()
         {
             this.proizvodjac = proizvodjac;
             LoadProizvodjacData();
@@ -96,16 +96,18 @@ namespace Farmacy.Forme
         {
             if (proizvodjac == null)
             {
-                proizvodjac = new Proizvodjac();
+                proizvodjac = new ProizvodjacBasic();
             }
 
             proizvodjac.Naziv = txtNaziv.Text.Trim();
             proizvodjac.Zemlja = txtZemlja.Text.Trim();
             proizvodjac.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             proizvodjac.Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+
+            DTOManager.DodajProizvodjaca(proizvodjac);
         }
 
-        public Proizvodjac GetProizvodjac()
+        public ProizvodjacBasic GetProizvodjac()
         {
             return proizvodjac;
         }
