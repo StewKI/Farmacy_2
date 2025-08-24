@@ -6,16 +6,18 @@ namespace Farmacy.Forme
 {
     public partial class PakovanjeForm : Form
     {
-        private Pakovanje pakovanje;
-
-        public PakovanjeForm()
+        private PakovanjeBasic pakovanje;
+        private long idLek, idOblik;
+        public PakovanjeForm(long id1,long id2)
         {
             InitializeComponent();
-            pakovanje = new Pakovanje();
+            pakovanje = new PakovanjeBasic();
+            idLek = id1;
+            idOblik = id2;
             LoadPakovanjeData();
         }
 
-        public PakovanjeForm(Pakovanje pakovanje)
+        public PakovanjeForm(PakovanjeBasic pakovanje)
         {
             InitializeComponent();
             this.pakovanje = pakovanje;
@@ -24,26 +26,8 @@ namespace Farmacy.Forme
 
         private void LoadPakovanjeData()
         {
-            txtId.Text = pakovanje.Id.ToString();
-            
-            if (pakovanje.Lek != null)
-                txtLekId.Text = pakovanje.Lek.Id.ToString();
-            
-            if (pakovanje.Oblik != null)
-                txtOblikId.Text = pakovanje.Oblik.Id.ToString();
-            
-            txtVelicinaPakovanja.Text = pakovanje.VelicinaPakovanja;
-            numKolicinaAktivne.Value = pakovanje.KolicinaAktivne;
-            txtJedinicaMere.Text = pakovanje.JedinicaMere;
-            
-            if (!string.IsNullOrEmpty(pakovanje.Ambalaza))
-                txtAmbalaza.Text = pakovanje.Ambalaza;
-            
-            if (!string.IsNullOrEmpty(pakovanje.NacinCuvanja))
-                txtNacinCuvanja.Text = pakovanje.NacinCuvanja;
-            
-            if (pakovanje.PreporuceniRokDana.HasValue)
-                numPreporuceniRokDana.Value = pakovanje.PreporuceniRokDana.Value;
+            txtLekId.Text=idLek.ToString();
+            txtOblikId.Text=idOblik.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -111,9 +95,14 @@ namespace Farmacy.Forme
             pakovanje.Ambalaza = string.IsNullOrWhiteSpace(txtAmbalaza.Text) ? null : txtAmbalaza.Text.Trim();
             pakovanje.NacinCuvanja = string.IsNullOrWhiteSpace(txtNacinCuvanja.Text) ? null : txtNacinCuvanja.Text.Trim();
             pakovanje.PreporuceniRokDana = numPreporuceniRokDana.Value > 0 ? (int?)numPreporuceniRokDana.Value : null;
+            pakovanje.LekId = idLek;
+            pakovanje.OblikId = idOblik;
+
+            DTOManager.DodajPakovanje(pakovanje);
+
         }
 
-        public Pakovanje GetPakovanje()
+        public PakovanjeBasic GetPakovanje()
         {
             return pakovanje;
         }

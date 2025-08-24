@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Entiteti
 {
-    public class ProdajnaJedinica
+    public class ProdajnaJedinicaBasic
     {
         public virtual long Id { get; set; }
         public virtual string Naziv { get; set; } = default!;
@@ -15,7 +15,7 @@ namespace Farmacy.Entiteti
         public virtual string PostanskiBroj { get; set; } = default!;
         public virtual string Mesto { get; set; } = default!;
 
-        public virtual Farmaceut OdgovorniFarmaceut { get; set; } = default!;
+        public virtual FarmaceutBasic OdgovorniFarmaceut { get; set; } = default!;
         public virtual ISet<RadnoVreme> RadnaVremena { get; set; } = new HashSet<RadnoVreme>();
     }
 }

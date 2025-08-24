@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Mapiranja
 {
-    public class ProdajnaJedinicaMap : ClassMap<ProdajnaJedinica>
+    public class ProdajnaJedinicaMap : ClassMap<Entiteti.ProdajnaJedinicaBasic>
     {
         public ProdajnaJedinicaMap()
         {
             Table("Prodajna_jedinica");
-            Id(x => x.Id, "id").GeneratedBy.Identity(); // Oracle 12c IDENTITY ok
+            Id(x => x.Id, "id").GeneratedBy.Sequence("PRODAJNA_JEDINICA_SEQ");
             Map(x => x.Naziv, "naziv").Not.Nullable();
             Map(x => x.Ulica, "ulica").Not.Nullable();
             Map(x => x.Broj, "broj").Not.Nullable();

@@ -8,8 +8,8 @@ namespace Farmacy.Entiteti
 {
     public class MenadzerApoteka : IEquatable<MenadzerApoteka>
     {
-        public virtual Menadzer Menadzer { get; set; } = default!;
-        public virtual ProdajnaJedinica ProdajnaJedinica { get; set; } = default!;
+        public virtual MenadzerBasic Menadzer { get; set; } = default!;
+        public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
         public virtual DateTime Od { get; set; }   // deo PK
         public virtual DateTime? Do { get; set; }
 

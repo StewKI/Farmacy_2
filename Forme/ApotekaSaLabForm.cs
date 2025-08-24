@@ -6,7 +6,7 @@ namespace Farmacy.Forme
 {
     public partial class ApotekaSaLabForm : Form
     {
-        private ApotekaSaLab apotekaSaLab;
+        private ApotekaSaLabBasic apotekaSaLab;
 
         public ApotekaSaLabForm()
         {
@@ -14,7 +14,7 @@ namespace Farmacy.Forme
             InitializeForm();
         }
 
-        public ApotekaSaLabForm(ApotekaSaLab apotekaSaLab) : this()
+        public ApotekaSaLabForm(ApotekaSaLabBasic apotekaSaLab) : this()
         {
             this.apotekaSaLab = apotekaSaLab;
             LoadApotekaSaLabData();
@@ -36,7 +36,7 @@ namespace Farmacy.Forme
                 txtPostanskiBroj.Text = apotekaSaLab.PostanskiBroj;
                 txtMesto.Text = apotekaSaLab.Mesto;
                 txtNapomena.Text = apotekaSaLab.Napomena ?? string.Empty;
-                
+
                 if (apotekaSaLab.OdgovorniFarmaceut != null)
                     txtOdgovorniFarmaceut.Text = apotekaSaLab.OdgovorniFarmaceut.ToString();
             }
@@ -102,8 +102,10 @@ namespace Farmacy.Forme
         {
             if (apotekaSaLab == null)
             {
-                apotekaSaLab = new ApotekaSaLab();
+                apotekaSaLab = new ApotekaSaLabBasic();
             }
+
+            FarmaceutBasic f = new FarmaceutBasic();
 
             apotekaSaLab.Naziv = txtNaziv.Text.Trim();
             apotekaSaLab.Ulica = txtUlica.Text.Trim();
@@ -111,11 +113,40 @@ namespace Farmacy.Forme
             apotekaSaLab.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
+
+            apotekaSaLab.OdgovorniFarmaceut = DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+
+            DTOManager.DodajApotekuSaLab(apotekaSaLab);
         }
 
-        public ApotekaSaLab GetApotekaSaLab()
+        public ApotekaSaLabBasic GetApotekaSaLab()
         {
             return apotekaSaLab;
+        }
+
+        private void ApotekaSaLabForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblOdgovorniFarmaceut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                SaveApotekaSaLab();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void ApotekaSaLabForm_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

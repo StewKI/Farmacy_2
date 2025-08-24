@@ -11,7 +11,7 @@ namespace Farmacy
     {
         public virtual long Id { get; set; }
 
-        public virtual ProdajnaJedinica ProdajnaJedinica { get; set; } = default!;
+        public virtual Entiteti.ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
         public virtual DateTime DatumVreme { get; set; }
         public virtual Zaposleni? Blagajnik { get; set; }
 

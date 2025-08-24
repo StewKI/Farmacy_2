@@ -6,16 +6,16 @@ namespace Farmacy.Forme
 {
     public partial class OblikForm : Form
     {
-        private Oblik oblik;
+        private OblikBasic oblik;
 
         public OblikForm()
         {
             InitializeComponent();
-            oblik = new Oblik();
+            oblik = new OblikBasic();
             LoadOblikData();
         }
 
-        public OblikForm(Oblik oblik)
+        public OblikForm(OblikBasic oblik)
         {
             InitializeComponent();
             this.oblik = oblik;
@@ -59,13 +59,20 @@ namespace Farmacy.Forme
         {
             if (long.TryParse(txtId.Text, out long id))
                 oblik.Id = id;
-            
+
             oblik.Naziv = txtNaziv.Text.Trim();
+
+            DTOManager.DodajOblik(oblik);
         }
 
-        public Oblik GetOblik()
+        public OblikBasic GetOblik()
         {
             return oblik;
+        }
+
+        private void OblikForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

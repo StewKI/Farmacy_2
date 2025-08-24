@@ -28,190 +28,195 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblHemijskiNaziv = new System.Windows.Forms.Label();
-            this.txtHemijskiNaziv = new System.Windows.Forms.TextBox();
-            this.lblKomercijalniNaziv = new System.Windows.Forms.Label();
-            this.txtKomercijalniNaziv = new System.Windows.Forms.TextBox();
-            this.lblDejstvo = new System.Windows.Forms.Label();
-            this.txtDejstvo = new System.Windows.Forms.TextBox();
-            this.lblProizvodjac = new System.Windows.Forms.Label();
-            this.txtProizvodjac = new System.Windows.Forms.TextBox();
-            this.lblPrimarnaGrupa = new System.Windows.Forms.Label();
-            this.txtPrimarnaGrupa = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblId = new Label();
+            lblHemijski = new Label();
+            lblKomercijalni = new Label();
+            lblDejstvo = new Label();
+            lblProizvodjac = new Label();
+            lblPrimarnaGrupa = new Label();
+            txtId = new TextBox();
+            txtHemijski = new TextBox();
+            txtKomercijalni = new TextBox();
+            txtDejstvo = new TextBox();
+            txtProizvodjac = new TextBox();
+            cmbPrimarnaGrupa = new ComboBox();
+            btnSacuvaj = new Button();
+            btnOtkazi = new Button();
+            SuspendLayout();
             // 
             // lblId
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(30, 30);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 15);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID:";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(20, 20);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(21, 15);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
             // 
-            // txtId
+            // lblHemijski
             // 
-            this.txtId.Location = new System.Drawing.Point(150, 27);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(200, 23);
-            this.txtId.TabIndex = 1;
-            this.txtId.TabStop = false;
+            lblHemijski.AutoSize = true;
+            lblHemijski.Location = new Point(20, 52);
+            lblHemijski.Name = "lblHemijski";
+            lblHemijski.Size = new Size(86, 15);
+            lblHemijski.TabIndex = 2;
+            lblHemijski.Text = "Hemijski naziv:";
             // 
-            // lblHemijskiNaziv
+            // lblKomercijalni
             // 
-            this.lblHemijskiNaziv.AutoSize = true;
-            this.lblHemijskiNaziv.Location = new System.Drawing.Point(30, 70);
-            this.lblHemijskiNaziv.Name = "lblHemijskiNaziv";
-            this.lblHemijskiNaziv.Size = new System.Drawing.Size(100, 15);
-            this.lblHemijskiNaziv.TabIndex = 2;
-            this.lblHemijskiNaziv.Text = "Hemijski naziv:";
-            // 
-            // txtHemijskiNaziv
-            // 
-            this.txtHemijskiNaziv.Location = new System.Drawing.Point(150, 67);
-            this.txtHemijskiNaziv.Name = "txtHemijskiNaziv";
-            this.txtHemijskiNaziv.Size = new System.Drawing.Size(200, 23);
-            this.txtHemijskiNaziv.TabIndex = 3;
-            // 
-            // lblKomercijalniNaziv
-            // 
-            this.lblKomercijalniNaziv.AutoSize = true;
-            this.lblKomercijalniNaziv.Location = new System.Drawing.Point(30, 110);
-            this.lblKomercijalniNaziv.Name = "lblKomercijalniNaziv";
-            this.lblKomercijalniNaziv.Size = new System.Drawing.Size(110, 15);
-            this.lblKomercijalniNaziv.TabIndex = 4;
-            this.lblKomercijalniNaziv.Text = "Komercijalni naziv:";
-            // 
-            // txtKomercijalniNaziv
-            // 
-            this.txtKomercijalniNaziv.Location = new System.Drawing.Point(150, 107);
-            this.txtKomercijalniNaziv.Name = "txtKomercijalniNaziv";
-            this.txtKomercijalniNaziv.Size = new System.Drawing.Size(200, 23);
-            this.txtKomercijalniNaziv.TabIndex = 5;
+            lblKomercijalni.AutoSize = true;
+            lblKomercijalni.Location = new Point(20, 84);
+            lblKomercijalni.Name = "lblKomercijalni";
+            lblKomercijalni.Size = new Size(106, 15);
+            lblKomercijalni.TabIndex = 4;
+            lblKomercijalni.Text = "Komercijalni naziv:";
             // 
             // lblDejstvo
             // 
-            this.lblDejstvo.AutoSize = true;
-            this.lblDejstvo.Location = new System.Drawing.Point(30, 150);
-            this.lblDejstvo.Name = "lblDejstvo";
-            this.lblDejstvo.Size = new System.Drawing.Size(55, 15);
-            this.lblDejstvo.TabIndex = 6;
-            this.lblDejstvo.Text = "Dejstvo:";
-            // 
-            // txtDejstvo
-            // 
-            this.txtDejstvo.Location = new System.Drawing.Point(150, 147);
-            this.txtDejstvo.Name = "txtDejstvo";
-            this.txtDejstvo.Size = new System.Drawing.Size(200, 23);
-            this.txtDejstvo.TabIndex = 7;
+            lblDejstvo.AutoSize = true;
+            lblDejstvo.Location = new Point(20, 116);
+            lblDejstvo.Name = "lblDejstvo";
+            lblDejstvo.Size = new Size(49, 15);
+            lblDejstvo.TabIndex = 6;
+            lblDejstvo.Text = "Dejstvo:";
             // 
             // lblProizvodjac
             // 
-            this.lblProizvodjac.AutoSize = true;
-            this.lblProizvodjac.Location = new System.Drawing.Point(30, 190);
-            this.lblProizvodjac.Name = "lblProizvodjac";
-            this.lblProizvodjac.Size = new System.Drawing.Size(75, 15);
-            this.lblProizvodjac.TabIndex = 8;
-            this.lblProizvodjac.Text = "Proizvođač:";
-            // 
-            // txtProizvodjac
-            // 
-            this.txtProizvodjac.Location = new System.Drawing.Point(150, 187);
-            this.txtProizvodjac.Name = "txtProizvodjac";
-            this.txtProizvodjac.ReadOnly = true;
-            this.txtProizvodjac.Size = new System.Drawing.Size(200, 23);
-            this.txtProizvodjac.TabIndex = 9;
-            this.txtProizvodjac.TabStop = false;
+            lblProizvodjac.AutoSize = true;
+            lblProizvodjac.Location = new Point(20, 148);
+            lblProizvodjac.Name = "lblProizvodjac";
+            lblProizvodjac.Size = new Size(68, 15);
+            lblProizvodjac.TabIndex = 8;
+            lblProizvodjac.Text = "Proizvođač:";
             // 
             // lblPrimarnaGrupa
             // 
-            this.lblPrimarnaGrupa.AutoSize = true;
-            this.lblPrimarnaGrupa.Location = new System.Drawing.Point(30, 230);
-            this.lblPrimarnaGrupa.Name = "lblPrimarnaGrupa";
-            this.lblPrimarnaGrupa.Size = new System.Drawing.Size(95, 15);
-            this.lblPrimarnaGrupa.TabIndex = 10;
-            this.lblPrimarnaGrupa.Text = "Primarna grupa:";
+            lblPrimarnaGrupa.AutoSize = true;
+            lblPrimarnaGrupa.Location = new Point(20, 180);
+            lblPrimarnaGrupa.Name = "lblPrimarnaGrupa";
+            lblPrimarnaGrupa.Size = new Size(92, 15);
+            lblPrimarnaGrupa.TabIndex = 10;
+            lblPrimarnaGrupa.Text = "Primarna grupa:";
             // 
-            // txtPrimarnaGrupa
+            // txtId
             // 
-            this.txtPrimarnaGrupa.Location = new System.Drawing.Point(150, 227);
-            this.txtPrimarnaGrupa.Name = "txtPrimarnaGrupa";
-            this.txtPrimarnaGrupa.ReadOnly = true;
-            this.txtPrimarnaGrupa.Size = new System.Drawing.Size(200, 23);
-            this.txtPrimarnaGrupa.TabIndex = 11;
-            this.txtPrimarnaGrupa.TabStop = false;
+            txtId.BackColor = SystemColors.ControlLight;
+            txtId.Location = new Point(160, 17);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(240, 23);
+            txtId.TabIndex = 1;
+            txtId.TabStop = false;
             // 
-            // btnSave
+            // txtHemijski
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 270);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 12;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            txtHemijski.Location = new Point(160, 49);
+            txtHemijski.Name = "txtHemijski";
+            txtHemijski.Size = new Size(240, 23);
+            txtHemijski.TabIndex = 3;
             // 
-            // btnCancel
+            // txtKomercijalni
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 270);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            txtKomercijalni.Location = new Point(160, 81);
+            txtKomercijalni.Name = "txtKomercijalni";
+            txtKomercijalni.Size = new Size(240, 23);
+            txtKomercijalni.TabIndex = 5;
+            // 
+            // txtDejstvo
+            // 
+            txtDejstvo.Location = new Point(160, 113);
+            txtDejstvo.Name = "txtDejstvo";
+            txtDejstvo.Size = new Size(240, 23);
+            txtDejstvo.TabIndex = 7;
+            // 
+            // txtProizvodjac
+            // 
+            txtProizvodjac.Location = new Point(160, 145);
+            txtProizvodjac.Name = "txtProizvodjac";
+            txtProizvodjac.Size = new Size(240, 23);
+            txtProizvodjac.TabIndex = 9;
+            // 
+            // cmbPrimarnaGrupa
+            // 
+            cmbPrimarnaGrupa.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPrimarnaGrupa.FormattingEnabled = true;
+            cmbPrimarnaGrupa.Location = new Point(160, 177);
+            cmbPrimarnaGrupa.Name = "cmbPrimarnaGrupa";
+            cmbPrimarnaGrupa.Size = new Size(240, 23);
+            cmbPrimarnaGrupa.TabIndex = 11;
+            cmbPrimarnaGrupa.SelectedIndexChanged += cmbPrimarnaGrupa_SelectedIndexChanged;
+            // 
+            // btnSacuvaj
+            // 
+            btnSacuvaj.Location = new Point(160, 220);
+            btnSacuvaj.Name = "btnSacuvaj";
+            btnSacuvaj.Size = new Size(90, 28);
+            btnSacuvaj.TabIndex = 12;
+            btnSacuvaj.Text = "Sačuvaj";
+            btnSacuvaj.UseVisualStyleBackColor = true;
+            btnSacuvaj.Click += btnSacuvaj_Click;
+            // 
+            // btnOtkazi
+            // 
+            btnOtkazi.DialogResult = DialogResult.Cancel;
+            btnOtkazi.Location = new Point(260, 220);
+            btnOtkazi.Name = "btnOtkazi";
+            btnOtkazi.Size = new Size(90, 28);
+            btnOtkazi.TabIndex = 13;
+            btnOtkazi.Text = "Otkaži";
+            btnOtkazi.UseVisualStyleBackColor = true;
             // 
             // LekForm
             // 
-            this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(384, 320);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtPrimarnaGrupa);
-            this.Controls.Add(this.lblPrimarnaGrupa);
-            this.Controls.Add(this.txtProizvodjac);
-            this.Controls.Add(this.lblProizvodjac);
-            this.Controls.Add(this.txtDejstvo);
-            this.Controls.Add(this.lblDejstvo);
-            this.Controls.Add(this.txtKomercijalniNaziv);
-            this.Controls.Add(this.lblKomercijalniNaziv);
-            this.Controls.Add(this.txtHemijskiNaziv);
-            this.Controls.Add(this.lblHemijskiNaziv);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "LekForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Lek";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSacuvaj;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnOtkazi;
+            ClientSize = new Size(440, 270);
+            Controls.Add(lblId);
+            Controls.Add(txtId);
+            Controls.Add(lblHemijski);
+            Controls.Add(txtHemijski);
+            Controls.Add(lblKomercijalni);
+            Controls.Add(txtKomercijalni);
+            Controls.Add(lblDejstvo);
+            Controls.Add(txtDejstvo);
+            Controls.Add(lblProizvodjac);
+            Controls.Add(txtProizvodjac);
+            Controls.Add(lblPrimarnaGrupa);
+            Controls.Add(cmbPrimarnaGrupa);
+            Controls.Add(btnSacuvaj);
+            Controls.Add(btnOtkazi);
+            MinimumSize = new Size(456, 309);
+            Name = "LekForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Lek";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
+
+
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lblHemijskiNaziv;
-        private System.Windows.Forms.TextBox txtHemijskiNaziv;
-        private System.Windows.Forms.Label lblKomercijalniNaziv;
-        private System.Windows.Forms.TextBox txtKomercijalniNaziv;
+        private System.Windows.Forms.Label lblHemijski;
+        private System.Windows.Forms.Label lblKomercijalni;
         private System.Windows.Forms.Label lblDejstvo;
-        private System.Windows.Forms.TextBox txtDejstvo;
         private System.Windows.Forms.Label lblProizvodjac;
-        private System.Windows.Forms.TextBox txtProizvodjac;
         private System.Windows.Forms.Label lblPrimarnaGrupa;
-        private System.Windows.Forms.TextBox txtPrimarnaGrupa;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
+
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.TextBox txtHemijski;
+        private System.Windows.Forms.TextBox txtKomercijalni;
+        private System.Windows.Forms.TextBox txtDejstvo;
+        private System.Windows.Forms.TextBox txtProizvodjac;
+
+        private System.Windows.Forms.ComboBox cmbPrimarnaGrupa;
+
+        private System.Windows.Forms.Button btnSacuvaj;
+        private System.Windows.Forms.Button btnOtkazi;
+
+
     }
 }

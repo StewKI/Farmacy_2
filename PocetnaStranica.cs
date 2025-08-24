@@ -16,5 +16,21 @@ namespace Farmacy
         {
             InitializeComponent();
         }
+
+        private void PocetnaStranica_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnZaposleni(object sender, EventArgs e)
+        {
+            Forme.ZaposleniPrikaz forma=new Forme.ZaposleniPrikaz();
+            forma.ShowDialog();
+        }
     }
 }

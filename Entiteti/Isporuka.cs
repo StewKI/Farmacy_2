@@ -10,7 +10,7 @@ namespace Farmacy.Entiteti
     {
         public virtual long Id { get; set; }
         public virtual Distributer Distributer { get; set; } = default!;
-        public virtual ProdajnaJedinica ProdajnaJedinica { get; set; } = default!;
+        public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
         public virtual DateTime Datum { get; set; }
         public virtual Zaposleni? Magacioner { get; set; }
 

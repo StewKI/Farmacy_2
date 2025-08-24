@@ -6,16 +6,16 @@ namespace Farmacy.Forme
 {
     public partial class DistributerForm : Form
     {
-        private Distributer distributer;
+        private DistributerBasic distributer;
 
         public DistributerForm()
         {
             InitializeComponent();
-            distributer = new Distributer();
+            distributer = new DistributerBasic();
             LoadDistributerData();
         }
 
-        public DistributerForm(Distributer distributer)
+        public DistributerForm(DistributerBasic distributer)
         {
             InitializeComponent();
             this.distributer = distributer;
@@ -64,16 +64,27 @@ namespace Farmacy.Forme
 
         private void SaveDistributer()
         {
-            if (long.TryParse(txtId.Text, out long id))
-                distributer.Id = id;
-            
+           
+
             distributer.Naziv = txtNaziv.Text.Trim();
             distributer.Kontakt = txtKontakt.Text.Trim();
+
+            DTOManager.DodajDistributera(distributer);
         }
 
-        public Distributer GetDistributer()
+        public DistributerBasic GetDistributer()
         {
             return distributer;
+        }
+
+        private void DistributerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblKontakt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

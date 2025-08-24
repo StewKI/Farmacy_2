@@ -8,7 +8,7 @@ namespace Farmacy.Entiteti
 {
     public class Zaliha : IEquatable<Zaliha>
     {
-        public virtual ProdajnaJedinica ProdajnaJedinica { get; set; } = default!;
+        public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
         public virtual Pakovanje Pakovanje { get; set; } = default!;
         public virtual int Kolicina { get; set; }
         public virtual DateTime? DatumPoslednjeIsporuke { get; set; }

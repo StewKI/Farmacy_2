@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Entiteti
 {
-    public class SpecijalizovanaApoteka : ProdajnaJedinica
+    public class SpecijalizovanaApoteka : ProdajnaJedinicaBasic
     {
         public virtual string? SpecijalnostTipa { get; set; }
         public virtual string? Napomena { get; set; }

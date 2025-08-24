@@ -26,7 +26,7 @@ namespace Farmacy.Forme
         {
             if (lekSekundarna.Lek != null)
                 txtLekId.Text = lekSekundarna.Lek.Id.ToString();
-            
+
             if (lekSekundarna.Kategorija != null)
                 txtKategorijaId.Text = lekSekundarna.Kategorija.Id.ToString();
         }
@@ -68,11 +68,20 @@ namespace Farmacy.Forme
         {
             // Napomena: Referentne entitete (Lek, Kategorija) treba postaviti spolja
             // jer ova forma samo prikazuje ID-ove
+
+           
+
+            DTOManager.DodajLekSekundarna(long.Parse(txtKategorijaId.Text), long.Parse(txtLekId.Text));
         }
 
         public LekSekundarna GetLekSekundarna()
         {
             return lekSekundarna;
+        }
+
+        private void LekSekundarnaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
