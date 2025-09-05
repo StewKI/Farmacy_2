@@ -36,7 +36,7 @@ namespace Farmacy.Forme
             try
             {
                 // 1) Učitaj podatke
-                IList<ZaposleniBasic> lista = DTOManager.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
+                IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
 
                 // 2) Mapiraj kolone (ako već nisu mapirane)
                 dgvZaposleni.AutoGenerateColumns = false;
@@ -107,7 +107,7 @@ namespace Farmacy.Forme
                 MessageBox.Show("Morate izabrati radnika prvo!");
                 return;
             }
-            DTOManager.ObrisiZaposlenog(mbr);
+            DTOManagerZaposleni.ObrisiZaposlenog(mbr);
             popuniPodacima();
 
         }
@@ -132,7 +132,7 @@ namespace Farmacy.Forme
             }
 
 
-            var selektovaniZaposleni = DTOManager.VratiZaposlenog(mbr);
+            var selektovaniZaposleni = DTOManagerZaposleni.VratiZaposlenog(mbr);
             if(selektovaniZaposleni is FarmaceutBasic faramaceut)
             {
                 FarmaceutEditForm form = new FarmaceutEditForm(faramaceut);

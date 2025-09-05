@@ -106,7 +106,7 @@ namespace Farmacy.Forme
                                    .Id;
 
 
-            DTOManager.DodajLek(lek);
+            DTOManagerLek.DodajLek(lek);
         }
 
         private long nadjiId(string naziv)
@@ -157,7 +157,7 @@ namespace Farmacy.Forme
         {
             try
             {
-                list = DTOManager.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
+                list = DTOManagerLek.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
 
 
 

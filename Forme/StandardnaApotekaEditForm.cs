@@ -102,10 +102,10 @@ namespace Farmacy.Forme
             standardnaApoteka.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             standardnaApoteka.Mesto = txtMesto.Text.Trim();
             standardnaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
-            standardnaApoteka.OdgovorniFarmaceut= DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+            standardnaApoteka.OdgovorniFarmaceut= DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
             // Napomena: OdgovorniFarmaceut treba postaviti spolja
 
-            DTOManager.IzmeniSApoetku(standardnaApoteka);
+            DTOManagerProdajneJedinice.IzmeniSApoetku(standardnaApoteka);
         }
 
         public StandardnaApoteka GetStandardnaApoteka()

@@ -71,7 +71,7 @@ namespace Farmacy.Forme
 
             sekundarnaGrupa.Naziv = txtNaziv.Text.Trim();
 
-            DTOManager.DodajSekundarnuKategoriju(sekundarnaGrupa);
+            DTOManagerLek.DodajSekundarnuKategoriju(sekundarnaGrupa);
         }
 
         public SekundarnaKategorijaBasic GetSekundarnaGrupa()

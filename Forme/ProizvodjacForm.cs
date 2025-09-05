@@ -104,7 +104,7 @@ namespace Farmacy.Forme
             proizvodjac.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             proizvodjac.Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
 
-            DTOManager.DodajProizvodjaca(proizvodjac);
+            DTOManagerLek.DodajProizvodjaca(proizvodjac);
         }
 
         public ProizvodjacBasic GetProizvodjac()

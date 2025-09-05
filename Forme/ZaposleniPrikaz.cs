@@ -31,7 +31,7 @@ namespace Farmacy.Forme
             try
             {
                 // 1) Učitaj podatke
-                IList<ZaposleniBasic> lista = DTOManager.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
+                IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
 
                 // 2) Mapiraj kolone (ako već nisu mapirane)
                 dgvZaposleni.AutoGenerateColumns = false;

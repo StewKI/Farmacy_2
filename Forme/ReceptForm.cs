@@ -134,7 +134,7 @@ namespace Farmacy.Forme
             recept.NazivUstanove = txtNazivUstanove.Text.Trim();
             //recept.RealizacijaDatum = dtpRealizacijaDatum.Value;
 
-            DTOManager.DodajRecept(recept);
+            DTOManagerIsporukeZalihe.DodajRecept(recept);
         }
 
         public Recept GetRecept()

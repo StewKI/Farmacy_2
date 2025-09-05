@@ -114,9 +114,9 @@ namespace Farmacy.Forme
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
 
-            apotekaSaLab.OdgovorniFarmaceut = DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+            apotekaSaLab.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
 
-            DTOManager.DodajApotekuSaLab(apotekaSaLab);
+            DTOManagerProdajneJedinice.DodajApotekuSaLab(apotekaSaLab);
         }
 
         public ApotekaSaLabBasic GetApotekaSaLab()

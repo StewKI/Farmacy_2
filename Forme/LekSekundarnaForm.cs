@@ -71,7 +71,7 @@ namespace Farmacy.Forme
 
            
 
-            DTOManager.DodajLekSekundarna(long.Parse(txtKategorijaId.Text), long.Parse(txtLekId.Text));
+            DTOManagerLek.DodajLekSekundarna(long.Parse(txtKategorijaId.Text), long.Parse(txtLekId.Text));
         }
 
         public LekSekundarna GetLekSekundarna()

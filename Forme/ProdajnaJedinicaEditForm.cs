@@ -75,7 +75,7 @@ namespace Farmacy_2.Forme
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
             prodajnaJedinica.OdgovorniFarmaceutMbr= long.Parse(txtOdgovorniFarmaceut.Text.Trim());
 
-            DTOManager.IzmeniProdajnuJedinicu(prodajnaJedinica);
+            DTOManagerProdajneJedinice.IzmeniProdajnuJedinicu(prodajnaJedinica);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

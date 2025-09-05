@@ -103,7 +103,7 @@ namespace Farmacy.Forme
             farmaceut.DatumPoslednjeObnoveLicence = dtpDatumPoslObnoveLicence.Value;
             farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
 
-            DTOManager.DodajFarmaceuta(farmaceut);
+            DTOManagerZaposleni.DodajFarmaceuta(farmaceut);
 
         }
 

@@ -90,7 +90,7 @@ namespace Farmacy_2.Forme
             z.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             z.DatumZaposlenja = dtpDatumZaposlenja.Value;
 
-            DTOManager.UpdateZaposlenog(z);
+            DTOManagerZaposleni.UpdateZaposlenog(z);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

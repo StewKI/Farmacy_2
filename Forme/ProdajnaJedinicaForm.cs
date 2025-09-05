@@ -110,7 +110,7 @@ namespace Farmacy.Forme
             prodajnaJedinica.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
             prodajnaJedinica.OdgovorniFarmaceutMbr = long.Parse(txtOdgovorniFarmaceut.Text.Trim());
-            DTOManager.DodajProdajnuJedinicu(prodajnaJedinica);
+            DTOManagerProdajneJedinice.DodajProdajnuJedinicu(prodajnaJedinica);
 
         }
 

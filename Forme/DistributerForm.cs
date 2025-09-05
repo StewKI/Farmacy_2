@@ -69,7 +69,7 @@ namespace Farmacy.Forme
             distributer.Naziv = txtNaziv.Text.Trim();
             distributer.Kontakt = txtKontakt.Text.Trim();
 
-            DTOManager.DodajDistributera(distributer);
+            DTOManagerIsporukeZalihe.DodajDistributera(distributer);
         }
 
         public DistributerBasic GetDistributer()

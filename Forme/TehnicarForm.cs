@@ -109,7 +109,7 @@ namespace Farmacy.Forme
             tehnicar.DatumZaposlenja = dtpDatumZaposlenja.Value;
             tehnicar.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
 
-            DTOManager.DodajTehnicara(tehnicar);
+            DTOManagerZaposleni.DodajTehnicara(tehnicar);
         }
 
         //public Tehnicar GetTehnicar()

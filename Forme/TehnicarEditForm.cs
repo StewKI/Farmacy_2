@@ -121,7 +121,7 @@ namespace Farmacy.Forme
             t.DatumZaposlenja = dtpDatumZaposlenja.Value;
             t.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
 
-            DTOManager.UpdateTehnicara(t);
+            DTOManagerZaposleni.UpdateTehnicara(t);
         }
 
         public TehnicarBasic GetTehnicar()

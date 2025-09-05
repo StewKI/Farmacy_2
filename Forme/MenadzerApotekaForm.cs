@@ -99,7 +99,7 @@ namespace Farmacy.Forme
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
             menadzerApoteka.ProdajnaJedinicaId =idApoteke;
             menadzerApoteka.MBrMenadzera = long.Parse(txtMenadzerId.Text);
-            DTOManager.DodeliMenadzeraApoteci(menadzerApoteka);
+            DTOManagerProdajneJedinice.DodeliMenadzeraApoteci(menadzerApoteka);
         }
 
         public MenadzerApotekaBasic GetMenadzerApoteka()

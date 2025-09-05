@@ -36,7 +36,7 @@ namespace Farmacy.Forme
             string id = (txtRecept.Text);
             DateTime d=dtpDatum.Value;
 
-            DTOManager.RealizujRecept(id, p, d);
+            DTOManagerIsporukeZalihe.RealizujRecept(id, p, d);
         }
 
         private void label1_Click(object sender, EventArgs e)

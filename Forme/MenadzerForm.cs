@@ -102,7 +102,7 @@ namespace Farmacy.Forme
             menadzer.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             menadzer.DatumZaposlenja = dtpDatumZaposlenja.Value;
 
-            DTOManager.DodajMenadzera(menadzer);
+            DTOManagerZaposleni.DodajMenadzera(menadzer);
         }
 
         //public Entiteti.MenadzerBasic GetMenadzer()

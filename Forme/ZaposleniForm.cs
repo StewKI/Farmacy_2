@@ -113,7 +113,7 @@ namespace Farmacy.Forme
             zaposleni.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             zaposleni.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             zaposleni.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            DTOManager.DodajZaposlenog(zaposleni);
+            DTOManagerZaposleni.DodajZaposlenog(zaposleni);
         }
 
         public Zaposleni GetZaposleni()

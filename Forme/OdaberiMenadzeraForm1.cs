@@ -30,7 +30,7 @@ namespace Farmacy.Forme
             try
             {
                 // 1) Učitaj podatke
-                IList<MenadzerBasic> lista = DTOManager.VratiMenadzereZaApoteku(id) ?? new List<MenadzerBasic>();
+                IList<MenadzerBasic> lista = DTOManagerProdajneJedinice.VratiMenadzereZaApoteku(id) ?? new List<MenadzerBasic>();
                 dgvMenadzeri.RowHeadersVisible = false;
                 // 2) Mapiraj kolone (ako već nisu mapirane)
                 dgvMenadzeri.AutoGenerateColumns = false;
@@ -94,7 +94,7 @@ namespace Farmacy.Forme
                 MessageBox.Show("Morate izabrati radnika prvo!");
                 return;
             }
-            DTOManager.UkloniMenadzeraSaApoteke(id,mbr);
+            DTOManagerProdajneJedinice.UkloniMenadzeraSaApoteke(id,mbr);
             popuniMenadzere();
         }
     }

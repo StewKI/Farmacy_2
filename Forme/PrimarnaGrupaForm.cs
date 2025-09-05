@@ -71,7 +71,7 @@ namespace Farmacy.Forme
 
             primarnaGrupa.Naziv = txtNaziv.Text.Trim();
 
-            DTOManager.DodajPrimarnuGrupu(primarnaGrupa);
+            DTOManagerLek.DodajPrimarnuGrupu(primarnaGrupa);
         }
 
         public PrimarnaGrupaBasic GetPrimarnaGrupa()

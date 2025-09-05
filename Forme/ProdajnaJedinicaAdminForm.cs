@@ -38,7 +38,7 @@ namespace Farmacy.Forme
             try
             {
                 // 1) Učitaj podatke
-                IList<ProdajnaJedinicaBasic> lista = DTOManager.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
+                IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
 
                 // 2) Mapiraj kolone (ako već nisu mapirane)
                 dgvApoteke.AutoGenerateColumns = false;
@@ -118,7 +118,7 @@ namespace Farmacy.Forme
                 MessageBox.Show("Morate izabrati radnika prvo!");
                 return;
             }
-            DTOManager.ObrisiProdajnuJedinicu(mbr);
+            DTOManagerProdajneJedinice.ObrisiProdajnuJedinicu(mbr);
             popuniPodacima();
         }
 
@@ -149,7 +149,7 @@ namespace Farmacy.Forme
 
 
 
-            var selektovanaJedinica = DTOManager.VratiProdajnuJedinicuTip(id);
+            var selektovanaJedinica = DTOManagerProdajneJedinice.VratiProdajnuJedinicuTip(id);
 
             if (selektovanaJedinica is SpecijalizovanaApoteka specijalizovana)
             {
@@ -169,7 +169,7 @@ namespace Farmacy.Forme
             else // osnovna prodajna jedinica
             {
 
-                ProdajnaJedinicaEditForm form = new ProdajnaJedinicaEditForm(DTOManager.VratiProdajnuJedinicu(id));
+                ProdajnaJedinicaEditForm form = new ProdajnaJedinicaEditForm(DTOManagerProdajneJedinice.VratiProdajnuJedinicu(id));
                 form.ShowDialog();
             }
 
@@ -275,7 +275,7 @@ namespace Farmacy.Forme
             }
             
 
-            RealizujReceptForm form = new RealizujReceptForm(DTOManager.VratiProdajnuJedinicu(id));
+            RealizujReceptForm form = new RealizujReceptForm(DTOManagerProdajneJedinice.VratiProdajnuJedinicu(id));
             form.ShowDialog();
         }
     }

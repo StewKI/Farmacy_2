@@ -62,7 +62,7 @@ namespace Farmacy.Forme
 
             oblik.Naziv = txtNaziv.Text.Trim();
 
-            DTOManager.DodajOblik(oblik);
+            DTOManagerLek.DodajOblik(oblik);
         }
 
         public OblikBasic GetOblik()

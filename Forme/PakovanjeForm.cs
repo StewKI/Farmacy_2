@@ -98,7 +98,7 @@ namespace Farmacy.Forme
             pakovanje.LekId = idLek;
             pakovanje.OblikId = idOblik;
 
-            DTOManager.DodajPakovanje(pakovanje);
+            DTOManagerLek.DodajPakovanje(pakovanje);
 
         }
 

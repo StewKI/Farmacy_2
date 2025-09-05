@@ -26,7 +26,7 @@ namespace Farmacy.Forme
         {
             try
             {
-                IList<LekBasic> lista = DTOManager.VratiSveLekove() ?? new List<LekBasic>();
+                IList<LekBasic> lista = DTOManagerLek.VratiSveLekove() ?? new List<LekBasic>();
 
                 dgvLekovi.AutoGenerateColumns = false;
                 if (colId != null) colId.DataPropertyName = "Id";
@@ -80,7 +80,7 @@ namespace Farmacy.Forme
         {
             try
             {
-                IList<Oblik> lista = DTOManager.VratiSveOblikeLekova() ?? new List<Oblik>();
+                IList<Oblik> lista = DTOManagerLek.VratiSveOblikeLekova() ?? new List<Oblik>();
 
                 dgvOblik.AutoGenerateColumns = false;
                 if (oblikId != null) oblikId.DataPropertyName = "Id";
@@ -132,7 +132,7 @@ namespace Farmacy.Forme
 
             if (result == DialogResult.Yes)
             {
-                DTOManager.ObrisiLek(id);
+                DTOManagerLek.ObrisiLek(id);
                 popuniPodacimaLek();
             }
         }
@@ -146,7 +146,7 @@ namespace Farmacy.Forme
             }
 
             long id = Convert.ToInt64(dgvLekovi.CurrentRow.Cells[0].Value);
-            var selektovaniLek = DTOManager.VratiLek(id);
+            var selektovaniLek = DTOManagerLek.VratiLek(id);
 
             if (selektovaniLek != null)
             {
@@ -186,7 +186,7 @@ namespace Farmacy.Forme
             }
             
             long id = Convert.ToInt64(dgvLekovi.CurrentRow.Cells[0].Value);
-            var selektovaniLek = DTOManager.VratiLekEntitet(id);
+            var selektovaniLek = DTOManagerLek.VratiLekEntitet(id);
 
             if (selektovaniLek != null)
             {
@@ -219,9 +219,9 @@ namespace Farmacy.Forme
             }
 
             long idLek = Convert.ToInt64(dgvLekovi.CurrentRow.Cells[0].Value);
-            //var selektovaniLek = DTOManager.VratiLekEntitet(id);
+            //var selektovaniLek = DTOManagerLek.VratiLekEntitet(id);
             long idOblik = Convert.ToInt64(dgvLekovi.CurrentRow.Cells[0].Value);
-            //var selektovaniLek = DTOManager.VratiLekEntitet(id);
+            //var selektovaniLek = DTOManagerLek.VratiLekEntitet(id);
             if (dgvOblik.CurrentRow == null)
             {
                 MessageBox.Show("Morate selektovati oblik takodje!");

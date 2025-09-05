@@ -65,7 +65,7 @@ namespace Farmacy_2.Forme
                                 .First(x => string.Equals(x.Naziv, target, StringComparison.OrdinalIgnoreCase))
                                    .Id;
 
-            DTOManager.IzmeniLek(lek);
+            DTOManagerLek.IzmeniLek(lek);
 
         }
 
@@ -94,7 +94,7 @@ namespace Farmacy_2.Forme
         {
             try
             {
-                list = DTOManager.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
+                list = DTOManagerLek.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
 
 
 

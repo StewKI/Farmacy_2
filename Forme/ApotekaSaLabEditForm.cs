@@ -81,11 +81,11 @@ namespace Farmacy_2.Forme
             apotekaSaLab.Broj = txtBroj.Text.Trim();
             apotekaSaLab.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
-            apotekaSaLab.OdgovorniFarmaceut= DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim())); ;
+            apotekaSaLab.OdgovorniFarmaceut= DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim())); ;
             // Save ApotekaSaLab-specific properties
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
 
-            DTOManager.IzmeniApoetkuSaLab(apotekaSaLab);
+            DTOManagerProdajneJedinice.IzmeniApoetkuSaLab(apotekaSaLab);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

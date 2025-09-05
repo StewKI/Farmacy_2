@@ -120,9 +120,9 @@ namespace Farmacy.Forme
             specijalizovanaApoteka.Mesto = txtMesto.Text.Trim();
             specijalizovanaApoteka.SpecijalnostTipa = txtSpecijalnostTipa.Text.Trim();
             specijalizovanaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
-            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManager.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
 
-            DTOManager.DodajSpecApoteku(specijalizovanaApoteka);
+            DTOManagerProdajneJedinice.DodajSpecApoteku(specijalizovanaApoteka);
         }
 
         public SpecijalizovanaApoteka GetSpecijalizovanaApoteka()
