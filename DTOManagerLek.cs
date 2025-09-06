@@ -1,5 +1,6 @@
 using Farmacy.Entiteti;
 using FluentNHibernate.Data;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -168,6 +169,107 @@ namespace Farmacy
             return 0;
         }
 
+        public static IList<Pakovanje> VratiSvaPakovanja()
+        {
+            var list = new List<Pakovanje>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var pakovanja = s.Query<Pakovanje>().ToList();
+                
+                // Force loading of related entities within the session
+                foreach (var p in pakovanja)
+                {
+                    // Access the properties to force loading
+                    var lekNaziv = p.Lek?.KomercijalniNaziv;
+                    var oblikNaziv = p.Oblik?.Naziv;
+                    list.Add(p);
+                }
+            }
+            catch (Exception) { }
+            return list;
+        }
+
+        public static Pakovanje VratiPakovanje(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var pakovanje = s.Get<Pakovanje>(id);
+                
+                // Force loading of related entities within the session
+                if (pakovanje != null)
+                {
+                    var lekNaziv = pakovanje.Lek?.KomercijalniNaziv;
+                    var oblikNaziv = pakovanje.Oblik?.Naziv;
+                }
+                
+                return pakovanje;
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static void ObrisiPakovanje(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var pakovanje = s.Get<Pakovanje>(id);
+                if (pakovanje != null)
+                {
+                    s.Delete(pakovanje);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri brisanju pakovanja: " + ex.Message);
+            }
+        }
+
+        public static void IzmeniPakovanje(PakovanjeBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                using var transaction = s.BeginTransaction();
+                try
+                {
+                    // Load the existing entity
+                    var pakovanje = s.Get<Pakovanje>(dto.Id);
+                    if (pakovanje == null)
+                    {
+                        throw new Exception("Pakovanje sa ID " + dto.Id + " nije pronađeno.");
+                    }
+                    
+                    // Update the properties
+                    pakovanje.Lek = s.Load<Lek>(dto.LekId);
+                    pakovanje.Oblik = s.Load<Oblik>(dto.OblikId);
+                    pakovanje.VelicinaPakovanja = dto.VelicinaPakovanja;
+                    pakovanje.KolicinaAktivne = dto.KolicinaAktivne;
+                    pakovanje.JedinicaMere = dto.JedinicaMere;
+                    pakovanje.Ambalaza = dto.Ambalaza;
+                    pakovanje.NacinCuvanja = dto.NacinCuvanja;
+                    pakovanje.PreporuceniRokDana = dto.PreporuceniRokDana;
+                    
+                    // Save the changes
+                    s.Update(pakovanje);
+                    s.Flush();
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni pakovanja: " + ex.Message);
+            }
+        }
+
         // Dodajte ove metode u DTOManager klasu
         public static Farmacy.Entiteti.Lek? VratiLekEntitet(long id)
         {
@@ -268,6 +370,89 @@ namespace Farmacy
             catch (Exception) { }
             return list;
         }
+
+        public static Oblik VratiOblik(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var oblik = s.Get<Oblik>(id);
+                return oblik;
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static OblikBasic VratiOblikBasic(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var oblik = s.Get<Oblik>(id);
+                if (oblik != null)
+                {
+                    return new OblikBasic
+                    {
+                        Id = oblik.Id,
+                        Naziv = oblik.Naziv
+                    };
+                }
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static void IzmeniOblik(Oblik oblik)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                s.Update(oblik);
+                s.Flush();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni oblika: " + ex.Message);
+            }
+        }
+
+        public static void IzmeniOblik(OblikBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var oblik = s.Get<Oblik>(dto.Id);
+                if (oblik != null)
+                {
+                    oblik.Naziv = dto.Naziv;
+                    s.Update(oblik);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni oblika: " + ex.Message);
+            }
+        }
+
+        public static void ObrisiOblik(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var oblik = s.Get<Oblik>(id);
+                if (oblik != null)
+                {
+                    s.Delete(oblik);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri brisanju oblika: " + ex.Message);
+            }
+        }
+
         public static void IzmeniLek(LekBasic dto)
         {
             try
@@ -381,6 +566,62 @@ namespace Farmacy
             }
             catch (Exception) { }
             return list;
+        }
+
+        public static PrimarnaGrupaBasic VratiPrimarnuGrupu(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = s.Get<PrimarnaGrupa>(id);
+                if (grupa != null)
+                {
+                    return new PrimarnaGrupaBasic
+                    {
+                        Id = grupa.Id,
+                        Naziv = grupa.Naziv
+                    };
+                }
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static void IzmeniPrimarnuGrupu(PrimarnaGrupaBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = s.Get<PrimarnaGrupa>(dto.Id);
+                if (grupa != null)
+                {
+                    grupa.Naziv = dto.Naziv;
+                    s.Update(grupa);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni primarne grupe: " + ex.Message);
+            }
+        }
+
+        public static void ObrisiPrimarnuGrupu(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = s.Get<PrimarnaGrupa>(id);
+                if (grupa != null)
+                {
+                    s.Delete(grupa);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri brisanju primarne grupe: " + ex.Message);
+            }
         }
         public static SekundarnaKategorija? VratiSekundarnuKategoriju(long id)
         {

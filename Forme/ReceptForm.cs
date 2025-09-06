@@ -1,155 +1,249 @@
-using System;
-using System.Windows.Forms;
 using Farmacy.Entiteti;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Farmacy.Forme
 {
     public partial class ReceptForm : Form
     {
-        private Recept recept;
-
         public ReceptForm()
         {
             InitializeComponent();
-            InitializeForm();
-        }
-
-        public ReceptForm(Recept recept) : this()
-        {
-            this.recept = recept;
-            LoadReceptData();
-        }
-
-        private void InitializeForm()
-        {
-            // Form initialization logic will be in Designer file
-            LoadStatusi();
-        }
-
-        private void LoadStatusi()
-        {
-            cboStatus.Items.Clear();
-            cboStatus.Items.Add("IZDAT");
-            cboStatus.Items.Add("CEKANJE");
-            cboStatus.Items.Add("ODBIJEN");
-        }
-
-        private void LoadReceptData()
-        {
-            if (recept != null)
-            {
-                txtSerijskiBroj.Text = recept.SerijskiBroj;
-                txtSifraLekara.Text = recept.SifraLekara;
-                dtpDatumIzd.Value = recept.DatumIzd;
-                cboStatus.SelectedItem = recept.Status;
-                txtNazivUstanove.Text = recept.NazivUstanove;
-
-                if (recept.RealizovanaProdajnaJedinica != null)
-                    txtRealizovanaProdajnaJedinica.Text = recept.RealizovanaProdajnaJedinica.ToString();
-
-                if (recept.RealizacijaDatum.HasValue)
-                    dtpRealizacijaDatum.Value = recept.RealizacijaDatum.Value;
-                else
-                    dtpRealizacijaDatum.Value = DateTime.Today;
-
-                if (recept.RealizovaoFarmaceut != null)
-                    txtRealizovaoFarmaceut.Text = recept.RealizovaoFarmaceut.ToString();
-            }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (ValidateForm())
-            {
-                SaveRecept();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private bool ValidateForm()
-        {
-            if (string.IsNullOrWhiteSpace(txtSerijskiBroj.Text))
-            {
-                MessageBox.Show("Serijski broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSerijskiBroj.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtSifraLekara.Text))
-            {
-                MessageBox.Show("Šifra lekara je obavezna!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSifraLekara.Focus();
-                return false;
-            }
-
-            if (cboStatus.SelectedIndex == -1)
-            {
-                MessageBox.Show("Status je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboStatus.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtNazivUstanove.Text))
-            {
-                MessageBox.Show("Naziv ustanove je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNazivUstanove.Focus();
-                return false;
-            }
-
-            if (dtpDatumIzd.Value > DateTime.Now)
-            {
-                MessageBox.Show("Datum izdavanja ne može biti u budućnosti!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpDatumIzd.Focus();
-                return false;
-            }
-
-            if (dtpRealizacijaDatum.Value > DateTime.Now)
-            {
-                MessageBox.Show("Datum realizacije ne može biti u budućnosti!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpRealizacijaDatum.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private void SaveRecept()
-        {
-            if (recept == null)
-            {
-                recept = new Recept();
-            }
-
-            recept.SerijskiBroj = txtSerijskiBroj.Text.Trim();
-            recept.SifraLekara = txtSifraLekara.Text.Trim();
-            recept.DatumIzd = dtpDatumIzd.Value;
-            recept.Status = cboStatus.SelectedItem.ToString();
-            recept.NazivUstanove = txtNazivUstanove.Text.Trim();
-            //recept.RealizacijaDatum = dtpRealizacijaDatum.Value;
-
-            DTOManagerIsporukeZalihe.DodajRecept(recept);
-        }
-
-        public Recept GetRecept()
-        {
-            return recept;
+            this.Load += ReceptForm_Load;
         }
 
         private void ReceptForm_Load(object sender, EventArgs e)
         {
-
+            popuniPodacimaRecepti();
         }
 
-        private void dtpRealizacijaDatum_ValueChanged(object sender, EventArgs e)
+        public void popuniPodacimaRecepti()
         {
+            try
+            {
+                IList<Recept> lista = DTOManagerIsporukeZalihe.VratiSveRecepte() ?? new List<Recept>();
 
+                dgvRecepti.AutoGenerateColumns = false;
+                if (colId != null) colId.DataPropertyName = "Id";
+                if (colSerijskiBroj != null) colSerijskiBroj.DataPropertyName = "SerijskiBroj";
+                if (colSifraLekara != null) colSifraLekara.DataPropertyName = "SifraLekara";
+                if (colDatumIzd != null) colDatumIzd.DataPropertyName = "DatumIzd";
+                if (colStatus != null) colStatus.DataPropertyName = "Status";
+                if (colNazivUstanove != null) colNazivUstanove.DataPropertyName = "NazivUstanove";
+                dgvRecepti.RowHeadersVisible = false;
+                dgvRecepti.DataSource = false;
+                dgvRecepti.DataSource = lista;
+
+                if (dgvRecepti.Columns.Count == 0)
+                {
+                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colId",
+                        HeaderText = "ID",
+                        DataPropertyName = "Id",
+                        Width = 60
+                    });
+                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colSerijskiBroj",
+                        HeaderText = "Serijski broj",
+                        DataPropertyName = "SerijskiBroj",
+                        Width = 120
+                    });
+                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colSifraLekara",
+                        HeaderText = "Šifra lekara",
+                        DataPropertyName = "SifraLekara",
+                        Width = 100
+                    });
+                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colDatumIzd",
+                        HeaderText = "Datum izdavanja",
+                        DataPropertyName = "DatumIzd",
+                        Width = 120
+                    });
+                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colStatus",
+                        HeaderText = "Status",
+                        DataPropertyName = "Status",
+                        Width = 80
+                    });
+                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colNazivUstanove",
+                        HeaderText = "Naziv ustanove",
+                        DataPropertyName = "NazivUstanove",
+                        Width = 200
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju recepata:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnNoviRecept_Click(object sender, EventArgs e)
+        {
+            NoviReceptForm form = new NoviReceptForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                popuniPodacimaRecepti();
+            }
+        }
+
+        private void btnObrisiRecept_Click(object sender, EventArgs e)
+        {
+            if (dgvRecepti.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate izabrati recept prvo!");
+                return;
+            }
+
+            string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+
+            var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete recept sa serijskim brojem: {serijskiBroj}?",
+                "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DTOManagerIsporukeZalihe.ObrisiRecept(serijskiBroj);
+                    popuniPodacimaRecepti();
+                    MessageBox.Show("Recept je uspešno obrisan!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greška pri brisanju recepta:\n" + ex.Message, "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnIzmeniRecept_Click(object sender, EventArgs e)
+        {
+            if (dgvRecepti.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati recept!");
+                return;
+            }
+
+            try
+            {
+                string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+                var selektovaniRecept = DTOManagerIsporukeZalihe.VratiRecept(serijskiBroj);
+
+                if (selektovaniRecept != null)
+                {
+                    NoviReceptForm form = new NoviReceptForm(selektovaniRecept);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        popuniPodacimaRecepti();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Recept sa serijskim brojem " + serijskiBroj + " nije pronađen!", "Greška", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o receptu:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDodajStavku_Click(object sender, EventArgs e)
+        {
+            if (dgvRecepti.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati recept prvo!");
+                return;
+            }
+
+            try
+            {
+                string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+                var selektovaniRecept = DTOManagerIsporukeZalihe.VratiRecept(serijskiBroj);
+
+                if (selektovaniRecept != null)
+                {
+                    ReceptStavkaForm form = new ReceptStavkaForm(selektovaniRecept);
+                    form.ShowDialog();
+                    popuniPodacimaRecepti();
+                }
+                else
+                {
+                    MessageBox.Show("Recept sa serijskim brojem " + serijskiBroj + " nije pronađen!", "Greška", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o receptu:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRealizujRecept_Click(object sender, EventArgs e)
+        {
+            if (dgvRecepti.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati recept prvo!");
+                return;
+            }
+
+            try
+            {
+                string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+                var selektovaniRecept = DTOManagerIsporukeZalihe.VratiRecept(serijskiBroj);
+
+                if (selektovaniRecept != null)
+                {
+                    var result = MessageBox.Show($"Da li ste sigurni da želite da realizujete recept sa serijskim brojem: {serijskiBroj}?",
+                        "Potvrda realizacije", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            // For now, we'll use a default sales unit and current date
+                            // In a real application, you'd want to let the user select these
+                            var defaultProdajnaJedinica = new ProdajnaJedinicaBasic
+                            {
+                                Id = 1, // Default ID - you might want to get this from user selection
+                                Naziv = "Glavna apoteka" // Default name
+                            };
+                            
+                            DTOManagerIsporukeZalihe.RealizujRecept(serijskiBroj, defaultProdajnaJedinica, DateTime.Now);
+                            popuniPodacimaRecepti();
+                            MessageBox.Show("Recept je uspešno realizovan!");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Greška pri realizaciji recepta:\n" + ex.Message, "Greška",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Recept sa serijskim brojem " + serijskiBroj + " nije pronađen!", "Greška", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o receptu:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

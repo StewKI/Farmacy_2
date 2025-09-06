@@ -2,15 +2,17 @@ namespace Farmacy.Forme
 {
     partial class PrimarnaGrupaForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.DataGridView dgvPrimarneGrupe;
+        private System.Windows.Forms.Button btnNovaPrimarnaGrupa;
+        private System.Windows.Forms.Button btnObrisiPrimarnuGrupu;
+        private System.Windows.Forms.Button btnIzmeniPrimarnuGrupu;
+        private System.Windows.Forms.Label lblPrimarneGrupe;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNaziv;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,104 +22,105 @@ namespace Farmacy.Forme
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lblNaziv = new System.Windows.Forms.Label();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            dgvPrimarneGrupe = new DataGridView();
+            btnNovaPrimarnaGrupa = new Button();
+            btnObrisiPrimarnuGrupu = new Button();
+            btnIzmeniPrimarnuGrupu = new Button();
+            lblPrimarneGrupe = new Label();
+            colId = new DataGridViewTextBoxColumn();
+            colNaziv = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvPrimarneGrupe).BeginInit();
+            SuspendLayout();
             // 
-            // lblId
+            // dgvPrimarneGrupe
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(30, 30);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 15);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID:";
+            dgvPrimarneGrupe.AllowUserToAddRows = false;
+            dgvPrimarneGrupe.AllowUserToDeleteRows = false;
+            dgvPrimarneGrupe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrimarneGrupe.Columns.AddRange(new DataGridViewColumn[] { colId, colNaziv });
+            dgvPrimarneGrupe.Location = new Point(12, 50);
+            dgvPrimarneGrupe.MultiSelect = false;
+            dgvPrimarneGrupe.Name = "dgvPrimarneGrupe";
+            dgvPrimarneGrupe.ReadOnly = true;
+            dgvPrimarneGrupe.RowHeadersVisible = false;
+            dgvPrimarneGrupe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrimarneGrupe.Size = new Size(600, 400);
+            dgvPrimarneGrupe.TabIndex = 0;
             // 
-            // txtId
+            // btnNovaPrimarnaGrupa
             // 
-            this.txtId.Location = new System.Drawing.Point(150, 27);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(200, 23);
-            this.txtId.TabIndex = 1;
-            this.txtId.TabStop = false;
+            btnNovaPrimarnaGrupa.Location = new Point(650, 50);
+            btnNovaPrimarnaGrupa.Name = "btnNovaPrimarnaGrupa";
+            btnNovaPrimarnaGrupa.Size = new Size(150, 40);
+            btnNovaPrimarnaGrupa.TabIndex = 1;
+            btnNovaPrimarnaGrupa.Text = "Nova primarna grupa";
+            btnNovaPrimarnaGrupa.UseVisualStyleBackColor = true;
+            btnNovaPrimarnaGrupa.Click += btnNovaPrimarnaGrupa_Click;
             // 
-            // lblNaziv
+            // btnObrisiPrimarnuGrupu
             // 
-            this.lblNaziv.AutoSize = true;
-            this.lblNaziv.Location = new System.Drawing.Point(30, 70);
-            this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(43, 15);
-            this.lblNaziv.TabIndex = 2;
-            this.lblNaziv.Text = "Naziv:";
+            btnObrisiPrimarnuGrupu.Location = new Point(650, 100);
+            btnObrisiPrimarnuGrupu.Name = "btnObrisiPrimarnuGrupu";
+            btnObrisiPrimarnuGrupu.Size = new Size(150, 40);
+            btnObrisiPrimarnuGrupu.TabIndex = 2;
+            btnObrisiPrimarnuGrupu.Text = "Obriši primarnu grupu";
+            btnObrisiPrimarnuGrupu.UseVisualStyleBackColor = true;
+            btnObrisiPrimarnuGrupu.Click += btnObrisiPrimarnuGrupu_Click;
             // 
-            // txtNaziv
+            // btnIzmeniPrimarnuGrupu
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(150, 67);
-            this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(200, 23);
-            this.txtNaziv.TabIndex = 3;
+            btnIzmeniPrimarnuGrupu.Location = new Point(650, 150);
+            btnIzmeniPrimarnuGrupu.Name = "btnIzmeniPrimarnuGrupu";
+            btnIzmeniPrimarnuGrupu.Size = new Size(150, 40);
+            btnIzmeniPrimarnuGrupu.TabIndex = 3;
+            btnIzmeniPrimarnuGrupu.Text = "Izmeni primarnu grupu";
+            btnIzmeniPrimarnuGrupu.UseVisualStyleBackColor = true;
+            btnIzmeniPrimarnuGrupu.Click += btnIzmeniPrimarnuGrupu_Click;
             // 
-            // btnSave
+            // lblPrimarneGrupe
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 120);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            lblPrimarneGrupe.AutoSize = true;
+            lblPrimarneGrupe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblPrimarneGrupe.Location = new Point(12, 15);
+            lblPrimarneGrupe.Name = "lblPrimarneGrupe";
+            lblPrimarneGrupe.Size = new Size(150, 21);
+            lblPrimarneGrupe.TabIndex = 4;
+            lblPrimarneGrupe.Text = "Primarne grupe";
             // 
-            // btnCancel
+            // colId
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 120);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            colId.DataPropertyName = "Id";
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Width = 60;
+            // 
+            // colNaziv
+            // 
+            colNaziv.DataPropertyName = "Naziv";
+            colNaziv.HeaderText = "Naziv";
+            colNaziv.Name = "colNaziv";
+            colNaziv.ReadOnly = true;
+            colNaziv.Width = 500;
             // 
             // PrimarnaGrupaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 171);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtNaziv);
-            this.Controls.Add(this.lblNaziv);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "PrimarnaGrupaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Primarna grupa";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(820, 470);
+            Controls.Add(lblPrimarneGrupe);
+            Controls.Add(btnIzmeniPrimarnuGrupu);
+            Controls.Add(btnObrisiPrimarnuGrupu);
+            Controls.Add(btnNovaPrimarnaGrupa);
+            Controls.Add(dgvPrimarneGrupe);
+            Name = "PrimarnaGrupaForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Primarne grupe";
+            ((System.ComponentModel.ISupportInitialize)dgvPrimarneGrupe).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
-
-        #endregion
-
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lblNaziv;
-        private System.Windows.Forms.TextBox txtNaziv;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
     }
 }

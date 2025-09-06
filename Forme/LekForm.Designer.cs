@@ -34,12 +34,14 @@ namespace Farmacy.Forme
             lblDejstvo = new Label();
             lblProizvodjac = new Label();
             lblPrimarnaGrupa = new Label();
+            lblSekundarneKategorije = new Label();
             txtId = new TextBox();
             txtHemijski = new TextBox();
             txtKomercijalni = new TextBox();
             txtDejstvo = new TextBox();
-            txtProizvodjac = new TextBox();
+            cmbProizvodjac = new ComboBox();
             cmbPrimarnaGrupa = new ComboBox();
+            chkListSekundarneKategorije = new CheckedListBox();
             btnSacuvaj = new Button();
             btnOtkazi = new Button();
             SuspendLayout();
@@ -98,6 +100,15 @@ namespace Farmacy.Forme
             lblPrimarnaGrupa.TabIndex = 10;
             lblPrimarnaGrupa.Text = "Primarna grupa:";
             // 
+            // lblSekundarneKategorije
+            // 
+            lblSekundarneKategorije.AutoSize = true;
+            lblSekundarneKategorije.Location = new Point(20, 212);
+            lblSekundarneKategorije.Name = "lblSekundarneKategorije";
+            lblSekundarneKategorije.Size = new Size(120, 15);
+            lblSekundarneKategorije.TabIndex = 12;
+            lblSekundarneKategorije.Text = "Sekundarne kategorije:";
+            // 
             // txtId
             // 
             txtId.BackColor = SystemColors.ControlLight;
@@ -129,12 +140,15 @@ namespace Farmacy.Forme
             txtDejstvo.Size = new Size(240, 23);
             txtDejstvo.TabIndex = 7;
             // 
-            // txtProizvodjac
+            // cmbProizvodjac
             // 
-            txtProizvodjac.Location = new Point(160, 145);
-            txtProizvodjac.Name = "txtProizvodjac";
-            txtProizvodjac.Size = new Size(240, 23);
-            txtProizvodjac.TabIndex = 9;
+            cmbProizvodjac.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProizvodjac.FormattingEnabled = true;
+            cmbProizvodjac.Location = new Point(160, 145);
+            cmbProizvodjac.Name = "cmbProizvodjac";
+            cmbProizvodjac.Size = new Size(240, 23);
+            cmbProizvodjac.TabIndex = 9;
+            cmbProizvodjac.SelectedIndexChanged += cmbProizvodjac_SelectedIndexChanged;
             // 
             // cmbPrimarnaGrupa
             // 
@@ -146,12 +160,21 @@ namespace Farmacy.Forme
             cmbPrimarnaGrupa.TabIndex = 11;
             cmbPrimarnaGrupa.SelectedIndexChanged += cmbPrimarnaGrupa_SelectedIndexChanged;
             // 
+            // chkListSekundarneKategorije
+            // 
+            chkListSekundarneKategorije.CheckOnClick = true;
+            chkListSekundarneKategorije.FormattingEnabled = true;
+            chkListSekundarneKategorije.Location = new Point(160, 209);
+            chkListSekundarneKategorije.Name = "chkListSekundarneKategorije";
+            chkListSekundarneKategorije.Size = new Size(240, 100);
+            chkListSekundarneKategorije.TabIndex = 13;
+            // 
             // btnSacuvaj
             // 
-            btnSacuvaj.Location = new Point(160, 220);
+            btnSacuvaj.Location = new Point(160, 320);
             btnSacuvaj.Name = "btnSacuvaj";
             btnSacuvaj.Size = new Size(90, 28);
-            btnSacuvaj.TabIndex = 12;
+            btnSacuvaj.TabIndex = 14;
             btnSacuvaj.Text = "Sačuvaj";
             btnSacuvaj.UseVisualStyleBackColor = true;
             btnSacuvaj.Click += btnSacuvaj_Click;
@@ -159,10 +182,10 @@ namespace Farmacy.Forme
             // btnOtkazi
             // 
             btnOtkazi.DialogResult = DialogResult.Cancel;
-            btnOtkazi.Location = new Point(260, 220);
+            btnOtkazi.Location = new Point(260, 320);
             btnOtkazi.Name = "btnOtkazi";
             btnOtkazi.Size = new Size(90, 28);
-            btnOtkazi.TabIndex = 13;
+            btnOtkazi.TabIndex = 15;
             btnOtkazi.Text = "Otkaži";
             btnOtkazi.UseVisualStyleBackColor = true;
             // 
@@ -172,7 +195,7 @@ namespace Farmacy.Forme
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnOtkazi;
-            ClientSize = new Size(440, 270);
+            ClientSize = new Size(440, 370);
             Controls.Add(lblId);
             Controls.Add(txtId);
             Controls.Add(lblHemijski);
@@ -182,9 +205,11 @@ namespace Farmacy.Forme
             Controls.Add(lblDejstvo);
             Controls.Add(txtDejstvo);
             Controls.Add(lblProizvodjac);
-            Controls.Add(txtProizvodjac);
+            Controls.Add(cmbProizvodjac);
             Controls.Add(lblPrimarnaGrupa);
             Controls.Add(cmbPrimarnaGrupa);
+            Controls.Add(lblSekundarneKategorije);
+            Controls.Add(chkListSekundarneKategorije);
             Controls.Add(btnSacuvaj);
             Controls.Add(btnOtkazi);
             MinimumSize = new Size(456, 309);
@@ -205,14 +230,16 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblDejstvo;
         private System.Windows.Forms.Label lblProizvodjac;
         private System.Windows.Forms.Label lblPrimarnaGrupa;
+        private System.Windows.Forms.Label lblSekundarneKategorije;
 
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtHemijski;
         private System.Windows.Forms.TextBox txtKomercijalni;
         private System.Windows.Forms.TextBox txtDejstvo;
-        private System.Windows.Forms.TextBox txtProizvodjac;
+        private System.Windows.Forms.ComboBox cmbProizvodjac;
 
         private System.Windows.Forms.ComboBox cmbPrimarnaGrupa;
+        private System.Windows.Forms.CheckedListBox chkListSekundarneKategorije;
 
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.Button btnOtkazi;

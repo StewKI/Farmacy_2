@@ -1,110 +1,195 @@
-using System;
-using System.Windows.Forms;
 using Farmacy.Entiteti;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Farmacy.Forme
 {
     public partial class PakovanjeForm : Form
     {
-        private PakovanjeBasic pakovanje;
-        private long idLek, idOblik;
-        public PakovanjeForm(long id1,long id2)
+        public PakovanjeForm()
         {
             InitializeComponent();
-            pakovanje = new PakovanjeBasic();
-            idLek = id1;
-            idOblik = id2;
-            LoadPakovanjeData();
+            this.Load += PakovanjeForm_Load;
         }
 
-        public PakovanjeForm(PakovanjeBasic pakovanje)
+        private void PakovanjeForm_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-            this.pakovanje = pakovanje;
-            LoadPakovanjeData();
+            popuniPodacimaPakovanja();
+            LoadLekoviAsync();
+            LoadOblikeAsync();
         }
 
-        private void LoadPakovanjeData()
+        public void popuniPodacimaPakovanja()
         {
-            txtLekId.Text=idLek.ToString();
-            txtOblikId.Text=idOblik.ToString();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (ValidateForm())
+            try
             {
-                SavePakovanje();
-                DialogResult = DialogResult.OK;
-                Close();
+                IList<Pakovanje> lista = DTOManagerLek.VratiSvaPakovanja() ?? new List<Pakovanje>();
+
+                dgvPakovanja.AutoGenerateColumns = false;
+                dgvPakovanja.RowHeadersVisible = false;
+                dgvPakovanja.DataSource = false;
+
+                // Clear existing columns
+                dgvPakovanja.Columns.Clear();
+
+                // Add columns with proper data binding
+                dgvPakovanja.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colId",
+                    HeaderText = "ID",
+                    DataPropertyName = "Id",
+                    Width = 60
+                });
+                dgvPakovanja.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colLek",
+                    HeaderText = "Lek",
+                    DataPropertyName = "LekNaziv",
+                    Width = 150
+                });
+                dgvPakovanja.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colOblik",
+                    HeaderText = "Oblik",
+                    DataPropertyName = "OblikNaziv",
+                    Width = 100
+                });
+                dgvPakovanja.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colVelicina",
+                    HeaderText = "Veličina",
+                    DataPropertyName = "VelicinaPakovanja",
+                    Width = 100
+                });
+                dgvPakovanja.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colKolicinaAktivne",
+                    HeaderText = "Količina aktivne",
+                    DataPropertyName = "KolicinaAktivne",
+                    Width = 120
+                });
+                dgvPakovanja.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colJedinicaMere",
+                    HeaderText = "Jedinica mere",
+                    DataPropertyName = "JedinicaMere",
+                    Width = 100
+                });
+
+                // Create a custom data source with flattened properties
+                var customList = lista.Select(p => new
+                {
+                    Id = p.Id,
+                    LekNaziv = p.Lek?.KomercijalniNaziv ?? "",
+                    OblikNaziv = p.Oblik?.Naziv ?? "",
+                    VelicinaPakovanja = p.VelicinaPakovanja,
+                    KolicinaAktivne = p.KolicinaAktivne,
+                    JedinicaMere = p.JedinicaMere,
+                    // Keep reference to original entity for operations
+                    OriginalEntity = p
+                }).ToList();
+
+                dgvPakovanja.DataSource = customList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju pakovanja:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private async void LoadLekoviAsync()
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            try
+            {
+                var lekovi = DTOManagerLek.VratiSveLekove() ?? new List<LekBasic>();
+                cmbLek.Items.Clear();
+                cmbLek.Items.AddRange(lekovi.Select(l => l.KomercijalniNaziv).OrderBy(n => n).ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju lekova: " + ex.Message);
+            }
         }
 
-        private bool ValidateForm()
+        private async void LoadOblikeAsync()
         {
-            if (string.IsNullOrWhiteSpace(txtLekId.Text))
+            try
             {
-                MessageBox.Show("ID leka je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                var oblici = DTOManagerLek.VratiSveOblikeLekova() ?? new List<Oblik>();
+                cmbOblik.Items.Clear();
+                cmbOblik.Items.AddRange(oblici.Select(o => o.Naziv).OrderBy(n => n).ToArray());
             }
-
-            if (string.IsNullOrWhiteSpace(txtOblikId.Text))
+            catch (Exception ex)
             {
-                MessageBox.Show("ID oblika je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MessageBox.Show("Greška pri učitavanju oblika: " + ex.Message);
             }
-
-            if (string.IsNullOrWhiteSpace(txtVelicinaPakovanja.Text))
-            {
-                MessageBox.Show("Veličina pakovanja je obavezna!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (numKolicinaAktivne.Value <= 0)
-            {
-                MessageBox.Show("Količina aktivne materije mora biti veća od 0!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtJedinicaMere.Text))
-            {
-                MessageBox.Show("Jedinica mere je obavezna!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            return true;
         }
 
-        private void SavePakovanje()
+        private void btnNovoPakovanje_Click(object sender, EventArgs e)
         {
-            if (long.TryParse(txtId.Text, out long id))
-                pakovanje.Id = id;
-            
-            // Napomena: Referentne entitete (Lek, Oblik) treba postaviti spolja
-            // jer ova forma samo prikazuje ID-ove
-            
-            pakovanje.VelicinaPakovanja = txtVelicinaPakovanja.Text.Trim();
-            pakovanje.KolicinaAktivne = numKolicinaAktivne.Value;
-            pakovanje.JedinicaMere = txtJedinicaMere.Text.Trim();
-            pakovanje.Ambalaza = string.IsNullOrWhiteSpace(txtAmbalaza.Text) ? null : txtAmbalaza.Text.Trim();
-            pakovanje.NacinCuvanja = string.IsNullOrWhiteSpace(txtNacinCuvanja.Text) ? null : txtNacinCuvanja.Text.Trim();
-            pakovanje.PreporuceniRokDana = numPreporuceniRokDana.Value > 0 ? (int?)numPreporuceniRokDana.Value : null;
-            pakovanje.LekId = idLek;
-            pakovanje.OblikId = idOblik;
-
-            DTOManagerLek.DodajPakovanje(pakovanje);
-
+            NovoPakovanjeForm form = new NovoPakovanjeForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                popuniPodacimaPakovanja();
+            }
         }
 
-        public PakovanjeBasic GetPakovanje()
+        private void btnObrisiPakovanje_Click(object sender, EventArgs e)
         {
-            return pakovanje;
+            if (dgvPakovanja.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate izabrati pakovanje prvo!");
+                return;
+            }
+
+            long id = Convert.ToInt64(dgvPakovanja.CurrentRow.Cells[0].Value);
+
+            var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete pakovanje sa ID: {id}?",
+                "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DTOManagerLek.ObrisiPakovanje(id);
+                    popuniPodacimaPakovanja();
+                    MessageBox.Show("Pakovanje je uspešno obrisano!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greška pri brisanju pakovanja:\n" + ex.Message, "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnIzmeniPakovanje_Click(object sender, EventArgs e)
+        {
+            if (dgvPakovanja.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati pakovanje!");
+                return;
+            }
+
+            // Get the original entity from the custom data source
+            var selectedItem = dgvPakovanja.CurrentRow.DataBoundItem;
+            var originalEntity = selectedItem.GetType().GetProperty("OriginalEntity")?.GetValue(selectedItem) as Pakovanje;
+
+            if (originalEntity != null)
+            {
+                IzmeniPakovanjeForm form = new IzmeniPakovanjeForm(originalEntity);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    popuniPodacimaPakovanja();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o pakovanju!");
+            }
         }
     }
 }

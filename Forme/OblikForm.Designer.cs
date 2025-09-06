@@ -2,15 +2,17 @@ namespace Farmacy.Forme
 {
     partial class OblikForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.DataGridView dgvOblik;
+        private System.Windows.Forms.Button btnNoviOblik;
+        private System.Windows.Forms.Button btnObrisiOblik;
+        private System.Windows.Forms.Button btnIzmeniOblik;
+        private System.Windows.Forms.Label lblOblik;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNaziv;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,111 +22,105 @@ namespace Farmacy.Forme
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            lblId = new Label();
-            txtId = new TextBox();
-            lblNaziv = new Label();
-            txtNaziv = new TextBox();
-            btnSave = new Button();
-            btnCancel = new Button();
+            dgvOblik = new DataGridView();
+            btnNoviOblik = new Button();
+            btnObrisiOblik = new Button();
+            btnIzmeniOblik = new Button();
+            lblOblik = new Label();
+            colId = new DataGridViewTextBoxColumn();
+            colNaziv = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvOblik).BeginInit();
             SuspendLayout();
             // 
-            // lblId
+            // dgvOblik
             // 
-            lblId.AutoSize = true;
-            lblId.Location = new Point(14, 17);
-            lblId.Margin = new Padding(4, 0, 4, 0);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(21, 15);
-            lblId.TabIndex = 0;
-            lblId.Text = "ID:";
+            dgvOblik.AllowUserToAddRows = false;
+            dgvOblik.AllowUserToDeleteRows = false;
+            dgvOblik.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvOblik.Columns.AddRange(new DataGridViewColumn[] { colId, colNaziv });
+            dgvOblik.Location = new Point(12, 50);
+            dgvOblik.MultiSelect = false;
+            dgvOblik.Name = "dgvOblik";
+            dgvOblik.ReadOnly = true;
+            dgvOblik.RowHeadersVisible = false;
+            dgvOblik.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvOblik.Size = new Size(600, 400);
+            dgvOblik.TabIndex = 0;
             // 
-            // txtId
+            // btnNoviOblik
             // 
-            txtId.Location = new Point(140, 14);
-            txtId.Margin = new Padding(4, 3, 4, 3);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(174, 23);
-            txtId.TabIndex = 1;
+            btnNoviOblik.Location = new Point(650, 50);
+            btnNoviOblik.Name = "btnNoviOblik";
+            btnNoviOblik.Size = new Size(150, 40);
+            btnNoviOblik.TabIndex = 1;
+            btnNoviOblik.Text = "Novi oblik";
+            btnNoviOblik.UseVisualStyleBackColor = true;
+            btnNoviOblik.Click += btnNoviOblik_Click;
             // 
-            // lblNaziv
+            // btnObrisiOblik
             // 
-            lblNaziv.AutoSize = true;
-            lblNaziv.Location = new Point(14, 47);
-            lblNaziv.Margin = new Padding(4, 0, 4, 0);
-            lblNaziv.Name = "lblNaziv";
-            lblNaziv.Size = new Size(39, 15);
-            lblNaziv.TabIndex = 2;
-            lblNaziv.Text = "Naziv:";
+            btnObrisiOblik.Location = new Point(650, 100);
+            btnObrisiOblik.Name = "btnObrisiOblik";
+            btnObrisiOblik.Size = new Size(150, 40);
+            btnObrisiOblik.TabIndex = 2;
+            btnObrisiOblik.Text = "Obriši oblik";
+            btnObrisiOblik.UseVisualStyleBackColor = true;
+            btnObrisiOblik.Click += btnObrisiOblik_Click;
             // 
-            // txtNaziv
+            // btnIzmeniOblik
             // 
-            txtNaziv.Location = new Point(140, 44);
-            txtNaziv.Margin = new Padding(4, 3, 4, 3);
-            txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(174, 23);
-            txtNaziv.TabIndex = 3;
+            btnIzmeniOblik.Location = new Point(650, 150);
+            btnIzmeniOblik.Name = "btnIzmeniOblik";
+            btnIzmeniOblik.Size = new Size(150, 40);
+            btnIzmeniOblik.TabIndex = 3;
+            btnIzmeniOblik.Text = "Izmeni oblik";
+            btnIzmeniOblik.UseVisualStyleBackColor = true;
+            btnIzmeniOblik.Click += btnIzmeniOblik_Click;
             // 
-            // btnSave
+            // lblOblik
             // 
-            btnSave.Location = new Point(140, 85);
-            btnSave.Margin = new Padding(4, 3, 4, 3);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(88, 27);
-            btnSave.TabIndex = 4;
-            btnSave.Text = "Sačuvaj";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
+            lblOblik.AutoSize = true;
+            lblOblik.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblOblik.Location = new Point(12, 15);
+            lblOblik.Name = "lblOblik";
+            lblOblik.Size = new Size(60, 21);
+            lblOblik.TabIndex = 4;
+            lblOblik.Text = "Oblici";
             // 
-            // btnCancel
+            // colId
             // 
-            btnCancel.Location = new Point(234, 85);
-            btnCancel.Margin = new Padding(4, 3, 4, 3);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(88, 27);
-            btnCancel.TabIndex = 5;
-            btnCancel.Text = "Otkaži";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            colId.DataPropertyName = "Id";
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Width = 60;
+            // 
+            // colNaziv
+            // 
+            colNaziv.DataPropertyName = "Naziv";
+            colNaziv.HeaderText = "Naziv";
+            colNaziv.Name = "colNaziv";
+            colNaziv.ReadOnly = true;
+            colNaziv.Width = 500;
             // 
             // OblikForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(331, 126);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
-            Controls.Add(txtNaziv);
-            Controls.Add(lblNaziv);
-            Controls.Add(txtId);
-            Controls.Add(lblId);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4, 3, 4, 3);
-            MaximizeBox = false;
-            MinimizeBox = false;
+            ClientSize = new Size(820, 470);
+            Controls.Add(lblOblik);
+            Controls.Add(btnIzmeniOblik);
+            Controls.Add(btnObrisiOblik);
+            Controls.Add(btnNoviOblik);
+            Controls.Add(dgvOblik);
             Name = "OblikForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Oblik";
-            Load += OblikForm_Load;
+            Text = "Oblici";
+            ((System.ComponentModel.ISupportInitialize)dgvOblik).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-
-        #endregion
-
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lblNaziv;
-        private System.Windows.Forms.TextBox txtNaziv;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
     }
 }

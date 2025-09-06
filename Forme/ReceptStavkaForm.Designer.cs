@@ -2,15 +2,17 @@ namespace Farmacy.Forme
 {
     partial class ReceptStavkaForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.Label lblReceptInfo;
+        private System.Windows.Forms.Label lblLek;
+        private System.Windows.Forms.ComboBox cmbLek;
+        private System.Windows.Forms.Label lblKolicina;
+        private System.Windows.Forms.TextBox txtKolicina;
+        private System.Windows.Forms.Button btnDodajStavku;
+        private System.Windows.Forms.Button btnZatvori;
+        private System.Windows.Forms.Button btnUpravljajPakovanjima;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,167 +22,113 @@ namespace Farmacy.Forme
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.lblRecept = new System.Windows.Forms.Label();
-            this.txtRecept = new System.Windows.Forms.TextBox();
-            this.lblPakovanje = new System.Windows.Forms.Label();
-            this.txtPakovanje = new System.Windows.Forms.TextBox();
-            this.lblKolicina = new System.Windows.Forms.Label();
-            this.numKolicina = new System.Windows.Forms.NumericUpDown();
-            this.lblPreporucenaDoza = new System.Windows.Forms.Label();
-            this.txtPreporucenaDoza = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).BeginInit();
-            this.SuspendLayout();
+            lblReceptInfo = new Label();
+            lblLek = new Label();
+            cmbLek = new ComboBox();
+            lblKolicina = new Label();
+            txtKolicina = new TextBox();
+            btnDodajStavku = new Button();
+            btnZatvori = new Button();
+            btnUpravljajPakovanjima = new Button();
+            SuspendLayout();
             // 
-            // lblRecept
+            // lblReceptInfo
             // 
-            this.lblRecept.AutoSize = true;
-            this.lblRecept.Location = new System.Drawing.Point(30, 30);
-            this.lblRecept.Name = "lblRecept";
-            this.lblRecept.Size = new System.Drawing.Size(50, 15);
-            this.lblRecept.TabIndex = 0;
-            this.lblRecept.Text = "Recept:";
+            lblReceptInfo.AutoSize = true;
+            lblReceptInfo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblReceptInfo.Location = new Point(20, 20);
+            lblReceptInfo.Name = "lblReceptInfo";
+            lblReceptInfo.Size = new Size(200, 19);
+            lblReceptInfo.TabIndex = 0;
+            lblReceptInfo.Text = "Recept: [Serijski broj]";
             // 
-            // txtRecept
+            // lblLek
             // 
-            this.txtRecept.Location = new System.Drawing.Point(150, 27);
-            this.txtRecept.Name = "txtRecept";
-            this.txtRecept.ReadOnly = true;
-            this.txtRecept.Size = new System.Drawing.Size(200, 23);
-            this.txtRecept.TabIndex = 1;
-            this.txtRecept.TabStop = false;
+            lblLek.AutoSize = true;
+            lblLek.Location = new Point(20, 60);
+            lblLek.Name = "lblLek";
+            lblLek.Size = new Size(30, 15);
+            lblLek.TabIndex = 1;
+            lblLek.Text = "Lek:";
             // 
-            // lblPakovanje
+            // cmbLek
             // 
-            this.lblPakovanje.AutoSize = true;
-            this.lblPakovanje.Location = new System.Drawing.Point(30, 70);
-            this.lblPakovanje.Name = "lblPakovanje";
-            this.lblPakovanje.Size = new System.Drawing.Size(70, 15);
-            this.lblPakovanje.TabIndex = 2;
-            this.lblPakovanje.Text = "Pakovanje:";
-            // 
-            // txtPakovanje
-            // 
-            this.txtPakovanje.Location = new System.Drawing.Point(150, 67);
-            this.txtPakovanje.Name = "txtPakovanje";
-            this.txtPakovanje.ReadOnly = true;
-            this.txtPakovanje.Size = new System.Drawing.Size(200, 23);
-            this.txtPakovanje.TabIndex = 3;
-            this.txtPakovanje.TabStop = false;
+            cmbLek.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbLek.FormattingEnabled = true;
+            cmbLek.Location = new Point(80, 57);
+            cmbLek.Name = "cmbLek";
+            cmbLek.Size = new Size(300, 23);
+            cmbLek.TabIndex = 2;
             // 
             // lblKolicina
             // 
-            this.lblKolicina.AutoSize = true;
-            this.lblKolicina.Location = new System.Drawing.Point(30, 110);
-            this.lblKolicina.Name = "lblKolicina";
-            this.lblKolicina.Size = new System.Drawing.Size(55, 15);
-            this.lblKolicina.TabIndex = 4;
-            this.lblKolicina.Text = "Količina:";
+            lblKolicina.AutoSize = true;
+            lblKolicina.Location = new Point(20, 100);
+            lblKolicina.Name = "lblKolicina";
+            lblKolicina.Size = new Size(55, 15);
+            lblKolicina.TabIndex = 3;
+            lblKolicina.Text = "Količina:";
             // 
-            // numKolicina
+            // txtKolicina
             // 
-            this.numKolicina.Location = new System.Drawing.Point(150, 107);
-            this.numKolicina.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numKolicina.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numKolicina.Name = "numKolicina";
-            this.numKolicina.Size = new System.Drawing.Size(200, 23);
-            this.numKolicina.TabIndex = 5;
-            this.numKolicina.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            txtKolicina.Location = new Point(80, 97);
+            txtKolicina.Name = "txtKolicina";
+            txtKolicina.Size = new Size(100, 23);
+            txtKolicina.TabIndex = 4;
             // 
-            // lblPreporucenaDoza
+            // btnDodajStavku
             // 
-            this.lblPreporucenaDoza.AutoSize = true;
-            this.lblPreporucenaDoza.Location = new System.Drawing.Point(30, 150);
-            this.lblPreporucenaDoza.Name = "lblPreporucenaDoza";
-            this.lblPreporucenaDoza.Size = new System.Drawing.Size(100, 15);
-            this.lblPreporucenaDoza.TabIndex = 6;
-            this.lblPreporucenaDoza.Text = "Preporučena doza:";
+            btnDodajStavku.Location = new Point(80, 140);
+            btnDodajStavku.Name = "btnDodajStavku";
+            btnDodajStavku.Size = new Size(120, 30);
+            btnDodajStavku.TabIndex = 5;
+            btnDodajStavku.Text = "Dodaj stavku";
+            btnDodajStavku.UseVisualStyleBackColor = true;
+            btnDodajStavku.Click += btnDodajStavku_Click;
             // 
-            // txtPreporucenaDoza
+            // btnZatvori
             // 
-            this.txtPreporucenaDoza.Location = new System.Drawing.Point(150, 147);
-            this.txtPreporucenaDoza.Name = "txtPreporucenaDoza";
-            this.txtPreporucenaDoza.Size = new System.Drawing.Size(200, 23);
-            this.txtPreporucenaDoza.TabIndex = 7;
+            btnZatvori.Location = new Point(220, 140);
+            btnZatvori.Name = "btnZatvori";
+            btnZatvori.Size = new Size(100, 30);
+            btnZatvori.TabIndex = 6;
+            btnZatvori.Text = "Zatvori";
+            btnZatvori.UseVisualStyleBackColor = true;
+            btnZatvori.Click += btnZatvori_Click;
             // 
-            // btnSave
+            // btnUpravljajPakovanjima
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 200);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 200);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnUpravljajPakovanjima.Location = new Point(80, 180);
+            btnUpravljajPakovanjima.Name = "btnUpravljajPakovanjima";
+            btnUpravljajPakovanjima.Size = new Size(160, 30);
+            btnUpravljajPakovanjima.TabIndex = 7;
+            btnUpravljajPakovanjima.Text = "Upravljaj pakovanjima";
+            btnUpravljajPakovanjima.UseVisualStyleBackColor = true;
+            btnUpravljajPakovanjima.Click += btnUpravljajPakovanjima_Click;
             // 
             // ReceptStavkaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 251);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtPreporucenaDoza);
-            this.Controls.Add(this.lblPreporucenaDoza);
-            this.Controls.Add(this.numKolicina);
-            this.Controls.Add(this.lblKolicina);
-            this.Controls.Add(this.txtPakovanje);
-            this.Controls.Add(this.lblPakovanje);
-            this.Controls.Add(this.txtRecept);
-            this.Controls.Add(this.lblRecept);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ReceptStavkaForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Stavka recepta";
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(420, 230);
+            Controls.Add(btnUpravljajPakovanjima);
+            Controls.Add(btnZatvori);
+            Controls.Add(btnDodajStavku);
+            Controls.Add(txtKolicina);
+            Controls.Add(lblKolicina);
+            Controls.Add(cmbLek);
+            Controls.Add(lblLek);
+            Controls.Add(lblReceptInfo);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "ReceptStavkaForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Dodaj stavku recepta";
+            ResumeLayout(false);
+            PerformLayout();
         }
-
-        #endregion
-
-        private System.Windows.Forms.Label lblRecept;
-        private System.Windows.Forms.TextBox txtRecept;
-        private System.Windows.Forms.Label lblPakovanje;
-        private System.Windows.Forms.TextBox txtPakovanje;
-        private System.Windows.Forms.Label lblKolicina;
-        private System.Windows.Forms.NumericUpDown numKolicina;
-        private System.Windows.Forms.Label lblPreporucenaDoza;
-        private System.Windows.Forms.TextBox txtPreporucenaDoza;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
     }
 }

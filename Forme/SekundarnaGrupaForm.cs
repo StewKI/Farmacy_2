@@ -1,82 +1,118 @@
-using System;
-using System.Windows.Forms;
 using Farmacy.Entiteti;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Farmacy.Forme
 {
     public partial class SekundarnaGrupaForm : Form
     {
-        private SekundarnaKategorijaBasic sekundarnaGrupa;
-
         public SekundarnaGrupaForm()
         {
             InitializeComponent();
-            InitializeForm();
+            this.Load += SekundarnaGrupaForm_Load;
         }
 
-        public SekundarnaGrupaForm(SekundarnaKategorijaBasic sekundarnaGrupa) : this()
+        private void SekundarnaGrupaForm_Load(object sender, EventArgs e)
         {
-            this.sekundarnaGrupa = sekundarnaGrupa;
-            LoadSekundarnaGrupaData();
+            popuniPodacimaSekundarneGrupe();
         }
 
-        private void InitializeForm()
+        public void popuniPodacimaSekundarneGrupe()
         {
-            // Form initialization logic will be in Designer file
-        }
-
-        private void LoadSekundarnaGrupaData()
-        {
-            if (sekundarnaGrupa != null)
+            try
             {
-                txtId.Text = sekundarnaGrupa.Id.ToString();
-                txtNaziv.Text = sekundarnaGrupa.Naziv;
+                IList<SekundarnaKategorijaBasic> lista = DTOManagerIsporukeZalihe.VratiSveSekundarneKategorije() ?? new List<SekundarnaKategorijaBasic>();
+
+                dgvSekundarneGrupe.AutoGenerateColumns = false;
+                if (colId != null) colId.DataPropertyName = "Id";
+                if (colNaziv != null) colNaziv.DataPropertyName = "Naziv";
+                dgvSekundarneGrupe.RowHeadersVisible = false;
+                dgvSekundarneGrupe.DataSource = false;
+                dgvSekundarneGrupe.DataSource = lista;
+
+                if (dgvSekundarneGrupe.Columns.Count == 0)
+                {
+                    dgvSekundarneGrupe.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colId",
+                        HeaderText = "ID",
+                        DataPropertyName = "Id",
+                        Width = 60
+                    });
+                    dgvSekundarneGrupe.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colNaziv",
+                        HeaderText = "Naziv",
+                        DataPropertyName = "Naziv",
+                        Width = 300
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju sekundarnih grupa:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnNovaSekundarnaGrupa_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+            NovaSekundarnaGrupaForm form = new NovaSekundarnaGrupaForm();
+            form.ShowDialog();
+            popuniPodacimaSekundarneGrupe();
+        }
+
+        private void btnObrisiSekundarnuGrupu_Click(object sender, EventArgs e)
+        {
+            if (dgvSekundarneGrupe.SelectedRows.Count == 0)
             {
-                SaveSekundarnaGrupa();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("Morate izabrati sekundarnu grupu prvo!");
+                return;
+            }
+
+            long id = Convert.ToInt64(dgvSekundarneGrupe.CurrentRow.Cells[0].Value);
+
+            var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete sekundarnu grupu sa ID: {id}?",
+                "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DTOManagerIsporukeZalihe.ObrisiSekundarnuGrupu(id);
+                    popuniPodacimaSekundarneGrupe();
+                    MessageBox.Show("Sekundarna grupa je uspešno obrisana!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greška pri brisanju sekundarne grupe:\n" + ex.Message, "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnIzmeniSekundarnuGrupu_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private bool ValidateForm()
-        {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            if (dgvSekundarneGrupe.CurrentRow == null)
             {
-                MessageBox.Show("Naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNaziv.Focus();
-                return false;
+                MessageBox.Show("Morate selektovati sekundarnu grupu!");
+                return;
             }
 
-            return true;
-        }
+            long id = Convert.ToInt64(dgvSekundarneGrupe.CurrentRow.Cells[0].Value);
+            var selektovanaGrupa = DTOManagerIsporukeZalihe.VratiSekundarnuGrupu(id);
 
-        private void SaveSekundarnaGrupa()
-        {
-            if (sekundarnaGrupa == null)
+            if (selektovanaGrupa != null)
             {
-                sekundarnaGrupa = new SekundarnaKategorijaBasic();
+                IzmeniSekundarnuGrupuForm form = new IzmeniSekundarnuGrupuForm(selektovanaGrupa);
+                form.ShowDialog();
+                popuniPodacimaSekundarneGrupe();
             }
-
-            sekundarnaGrupa.Naziv = txtNaziv.Text.Trim();
-
-            DTOManagerLek.DodajSekundarnuKategoriju(sekundarnaGrupa);
-        }
-
-        public SekundarnaKategorijaBasic GetSekundarnaGrupa()
-        {
-            return sekundarnaGrupa;
+            else
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o sekundarnoj grupi!");
+            }
         }
     }
 }

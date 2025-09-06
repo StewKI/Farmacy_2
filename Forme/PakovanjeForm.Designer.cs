@@ -2,15 +2,23 @@ namespace Farmacy.Forme
 {
     partial class PakovanjeForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.DataGridView dgvPakovanja;
+        private System.Windows.Forms.Button btnNovoPakovanje;
+        private System.Windows.Forms.Button btnObrisiPakovanje;
+        private System.Windows.Forms.Button btnIzmeniPakovanje;
+        private System.Windows.Forms.Label lblPakovanja;
+        private System.Windows.Forms.ComboBox cmbLek;
+        private System.Windows.Forms.ComboBox cmbOblik;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLek;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOblik;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVelicina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKolicinaAktivne;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJedinicaMere;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,289 +28,165 @@ namespace Farmacy.Forme
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            lblId = new Label();
-            txtId = new TextBox();
-            lblLekId = new Label();
-            txtLekId = new TextBox();
-            lblOblikId = new Label();
-            txtOblikId = new TextBox();
-            lblVelicinaPakovanja = new Label();
-            txtVelicinaPakovanja = new TextBox();
-            lblKolicinaAktivne = new Label();
-            numKolicinaAktivne = new NumericUpDown();
-            lblJedinicaMere = new Label();
-            txtJedinicaMere = new TextBox();
-            lblAmbalaza = new Label();
-            txtAmbalaza = new TextBox();
-            lblNacinCuvanja = new Label();
-            txtNacinCuvanja = new TextBox();
-            lblPreporuceniRokDana = new Label();
-            numPreporuceniRokDana = new NumericUpDown();
-            btnSave = new Button();
-            btnCancel = new Button();
-            ((System.ComponentModel.ISupportInitialize)numKolicinaAktivne).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numPreporuceniRokDana).BeginInit();
+            dgvPakovanja = new DataGridView();
+            btnNovoPakovanje = new Button();
+            btnObrisiPakovanje = new Button();
+            btnIzmeniPakovanje = new Button();
+            lblPakovanja = new Label();
+            cmbLek = new ComboBox();
+            cmbOblik = new ComboBox();
+            colId = new DataGridViewTextBoxColumn();
+            colLek = new DataGridViewTextBoxColumn();
+            colOblik = new DataGridViewTextBoxColumn();
+            colVelicina = new DataGridViewTextBoxColumn();
+            colKolicinaAktivne = new DataGridViewTextBoxColumn();
+            colJedinicaMere = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvPakovanja).BeginInit();
             SuspendLayout();
             // 
-            // lblId
+            // dgvPakovanja
             // 
-            lblId.AutoSize = true;
-            lblId.Location = new Point(14, 17);
-            lblId.Margin = new Padding(4, 0, 4, 0);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(21, 15);
-            lblId.TabIndex = 0;
-            lblId.Text = "ID:";
+            dgvPakovanja.AllowUserToAddRows = false;
+            dgvPakovanja.AllowUserToDeleteRows = false;
+            dgvPakovanja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPakovanja.Columns.AddRange(new DataGridViewColumn[] { colId, colLek, colOblik, colVelicina, colKolicinaAktivne, colJedinicaMere });
+            dgvPakovanja.Location = new Point(12, 50);
+            dgvPakovanja.MultiSelect = false;
+            dgvPakovanja.Name = "dgvPakovanja";
+            dgvPakovanja.ReadOnly = true;
+            dgvPakovanja.RowHeadersVisible = false;
+            dgvPakovanja.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPakovanja.Size = new Size(800, 400);
+            dgvPakovanja.TabIndex = 0;
             // 
-            // txtId
+            // btnNovoPakovanje
             // 
-            txtId.Location = new Point(140, 14);
-            txtId.Margin = new Padding(4, 3, 4, 3);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(174, 23);
-            txtId.TabIndex = 1;
+            btnNovoPakovanje.Location = new Point(830, 50);
+            btnNovoPakovanje.Name = "btnNovoPakovanje";
+            btnNovoPakovanje.Size = new Size(150, 40);
+            btnNovoPakovanje.TabIndex = 1;
+            btnNovoPakovanje.Text = "Novo pakovanje";
+            btnNovoPakovanje.UseVisualStyleBackColor = true;
+            btnNovoPakovanje.Click += btnNovoPakovanje_Click;
             // 
-            // lblLekId
+            // btnObrisiPakovanje
             // 
-            lblLekId.AutoSize = true;
-            lblLekId.Location = new Point(14, 47);
-            lblLekId.Margin = new Padding(4, 0, 4, 0);
-            lblLekId.Name = "lblLekId";
-            lblLekId.Size = new Size(48, 15);
-            lblLekId.TabIndex = 2;
-            lblLekId.Text = "ID Leka:";
+            btnObrisiPakovanje.Location = new Point(830, 100);
+            btnObrisiPakovanje.Name = "btnObrisiPakovanje";
+            btnObrisiPakovanje.Size = new Size(150, 40);
+            btnObrisiPakovanje.TabIndex = 2;
+            btnObrisiPakovanje.Text = "Obriši pakovanje";
+            btnObrisiPakovanje.UseVisualStyleBackColor = true;
+            btnObrisiPakovanje.Click += btnObrisiPakovanje_Click;
             // 
-            // txtLekId
+            // btnIzmeniPakovanje
             // 
-            txtLekId.Location = new Point(140, 44);
-            txtLekId.Margin = new Padding(4, 3, 4, 3);
-            txtLekId.Name = "txtLekId";
-            txtLekId.ReadOnly = true;
-            txtLekId.Size = new Size(174, 23);
-            txtLekId.TabIndex = 3;
+            btnIzmeniPakovanje.Location = new Point(830, 150);
+            btnIzmeniPakovanje.Name = "btnIzmeniPakovanje";
+            btnIzmeniPakovanje.Size = new Size(150, 40);
+            btnIzmeniPakovanje.TabIndex = 3;
+            btnIzmeniPakovanje.Text = "Izmeni pakovanje";
+            btnIzmeniPakovanje.UseVisualStyleBackColor = true;
+            btnIzmeniPakovanje.Click += btnIzmeniPakovanje_Click;
             // 
-            // lblOblikId
+            // lblPakovanja
             // 
-            lblOblikId.AutoSize = true;
-            lblOblikId.Location = new Point(14, 77);
-            lblOblikId.Margin = new Padding(4, 0, 4, 0);
-            lblOblikId.Name = "lblOblikId";
-            lblOblikId.Size = new Size(58, 15);
-            lblOblikId.TabIndex = 4;
-            lblOblikId.Text = "ID Oblika:";
+            lblPakovanja.AutoSize = true;
+            lblPakovanja.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblPakovanja.Location = new Point(12, 15);
+            lblPakovanja.Name = "lblPakovanja";
+            lblPakovanja.Size = new Size(90, 21);
+            lblPakovanja.TabIndex = 4;
+            lblPakovanja.Text = "Pakovanja";
             // 
-            // txtOblikId
+            // cmbLek
             // 
-            txtOblikId.Location = new Point(140, 74);
-            txtOblikId.Margin = new Padding(4, 3, 4, 3);
-            txtOblikId.Name = "txtOblikId";
-            txtOblikId.ReadOnly = true;
-            txtOblikId.Size = new Size(174, 23);
-            txtOblikId.TabIndex = 5;
+            cmbLek.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbLek.FormattingEnabled = true;
+            cmbLek.Location = new Point(830, 200);
+            cmbLek.Name = "cmbLek";
+            cmbLek.Size = new Size(150, 23);
+            cmbLek.TabIndex = 5;
+            cmbLek.Visible = false;
             // 
-            // lblVelicinaPakovanja
+            // cmbOblik
             // 
-            lblVelicinaPakovanja.AutoSize = true;
-            lblVelicinaPakovanja.Location = new Point(14, 107);
-            lblVelicinaPakovanja.Margin = new Padding(4, 0, 4, 0);
-            lblVelicinaPakovanja.Name = "lblVelicinaPakovanja";
-            lblVelicinaPakovanja.Size = new Size(107, 15);
-            lblVelicinaPakovanja.TabIndex = 6;
-            lblVelicinaPakovanja.Text = "Veličina pakovanja:";
+            cmbOblik.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOblik.FormattingEnabled = true;
+            cmbOblik.Location = new Point(830, 230);
+            cmbOblik.Name = "cmbOblik";
+            cmbOblik.Size = new Size(150, 23);
+            cmbOblik.TabIndex = 6;
+            cmbOblik.Visible = false;
             // 
-            // txtVelicinaPakovanja
+            // colId
             // 
-            txtVelicinaPakovanja.Location = new Point(140, 104);
-            txtVelicinaPakovanja.Margin = new Padding(4, 3, 4, 3);
-            txtVelicinaPakovanja.Name = "txtVelicinaPakovanja";
-            txtVelicinaPakovanja.Size = new Size(174, 23);
-            txtVelicinaPakovanja.TabIndex = 7;
+            colId.DataPropertyName = "Id";
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Width = 60;
             // 
-            // lblKolicinaAktivne
+            // colLek
             // 
-            lblKolicinaAktivne.AutoSize = true;
-            lblKolicinaAktivne.Location = new Point(14, 137);
-            lblKolicinaAktivne.Margin = new Padding(4, 0, 4, 0);
-            lblKolicinaAktivne.Name = "lblKolicinaAktivne";
-            lblKolicinaAktivne.Size = new Size(93, 15);
-            lblKolicinaAktivne.TabIndex = 8;
-            lblKolicinaAktivne.Text = "Količina aktivne:";
+            colLek.DataPropertyName = "Lek.KomercijalniNaziv";
+            colLek.HeaderText = "Lek";
+            colLek.Name = "colLek";
+            colLek.ReadOnly = true;
+            colLek.Width = 150;
             // 
-            // numKolicinaAktivne
+            // colOblik
             // 
-            numKolicinaAktivne.DecimalPlaces = 2;
-            numKolicinaAktivne.Location = new Point(140, 134);
-            numKolicinaAktivne.Margin = new Padding(4, 3, 4, 3);
-            numKolicinaAktivne.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            numKolicinaAktivne.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numKolicinaAktivne.Name = "numKolicinaAktivne";
-            numKolicinaAktivne.Size = new Size(175, 23);
-            numKolicinaAktivne.TabIndex = 9;
-            numKolicinaAktivne.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            colOblik.DataPropertyName = "Oblik.Naziv";
+            colOblik.HeaderText = "Oblik";
+            colOblik.Name = "colOblik";
+            colOblik.ReadOnly = true;
+            colOblik.Width = 100;
             // 
-            // lblJedinicaMere
+            // colVelicina
             // 
-            lblJedinicaMere.AutoSize = true;
-            lblJedinicaMere.Location = new Point(14, 167);
-            lblJedinicaMere.Margin = new Padding(4, 0, 4, 0);
-            lblJedinicaMere.Name = "lblJedinicaMere";
-            lblJedinicaMere.Size = new Size(82, 15);
-            lblJedinicaMere.TabIndex = 10;
-            lblJedinicaMere.Text = "Jedinica mere:";
+            colVelicina.DataPropertyName = "VelicinaPakovanja";
+            colVelicina.HeaderText = "Veličina";
+            colVelicina.Name = "colVelicina";
+            colVelicina.ReadOnly = true;
+            colVelicina.Width = 100;
             // 
-            // txtJedinicaMere
+            // colKolicinaAktivne
             // 
-            txtJedinicaMere.Location = new Point(140, 164);
-            txtJedinicaMere.Margin = new Padding(4, 3, 4, 3);
-            txtJedinicaMere.Name = "txtJedinicaMere";
-            txtJedinicaMere.Size = new Size(174, 23);
-            txtJedinicaMere.TabIndex = 11;
+            colKolicinaAktivne.DataPropertyName = "KolicinaAktivne";
+            colKolicinaAktivne.HeaderText = "Količina aktivne";
+            colKolicinaAktivne.Name = "colKolicinaAktivne";
+            colKolicinaAktivne.ReadOnly = true;
+            colKolicinaAktivne.Width = 120;
             // 
-            // lblAmbalaza
+            // colJedinicaMere
             // 
-            lblAmbalaza.AutoSize = true;
-            lblAmbalaza.Location = new Point(14, 197);
-            lblAmbalaza.Margin = new Padding(4, 0, 4, 0);
-            lblAmbalaza.Name = "lblAmbalaza";
-            lblAmbalaza.Size = new Size(62, 15);
-            lblAmbalaza.TabIndex = 12;
-            lblAmbalaza.Text = "Ambalaza:";
-            // 
-            // txtAmbalaza
-            // 
-            txtAmbalaza.Location = new Point(140, 194);
-            txtAmbalaza.Margin = new Padding(4, 3, 4, 3);
-            txtAmbalaza.Name = "txtAmbalaza";
-            txtAmbalaza.Size = new Size(174, 23);
-            txtAmbalaza.TabIndex = 13;
-            // 
-            // lblNacinCuvanja
-            // 
-            lblNacinCuvanja.AutoSize = true;
-            lblNacinCuvanja.Location = new Point(14, 227);
-            lblNacinCuvanja.Margin = new Padding(4, 0, 4, 0);
-            lblNacinCuvanja.Name = "lblNacinCuvanja";
-            lblNacinCuvanja.Size = new Size(85, 15);
-            lblNacinCuvanja.TabIndex = 14;
-            lblNacinCuvanja.Text = "Način čuvanja:";
-            // 
-            // txtNacinCuvanja
-            // 
-            txtNacinCuvanja.Location = new Point(140, 224);
-            txtNacinCuvanja.Margin = new Padding(4, 3, 4, 3);
-            txtNacinCuvanja.Name = "txtNacinCuvanja";
-            txtNacinCuvanja.Size = new Size(174, 23);
-            txtNacinCuvanja.TabIndex = 15;
-            // 
-            // lblPreporuceniRokDana
-            // 
-            lblPreporuceniRokDana.AutoSize = true;
-            lblPreporuceniRokDana.Location = new Point(14, 257);
-            lblPreporuceniRokDana.Margin = new Padding(4, 0, 4, 0);
-            lblPreporuceniRokDana.Name = "lblPreporuceniRokDana";
-            lblPreporuceniRokDana.Size = new Size(112, 15);
-            lblPreporuceniRokDana.TabIndex = 16;
-            lblPreporuceniRokDana.Text = "Preporučeni rok (d):";
-            // 
-            // numPreporuceniRokDana
-            // 
-            numPreporuceniRokDana.Location = new Point(140, 254);
-            numPreporuceniRokDana.Margin = new Padding(4, 3, 4, 3);
-            numPreporuceniRokDana.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            numPreporuceniRokDana.Name = "numPreporuceniRokDana";
-            numPreporuceniRokDana.Size = new Size(175, 23);
-            numPreporuceniRokDana.TabIndex = 17;
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(140, 295);
-            btnSave.Margin = new Padding(4, 3, 4, 3);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(88, 27);
-            btnSave.TabIndex = 18;
-            btnSave.Text = "Sačuvaj";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(234, 295);
-            btnCancel.Margin = new Padding(4, 3, 4, 3);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(88, 27);
-            btnCancel.TabIndex = 19;
-            btnCancel.Text = "Otkaži";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            colJedinicaMere.DataPropertyName = "JedinicaMere";
+            colJedinicaMere.HeaderText = "Jedinica mere";
+            colJedinicaMere.Name = "colJedinicaMere";
+            colJedinicaMere.ReadOnly = true;
+            colJedinicaMere.Width = 100;
             // 
             // PakovanjeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(331, 336);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
-            Controls.Add(numPreporuceniRokDana);
-            Controls.Add(lblPreporuceniRokDana);
-            Controls.Add(txtNacinCuvanja);
-            Controls.Add(lblNacinCuvanja);
-            Controls.Add(txtAmbalaza);
-            Controls.Add(lblAmbalaza);
-            Controls.Add(txtJedinicaMere);
-            Controls.Add(lblJedinicaMere);
-            Controls.Add(numKolicinaAktivne);
-            Controls.Add(lblKolicinaAktivne);
-            Controls.Add(txtVelicinaPakovanja);
-            Controls.Add(lblVelicinaPakovanja);
-            Controls.Add(txtOblikId);
-            Controls.Add(lblOblikId);
-            Controls.Add(txtLekId);
-            Controls.Add(lblLekId);
-            Controls.Add(txtId);
-            Controls.Add(lblId);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4, 3, 4, 3);
-            MaximizeBox = false;
-            MinimizeBox = false;
+            ClientSize = new Size(1000, 470);
+            Controls.Add(cmbOblik);
+            Controls.Add(cmbLek);
+            Controls.Add(lblPakovanja);
+            Controls.Add(btnIzmeniPakovanje);
+            Controls.Add(btnObrisiPakovanje);
+            Controls.Add(btnNovoPakovanje);
+            Controls.Add(dgvPakovanja);
             Name = "PakovanjeForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Pakovanje";
-            ((System.ComponentModel.ISupportInitialize)numKolicinaAktivne).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numPreporuceniRokDana).EndInit();
+            Text = "Pakovanja";
+            ((System.ComponentModel.ISupportInitialize)dgvPakovanja).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-
-        #endregion
-
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lblLekId;
-        private System.Windows.Forms.TextBox txtLekId;
-        private System.Windows.Forms.Label lblOblikId;
-        private System.Windows.Forms.TextBox txtOblikId;
-        private System.Windows.Forms.Label lblVelicinaPakovanja;
-        private System.Windows.Forms.TextBox txtVelicinaPakovanja;
-        private System.Windows.Forms.Label lblKolicinaAktivne;
-        private System.Windows.Forms.NumericUpDown numKolicinaAktivne;
-        private System.Windows.Forms.Label lblJedinicaMere;
-        private System.Windows.Forms.TextBox txtJedinicaMere;
-        private System.Windows.Forms.Label lblAmbalaza;
-        private System.Windows.Forms.TextBox txtAmbalaza;
-        private System.Windows.Forms.Label lblNacinCuvanja;
-        private System.Windows.Forms.TextBox txtNacinCuvanja;
-        private System.Windows.Forms.Label lblPreporuceniRokDana;
-        private System.Windows.Forms.NumericUpDown numPreporuceniRokDana;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -20,6 +20,8 @@ namespace Farmacy.Forme
         {
             popuniPodacimaLek();
             popuniPodacimaOblik();
+            popuniPodacimaPrimarneGrupe();
+            popuniPodacimaSekundarneGrupe();
         }
 
         public void popuniPodacimaLek()
@@ -105,7 +107,7 @@ namespace Farmacy.Forme
                         DataPropertyName = "Naziv",
                         Width = 180
                     });
-                    
+
                 }
 
                 brojLekova = lista.Count;
@@ -113,6 +115,46 @@ namespace Farmacy.Forme
             catch (Exception ex)
             {
                 MessageBox.Show("Greška pri učitavanju lekova:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void popuniPodacimaPrimarneGrupe()
+        {
+            try
+            {
+                IList<PrimarnaGrupaBasic> lista = DTOManagerLek.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
+
+                dgvPrimarneGrupe.AutoGenerateColumns = false;
+                if (colPrimarnaId != null) colPrimarnaId.DataPropertyName = "Id";
+                if (colPrimarnaNaziv != null) colPrimarnaNaziv.DataPropertyName = "Naziv";
+                dgvPrimarneGrupe.RowHeadersVisible = false;
+                dgvPrimarneGrupe.DataSource = false;
+                dgvPrimarneGrupe.DataSource = lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju primarnih grupa:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void popuniPodacimaSekundarneGrupe()
+        {
+            try
+            {
+                IList<SekundarnaKategorijaBasic> lista = DTOManagerIsporukeZalihe.VratiSveSekundarneKategorije() ?? new List<SekundarnaKategorijaBasic>();
+
+                dgvSekundarneGrupe.AutoGenerateColumns = false;
+                if (colSekundarnaId != null) colSekundarnaId.DataPropertyName = "Id";
+                if (colSekundarnaNaziv != null) colSekundarnaNaziv.DataPropertyName = "Naziv";
+                dgvSekundarneGrupe.RowHeadersVisible = false;
+                dgvSekundarneGrupe.DataSource = false;
+                dgvSekundarneGrupe.DataSource = lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju sekundarnih grupa:\n" + ex.Message, "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -134,6 +176,8 @@ namespace Farmacy.Forme
             {
                 DTOManagerLek.ObrisiLek(id);
                 popuniPodacimaLek();
+                popuniPodacimaPrimarneGrupe();
+                popuniPodacimaSekundarneGrupe();
             }
         }
 
@@ -153,6 +197,8 @@ namespace Farmacy.Forme
                 LekEditForm form = new LekEditForm(selektovaniLek);
                 form.ShowDialog();
                 popuniPodacimaLek();
+                popuniPodacimaPrimarneGrupe();
+                popuniPodacimaSekundarneGrupe();
             }
             else
             {
@@ -167,6 +213,8 @@ namespace Farmacy.Forme
             LekForm form = new LekForm();
             form.ShowDialog();
             popuniPodacimaLek();
+            popuniPodacimaPrimarneGrupe();
+            popuniPodacimaSekundarneGrupe();
         }
 
         // --- Dugmad za povezane forme ---
@@ -184,7 +232,7 @@ namespace Farmacy.Forme
                 MessageBox.Show("Morate selektovati lek prvo!");
                 return;
             }
-            
+
             long id = Convert.ToInt64(dgvLekovi.CurrentRow.Cells[0].Value);
             var selektovaniLek = DTOManagerLek.VratiLekEntitet(id);
 
@@ -228,9 +276,9 @@ namespace Farmacy.Forme
                 return;
             }
 
-           
 
-            PakovanjeForm form = new PakovanjeForm(idLek,idOblik);
+
+            PakovanjeForm form = new PakovanjeForm();
             form.ShowDialog();
 
         }
@@ -265,6 +313,11 @@ namespace Farmacy.Forme
         }
 
         private void LekAdminForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -9,6 +9,8 @@ namespace Farmacy.Forme
     {
         private LekBasic lek;
         private IList<PrimarnaGrupaBasic> list;
+        private IList<ProizvodjacBasic> proizvodjaciList;
+        private IList<SekundarnaKategorijaBasic> sekundarneKategorijeList;
         private LekBasic ConvertToBasic(Lek lek)
         {
             return new LekBasic
@@ -28,6 +30,8 @@ namespace Farmacy.Forme
             InitializeComponent();
             InitializeForm();
             LoadPrimarneGrupeAsync();
+            LoadProizvodjaciAsync();
+            LoadSekundarneKategorijeAsync();
         }
 
         public LekForm(LekBasic lek) : this()
@@ -96,7 +100,14 @@ namespace Farmacy.Forme
             lek.HemijskiNaziv = txtHemijski.Text.Trim();
             lek.KomercijalniNaziv = txtKomercijalni.Text.Trim();
             lek.Dejstvo = string.IsNullOrWhiteSpace(txtDejstvo.Text) ? null : txtDejstvo.Text.Trim();
-            lek.ProizvodjacId = long.Parse(txtProizvodjac.Text);
+            // Get selected proizvodjac ID from ComboBox
+            if (cmbProizvodjac.SelectedItem != null)
+            {
+                string selectedProizvodjac = cmbProizvodjac.SelectedItem.ToString();
+                lek.ProizvodjacId = proizvodjaciList
+                    .First(x => string.Equals(x.Naziv, selectedProizvodjac, StringComparison.OrdinalIgnoreCase))
+                    .Id;
+            }
 
             string target = cmbPrimarnaGrupa.Text;
 
@@ -105,6 +116,18 @@ namespace Farmacy.Forme
                                 .First(x => string.Equals(x.Naziv, target, StringComparison.OrdinalIgnoreCase))
                                    .Id;
 
+            // Get selected sekundarne kategorije from CheckedListBox
+            lek.SekundarneKategorijeIds.Clear();
+            for (int i = 0; i < chkListSekundarneKategorije.Items.Count; i++)
+            {
+                if (chkListSekundarneKategorije.GetItemChecked(i))
+                {
+                    string selectedKategorija = chkListSekundarneKategorije.Items[i].ToString();
+                    var kategorija = sekundarneKategorijeList
+                        .First(x => string.Equals(x.Naziv, selectedKategorija, StringComparison.OrdinalIgnoreCase));
+                    lek.SekundarneKategorijeIds.Add(kategorija.Id);
+                }
+            }
 
             DTOManagerLek.DodajLek(lek);
         }
@@ -153,6 +176,11 @@ namespace Farmacy.Forme
 
         }
 
+        private void cmbProizvodjac_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private async Task LoadPrimarneGrupeAsync()
         {
             try
@@ -173,6 +201,46 @@ namespace Farmacy.Forme
             catch (Exception ex)
             {
                 MessageBox.Show("Greška pri učitavanju primarnih grupa: " + ex.Message);
+            }
+        }
+
+        private async Task LoadProizvodjaciAsync()
+        {
+            try
+            {
+                proizvodjaciList = DTOManagerIsporukeZalihe.VratiSveProizvodjace() ?? new List<ProizvodjacBasic>();
+
+                cmbProizvodjac.Items.Clear();
+                cmbProizvodjac.Items.AddRange(
+                    proizvodjaciList.Select(x => x.Naziv).OrderBy(n => n).ToArray()
+                );
+                
+                // Select first item if available
+                if (cmbProizvodjac.Items.Count > 0)
+                {
+                    cmbProizvodjac.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju proizvođača: " + ex.Message);
+            }
+        }
+
+        private async Task LoadSekundarneKategorijeAsync()
+        {
+            try
+            {
+                sekundarneKategorijeList = DTOManagerIsporukeZalihe.VratiSveSekundarneKategorije() ?? new List<SekundarnaKategorijaBasic>();
+
+                chkListSekundarneKategorije.Items.Clear();
+                chkListSekundarneKategorije.Items.AddRange(
+                    sekundarneKategorijeList.Select(x => x.Naziv).OrderBy(n => n).ToArray()
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju sekundarnih kategorija: " + ex.Message);
             }
         }
 

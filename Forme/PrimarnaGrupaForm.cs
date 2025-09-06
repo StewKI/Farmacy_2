@@ -1,82 +1,119 @@
-using System;
-using System.Windows.Forms;
 using Farmacy.Entiteti;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Farmacy.Forme
 {
     public partial class PrimarnaGrupaForm : Form
     {
-        private PrimarnaGrupaBasic primarnaGrupa;
-
         public PrimarnaGrupaForm()
         {
             InitializeComponent();
-            InitializeForm();
+            this.Load += PrimarnaGrupaForm_Load;
         }
 
-        public PrimarnaGrupaForm(PrimarnaGrupaBasic primarnaGrupa) : this()
+        private void PrimarnaGrupaForm_Load(object sender, EventArgs e)
         {
-            this.primarnaGrupa = primarnaGrupa;
-            LoadPrimarnaGrupaData();
+            popuniPodacimaPrimarneGrupe();
         }
 
-        private void InitializeForm()
+        public void popuniPodacimaPrimarneGrupe()
         {
-            // Form initialization logic will be in Designer file
-        }
-
-        private void LoadPrimarnaGrupaData()
-        {
-            if (primarnaGrupa != null)
+            try
             {
-                txtId.Text = primarnaGrupa.Id.ToString();
-                txtNaziv.Text = primarnaGrupa.Naziv;
+                IList<PrimarnaGrupaBasic> lista = DTOManagerLek.VratiPrimarneGrupe() ?? new List<PrimarnaGrupaBasic>();
+
+                dgvPrimarneGrupe.AutoGenerateColumns = false;
+                if (colId != null) colId.DataPropertyName = "Id";
+                if (colNaziv != null) colNaziv.DataPropertyName = "Naziv";
+                dgvPrimarneGrupe.RowHeadersVisible = false;
+                dgvPrimarneGrupe.DataSource = false;
+                dgvPrimarneGrupe.DataSource = lista;
+
+                if (dgvPrimarneGrupe.Columns.Count == 0)
+                {
+                    dgvPrimarneGrupe.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colId",
+                        HeaderText = "ID",
+                        DataPropertyName = "Id",
+                        Width = 60
+                    });
+                    dgvPrimarneGrupe.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colNaziv",
+                        HeaderText = "Naziv",
+                        DataPropertyName = "Naziv",
+                        Width = 300
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju primarnih grupa:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnNovaPrimarnaGrupa_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+            NovaPrimarnaGrupaForm form = new NovaPrimarnaGrupaForm();
+            form.ShowDialog();
+            popuniPodacimaPrimarneGrupe();
+        }
+
+        private void btnObrisiPrimarnuGrupu_Click(object sender, EventArgs e)
+        {
+            if (dgvPrimarneGrupe.SelectedRows.Count == 0)
             {
-                SavePrimarnaGrupa();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("Morate izabrati primarnu grupu prvo!");
+                return;
+            }
+
+            long id = Convert.ToInt64(dgvPrimarneGrupe.CurrentRow.Cells[0].Value);
+
+            var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete primarnu grupu sa ID: {id}?",
+                "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DTOManagerLek.ObrisiPrimarnuGrupu(id);
+                    popuniPodacimaPrimarneGrupe();
+                    MessageBox.Show("Primarna grupa je uspešno obrisana!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greška pri brisanju primarne grupe:\n" + ex.Message, "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnIzmeniPrimarnuGrupu_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private bool ValidateForm()
-        {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            if (dgvPrimarneGrupe.CurrentRow == null)
             {
-                MessageBox.Show("Naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNaziv.Focus();
-                return false;
+                MessageBox.Show("Morate selektovati primarnu grupu!");
+                return;
             }
 
-            return true;
-        }
+            long id = Convert.ToInt64(dgvPrimarneGrupe.CurrentRow.Cells[0].Value);
+            var selektovanaGrupa = DTOManagerLek.VratiPrimarnuGrupu(id);
 
-        private void SavePrimarnaGrupa()
-        {
-            if (primarnaGrupa == null)
+            if (selektovanaGrupa != null)
             {
-                primarnaGrupa = new PrimarnaGrupaBasic();
+                //IzmeniPrimarnuGrupuForm form = new IzmeniPrimarnuGrupuForm(selektovanaGrupa);
+                //form.ShowDialog();
+                //popuniPodacimaPrimarneGrupe();
             }
-
-            primarnaGrupa.Naziv = txtNaziv.Text.Trim();
-
-            DTOManagerLek.DodajPrimarnuGrupu(primarnaGrupa);
-        }
-
-        public PrimarnaGrupaBasic GetPrimarnaGrupa()
-        {
-            return primarnaGrupa;
+            else
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o primarnoj grupi!");
+            }
         }
     }
 }
+

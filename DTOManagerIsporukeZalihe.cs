@@ -195,5 +195,183 @@ namespace Farmacy
             }
 
         }
+
+        public static IList<ProizvodjacBasic> VratiSveProizvodjace()
+        {
+            var list = new List<ProizvodjacBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var proizvodjaci = s.Query<Proizvodjac>().ToList();
+                foreach (var p in proizvodjaci)
+                {
+                    list.Add(new ProizvodjacBasic
+                    {
+                        Id = p.Id,
+                        Naziv = p.Naziv,
+                        Zemlja = p.Zemlja,
+                        Telefon = p.Telefon,
+                        Email = p.Email
+                    });
+                }
+            }
+            catch (Exception) { }
+            return list;
+        }
+
+        public static IList<SekundarnaKategorijaBasic> VratiSveSekundarneKategorije()
+        {
+            var list = new List<SekundarnaKategorijaBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var kategorije = s.Query<SekundarnaKategorija>().ToList();
+                foreach (var k in kategorije)
+                {
+                    list.Add(new SekundarnaKategorijaBasic
+                    {
+                        Id = k.Id,
+                        Naziv = k.Naziv
+                    });
+                }
+            }
+            catch (Exception) { }
+            return list;
+        }
+
+        public static SekundarnaKategorijaBasic VratiSekundarnuGrupu(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = s.Get<SekundarnaKategorija>(id);
+                if (grupa != null)
+                {
+                    return new SekundarnaKategorijaBasic
+                    {
+                        Id = grupa.Id,
+                        Naziv = grupa.Naziv
+                    };
+                }
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static long DodajSekundarnuGrupu(SekundarnaKategorijaBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = new SekundarnaKategorija { Naziv = dto.Naziv };
+                s.Save(grupa);
+                s.Flush();
+                dto.Id = grupa.Id;
+                return grupa.Id;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri dodavanju sekundarne grupe: " + ex.Message);
+            }
+        }
+
+        public static void IzmeniSekundarnuGrupu(SekundarnaKategorijaBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = s.Get<SekundarnaKategorija>(dto.Id);
+                if (grupa != null)
+                {
+                    grupa.Naziv = dto.Naziv;
+                    s.Update(grupa);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni sekundarne grupe: " + ex.Message);
+            }
+        }
+
+        public static void ObrisiSekundarnuGrupu(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var grupa = s.Get<SekundarnaKategorija>(id);
+                if (grupa != null)
+                {
+                    s.Delete(grupa);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri brisanju sekundarne grupe: " + ex.Message);
+            }
+        }
+
+        public static IList<Recept> VratiSveRecepte()
+        {
+            var list = new List<Recept>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var recepti = s.Query<Recept>().ToList();
+                foreach (var r in recepti)
+                {
+                    list.Add(r);
+                }
+            }
+            catch (Exception) { }
+            return list;
+        }
+
+        public static Recept VratiRecept(string serijskiBroj)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var recept = s.Get<Recept>(serijskiBroj);
+                return recept;
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception("Greška pri učitavanju recepta: " + ex.Message);
+            }
+        }
+
+        public static void ObrisiRecept(string serijskiBroj)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var recept = s.Get<Recept>(serijskiBroj);
+                if (recept != null)
+                {
+                    s.Delete(recept);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri brisanju recepta: " + ex.Message);
+            }
+        }
+
+        public static void DodajReceptStavku(ReceptStavka stavka)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                s.Save(stavka);
+                s.Flush();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri dodavanju stavke recepta: " + ex.Message);
+            }
+        }
     }
 }
