@@ -32,7 +32,9 @@
         private Button btnGalenskiLab;
         private GroupBox grpZaposleni;
         private Button btnZaposleni;
-        private Button btnLekovi;
+        private Button btnDistributeri;
+        private Button btnProizvodjaci;
+        private Button btnZalihe;
 
         // kolone grida
         private DataGridViewTextBoxColumn colId;
@@ -65,7 +67,9 @@
             btnIzmeni = new Button();
             btnObrisi = new Button();
             btnDodaj = new Button();
-            btnLekovi = new Button();
+            btnDistributeri = new Button();
+            btnProizvodjaci = new Button();
+            btnZalihe = new Button();
             groupBoxLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvApoteke).BeginInit();
             panelDesno.SuspendLayout();
@@ -215,7 +219,9 @@
             grpPodaci.Controls.Add(btnIzmeni);
             grpPodaci.Controls.Add(btnObrisi);
             grpPodaci.Controls.Add(btnDodaj);
-            grpPodaci.Controls.Add(btnLekovi);
+            grpPodaci.Controls.Add(btnDistributeri);
+            grpPodaci.Controls.Add(btnProizvodjaci);
+            grpPodaci.Controls.Add(btnZalihe);
             grpPodaci.Dock = DockStyle.Top;
             grpPodaci.Location = new Point(12, 12);
             grpPodaci.Name = "grpPodaci";
@@ -263,14 +269,39 @@
             // 
             // btnLekovi
             // 
-            btnLekovi.Dock = DockStyle.Top;
-            btnLekovi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnLekovi.Location = new Point(12, 28);
-            btnLekovi.Name = "btnLekovi";
-            btnLekovi.Size = new Size(272, 46);
-            btnLekovi.TabIndex = 3;
-            btnLekovi.Text = "Lekovi";
-            btnLekovi.Click += btnLekovi_Click;
+            // 
+            // btnDistributeri
+            // 
+            btnDistributeri.Dock = DockStyle.Top;
+            btnDistributeri.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnDistributeri.Location = new Point(12, 74);
+            btnDistributeri.Name = "btnDistributeri";
+            btnDistributeri.Size = new Size(272, 46);
+            btnDistributeri.TabIndex = 4;
+            btnDistributeri.Text = "Distributeri";
+            btnDistributeri.Click += btnDistributeri_Click;
+            // 
+            // btnProizvodjaci
+            // 
+            btnProizvodjaci.Dock = DockStyle.Top;
+            btnProizvodjaci.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnProizvodjaci.Location = new Point(12, 120);
+            btnProizvodjaci.Name = "btnProizvodjaci";
+            btnProizvodjaci.Size = new Size(272, 46);
+            btnProizvodjaci.TabIndex = 5;
+            btnProizvodjaci.Text = "Proizvodjači";
+            btnProizvodjaci.Click += btnProizvodjaci_Click;
+            // 
+            // btnZalihe
+            // 
+            btnZalihe.Dock = DockStyle.Top;
+            btnZalihe.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnZalihe.Location = new Point(12, 28);
+            btnZalihe.Name = "btnZalihe";
+            btnZalihe.Size = new Size(272, 46);
+            btnZalihe.TabIndex = 6;
+            btnZalihe.Text = "Zalihe";
+            btnZalihe.Click += btnZalihe_Click;
             // 
             // ProdajnaJedinicaAdminForm
             // 

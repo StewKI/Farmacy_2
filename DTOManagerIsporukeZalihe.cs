@@ -373,5 +373,162 @@ namespace Farmacy
                 throw new Exception("Greška pri dodavanju stavke recepta: " + ex.Message);
             }
         }
+
+        // === Distributer CRUD operacije ===
+        public static IList<DistributerBasic> VratiSveDistributere()
+        {
+            var list = new List<DistributerBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var distributeri = s.Query<Distributer>().ToList();
+                foreach (var d in distributeri)
+                {
+                    list.Add(new DistributerBasic
+                    {
+                        Id = d.Id,
+                        Naziv = d.Naziv,
+                        Kontakt = d.Kontakt
+                    });
+                }
+            }
+            catch (Exception) { }
+            return list;
+        }
+
+        public static DistributerBasic VratiDistributera(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var distributer = s.Get<Distributer>(id);
+                if (distributer != null)
+                {
+                    return new DistributerBasic
+                    {
+                        Id = distributer.Id,
+                        Naziv = distributer.Naziv,
+                        Kontakt = distributer.Kontakt
+                    };
+                }
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static void IzmeniDistributera(DistributerBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var distributer = s.Get<Distributer>(dto.Id);
+                if (distributer != null)
+                {
+                    distributer.Naziv = dto.Naziv;
+                    distributer.Kontakt = dto.Kontakt;
+                    s.Update(distributer);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni distributera: " + ex.Message);
+            }
+        }
+
+        public static void ObrisiDistributera(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var distributer = s.Get<Distributer>(id);
+                if (distributer != null)
+                {
+                    s.Delete(distributer);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri brisanju distributera: " + ex.Message);
+            }
+        }
+
+        // === Proizvodjac CRUD operacije ===
+        public static ProizvodjacBasic VratiProizvodjaca(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var proizvodjac = s.Get<Proizvodjac>(id);
+                if (proizvodjac != null)
+                {
+                    return new ProizvodjacBasic
+                    {
+                        Id = proizvodjac.Id,
+                        Naziv = proizvodjac.Naziv,
+                        Zemlja = proizvodjac.Zemlja,
+                        Telefon = proizvodjac.Telefon,
+                        Email = proizvodjac.Email
+                    };
+                }
+            }
+            catch (Exception) { }
+            return null;
+        }
+
+        public static void IzmeniProizvodjaca(ProizvodjacBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var proizvodjac = s.Get<Proizvodjac>(dto.Id);
+                if (proizvodjac != null)
+                {
+                    proizvodjac.Naziv = dto.Naziv;
+                    proizvodjac.Zemlja = dto.Zemlja;
+                    proizvodjac.Telefon = dto.Telefon;
+                    proizvodjac.Email = dto.Email;
+                    s.Update(proizvodjac);
+                    s.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri izmeni proizvodjača: " + ex.Message);
+            }
+        }
+
+        public static void DodajProizvodjaca(ProizvodjacBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                
+                var p = new Proizvodjac
+                {
+                    Naziv = dto.Naziv,
+                    Zemlja = dto.Zemlja,
+                    Telefon = dto.Telefon,
+                    Email = dto.Email
+                };
+                s.Save(p);
+                s.Flush();
+
+                MessageBox.Show(
+                    $"Uspešno je dodat proizvodjač",
+                    "Uspešno",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Greška pri dodavanju proizvodjača: {ex.Message}",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
     }
 }
