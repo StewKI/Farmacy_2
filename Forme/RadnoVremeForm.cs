@@ -14,6 +14,33 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
+            
+            // Proveri da li postoji radno vreme za ovu prodajnu jedinicu
+            try
+            {
+                bool postojiRadnoVreme = DTOManagerProdajneJedinice.PostojiRadnoVremeZaProdajnuJedinicu(prodajnaJedinicaId);
+                
+                if (!postojiRadnoVreme)
+                {
+                    // Nema radnog vremena - otvori formu za kreiranje
+                    RadnoVremeCreateForm createForm = new RadnoVremeCreateForm(prodajnaJedinicaId);
+                    createForm.ShowDialog();
+                    
+                    // Nakon zatvaranja forme za kreiranje, zatvori i ovu formu
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri proveri radnog vremena:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+                return;
+            }
+            
             InitializeForm();
         }
 
@@ -92,6 +119,14 @@ namespace Farmacy.Forme
                     dgvRadnoVreme.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "colDan",
+                        HeaderText = "Dan",
+                        DataPropertyName = "Dan",
+                        Width = 50,
+                        Visible = false
+                    });
+                    dgvRadnoVreme.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colDanNaziv",
                         HeaderText = "Dan",
                         DataPropertyName = "DanNaziv",
                         Width = 120

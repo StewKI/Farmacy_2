@@ -670,5 +670,20 @@ namespace Farmacy
                 throw new Exception("Greška pri brisanju radnog vremena: " + ex.Message);
             }
         }
+
+        public static bool PostojiRadnoVremeZaProdajnuJedinicu(long prodajnaJedinicaId)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var count = s.Query<RadnoVreme>()
+                    .Count(x => x.ProdajnaJedinica.Id == prodajnaJedinicaId);
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri proveri radnog vremena: " + ex.Message);
+            }
+        }
     }
 }
