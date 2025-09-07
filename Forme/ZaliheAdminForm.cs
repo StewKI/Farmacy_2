@@ -25,8 +25,7 @@ namespace Farmacy.Forme
         {
             try
             {
-                // Za sada ću koristiti praznu listu, kasnije ću dodati funkciju za učitavanje zaliha
-                IList<ZalihaBasic> lista = new List<ZalihaBasic>();
+                IList<ZalihaBasic> lista = DTOManagerIsporukeZalihe.VratiSveZalihe() ?? new List<ZalihaBasic>();
 
                 dgvZalihe.AutoGenerateColumns = false;
                 if (colProdajnaJedinicaId != null) colProdajnaJedinicaId.DataPropertyName = "ProdajnaJedinicaId";
@@ -94,16 +93,65 @@ namespace Farmacy.Forme
                 return;
             }
 
-            // Za sada samo poruka, kasnije ću implementirati edit formu
-            MessageBox.Show("Funkcionalnost za izmenu zaliha će biti implementirana kasnije.", "Info",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            long prodajnaJedinicaId = Convert.ToInt64(dgvZalihe.CurrentRow.Cells[0].Value);
+            long pakovanjeId = Convert.ToInt64(dgvZalihe.CurrentRow.Cells[1].Value);
+            var selektovanaZaliha = DTOManagerIsporukeZalihe.VratiZalihu(prodajnaJedinicaId, pakovanjeId);
+
+            if (selektovanaZaliha != null)
+            {
+                ZalihaEditForm form = new ZalihaEditForm(selektovanaZaliha);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    popuniPodacimaZalihe();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o zalihe!");
+            }
         }
 
         private void btnDodajNovuZalihu_Click(object sender, EventArgs e)
         {
-            // Za sada samo poruka, kasnije ću implementirati add formu
-            MessageBox.Show("Funkcionalnost za dodavanje zaliha će biti implementirana kasnije.", "Info",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ZalihaForm form = new ZalihaForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                popuniPodacimaZalihe();
+            }
+        }
+
+        private void btnObrisiZalihu_Click(object sender, EventArgs e)
+        {
+            if (dgvZalihe.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati zalihe!");
+                return;
+            }
+
+            long prodajnaJedinicaId = Convert.ToInt64(dgvZalihe.CurrentRow.Cells[0].Value);
+            long pakovanjeId = Convert.ToInt64(dgvZalihe.CurrentRow.Cells[1].Value);
+
+            var result = MessageBox.Show(
+                "Da li ste sigurni da želite da obrišete selektovane zalihe?",
+                "Potvrda brisanja",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    DTOManagerIsporukeZalihe.ObrisiZalihu(prodajnaJedinicaId, pakovanjeId);
+                    MessageBox.Show("Zalihe su uspešno obrisane!", "Uspešno", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    popuniPodacimaZalihe();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Greška pri brisanju zaliha:\n{ex.Message}", "Greška",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void dgvZalihe_CellContentClick(object sender, DataGridViewCellEventArgs e)

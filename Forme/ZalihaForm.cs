@@ -6,15 +6,16 @@ namespace Farmacy.Forme
 {
     public partial class ZalihaForm : Form
     {
-        private Zaliha zaliha;
+        private ZalihaBasic zaliha;
 
         public ZalihaForm()
         {
             InitializeComponent();
             InitializeForm();
+            zaliha = new ZalihaBasic();
         }
 
-        public ZalihaForm(Zaliha zaliha) : this()
+        public ZalihaForm(ZalihaBasic zaliha) : this()
         {
             this.zaliha = zaliha;
             LoadZalihaData();
@@ -23,18 +24,47 @@ namespace Farmacy.Forme
         private void InitializeForm()
         {
             // Form initialization logic will be in Designer file
+            dtpDatumPoslednjeIsporuke.Value = DateTime.Today;
+            LoadComboBoxData();
+        }
+
+        private void LoadComboBoxData()
+        {
+            try
+            {
+                // Load ProdajnaJedinica data
+                var prodajneJedinice = DTOManagerIsporukeZalihe.VratiSveProdajneJedinice();
+                cmbProdajnaJedinica.DataSource = prodajneJedinice;
+                cmbProdajnaJedinica.DisplayMember = "Naziv";
+                cmbProdajnaJedinica.ValueMember = "Id";
+
+                // Load Pakovanje data
+                var pakovanja = DTOManagerIsporukeZalihe.VratiSvaPakovanja();
+                cmbPakovanje.DataSource = pakovanja;
+                cmbPakovanje.DisplayMember = "VelicinaPakovanja";
+                cmbPakovanje.ValueMember = "Id";
+
+                // Load Magacioneri data
+                var magacioneri = DTOManagerIsporukeZalihe.VratiSveMagacionere();
+                cmbOdgovorniMagacioner.DataSource = magacioneri;
+                cmbOdgovorniMagacioner.DisplayMember = "Ime";
+                cmbOdgovorniMagacioner.ValueMember = "MBr";
+                cmbOdgovorniMagacioner.SelectedIndex = -1; // No selection by default
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju podataka za dropdown liste:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadZalihaData()
         {
             if (zaliha != null)
             {
-                if (zaliha.ProdajnaJedinica != null)
-                    txtProdajnaJedinica.Text = zaliha.ProdajnaJedinica.ToString();
-                
-                if (zaliha.Pakovanje != null)
-                    txtPakovanje.Text = zaliha.Pakovanje.ToString();
-                
+                // Set ComboBox selections based on zaliha data
+                cmbProdajnaJedinica.SelectedValue = zaliha.ProdajnaJedinicaId;
+                cmbPakovanje.SelectedValue = zaliha.PakovanjeId;
                 numKolicina.Value = zaliha.Kolicina;
                 
                 if (zaliha.DatumPoslednjeIsporuke.HasValue)
@@ -42,8 +72,8 @@ namespace Farmacy.Forme
                 else
                     dtpDatumPoslednjeIsporuke.Value = DateTime.Today;
                 
-                if (zaliha.OdgovorniMagacioner != null)
-                    txtOdgovorniMagacioner.Text = zaliha.OdgovorniMagacioner.ToString();
+                if (zaliha.OdgovorniMagacionerMbr.HasValue)
+                    cmbOdgovorniMagacioner.SelectedValue = zaliha.OdgovorniMagacionerMbr.Value;
             }
         }
 
@@ -65,6 +95,20 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
+            if (cmbProdajnaJedinica.SelectedValue == null)
+            {
+                MessageBox.Show("Morate selektovati prodajnu jedinicu!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbProdajnaJedinica.Focus();
+                return false;
+            }
+
+            if (cmbPakovanje.SelectedValue == null)
+            {
+                MessageBox.Show("Morate selektovati pakovanje!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbPakovanje.Focus();
+                return false;
+            }
+
             if (numKolicina.Value < 0)
             {
                 MessageBox.Show("Količina ne može biti negativna!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -86,14 +130,40 @@ namespace Farmacy.Forme
         {
             if (zaliha == null)
             {
-                zaliha = new Zaliha();
+                zaliha = new ZalihaBasic();
             }
 
+            // Get values from ComboBox controls
+            if (cmbProdajnaJedinica.SelectedValue == null)
+            {
+                MessageBox.Show("Morate selektovati prodajnu jedinicu!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cmbPakovanje.SelectedValue == null)
+            {
+                MessageBox.Show("Morate selektovati pakovanje!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            zaliha.ProdajnaJedinicaId = (long)cmbProdajnaJedinica.SelectedValue;
+            zaliha.PakovanjeId = (long)cmbPakovanje.SelectedValue;
             zaliha.Kolicina = (int)numKolicina.Value;
             zaliha.DatumPoslednjeIsporuke = dtpDatumPoslednjeIsporuke.Value;
+
+            if (cmbOdgovorniMagacioner.SelectedValue != null)
+            {
+                zaliha.OdgovorniMagacionerMbr = (long)cmbOdgovorniMagacioner.SelectedValue;
+            }
+            else
+            {
+                zaliha.OdgovorniMagacionerMbr = null;
+            }
+
+            DTOManagerIsporukeZalihe.DodajZalihu(zaliha);
         }
 
-        public Zaliha GetZaliha()
+        public ZalihaBasic GetZaliha()
         {
             return zaliha;
         }

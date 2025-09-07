@@ -146,4 +146,40 @@ namespace Farmacy
         public DateTime? DatumPoslednjeIsporuke { get; set; }
         public long? OdgovorniMagacionerMbr { get; set; }
     }
+
+    public class ProdajaBasic
+    {
+        public long Id { get; set; }
+        public long ProdajnaJedinicaId { get; set; }
+        public DateTime DatumVreme { get; set; }
+        public long? BlagajnikMbr { get; set; }
+        public string ProdajnaJedinicaNaziv { get; set; }
+        public string BlagajnikIme { get; set; }
+        public decimal UkupnaVrednost { get; set; }
+        public int BrojStavki { get; set; }
+    }
+
+    public class ProdajaStavkaBasic
+    {
+        public long ProdajaId { get; set; }
+        public long PakovanjeId { get; set; }
+        public int Kolicina { get; set; }
+        public decimal? Cena { get; set; }
+        public string? ReceptSerijskiBroj { get; set; }
+        public int? KontrolisanaKol { get; set; }
+        public decimal? ProcenatParticip { get; set; }
+        public string? NeophodanIzvestaj { get; set; }
+        public string PakovanjeNaziv { get; set; }
+    }
+
+    public class RadnoVremeBasic
+    {
+        public long Id { get; set; }
+        public long ProdajnaJedinicaId { get; set; }
+        public int Dan { get; set; }
+        public TimeSpan? VremeOd { get; set; }
+        public TimeSpan? VremeDo { get; set; }
+        public string DanNaziv { get; set; }
+        public string ProdajnaJedinicaNaziv { get; set; }
+    }
 }

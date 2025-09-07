@@ -6,9 +6,9 @@ namespace Farmacy.Forme
 {
     public partial class ZalihaEditForm : Form
     {
-        private Zaliha zaliha;
+        private ZalihaBasic zaliha;
 
-        public ZalihaEditForm(Zaliha zaliha)
+        public ZalihaEditForm(ZalihaBasic zaliha)
         {
             if (zaliha == null)
                 throw new ArgumentNullException(nameof(zaliha));
@@ -21,19 +21,15 @@ namespace Farmacy.Forme
         private void LoadZalihaData()
         {
             // Učitavamo postojeće podatke
-            if (zaliha.ProdajnaJedinica != null)
-                txtProdajnaJedinica.Text = zaliha.ProdajnaJedinica.Id.ToString();
-            
-            if (zaliha.Pakovanje != null)
-                txtPakovanje.Text = zaliha.Pakovanje.Id.ToString();
-            
+            txtProdajnaJedinica.Text = zaliha.ProdajnaJedinicaId.ToString();
+            txtPakovanje.Text = zaliha.PakovanjeId.ToString();
             numKolicina.Value = zaliha.Kolicina;
             
             if (zaliha.DatumPoslednjeIsporuke.HasValue)
                 dtpDatumPoslednjeIsporuke.Value = zaliha.DatumPoslednjeIsporuke.Value;
             
-            if (zaliha.OdgovorniMagacioner != null)
-                txtOdgovorniMagacioner.Text = zaliha.OdgovorniMagacioner.MBr.ToString();
+            if (zaliha.OdgovorniMagacionerMbr.HasValue)
+                txtOdgovorniMagacioner.Text = zaliha.OdgovorniMagacionerMbr.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -75,10 +71,22 @@ namespace Farmacy.Forme
             zaliha.Kolicina = (int)numKolicina.Value;
             zaliha.DatumPoslednjeIsporuke = dtpDatumPoslednjeIsporuke.Value;
             
-            // Napomena: ProdajnaJedinica, Pakovanje i OdgovorniMagacioner treba postaviti spolja
+            if (!string.IsNullOrEmpty(txtOdgovorniMagacioner.Text))
+            {
+                if (long.TryParse(txtOdgovorniMagacioner.Text, out long mbr))
+                {
+                    zaliha.OdgovorniMagacionerMbr = mbr;
+                }
+            }
+            else
+            {
+                zaliha.OdgovorniMagacionerMbr = null;
+            }
+
+            DTOManagerIsporukeZalihe.IzmeniZalihu(zaliha);
         }
 
-        public Zaliha GetZaliha()
+        public ZalihaBasic GetZaliha()
         {
             return zaliha;
         }

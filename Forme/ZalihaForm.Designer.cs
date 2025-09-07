@@ -29,15 +29,15 @@ namespace Farmacy.Forme
         private void InitializeComponent()
         {
             this.lblProdajnaJedinica = new System.Windows.Forms.Label();
-            this.txtProdajnaJedinica = new System.Windows.Forms.TextBox();
+            this.cmbProdajnaJedinica = new System.Windows.Forms.ComboBox();
             this.lblPakovanje = new System.Windows.Forms.Label();
-            this.txtPakovanje = new System.Windows.Forms.TextBox();
+            this.cmbPakovanje = new System.Windows.Forms.ComboBox();
             this.lblKolicina = new System.Windows.Forms.Label();
             this.numKolicina = new System.Windows.Forms.NumericUpDown();
             this.lblDatumPoslednjeIsporuke = new System.Windows.Forms.Label();
             this.dtpDatumPoslednjeIsporuke = new System.Windows.Forms.DateTimePicker();
             this.lblOdgovorniMagacioner = new System.Windows.Forms.Label();
-            this.txtOdgovorniMagacioner = new System.Windows.Forms.TextBox();
+            this.cmbOdgovorniMagacioner = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).BeginInit();
@@ -52,14 +52,14 @@ namespace Farmacy.Forme
             this.lblProdajnaJedinica.TabIndex = 0;
             this.lblProdajnaJedinica.Text = "Prodajna jedinica:";
             // 
-            // txtProdajnaJedinica
+            // cmbProdajnaJedinica
             // 
-            this.txtProdajnaJedinica.Location = new System.Drawing.Point(150, 27);
-            this.txtProdajnaJedinica.Name = "txtProdajnaJedinica";
-            this.txtProdajnaJedinica.ReadOnly = true;
-            this.txtProdajnaJedinica.Size = new System.Drawing.Size(200, 23);
-            this.txtProdajnaJedinica.TabIndex = 1;
-            this.txtProdajnaJedinica.TabStop = false;
+            this.cmbProdajnaJedinica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProdajnaJedinica.FormattingEnabled = true;
+            this.cmbProdajnaJedinica.Location = new System.Drawing.Point(150, 27);
+            this.cmbProdajnaJedinica.Name = "cmbProdajnaJedinica";
+            this.cmbProdajnaJedinica.Size = new System.Drawing.Size(200, 23);
+            this.cmbProdajnaJedinica.TabIndex = 1;
             // 
             // lblPakovanje
             // 
@@ -70,14 +70,14 @@ namespace Farmacy.Forme
             this.lblPakovanje.TabIndex = 2;
             this.lblPakovanje.Text = "Pakovanje:";
             // 
-            // txtPakovanje
+            // cmbPakovanje
             // 
-            this.txtPakovanje.Location = new System.Drawing.Point(150, 67);
-            this.txtPakovanje.Name = "txtPakovanje";
-            this.txtPakovanje.ReadOnly = true;
-            this.txtPakovanje.Size = new System.Drawing.Size(200, 23);
-            this.txtPakovanje.TabIndex = 3;
-            this.txtPakovanje.TabStop = false;
+            this.cmbPakovanje.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPakovanje.FormattingEnabled = true;
+            this.cmbPakovanje.Location = new System.Drawing.Point(150, 67);
+            this.cmbPakovanje.Name = "cmbPakovanje";
+            this.cmbPakovanje.Size = new System.Drawing.Size(200, 23);
+            this.cmbPakovanje.TabIndex = 3;
             // 
             // lblKolicina
             // 
@@ -126,14 +126,14 @@ namespace Farmacy.Forme
             this.lblOdgovorniMagacioner.TabIndex = 8;
             this.lblOdgovorniMagacioner.Text = "Odgovorni magacioner:";
             // 
-            // txtOdgovorniMagacioner
+            // cmbOdgovorniMagacioner
             // 
-            this.txtOdgovorniMagacioner.Location = new System.Drawing.Point(150, 187);
-            this.txtOdgovorniMagacioner.Name = "txtOdgovorniMagacioner";
-            this.txtOdgovorniMagacioner.ReadOnly = true;
-            this.txtOdgovorniMagacioner.Size = new System.Drawing.Size(200, 23);
-            this.txtOdgovorniMagacioner.TabIndex = 9;
-            this.txtOdgovorniMagacioner.TabStop = false;
+            this.cmbOdgovorniMagacioner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOdgovorniMagacioner.FormattingEnabled = true;
+            this.cmbOdgovorniMagacioner.Location = new System.Drawing.Point(150, 187);
+            this.cmbOdgovorniMagacioner.Name = "cmbOdgovorniMagacioner";
+            this.cmbOdgovorniMagacioner.Size = new System.Drawing.Size(200, 23);
+            this.cmbOdgovorniMagacioner.TabIndex = 9;
             // 
             // btnSave
             // 
@@ -162,15 +162,15 @@ namespace Farmacy.Forme
             this.ClientSize = new System.Drawing.Size(384, 291);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtOdgovorniMagacioner);
+            this.Controls.Add(this.cmbOdgovorniMagacioner);
             this.Controls.Add(this.lblOdgovorniMagacioner);
             this.Controls.Add(this.dtpDatumPoslednjeIsporuke);
             this.Controls.Add(this.lblDatumPoslednjeIsporuke);
             this.Controls.Add(this.numKolicina);
             this.Controls.Add(this.lblKolicina);
-            this.Controls.Add(this.txtPakovanje);
+            this.Controls.Add(this.cmbPakovanje);
             this.Controls.Add(this.lblPakovanje);
-            this.Controls.Add(this.txtProdajnaJedinica);
+            this.Controls.Add(this.cmbProdajnaJedinica);
             this.Controls.Add(this.lblProdajnaJedinica);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -186,15 +186,15 @@ namespace Farmacy.Forme
         #endregion
 
         private System.Windows.Forms.Label lblProdajnaJedinica;
-        private System.Windows.Forms.TextBox txtProdajnaJedinica;
+        private System.Windows.Forms.ComboBox cmbProdajnaJedinica;
         private System.Windows.Forms.Label lblPakovanje;
-        private System.Windows.Forms.TextBox txtPakovanje;
+        private System.Windows.Forms.ComboBox cmbPakovanje;
         private System.Windows.Forms.Label lblKolicina;
         private System.Windows.Forms.NumericUpDown numKolicina;
         private System.Windows.Forms.Label lblDatumPoslednjeIsporuke;
         private System.Windows.Forms.DateTimePicker dtpDatumPoslednjeIsporuke;
         private System.Windows.Forms.Label lblOdgovorniMagacioner;
-        private System.Windows.Forms.TextBox txtOdgovorniMagacioner;
+        private System.Windows.Forms.ComboBox cmbOdgovorniMagacioner;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
     }

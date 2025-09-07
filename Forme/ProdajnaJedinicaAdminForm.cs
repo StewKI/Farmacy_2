@@ -176,21 +176,6 @@ namespace Farmacy.Forme
 
             popuniPodacima();
         }
-        private void btnDistributeri_Click(object sender, EventArgs e)
-        {
-            DistributerAdminForm form = new DistributerAdminForm();
-            form.ShowDialog();
-        }
-        private void btnProizvodjaci_Click(object sender, EventArgs e)
-        {
-            ProizvodjacAdminForm form = new ProizvodjacAdminForm();
-            form.ShowDialog();
-        }
-        private void btnZalihe_Click(object sender, EventArgs e)
-        {
-            ZaliheAdminForm form = new ZaliheAdminForm();
-            form.ShowDialog();
-        }
         private void btnZaposleni_Click(object sender, EventArgs e)
         {
             ZaposleniPrikaz form = new ZaposleniPrikaz();
@@ -269,7 +254,7 @@ namespace Farmacy.Forme
             form.ShowDialog();
         }
 
-        private void btnReceptura_Click(object sender, EventArgs e)
+        private void btnRadnoVreme_Click(object sender, EventArgs e)
         {
             if (dgvApoteke.CurrentRow == null)
             {
@@ -280,12 +265,42 @@ namespace Farmacy.Forme
             if (dgvApoteke.SelectedRows.Count > 0)
             {
                 id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
-                MessageBox.Show("Selektovan id: " + id);
-
             }
-            
+            else
+            {
+                MessageBox.Show("Morate izabrati apoteku prvo!");
+                return;
+            }
 
-            RealizujReceptForm form = new RealizujReceptForm(DTOManagerProdajneJedinice.VratiProdajnuJedinicu(id));
+            RadnoVremeForm form = new RadnoVremeForm(id);
+            form.ShowDialog();
+        }
+
+        private void btnZalihe_Click(object sender, EventArgs e)
+        {
+            ZaliheAdminForm form = new ZaliheAdminForm();
+            form.ShowDialog();
+        }
+
+        private void btnProdaja_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati apoteku!");
+                return;
+            }
+            long id = 0;
+            if (dgvApoteke.SelectedRows.Count > 0)
+            {
+                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati apoteku prvo!");
+                return;
+            }
+
+            ProdajaAdminForm form = new ProdajaAdminForm(id);
             form.ShowDialog();
         }
     }

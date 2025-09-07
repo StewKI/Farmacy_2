@@ -30,14 +30,10 @@ namespace Farmacy.Forme
         {
             this.lblProdajnaJedinica = new System.Windows.Forms.Label();
             this.txtProdajnaJedinica = new System.Windows.Forms.TextBox();
-            this.lblDan = new System.Windows.Forms.Label();
-            this.cboDan = new System.Windows.Forms.ComboBox();
-            this.lblVremeOd = new System.Windows.Forms.Label();
-            this.dtpVremeOd = new System.Windows.Forms.DateTimePicker();
-            this.lblVremeDo = new System.Windows.Forms.Label();
-            this.dtpVremeDo = new System.Windows.Forms.DateTimePicker();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.dgvRadnoVreme = new System.Windows.Forms.DataGridView();
+            this.btnIzmeni = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRadnoVreme)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProdajnaJedinica
@@ -58,76 +54,36 @@ namespace Farmacy.Forme
             this.txtProdajnaJedinica.TabIndex = 1;
             this.txtProdajnaJedinica.TabStop = false;
             // 
-            // lblDan
+            // dgvRadnoVreme
             // 
-            this.lblDan.AutoSize = true;
-            this.lblDan.Location = new System.Drawing.Point(30, 70);
-            this.lblDan.Name = "lblDan";
-            this.lblDan.Size = new System.Drawing.Size(30, 15);
-            this.lblDan.TabIndex = 2;
-            this.lblDan.Text = "Dan:";
+            this.dgvRadnoVreme.AllowUserToAddRows = false;
+            this.dgvRadnoVreme.AllowUserToDeleteRows = false;
+            this.dgvRadnoVreme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRadnoVreme.Location = new System.Drawing.Point(30, 70);
+            this.dgvRadnoVreme.MultiSelect = false;
+            this.dgvRadnoVreme.Name = "dgvRadnoVreme";
+            this.dgvRadnoVreme.ReadOnly = true;
+            this.dgvRadnoVreme.RowHeadersVisible = false;
+            this.dgvRadnoVreme.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRadnoVreme.Size = new System.Drawing.Size(500, 200);
+            this.dgvRadnoVreme.TabIndex = 2;
             // 
-            // cboDan
+            // btnIzmeni
             // 
-            this.cboDan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDan.FormattingEnabled = true;
-            this.cboDan.Location = new System.Drawing.Point(150, 67);
-            this.cboDan.Name = "cboDan";
-            this.cboDan.Size = new System.Drawing.Size(200, 23);
-            this.cboDan.TabIndex = 3;
-            // 
-            // lblVremeOd
-            // 
-            this.lblVremeOd.AutoSize = true;
-            this.lblVremeOd.Location = new System.Drawing.Point(30, 110);
-            this.lblVremeOd.Name = "lblVremeOd";
-            this.lblVremeOd.Size = new System.Drawing.Size(70, 15);
-            this.lblVremeOd.TabIndex = 4;
-            this.lblVremeOd.Text = "Vreme od:";
-            // 
-            // dtpVremeOd
-            // 
-            this.dtpVremeOd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpVremeOd.Location = new System.Drawing.Point(150, 107);
-            this.dtpVremeOd.Name = "dtpVremeOd";
-            this.dtpVremeOd.ShowUpDown = true;
-            this.dtpVremeOd.Size = new System.Drawing.Size(200, 23);
-            this.dtpVremeOd.TabIndex = 5;
-            // 
-            // lblVremeDo
-            // 
-            this.lblVremeDo.AutoSize = true;
-            this.lblVremeDo.Location = new System.Drawing.Point(30, 150);
-            this.lblVremeDo.Name = "lblVremeDo";
-            this.lblVremeDo.Size = new System.Drawing.Size(70, 15);
-            this.lblVremeDo.TabIndex = 6;
-            this.lblVremeDo.Text = "Vreme do:";
-            // 
-            // dtpVremeDo
-            // 
-            this.dtpVremeDo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpVremeDo.Location = new System.Drawing.Point(150, 147);
-            this.dtpVremeDo.Name = "dtpVremeDo";
-            this.dtpVremeDo.ShowUpDown = true;
-            this.dtpVremeDo.Size = new System.Drawing.Size(200, 23);
-            this.dtpVremeDo.TabIndex = 7;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(150, 200);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnIzmeni.Location = new System.Drawing.Point(30, 290);
+            this.btnIzmeni.Name = "btnIzmeni";
+            this.btnIzmeni.Size = new System.Drawing.Size(75, 23);
+            this.btnIzmeni.TabIndex = 3;
+            this.btnIzmeni.Text = "Izmeni";
+            this.btnIzmeni.UseVisualStyleBackColor = true;
+            this.btnIzmeni.Click += new System.EventHandler(this.btnIzmeni_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 200);
+            this.btnCancel.Location = new System.Drawing.Point(455, 290);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Otkaži";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -136,15 +92,10 @@ namespace Farmacy.Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 251);
+            this.ClientSize = new System.Drawing.Size(560, 340);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtpVremeDo);
-            this.Controls.Add(this.lblVremeDo);
-            this.Controls.Add(this.dtpVremeOd);
-            this.Controls.Add(this.lblVremeOd);
-            this.Controls.Add(this.cboDan);
-            this.Controls.Add(this.lblDan);
+            this.Controls.Add(this.btnIzmeni);
+            this.Controls.Add(this.dgvRadnoVreme);
             this.Controls.Add(this.txtProdajnaJedinica);
             this.Controls.Add(this.lblProdajnaJedinica);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -153,6 +104,7 @@ namespace Farmacy.Forme
             this.Name = "RadnoVremeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Radno vreme";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRadnoVreme)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -161,13 +113,8 @@ namespace Farmacy.Forme
 
         private System.Windows.Forms.Label lblProdajnaJedinica;
         private System.Windows.Forms.TextBox txtProdajnaJedinica;
-        private System.Windows.Forms.Label lblDan;
-        private System.Windows.Forms.ComboBox cboDan;
-        private System.Windows.Forms.Label lblVremeOd;
-        private System.Windows.Forms.DateTimePicker dtpVremeOd;
-        private System.Windows.Forms.Label lblVremeDo;
-        private System.Windows.Forms.DateTimePicker dtpVremeDo;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridView dgvRadnoVreme;
+        private System.Windows.Forms.Button btnIzmeni;
         private System.Windows.Forms.Button btnCancel;
     }
 }

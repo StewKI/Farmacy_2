@@ -8,6 +8,7 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblZalihe;
         private System.Windows.Forms.Button btnDodajNovuZalihu;
         private System.Windows.Forms.Button btnIzmeniZalihu;
+        private System.Windows.Forms.Button btnObrisiZalihu;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelButtons;
 
@@ -37,6 +38,7 @@ namespace Farmacy.Forme
             lblZalihe = new Label();
             btnDodajNovuZalihu = new Button();
             btnIzmeniZalihu = new Button();
+            btnObrisiZalihu = new Button();
             panelMain = new Panel();
             panelButtons = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvZalihe).BeginInit();
@@ -138,6 +140,7 @@ namespace Farmacy.Forme
             // panelButtons
             // 
             panelButtons.BackColor = Color.FromArgb(255, 255, 255);
+            panelButtons.Controls.Add(btnObrisiZalihu);
             panelButtons.Controls.Add(btnIzmeniZalihu);
             panelButtons.Controls.Add(btnDodajNovuZalihu);
             panelButtons.Dock = DockStyle.Right;
@@ -175,6 +178,21 @@ namespace Farmacy.Forme
             btnIzmeniZalihu.TabIndex = 3;
             btnIzmeniZalihu.Text = "✏️ Izmeni zalihe";
             btnIzmeniZalihu.UseVisualStyleBackColor = false;
+            // 
+            // btnObrisiZalihu
+            // 
+            btnObrisiZalihu.BackColor = Color.FromArgb(220, 53, 69);
+            btnObrisiZalihu.FlatAppearance.BorderSize = 0;
+            btnObrisiZalihu.FlatStyle = FlatStyle.Flat;
+            btnObrisiZalihu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnObrisiZalihu.ForeColor = Color.White;
+            btnObrisiZalihu.Location = new Point(20, 220);
+            btnObrisiZalihu.Name = "btnObrisiZalihu";
+            btnObrisiZalihu.Size = new Size(210, 50);
+            btnObrisiZalihu.TabIndex = 4;
+            btnObrisiZalihu.Text = "🗑️ Obriši zalihe";
+            btnObrisiZalihu.UseVisualStyleBackColor = false;
+            btnObrisiZalihu.Click += btnObrisiZalihu_Click;
             btnIzmeniZalihu.Click += btnIzmeniZalihu_Click;
             // 
             // ZaliheAdminForm
