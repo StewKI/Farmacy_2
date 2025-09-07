@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Farmacy.Forme
 {
@@ -12,7 +13,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             menadzer = new MenadzerBasic();
-            
+            ucitajApoteke();
         }
 
         public MenadzerForm(MenadzerBasic menadzer)
@@ -21,10 +22,17 @@ namespace Farmacy.Forme
             this.menadzer = menadzer;
             LoadMenadzerData();
         }
-
+        void ucitajApoteke()
+        {
+            IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Naziv, Value = l.Id }).ToList();
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+        }
         private void LoadMenadzerData()
         {
-            txtMBr.Text = menadzer.MBr.ToString();
+            //txtMBr.Text = menadzer.MBr.ToString();
             txtPrezime.Text = menadzer.Prezime;
             txtIme.Text = menadzer.Ime;
             dtpDatumRodj.Value = menadzer.DatumRodj;
@@ -102,7 +110,8 @@ namespace Farmacy.Forme
             menadzer.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             menadzer.DatumZaposlenja = dtpDatumZaposlenja.Value;
 
-            DTOManagerZaposleni.DodajMenadzera(menadzer);
+            long idP = (long)comboBox1.SelectedValue;
+            DTOManagerZaposleni.DodajMenadzera(menadzer,idP,dateTimePicker1.Value);
         }
 
         //public Entiteti.MenadzerBasic GetMenadzer()

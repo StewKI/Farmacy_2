@@ -13,12 +13,23 @@ namespace Farmacy.Forme
             InitializeComponent();
             tehnicar = new TehnicarBasic();
             InitializeForm();
+            ucitajApoteke();
         }
 
         public TehnicarForm(TehnicarBasic tehnicar) : this()
         {
             this.tehnicar = tehnicar;
             LoadTehnicarData();
+        }
+
+        void ucitajApoteke()
+        {
+            
+            IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Naziv, Value = l.Id }).ToList();
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
         }
 
         private void InitializeForm()
@@ -30,7 +41,7 @@ namespace Farmacy.Forme
         {
             if (tehnicar != null)
             {
-                txtMBr.Text = tehnicar.MBr.ToString();
+                //txtMBr.Text = tehnicar.MBr.ToString();
                 txtPrezime.Text = tehnicar.Prezime;
                 txtIme.Text = tehnicar.Ime;
                 dtpDatumRodj.Value = tehnicar.DatumRodj;
@@ -108,8 +119,10 @@ namespace Farmacy.Forme
             tehnicar.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             tehnicar.DatumZaposlenja = dtpDatumZaposlenja.Value;
             tehnicar.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
+            long idP = (long)comboBox1.SelectedValue;
 
-            DTOManagerZaposleni.DodajTehnicara(tehnicar);
+
+            DTOManagerZaposleni.DodajTehnicara(tehnicar,idP,dateTimePicker1.Value);
         }
 
         //public Tehnicar GetTehnicar()

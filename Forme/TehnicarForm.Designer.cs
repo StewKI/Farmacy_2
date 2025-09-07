@@ -29,7 +29,6 @@ namespace Farmacy.Forme
         private void InitializeComponent()
         {
             lblMBr = new Label();
-            txtMBr = new TextBox();
             lblPrezime = new Label();
             txtPrezime = new TextBox();
             lblIme = new Label();
@@ -47,6 +46,9 @@ namespace Farmacy.Forme
             btnSave = new Button();
             btnCancel = new Button();
             btnDodajSertifikaciju = new Button();
+            dateTimePicker1 = new DateTimePicker();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // lblMBr
@@ -54,19 +56,9 @@ namespace Farmacy.Forme
             lblMBr.AutoSize = true;
             lblMBr.Location = new Point(30, 30);
             lblMBr.Name = "lblMBr";
-            lblMBr.Size = new Size(35, 15);
+            lblMBr.Size = new Size(54, 15);
             lblMBr.TabIndex = 0;
-            lblMBr.Text = "M.Br:";
-            // 
-            // txtMBr
-            // 
-            txtMBr.Location = new Point(150, 27);
-            txtMBr.Name = "txtMBr";
-            txtMBr.ReadOnly = true;
-            txtMBr.Size = new Size(200, 23);
-            txtMBr.TabIndex = 1;
-            txtMBr.TabStop = false;
-            txtMBr.TextChanged += txtMBr_TextChanged;
+            lblMBr.Text = "Apoteke:";
             // 
             // lblPrezime
             // 
@@ -79,7 +71,7 @@ namespace Farmacy.Forme
             // 
             // txtPrezime
             // 
-            txtPrezime.Location = new Point(150, 67);
+            txtPrezime.Location = new Point(159, 67);
             txtPrezime.Name = "txtPrezime";
             txtPrezime.Size = new Size(200, 23);
             txtPrezime.TabIndex = 3;
@@ -95,7 +87,7 @@ namespace Farmacy.Forme
             // 
             // txtIme
             // 
-            txtIme.Location = new Point(150, 107);
+            txtIme.Location = new Point(159, 107);
             txtIme.Name = "txtIme";
             txtIme.Size = new Size(200, 23);
             txtIme.TabIndex = 5;
@@ -112,7 +104,7 @@ namespace Farmacy.Forme
             // dtpDatumRodj
             // 
             dtpDatumRodj.Format = DateTimePickerFormat.Short;
-            dtpDatumRodj.Location = new Point(150, 147);
+            dtpDatumRodj.Location = new Point(159, 147);
             dtpDatumRodj.Name = "dtpDatumRodj";
             dtpDatumRodj.Size = new Size(200, 23);
             dtpDatumRodj.TabIndex = 7;
@@ -128,7 +120,7 @@ namespace Farmacy.Forme
             // 
             // txtAdresa
             // 
-            txtAdresa.Location = new Point(150, 187);
+            txtAdresa.Location = new Point(159, 187);
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(200, 23);
             txtAdresa.TabIndex = 9;
@@ -144,7 +136,7 @@ namespace Farmacy.Forme
             // 
             // txtTelefon
             // 
-            txtTelefon.Location = new Point(150, 227);
+            txtTelefon.Location = new Point(159, 227);
             txtTelefon.Name = "txtTelefon";
             txtTelefon.Size = new Size(200, 23);
             txtTelefon.TabIndex = 11;
@@ -161,7 +153,7 @@ namespace Farmacy.Forme
             // dtpDatumZaposlenja
             // 
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(150, 267);
+            dtpDatumZaposlenja.Location = new Point(159, 267);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
             dtpDatumZaposlenja.Size = new Size(200, 23);
             dtpDatumZaposlenja.TabIndex = 13;
@@ -169,7 +161,7 @@ namespace Farmacy.Forme
             // lblNivoObrazovanja
             // 
             lblNivoObrazovanja.AutoSize = true;
-            lblNivoObrazovanja.Location = new Point(30, 310);
+            lblNivoObrazovanja.Location = new Point(30, 348);
             lblNivoObrazovanja.Name = "lblNivoObrazovanja";
             lblNivoObrazovanja.Size = new Size(102, 15);
             lblNivoObrazovanja.TabIndex = 14;
@@ -177,14 +169,14 @@ namespace Farmacy.Forme
             // 
             // txtNivoObrazovanja
             // 
-            txtNivoObrazovanja.Location = new Point(150, 307);
+            txtNivoObrazovanja.Location = new Point(159, 345);
             txtNivoObrazovanja.Name = "txtNivoObrazovanja";
             txtNivoObrazovanja.Size = new Size(200, 23);
             txtNivoObrazovanja.TabIndex = 15;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(171, 360);
+            btnSave.Location = new Point(171, 398);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 16;
@@ -194,7 +186,7 @@ namespace Farmacy.Forme
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(275, 360);
+            btnCancel.Location = new Point(275, 398);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 17;
@@ -204,7 +196,7 @@ namespace Farmacy.Forme
             // 
             // btnDodajSertifikaciju
             // 
-            btnDodajSertifikaciju.Location = new Point(15, 352);
+            btnDodajSertifikaciju.Location = new Point(15, 396);
             btnDodajSertifikaciju.Name = "btnDodajSertifikaciju";
             btnDodajSertifikaciju.Size = new Size(104, 39);
             btnDodajSertifikaciju.TabIndex = 18;
@@ -212,11 +204,39 @@ namespace Farmacy.Forme
             btnDodajSertifikaciju.UseVisualStyleBackColor = true;
             btnDodajSertifikaciju.Click += btnDodajSertifikaciju_Click;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(159, 304);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 20;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(30, 307);
+            label1.Name = "label1";
+            label1.Size = new Size(132, 15);
+            label1.TabIndex = 19;
+            label1.Text = "Datum kraja zaposlenja:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(159, 30);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(200, 23);
+            comboBox1.TabIndex = 21;
+            // 
             // TehnicarForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 411);
+            ClientSize = new Size(381, 441);
+            Controls.Add(comboBox1);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(label1);
             Controls.Add(btnDodajSertifikaciju);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -234,7 +254,6 @@ namespace Farmacy.Forme
             Controls.Add(lblIme);
             Controls.Add(txtPrezime);
             Controls.Add(lblPrezime);
-            Controls.Add(txtMBr);
             Controls.Add(lblMBr);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -250,7 +269,6 @@ namespace Farmacy.Forme
         #endregion
 
         private System.Windows.Forms.Label lblMBr;
-        private System.Windows.Forms.TextBox txtMBr;
         private System.Windows.Forms.Label lblPrezime;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label lblIme;
@@ -268,5 +286,8 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private Button btnDodajSertifikaciju;
+        private DateTimePicker dateTimePicker1;
+        private Label label1;
+        private ComboBox comboBox1;
     }
 }

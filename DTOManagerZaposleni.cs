@@ -1,8 +1,12 @@
 using Farmacy.Entiteti;
+using Farmacy.Forme;
+using Farmacy_2.Forme;
 using FluentNHibernate.Data;
+using NHibernate.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +16,7 @@ namespace Farmacy
     {
         // ========== ZAPOSLENI & PODTIPOVI ==========
 
-        public static void DodajFarmaceuta(FarmaceutBasic dto)
+        public static void DodajFarmaceuta(FarmaceutBasic dto,long idP,DateTime d)
         {
             try
             {
@@ -33,6 +37,13 @@ namespace Farmacy
                 };
                 s.Save(f);
                 s.Flush();
+
+                var r = new RasporedRadaBasic();
+                r.MBr = f.MBr;
+                r.idProdajne = idP;
+                r.Pocetak = dto.DatumZaposlenja;
+                r.Kraj = d;
+                DTOManagerZaposleni.DodajRasporedRada(r);
             }
             catch (Exception ex)
             {
@@ -81,7 +92,7 @@ namespace Farmacy
         }
 
 
-        public static void DodajTehnicara(TehnicarBasic dto)
+        public static void DodajTehnicara(TehnicarBasic dto,long idP,DateTime d)
         {
             try
             {
@@ -98,6 +109,7 @@ namespace Farmacy
                     NivoObrazovanja = dto.NivoObrazovanja
                 };
                 s.Save(t);
+                s.Flush();
 
                 if (dto.Sertifikacije.Count > 0)
                 {
@@ -112,6 +124,13 @@ namespace Farmacy
                         s.Save(c);
                     }
                 }
+
+                var r = new RasporedRadaBasic();
+                r.MBr = t.MBr;
+                r.idProdajne = idP;
+                r.Pocetak = dto.DatumZaposlenja;
+                r.Kraj = d;
+                DTOManagerZaposleni.DodajRasporedRada(r);
 
                 s.Flush();
             }
@@ -176,7 +195,7 @@ namespace Farmacy
         }
 
 
-        public static void DodajMenadzera(MenadzerBasic dto)
+        public static void DodajMenadzera(MenadzerBasic dto,long idP,DateTime d)
         {
             try
             {
@@ -193,6 +212,25 @@ namespace Farmacy
                 };
                 s.Save(m);
                 s.Flush();
+
+                var k = new MenadzerApotekaBasic
+                {
+                    MBrMenadzera = m.MBr,
+                    ProdajnaJedinicaId = idP,
+                    Od = dto.DatumZaposlenja,
+                    Do =d,
+
+                    datumKontrole =dto.DatumZaposlenja.AddDays(3),
+                };
+                DTOManagerZaposleni.DodajMenadzerApoteka(k);
+
+
+                var r = new RasporedRadaBasic();
+                r.MBr = m.MBr;
+                r.idProdajne = idP;
+                r.Pocetak = dto.DatumZaposlenja;
+                r.Kraj = d;
+                DTOManagerZaposleni.DodajRasporedRada(r);
             }
             catch (Exception)
             {
@@ -234,7 +272,7 @@ namespace Farmacy
             }
         }
 
-        public static void DodajZaposlenog(Zaposleni dto)
+        public static void DodajZaposlenog(Zaposleni dto,long idP,DateTime d)
         {
             try
             {
@@ -251,6 +289,13 @@ namespace Farmacy
                 };
                 s.Save(m);
                 s.Flush();
+
+                var r = new RasporedRadaBasic();
+                r.MBr=m.MBr;
+                r.idProdajne = idP;
+                r.Pocetak=dto.DatumZaposlenja;
+                r.Kraj = d;
+                DTOManagerZaposleni.DodajRasporedRada(r);
             }
             catch (Exception ex)
             {
@@ -452,7 +497,38 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var z = s.Get<Zaposleni>(mbr);
+                var selektovaniZaposleni = VratiZaposlenog(mbr);
+                
+                if (selektovaniZaposleni is FarmaceutBasic faramaceut)
+                {
+                    var z = s.Get<Entiteti.FarmaceutBasic>(mbr);
+                }
+                else if (selektovaniZaposleni is TehnicarBasic tehnicar)
+                {
+
+                    var z = s.Get<Tehnicar>(mbr);
+
+                }
+                else if (selektovaniZaposleni is MenadzerBasic menadzer)
+                {
+                    var z = s.Get<Entiteti.MenadzerBasic>(mbr);
+
+                }
+                else
+                {
+
+                }
+                
+
+                var ras=s.Query<RasporedRada>().Where(r=>r.Zaposleni.MBr==mbr);
+
+                if(ras!=null)
+                {
+                    s.Delete(ras);
+                    s.Flush();
+                }
+
+
                 if (z != null)
                 {
                     s.Delete(z);
@@ -461,5 +537,82 @@ namespace Farmacy
             }
             catch (Exception) { }
         }
+
+        public static void DodajRasporedRada(RasporedRadaBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var z = s.Get<Zaposleni>(dto.MBr);
+                var p = s.Get<Entiteti.ProdajnaJedinicaBasic>(dto.idProdajne);
+
+                var radnov = new RasporedRada
+                {
+                    Zaposleni = z,
+                    ProdajnaJedinica = p,
+                    Pocetak = dto.Pocetak,
+                    Kraj = dto.Kraj,
+                    BrojSmene = dto.BrojSmene,
+                };
+
+             
+                s.Save(radnov);
+                s.Flush();
+
+                MessageBox.Show(
+                    "Raspored rada kreiran",
+                    "Uspeh",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Greška pri kreiranju rasporeda rada: {ex.Message}",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        public static void DodajMenadzerApoteka(MenadzerApotekaBasic dto)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var m = s.Get<Entiteti.MenadzerBasic>(dto.MBrMenadzera);
+                var p = s.Get<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId);
+
+                var radnov = new MenadzerApoteka
+                {
+                    Menadzer=m,
+                    ProdajnaJedinica=p,
+                    Do=dto.Do,
+                    Od=dto.Od,
+                    datumKontrole=dto.datumKontrole,
+                };
+                   
+
+
+                s.Save(radnov);
+                s.Flush();
+
+                MessageBox.Show(
+                    "Kontrola apoteke kreirana uspesno",
+                    "Uspeh",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Greška pri kreiranju kontrole apoteke: {ex.Message}",
+                    "Greška",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
     }
+  
 }

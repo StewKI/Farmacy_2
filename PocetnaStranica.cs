@@ -46,5 +46,11 @@ namespace Farmacy
             LekAdminForm form = new LekAdminForm();
             form.ShowDialog();
         }
+
+        private void zaposleniBtn_Click(object sender, EventArgs e)
+        {
+            ZaposleniAdminForm form = new ZaposleniAdminForm();
+            form.ShowDialog();
+        }
     }
 }

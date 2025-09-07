@@ -35,14 +35,14 @@
             button4 = new Button();
             imageList1 = new ImageList(components);
             label1 = new Label();
+            zaposleniBtn = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(200, 400);
-            button1.Margin = new Padding(6);
+            button1.Location = new Point(108, 188);
             button1.Name = "button1";
-            button1.Size = new Size(300, 120);
+            button1.Size = new Size(162, 56);
             button1.TabIndex = 0;
             button1.Text = "Prodajne Jedinice";
             button1.UseVisualStyleBackColor = true;
@@ -50,10 +50,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(600, 400);
-            button2.Margin = new Padding(6);
+            button2.Location = new Point(323, 188);
             button2.Name = "button2";
-            button2.Size = new Size(300, 120);
+            button2.Size = new Size(162, 56);
             button2.TabIndex = 1;
             button2.Text = "Distributeri";
             button2.UseVisualStyleBackColor = true;
@@ -61,10 +60,9 @@
             // 
             // button3
             // 
-            button3.Location = new Point(200, 580);
-            button3.Margin = new Padding(6);
+            button3.Location = new Point(108, 272);
             button3.Name = "button3";
-            button3.Size = new Size(300, 120);
+            button3.Size = new Size(162, 56);
             button3.TabIndex = 2;
             button3.Text = "Proizvodjači";
             button3.UseVisualStyleBackColor = true;
@@ -72,10 +70,9 @@
             // 
             // button4
             // 
-            button4.Location = new Point(600, 580);
-            button4.Margin = new Padding(6);
+            button4.Location = new Point(323, 272);
             button4.Name = "button4";
-            button4.Size = new Size(300, 120);
+            button4.Size = new Size(162, 56);
             button4.TabIndex = 3;
             button4.Text = "Lekovi";
             button4.UseVisualStyleBackColor = true;
@@ -91,24 +88,33 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 35F);
-            label1.Location = new Point(114, 219);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(61, 103);
             label1.Name = "label1";
-            label1.Size = new Size(768, 125);
+            label1.Size = new Size(381, 62);
             label1.TabIndex = 3;
             label1.Text = "LANAC APOTEKA";
             // 
+            // zaposleniBtn
+            // 
+            zaposleniBtn.Location = new Point(559, 225);
+            zaposleniBtn.Name = "zaposleniBtn";
+            zaposleniBtn.Size = new Size(162, 56);
+            zaposleniBtn.TabIndex = 4;
+            zaposleniBtn.Text = "Zaposleni";
+            zaposleniBtn.UseVisualStyleBackColor = true;
+            zaposleniBtn.Click += zaposleniBtn_Click;
+            // 
             // PocetnaStranica
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1726, 874);
+            ClientSize = new Size(929, 410);
+            Controls.Add(zaposleniBtn);
             Controls.Add(label1);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Margin = new Padding(6);
             Name = "PocetnaStranica";
             Text = "PocetnaStranica";
             Load += PocetnaStranica_Load;
@@ -124,5 +130,6 @@
         private Button button4;
         private ImageList imageList1;
         private Label label1;
+        private Button zaposleniBtn;
     }
 }

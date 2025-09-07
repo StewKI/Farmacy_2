@@ -29,7 +29,6 @@ namespace Farmacy.Forme
         private void InitializeComponent()
         {
             lblMBr = new Label();
-            txtMBr = new TextBox();
             lblPrezime = new Label();
             txtPrezime = new TextBox();
             lblIme = new Label();
@@ -44,6 +43,9 @@ namespace Farmacy.Forme
             dtpDatumZaposlenja = new DateTimePicker();
             btnSave = new Button();
             btnCancel = new Button();
+            dateTimePicker1 = new DateTimePicker();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // lblMBr
@@ -52,18 +54,9 @@ namespace Farmacy.Forme
             lblMBr.Location = new Point(14, 17);
             lblMBr.Margin = new Padding(4, 0, 4, 0);
             lblMBr.Name = "lblMBr";
-            lblMBr.Size = new Size(74, 15);
+            lblMBr.Size = new Size(54, 15);
             lblMBr.TabIndex = 0;
-            lblMBr.Text = "Matični broj:";
-            // 
-            // txtMBr
-            // 
-            txtMBr.Enabled = false;
-            txtMBr.Location = new Point(140, 14);
-            txtMBr.Margin = new Padding(4, 3, 4, 3);
-            txtMBr.Name = "txtMBr";
-            txtMBr.Size = new Size(174, 23);
-            txtMBr.TabIndex = 1;
+            lblMBr.Text = "Apoteke:";
             // 
             // lblPrezime
             // 
@@ -77,7 +70,7 @@ namespace Farmacy.Forme
             // 
             // txtPrezime
             // 
-            txtPrezime.Location = new Point(140, 44);
+            txtPrezime.Location = new Point(148, 44);
             txtPrezime.Margin = new Padding(4, 3, 4, 3);
             txtPrezime.Name = "txtPrezime";
             txtPrezime.Size = new Size(174, 23);
@@ -95,7 +88,7 @@ namespace Farmacy.Forme
             // 
             // txtIme
             // 
-            txtIme.Location = new Point(140, 74);
+            txtIme.Location = new Point(148, 74);
             txtIme.Margin = new Padding(4, 3, 4, 3);
             txtIme.Name = "txtIme";
             txtIme.Size = new Size(174, 23);
@@ -114,7 +107,7 @@ namespace Farmacy.Forme
             // dtpDatumRodj
             // 
             dtpDatumRodj.Format = DateTimePickerFormat.Short;
-            dtpDatumRodj.Location = new Point(140, 104);
+            dtpDatumRodj.Location = new Point(148, 104);
             dtpDatumRodj.Margin = new Padding(4, 3, 4, 3);
             dtpDatumRodj.Name = "dtpDatumRodj";
             dtpDatumRodj.Size = new Size(174, 23);
@@ -123,7 +116,7 @@ namespace Farmacy.Forme
             // lblAdresa
             // 
             lblAdresa.AutoSize = true;
-            lblAdresa.Location = new Point(14, 137);
+            lblAdresa.Location = new Point(13, 137);
             lblAdresa.Margin = new Padding(4, 0, 4, 0);
             lblAdresa.Name = "lblAdresa";
             lblAdresa.Size = new Size(46, 15);
@@ -132,7 +125,7 @@ namespace Farmacy.Forme
             // 
             // txtAdresa
             // 
-            txtAdresa.Location = new Point(140, 134);
+            txtAdresa.Location = new Point(147, 134);
             txtAdresa.Margin = new Padding(4, 3, 4, 3);
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(174, 23);
@@ -141,7 +134,7 @@ namespace Farmacy.Forme
             // lblTelefon
             // 
             lblTelefon.AutoSize = true;
-            lblTelefon.Location = new Point(14, 167);
+            lblTelefon.Location = new Point(13, 167);
             lblTelefon.Margin = new Padding(4, 0, 4, 0);
             lblTelefon.Name = "lblTelefon";
             lblTelefon.Size = new Size(49, 15);
@@ -150,7 +143,7 @@ namespace Farmacy.Forme
             // 
             // txtTelefon
             // 
-            txtTelefon.Location = new Point(140, 164);
+            txtTelefon.Location = new Point(147, 164);
             txtTelefon.Margin = new Padding(4, 3, 4, 3);
             txtTelefon.Name = "txtTelefon";
             txtTelefon.Size = new Size(174, 23);
@@ -159,7 +152,7 @@ namespace Farmacy.Forme
             // lblDatumZaposlenja
             // 
             lblDatumZaposlenja.AutoSize = true;
-            lblDatumZaposlenja.Location = new Point(14, 197);
+            lblDatumZaposlenja.Location = new Point(13, 197);
             lblDatumZaposlenja.Margin = new Padding(4, 0, 4, 0);
             lblDatumZaposlenja.Name = "lblDatumZaposlenja";
             lblDatumZaposlenja.Size = new Size(104, 15);
@@ -169,7 +162,7 @@ namespace Farmacy.Forme
             // dtpDatumZaposlenja
             // 
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(140, 194);
+            dtpDatumZaposlenja.Location = new Point(147, 194);
             dtpDatumZaposlenja.Margin = new Padding(4, 3, 4, 3);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
             dtpDatumZaposlenja.Size = new Size(174, 23);
@@ -177,7 +170,7 @@ namespace Farmacy.Forme
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(140, 235);
+            btnSave.Location = new Point(140, 263);
             btnSave.Margin = new Padding(4, 3, 4, 3);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(88, 27);
@@ -188,7 +181,7 @@ namespace Farmacy.Forme
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(234, 235);
+            btnCancel.Location = new Point(234, 263);
             btnCancel.Margin = new Padding(4, 3, 4, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(88, 27);
@@ -197,11 +190,41 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(147, 223);
+            dateTimePicker1.Margin = new Padding(4, 3, 4, 3);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(174, 23);
+            dateTimePicker1.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 226);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(132, 15);
+            label1.TabIndex = 18;
+            label1.Text = "Datum kraja zaposlenja:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(148, 17);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(173, 23);
+            comboBox1.TabIndex = 20;
+            // 
             // MenadzerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(331, 276);
+            ClientSize = new Size(331, 296);
+            Controls.Add(comboBox1);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(label1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(dtpDatumZaposlenja);
@@ -216,7 +239,6 @@ namespace Farmacy.Forme
             Controls.Add(lblIme);
             Controls.Add(txtPrezime);
             Controls.Add(lblPrezime);
-            Controls.Add(txtMBr);
             Controls.Add(lblMBr);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4, 3, 4, 3);
@@ -233,7 +255,6 @@ namespace Farmacy.Forme
         #endregion
 
         private System.Windows.Forms.Label lblMBr;
-        private System.Windows.Forms.TextBox txtMBr;
         private System.Windows.Forms.Label lblPrezime;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label lblIme;
@@ -248,5 +269,8 @@ namespace Farmacy.Forme
         private System.Windows.Forms.DateTimePicker dtpDatumZaposlenja;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private DateTimePicker dateTimePicker1;
+        private Label label1;
+        private ComboBox comboBox1;
     }
 }

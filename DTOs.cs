@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Farmacy
 {
+    public class RasporedRadaBasic
+    {
+        public virtual long MBr { get; set; }
+        public virtual long idProdajne { get; set; } // referenca na drugu tabelu
+        public virtual DateTime Pocetak { get; set; }
+        public virtual DateTime Kraj { get; set; }
+        public virtual int? BrojSmene { get; set; } // nullable jer kolona može biti null
+    }
     public class ZaposleniBasic
     {
         public long MBr { get; set; }
@@ -59,6 +67,8 @@ namespace Farmacy
         public long ProdajnaJedinicaId { get; set; }
         public DateTime Od { get; set; }
         public DateTime? Do { get; set; }
+        public DateTime? datumKontrole { get; set; }
+
     }
 
     // === Proizvođači / grupe / lekovi ===
