@@ -28,6 +28,18 @@ namespace Farmacy.Forme
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
+
+            var items = new[]
+                                {
+                                    new { Text = "Prva",  Value = 1 },
+                                    new { Text = "Druga", Value = 2 },
+                                    new { Text = "Treća", Value = 3 }
+                                }.ToList();
+
+            cmbSmena.DisplayMember = "Text";
+
+            cmbSmena.ValueMember = "Value";
+            cmbSmena.DataSource = items;
         }
         private void InitializeForm()
         {
@@ -123,7 +135,9 @@ namespace Farmacy.Forme
             zaposleni.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             zaposleni.DatumZaposlenja = dtpDatumZaposlenja.Value;
             long idP = (long)comboBox1.SelectedValue;
-            DTOManagerZaposleni.DodajZaposlenog(zaposleni,idP,dateTimePicker1.Value);
+            int smena = (int)cmbSmena.SelectedValue;
+
+            DTOManagerZaposleni.DodajZaposlenog(zaposleni,idP,dateTimePicker1.Value,smena);
                 
         }
 

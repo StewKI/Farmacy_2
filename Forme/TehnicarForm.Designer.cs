@@ -42,13 +42,15 @@ namespace Farmacy.Forme
             lblDatumZaposlenja = new Label();
             dtpDatumZaposlenja = new DateTimePicker();
             lblNivoObrazovanja = new Label();
-            txtNivoObrazovanja = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
             btnDodajSertifikaciju = new Button();
             dateTimePicker1 = new DateTimePicker();
             label1 = new Label();
             comboBox1 = new ComboBox();
+            label2 = new Label();
+            cmbSmena = new ComboBox();
+            cmbNivo = new ComboBox();
             SuspendLayout();
             // 
             // lblMBr
@@ -167,16 +169,9 @@ namespace Farmacy.Forme
             lblNivoObrazovanja.TabIndex = 14;
             lblNivoObrazovanja.Text = "Nivo obrazovanja:";
             // 
-            // txtNivoObrazovanja
-            // 
-            txtNivoObrazovanja.Location = new Point(159, 345);
-            txtNivoObrazovanja.Name = "txtNivoObrazovanja";
-            txtNivoObrazovanja.Size = new Size(200, 23);
-            txtNivoObrazovanja.TabIndex = 15;
-            // 
             // btnSave
             // 
-            btnSave.Location = new Point(171, 398);
+            btnSave.Location = new Point(171, 429);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 16;
@@ -186,7 +181,7 @@ namespace Farmacy.Forme
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(275, 398);
+            btnCancel.Location = new Point(275, 429);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 17;
@@ -196,7 +191,7 @@ namespace Farmacy.Forme
             // 
             // btnDodajSertifikaciju
             // 
-            btnDodajSertifikaciju.Location = new Point(15, 396);
+            btnDodajSertifikaciju.Location = new Point(15, 427);
             btnDodajSertifikaciju.Name = "btnDodajSertifikaciju";
             btnDodajSertifikaciju.Size = new Size(104, 39);
             btnDodajSertifikaciju.TabIndex = 18;
@@ -229,18 +224,45 @@ namespace Farmacy.Forme
             comboBox1.Size = new Size(200, 23);
             comboBox1.TabIndex = 21;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(30, 389);
+            label2.Name = "label2";
+            label2.Size = new Size(72, 15);
+            label2.TabIndex = 22;
+            label2.Text = "Smena rada:";
+            // 
+            // cmbSmena
+            // 
+            cmbSmena.FormattingEnabled = true;
+            cmbSmena.Location = new Point(159, 389);
+            cmbSmena.Name = "cmbSmena";
+            cmbSmena.Size = new Size(200, 23);
+            cmbSmena.TabIndex = 30;
+            // 
+            // cmbNivo
+            // 
+            cmbNivo.FormattingEnabled = true;
+            cmbNivo.Location = new Point(159, 348);
+            cmbNivo.Name = "cmbNivo";
+            cmbNivo.Size = new Size(200, 23);
+            cmbNivo.TabIndex = 31;
+            // 
             // TehnicarForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(381, 441);
+            ClientSize = new Size(386, 478);
+            Controls.Add(cmbNivo);
+            Controls.Add(cmbSmena);
+            Controls.Add(label2);
             Controls.Add(comboBox1);
             Controls.Add(dateTimePicker1);
             Controls.Add(label1);
             Controls.Add(btnDodajSertifikaciju);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
-            Controls.Add(txtNivoObrazovanja);
             Controls.Add(lblNivoObrazovanja);
             Controls.Add(dtpDatumZaposlenja);
             Controls.Add(lblDatumZaposlenja);
@@ -282,12 +304,14 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblDatumZaposlenja;
         private System.Windows.Forms.DateTimePicker dtpDatumZaposlenja;
         private System.Windows.Forms.Label lblNivoObrazovanja;
-        private System.Windows.Forms.TextBox txtNivoObrazovanja;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private Button btnDodajSertifikaciju;
         private DateTimePicker dateTimePicker1;
         private Label label1;
         private ComboBox comboBox1;
+        private Label label2;
+        private ComboBox cmbSmena;
+        private ComboBox cmbNivo;
     }
 }

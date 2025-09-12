@@ -27,10 +27,12 @@ namespace Farmacy.Mapiranja
                         .Column("KRAJ")
                         .Not.Nullable();
 
-                    Map(x => x.BrojSmene)
-                        .Column("BROJ_SMENE")
-                        .Nullable();
-                }
+                    HasMany(x => x.Smene)
+                        .Table("SMENA")
+                        .KeyColumns.Add("M_BR", "PRODAJNA_JEDINICA_ID", "POCETAK")
+                        .Inverse()
+                        .Cascade.AllDeleteOrphan();
+            }
             }
         
     }

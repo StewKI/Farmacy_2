@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Entiteti
 {
-    internal class RasporedRada
+    public class RasporedRada
     {
         public virtual Zaposleni Zaposleni { get; set; }                         // M_BR
         public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } // PRODAJNA_JEDINICA_ID (FK)
         public virtual DateTime Pocetak { get; set; }                // POCETAK (TIMESTAMP)
         public virtual DateTime Kraj { get; set; }                   // KRAJ (TIMESTAMP)
-        public virtual int? BrojSmene { get; set; }
+
+        public virtual ISet<Smena> Smene { get; set; } = new HashSet<Smena>();
 
         public override bool Equals(object obj)
         {

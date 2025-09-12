@@ -61,6 +61,7 @@ namespace Farmacy.Forme
             txtMBr.Location = new Point(140, 14);
             txtMBr.Margin = new Padding(4, 3, 4, 3);
             txtMBr.Name = "txtMBr";
+            txtMBr.ReadOnly = true;
             txtMBr.Size = new Size(174, 23);
             txtMBr.TabIndex = 1;
             // 

@@ -46,6 +46,8 @@ namespace Farmacy.Forme
             dateTimePicker1 = new DateTimePicker();
             label1 = new Label();
             comboBox1 = new ComboBox();
+            label2 = new Label();
+            cmbSmena = new ComboBox();
             SuspendLayout();
             // 
             // lblMBr
@@ -170,7 +172,7 @@ namespace Farmacy.Forme
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(140, 263);
+            btnSave.Location = new Point(147, 296);
             btnSave.Margin = new Padding(4, 3, 4, 3);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(88, 27);
@@ -181,7 +183,7 @@ namespace Farmacy.Forme
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(234, 263);
+            btnCancel.Location = new Point(241, 296);
             btnCancel.Margin = new Padding(4, 3, 4, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(88, 27);
@@ -217,11 +219,32 @@ namespace Farmacy.Forme
             comboBox1.Size = new Size(173, 23);
             comboBox1.TabIndex = 20;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 255);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(72, 15);
+            label2.TabIndex = 21;
+            label2.Text = "Smena rada:";
+            label2.Click += label2_Click;
+            // 
+            // cmbSmena
+            // 
+            cmbSmena.FormattingEnabled = true;
+            cmbSmena.Location = new Point(148, 252);
+            cmbSmena.Name = "cmbSmena";
+            cmbSmena.Size = new Size(173, 23);
+            cmbSmena.TabIndex = 29;
+            // 
             // MenadzerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(331, 296);
+            ClientSize = new Size(330, 335);
+            Controls.Add(cmbSmena);
+            Controls.Add(label2);
             Controls.Add(comboBox1);
             Controls.Add(dateTimePicker1);
             Controls.Add(label1);
@@ -272,5 +295,7 @@ namespace Farmacy.Forme
         private DateTimePicker dateTimePicker1;
         private Label label1;
         private ComboBox comboBox1;
+        private Label label2;
+        private ComboBox cmbSmena;
     }
 }

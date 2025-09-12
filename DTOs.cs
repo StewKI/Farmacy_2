@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Farmacy.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,14 @@ namespace Farmacy
         public virtual long idProdajne { get; set; } // referenca na drugu tabelu
         public virtual DateTime Pocetak { get; set; }
         public virtual DateTime Kraj { get; set; }
-        public virtual int? BrojSmene { get; set; } // nullable jer kolona može biti null
+
+        public virtual int smena { get; set; }
+
+        public virtual ISet<Smena> Smene { get; set; } = new HashSet<Smena>();
+
+
     }
+
     public class ZaposleniBasic
     {
         public long MBr { get; set; }

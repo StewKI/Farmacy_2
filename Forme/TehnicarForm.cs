@@ -30,6 +30,30 @@ namespace Farmacy.Forme
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
+
+            var items = new[]
+                                {
+                                    new { Text = "Prva",  Value = 1 },
+                                    new { Text = "Druga", Value = 2 },
+                                    new { Text = "Treća", Value = 3 }
+                                }.ToList();
+
+            cmbSmena.DisplayMember = "Text";
+
+            cmbSmena.ValueMember = "Value";
+            cmbSmena.DataSource = items;
+
+            var items2 = new[]
+                                {
+                                    new { Text = "VISI",  Value = 1 },
+                                    new { Text = "SREDNJI", Value = 2 },
+                                   
+                                }.ToList();
+
+            cmbNivo.DisplayMember = "Text";
+
+            cmbNivo.ValueMember = "Value";
+            cmbNivo.DataSource = items2;
         }
 
         private void InitializeForm()
@@ -48,7 +72,7 @@ namespace Farmacy.Forme
                 txtAdresa.Text = tehnicar.Adresa ?? string.Empty;
                 txtTelefon.Text = tehnicar.Telefon ?? string.Empty;
                 dtpDatumZaposlenja.Value = tehnicar.DatumZaposlenja;
-                txtNivoObrazovanja.Text = tehnicar.NivoObrazovanja;
+                //txtNivoObrazovanja.Text = tehnicar.NivoObrazovanja;
             }
         }
 
@@ -84,10 +108,10 @@ namespace Farmacy.Forme
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtNivoObrazovanja.Text))
+            if (string.IsNullOrWhiteSpace(cmbNivo.Text))
             {
                 MessageBox.Show("Nivo obrazovanja je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNivoObrazovanja.Focus();
+                cmbNivo.Focus();
                 return false;
             }
 
@@ -118,11 +142,13 @@ namespace Farmacy.Forme
             tehnicar.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             tehnicar.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             tehnicar.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            tehnicar.NivoObrazovanja = txtNivoObrazovanja.Text.Trim();
+            tehnicar.NivoObrazovanja = cmbNivo.GetItemText(comboBox1.SelectedItem);
             long idP = (long)comboBox1.SelectedValue;
+            int smena = (int)cmbSmena.SelectedValue;
 
 
-            DTOManagerZaposleni.DodajTehnicara(tehnicar,idP,dateTimePicker1.Value);
+
+            DTOManagerZaposleni.DodajTehnicara(tehnicar,idP,dateTimePicker1.Value,smena);
         }
 
         //public Tehnicar GetTehnicar()

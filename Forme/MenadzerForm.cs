@@ -29,6 +29,18 @@ namespace Farmacy.Forme
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
+
+            var items = new[]
+                                {
+                                    new { Text = "Prva",  Value = 1 },
+                                    new { Text = "Druga", Value = 2 },
+                                    new { Text = "Treća", Value = 3 }
+                                }.ToList();
+
+            cmbSmena.DisplayMember = "Text";
+
+            cmbSmena.ValueMember = "Value";
+            cmbSmena.DataSource = items;
         }
         private void LoadMenadzerData()
         {
@@ -64,7 +76,7 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-            
+
 
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
@@ -101,7 +113,7 @@ namespace Farmacy.Forme
 
         private void SaveMenadzer()
         {
-            
+
 
             menadzer.Prezime = txtPrezime.Text.Trim();
             menadzer.Ime = txtIme.Text.Trim();
@@ -109,9 +121,11 @@ namespace Farmacy.Forme
             menadzer.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             menadzer.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             menadzer.DatumZaposlenja = dtpDatumZaposlenja.Value;
+            int smena = (int)cmbSmena.SelectedValue;
+
 
             long idP = (long)comboBox1.SelectedValue;
-            DTOManagerZaposleni.DodajMenadzera(menadzer,idP,dateTimePicker1.Value);
+            DTOManagerZaposleni.DodajMenadzera(menadzer, idP, dateTimePicker1.Value,smena);
         }
 
         //public Entiteti.MenadzerBasic GetMenadzer()
@@ -120,6 +134,11 @@ namespace Farmacy.Forme
         //}
 
         private void MenadzerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

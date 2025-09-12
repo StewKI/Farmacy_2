@@ -93,6 +93,18 @@ namespace Farmacy.Forme
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
+
+            var items = new[]
+                                {
+                                    new { Text = "Prva",  Value = 1 },
+                                    new { Text = "Druga", Value = 2 },
+                                    new { Text = "Treća", Value = 3 }
+                                }.ToList();
+
+            cmbSmena.DisplayMember = "Text";
+
+            cmbSmena.ValueMember = "Value";
+            cmbSmena.DataSource = items;
         }
         private void SaveFarmaceut()
         {
@@ -113,8 +125,10 @@ namespace Farmacy.Forme
             farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
             long idP = (long)comboBox1.SelectedValue;
 
+            int smena = (int)cmbSmena.SelectedValue;
 
-            DTOManagerZaposleni.DodajFarmaceuta(farmaceut,idP,dateTimePicker1.Value);
+
+            DTOManagerZaposleni.DodajFarmaceuta(farmaceut,idP,dateTimePicker1.Value,smena);
 
         }
 

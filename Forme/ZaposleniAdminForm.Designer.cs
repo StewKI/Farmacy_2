@@ -28,6 +28,10 @@
             groupBoxZaposleni = new GroupBox();
             dgvZaposleni = new DataGridView();
             panelDesno = new Panel();
+            btnPrikaziSve = new Button();
+            btnPrikaziMenadzere = new Button();
+            brnPrikaziTehnicare = new Button();
+            brnPrikaziFarmaceute = new Button();
             btnObrisiZaposlenog = new Button();
             btnIzmeniZaposlenog = new Button();
             btnDodajNovog = new Button();
@@ -68,6 +72,10 @@
             // 
             // panelDesno
             // 
+            panelDesno.Controls.Add(btnPrikaziSve);
+            panelDesno.Controls.Add(btnPrikaziMenadzere);
+            panelDesno.Controls.Add(brnPrikaziTehnicare);
+            panelDesno.Controls.Add(brnPrikaziFarmaceute);
             panelDesno.Controls.Add(btnObrisiZaposlenog);
             panelDesno.Controls.Add(btnIzmeniZaposlenog);
             panelDesno.Controls.Add(btnDodajNovog);
@@ -77,6 +85,62 @@
             panelDesno.Padding = new Padding(15);
             panelDesno.Size = new Size(230, 461);
             panelDesno.TabIndex = 1;
+            // 
+            // btnPrikaziSve
+            // 
+            btnPrikaziSve.Dock = DockStyle.Top;
+            btnPrikaziSve.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnPrikaziSve.Location = new Point(15, 375);
+            btnPrikaziSve.Margin = new Padding(0, 10, 0, 0);
+            btnPrikaziSve.Name = "btnPrikaziSve";
+            btnPrikaziSve.Padding = new Padding(4);
+            btnPrikaziSve.Size = new Size(200, 60);
+            btnPrikaziSve.TabIndex = 6;
+            btnPrikaziSve.Text = "Prikazi sve";
+            btnPrikaziSve.UseVisualStyleBackColor = true;
+            btnPrikaziSve.Click += btnPrikaziSve_Click;
+            // 
+            // btnPrikaziMenadzere
+            // 
+            btnPrikaziMenadzere.Dock = DockStyle.Top;
+            btnPrikaziMenadzere.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnPrikaziMenadzere.Location = new Point(15, 315);
+            btnPrikaziMenadzere.Margin = new Padding(0, 10, 0, 0);
+            btnPrikaziMenadzere.Name = "btnPrikaziMenadzere";
+            btnPrikaziMenadzere.Padding = new Padding(4);
+            btnPrikaziMenadzere.Size = new Size(200, 60);
+            btnPrikaziMenadzere.TabIndex = 5;
+            btnPrikaziMenadzere.Text = "Prikazi Menadzere";
+            btnPrikaziMenadzere.UseVisualStyleBackColor = true;
+            btnPrikaziMenadzere.Click += btnPrikaziMenadzere_Click;
+            // 
+            // brnPrikaziTehnicare
+            // 
+            brnPrikaziTehnicare.Dock = DockStyle.Top;
+            brnPrikaziTehnicare.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            brnPrikaziTehnicare.Location = new Point(15, 255);
+            brnPrikaziTehnicare.Margin = new Padding(0, 10, 0, 0);
+            brnPrikaziTehnicare.Name = "brnPrikaziTehnicare";
+            brnPrikaziTehnicare.Padding = new Padding(4);
+            brnPrikaziTehnicare.Size = new Size(200, 60);
+            brnPrikaziTehnicare.TabIndex = 4;
+            brnPrikaziTehnicare.Text = "Prikazi tehnicare";
+            brnPrikaziTehnicare.UseVisualStyleBackColor = true;
+            brnPrikaziTehnicare.Click += brnPrikaziTehnicare_Click;
+            // 
+            // brnPrikaziFarmaceute
+            // 
+            brnPrikaziFarmaceute.Dock = DockStyle.Top;
+            brnPrikaziFarmaceute.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            brnPrikaziFarmaceute.Location = new Point(15, 195);
+            brnPrikaziFarmaceute.Margin = new Padding(0, 10, 0, 0);
+            brnPrikaziFarmaceute.Name = "brnPrikaziFarmaceute";
+            brnPrikaziFarmaceute.Padding = new Padding(4);
+            brnPrikaziFarmaceute.Size = new Size(200, 60);
+            brnPrikaziFarmaceute.TabIndex = 3;
+            brnPrikaziFarmaceute.Text = "Prikazi farmaceute";
+            brnPrikaziFarmaceute.UseVisualStyleBackColor = true;
+            brnPrikaziFarmaceute.Click += brnPrikaziFarmaceute_Click;
             // 
             // btnObrisiZaposlenog
             // 
@@ -154,7 +218,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIme;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDatumRodj;
-
-        
+        private Button btnPrikaziSve;
+        private Button btnPrikaziMenadzere;
+        private Button brnPrikaziTehnicare;
+        private Button brnPrikaziFarmaceute;
     }
 }
