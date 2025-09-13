@@ -23,7 +23,17 @@ namespace Farmacy_2.Forme
             txtBroj.Text = prodajnaJedinica.Broj;
             txtPostanskiBroj.Text = prodajnaJedinica.PostanskiBroj;
             txtMesto.Text = prodajnaJedinica.Mesto;
-            txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceutMbr.ToString();
+            //Stavljeno je da apotekar koj je izabran iz globalnog sistema bude odgovaran a ne koj raid ovde se bira od onih sto rade bas u toj prodajnoj jedinici
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(prodajnaJedinica.OdgovorniFarmaceutMbr);
+            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(prodajnaJedinica.Id) ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            var o = new { Text =f.Ime, Value = f.MBr };
+            if (nazivi.Count < 1)
+                nazivi.Add(o);
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+            comboBox1.SelectedValue = prodajnaJedinica.OdgovorniFarmaceutMbr;
         }
 
         private bool ValidateForm()
@@ -73,7 +83,7 @@ namespace Farmacy_2.Forme
             prodajnaJedinica.Broj = txtBroj.Text.Trim();
             prodajnaJedinica.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
-            prodajnaJedinica.OdgovorniFarmaceutMbr= long.Parse(txtOdgovorniFarmaceut.Text.Trim());
+            prodajnaJedinica.OdgovorniFarmaceutMbr= (long)comboBox1.SelectedValue;
 
             DTOManagerProdajneJedinice.IzmeniProdajnuJedinicu(prodajnaJedinica);
         }

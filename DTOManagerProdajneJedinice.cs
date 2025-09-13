@@ -1,5 +1,6 @@
 using Farmacy.Entiteti;
 using FluentNHibernate.Data;
+using NHibernate.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,6 +103,10 @@ namespace Farmacy
                 s.Save(pj);
                 s.Flush();
                 dto.Id = pj.Id;
+            }
+            catch (GenericADOException ex)
+            {
+                MessageBox.Show(ex.GetBaseException().Message); // npr. ORA-02291/00001/01400...
             }
             catch (Exception ex) {
                 MessageBox.Show(
@@ -231,14 +236,14 @@ namespace Farmacy
             return null;
         }
 
-        public static Entiteti.ProdajnaJedinicaBasic? VratiProdajnuJedinicuTip(long id)
+        public static Entiteti.ProdajnaJedinicaBasic VratiProdajnuJedinicuTip(long id)
         {
             try
             {
                 using var s = DataLayer.GetSession();
 
                 // 1) Apoteka sa laboratorijom
-                var lab = s.Get<Farmacy.Entiteti.ApotekaSaLabBasic>(id); // <-- ako ti se entitet zove drugačije, promeni ovde
+                var lab = s.Get<Entiteti.ApotekaSaLabBasic>(id); // <-- ako ti se entitet zove drugačije, promeni ovde
                 if (lab != null)
                 {
                     return new ApotekaSaLabBasic
@@ -256,7 +261,7 @@ namespace Farmacy
                 }
 
                 // 2) Specijalizovana apoteka
-                var spec = s.Get<Farmacy.Entiteti.SpecijalizovanaApoteka>(id);
+                var spec = s.Get<Entiteti.SpecijalizovanaApoteka>(id);
                 if (spec != null)
                 {
                     return new SpecijalizovanaApoteka
@@ -273,7 +278,7 @@ namespace Farmacy
                     };
                 }
 
-                var standardna= s.Get<Farmacy.Entiteti.StandardnaApoteka>(id);
+                var standardna= s.Get<Entiteti.StandardnaApoteka>(id);
                 if (standardna != null)
                 {
                     return new StandardnaApoteka
@@ -284,25 +289,12 @@ namespace Farmacy
                         Broj = standardna.Broj,
                         PostanskiBroj = standardna.PostanskiBroj,
                         Mesto = standardna.Mesto,
-                        OdgovorniFarmaceut = standardna.OdgovorniFarmaceut,
+                        OdgovorniFarmaceut= standardna.OdgovorniFarmaceut,
                         Napomena = standardna.Napomena
                     };
                         
                 }
-                var p= s.Get<ProdajnaJedinicaBasic>(id);
-                if(p != null)
-                {
-                    return new Entiteti.ProdajnaJedinicaBasic
-                    {
-                        Id = standardna.Id,
-                        Naziv = standardna.Naziv,
-                        Ulica = standardna.Ulica,
-                        Broj = standardna.Broj,
-                        PostanskiBroj = standardna.PostanskiBroj,
-                        Mesto = standardna.Mesto,
-                        OdgovorniFarmaceut = standardna.OdgovorniFarmaceut,
-                    };
-                }
+                
                 
 
 
@@ -372,7 +364,7 @@ namespace Farmacy
                    MessageBoxIcon.Error);
             }
         }
-        public static void IzmeniSpecApoetku(Entiteti.SpecijalizovanaApoteka dto)
+        public static void IzmeniSpecApoetku(SpecijalizovanaApoteka dto)
         {
             try
             {
@@ -685,5 +677,99 @@ namespace Farmacy
                 throw new Exception("Greška pri proveri radnog vremena: " + ex.Message);
             }
         }
+
+        public static IList<FarmaceutBasic> VratiSveFarmaceuteUSistemu()
+        {
+            var list = new List<FarmaceutBasic>();
+
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var rv = s.Query<RasporedRada>().ToList();
+                  
+
+
+                foreach (var x in rv)
+                {
+                    var z=DTOManagerZaposleni.VratiZaposlenog(x.Zaposleni.MBr);
+                    if(z is FarmaceutBasic f)
+                    {
+                        list.Add(f);
+                    }
+                    
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri učitavanju radnog vremena: " + ex.Message);
+            }
+            return list;
+        }
+
+        public static IList<MenadzerBasic> VratiSveMenadzereUSistemu()
+        {
+            var list = new List<MenadzerBasic>();
+
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var rv = s.Query<RasporedRada>().ToList();
+
+
+
+                foreach (var x in rv)
+                {
+                    var z = DTOManagerZaposleni.VratiZaposlenog(x.Zaposleni.MBr);
+                    if (z is MenadzerBasic f)
+                    {
+                        list.Add(f);
+                    }
+
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri učitavanju radnog vremena: " + ex.Message);
+            }
+            return list;
+        }
+        public static IList<FarmaceutBasic> VratiSveFarmaceuteZaApoteku(long id)
+        {
+            var list = new List<FarmaceutBasic>();
+
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var rv = s.Query<RasporedRada>().
+                    Where(x=>x.ProdajnaJedinica.Id==id).
+                    ToList();
+
+
+
+
+                foreach (var x in rv)
+                {
+                    var z = DTOManagerZaposleni.VratiZaposlenog(x.Zaposleni.MBr);
+                    if (z is FarmaceutBasic f)
+                    {
+                        list.Add(f);
+                    }
+
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri učitavanju radnog vremena: " + ex.Message);
+            }
+            return list;
+        }
+
+        
     }
 }

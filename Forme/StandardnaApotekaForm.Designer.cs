@@ -41,11 +41,11 @@ namespace Farmacy.Forme
             lblMesto = new Label();
             txtMesto = new TextBox();
             lblOdgovorniFarmaceut = new Label();
-            txtOdgovorniFarmaceut = new TextBox();
             lblNapomena = new Label();
             txtNapomena = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // lblId
@@ -155,14 +155,6 @@ namespace Farmacy.Forme
             lblOdgovorniFarmaceut.TabIndex = 12;
             lblOdgovorniFarmaceut.Text = "Odgovorni farmaceut:";
             // 
-            // txtOdgovorniFarmaceut
-            // 
-            txtOdgovorniFarmaceut.Location = new Point(150, 267);
-            txtOdgovorniFarmaceut.Name = "txtOdgovorniFarmaceut";
-            txtOdgovorniFarmaceut.Size = new Size(200, 23);
-            txtOdgovorniFarmaceut.TabIndex = 13;
-            txtOdgovorniFarmaceut.TabStop = false;
-            // 
             // lblNapomena
             // 
             lblNapomena.AutoSize = true;
@@ -200,16 +192,25 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(150, 267);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(200, 23);
+            comboBox1.TabIndex = 18;
+            // 
             // StandardnaApotekaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 441);
+            Controls.Add(comboBox1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtNapomena);
             Controls.Add(lblNapomena);
-            Controls.Add(txtOdgovorniFarmaceut);
             Controls.Add(lblOdgovorniFarmaceut);
             Controls.Add(txtMesto);
             Controls.Add(lblMesto);
@@ -249,10 +250,10 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblMesto;
         private System.Windows.Forms.TextBox txtMesto;
         private System.Windows.Forms.Label lblOdgovorniFarmaceut;
-        private System.Windows.Forms.TextBox txtOdgovorniFarmaceut;
         private System.Windows.Forms.Label lblNapomena;
         private System.Windows.Forms.TextBox txtNapomena;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private ComboBox comboBox1;
     }
 }

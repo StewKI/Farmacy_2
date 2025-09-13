@@ -29,7 +29,6 @@ namespace Farmacy.Forme
         private void InitializeComponent()
         {
             lblMenadzerId = new Label();
-            txtMenadzerId = new TextBox();
             lblProdajnaJedinicaId = new Label();
             txtProdajnaJedinicaId = new TextBox();
             lblOd = new Label();
@@ -39,6 +38,7 @@ namespace Farmacy.Forme
             chkDo = new CheckBox();
             btnSave = new Button();
             btnCancel = new Button();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // lblMenadzerId
@@ -47,17 +47,9 @@ namespace Farmacy.Forme
             lblMenadzerId.Location = new Point(14, 17);
             lblMenadzerId.Margin = new Padding(4, 0, 4, 0);
             lblMenadzerId.Name = "lblMenadzerId";
-            lblMenadzerId.Size = new Size(82, 15);
+            lblMenadzerId.Size = new Size(62, 15);
             lblMenadzerId.TabIndex = 0;
-            lblMenadzerId.Text = "ID Menadžera:";
-            // 
-            // txtMenadzerId
-            // 
-            txtMenadzerId.Location = new Point(140, 14);
-            txtMenadzerId.Margin = new Padding(4, 3, 4, 3);
-            txtMenadzerId.Name = "txtMenadzerId";
-            txtMenadzerId.Size = new Size(174, 23);
-            txtMenadzerId.TabIndex = 1;
+            lblMenadzerId.Text = "Menadžer:";
             // 
             // lblProdajnaJedinicaId
             // 
@@ -149,11 +141,20 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(140, 15);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(174, 23);
+            comboBox1.TabIndex = 11;
+            // 
             // MenadzerApotekaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(350, 186);
+            Controls.Add(comboBox1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(chkDo);
@@ -163,7 +164,6 @@ namespace Farmacy.Forme
             Controls.Add(lblOd);
             Controls.Add(txtProdajnaJedinicaId);
             Controls.Add(lblProdajnaJedinicaId);
-            Controls.Add(txtMenadzerId);
             Controls.Add(lblMenadzerId);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4, 3, 4, 3);
@@ -180,7 +180,6 @@ namespace Farmacy.Forme
         #endregion
 
         private System.Windows.Forms.Label lblMenadzerId;
-        private System.Windows.Forms.TextBox txtMenadzerId;
         private System.Windows.Forms.Label lblProdajnaJedinicaId;
         private System.Windows.Forms.TextBox txtProdajnaJedinicaId;
         private System.Windows.Forms.Label lblOd;
@@ -190,5 +189,6 @@ namespace Farmacy.Forme
         private System.Windows.Forms.CheckBox chkDo;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private ComboBox comboBox1;
     }
 }

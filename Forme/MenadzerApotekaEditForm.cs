@@ -33,9 +33,14 @@ namespace Farmacy.Forme
         private void LoadMenadzerApotekaData()
         {
             // Učitavamo postojeće podatke
-            if (menadzerApoteka.MBrMenadzera != null)
-                txtMenadzerId.Text = menadzerApoteka.MBrMenadzera.ToString();
+            IList<MenadzerBasic> lista = DTOManagerProdajneJedinice.VratiMenadzereZaApoteku(idA) ?? new List<MenadzerBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
 
+
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+            
 
             txtProdajnaJedinicaId.Text = idA.ToString();
 
@@ -70,7 +75,7 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrWhiteSpace(txtMenadzerId.Text))
+            if (string.IsNullOrWhiteSpace(comboBox1.Text))
             {
                 MessageBox.Show("ID menadžera je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -97,7 +102,7 @@ namespace Farmacy.Forme
             // jer ova forma samo prikazuje ID-ove
             menadzerApoteka.Od = dtpOd.Value;
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
-            menadzerApoteka.MBrMenadzera = long.Parse(txtMenadzerId.Text);
+            menadzerApoteka.MBrMenadzera = (long)comboBox1.SelectedValue;
             menadzerApoteka.ProdajnaJedinicaId = idA;
             DTOManagerProdajneJedinice.IzmeniMenadzerApoteka(menadzerApoteka);
 

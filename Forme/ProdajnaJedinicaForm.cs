@@ -22,7 +22,11 @@ namespace Farmacy.Forme
 
         private void InitializeForm()
         {
-            // Form initialization logic will be in Designer file
+            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteUSistemu() ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
         }
 
         private void LoadProdajnaJedinicaData()
@@ -36,8 +40,8 @@ namespace Farmacy.Forme
                 txtPostanskiBroj.Text = prodajnaJedinica.PostanskiBroj;
                 txtMesto.Text = prodajnaJedinica.Mesto;
 
-                if (prodajnaJedinica.OdgovorniFarmaceutMbr != null)
-                    txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceutMbr.ToString();
+                //if (prodajnaJedinica.OdgovorniFarmaceutMbr != null)
+                   // txtOdgovorniFarmaceut.Text = prodajnaJedinica.OdgovorniFarmaceutMbr.ToString();
             }
         }
 
@@ -109,7 +113,7 @@ namespace Farmacy.Forme
             prodajnaJedinica.Broj = txtBroj.Text.Trim();
             prodajnaJedinica.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
-            prodajnaJedinica.OdgovorniFarmaceutMbr = long.Parse(txtOdgovorniFarmaceut.Text.Trim());
+            prodajnaJedinica.OdgovorniFarmaceutMbr = (long)comboBox1.SelectedValue;
             DTOManagerProdajneJedinice.DodajProdajnuJedinicu(prodajnaJedinica);
 
         }

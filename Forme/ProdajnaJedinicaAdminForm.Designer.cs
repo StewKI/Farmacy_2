@@ -241,7 +241,7 @@
             // 
             btnIzmeni.Dock = DockStyle.Top;
             btnIzmeni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnIzmeni.Location = new Point(12, 166);
+            btnIzmeni.Location = new Point(12, 120);
             btnIzmeni.Margin = new Padding(6);
             btnIzmeni.Name = "btnIzmeni";
             btnIzmeni.Size = new Size(272, 46);
@@ -253,7 +253,7 @@
             // 
             btnObrisi.Dock = DockStyle.Top;
             btnObrisi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnObrisi.Location = new Point(12, 120);
+            btnObrisi.Location = new Point(12, 74);
             btnObrisi.Margin = new Padding(6);
             btnObrisi.Name = "btnObrisi";
             btnObrisi.Size = new Size(272, 46);
@@ -265,7 +265,7 @@
             // 
             btnDodaj.Dock = DockStyle.Top;
             btnDodaj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnDodaj.Location = new Point(12, 74);
+            btnDodaj.Location = new Point(12, 28);
             btnDodaj.Margin = new Padding(6);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(272, 46);

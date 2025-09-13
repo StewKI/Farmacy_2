@@ -22,7 +22,11 @@ namespace Farmacy.Forme
 
         private void InitializeForm()
         {
-            // Form initialization logic will be in Designer file
+            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteUSistemu() ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
         }
 
         private void LoadApotekaSaLabData()
@@ -37,8 +41,7 @@ namespace Farmacy.Forme
                 txtMesto.Text = apotekaSaLab.Mesto;
                 txtNapomena.Text = apotekaSaLab.Napomena ?? string.Empty;
 
-                if (apotekaSaLab.OdgovorniFarmaceut != null)
-                    txtOdgovorniFarmaceut.Text = apotekaSaLab.OdgovorniFarmaceut.ToString();
+                
             }
         }
 
@@ -114,7 +117,7 @@ namespace Farmacy.Forme
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
 
-            apotekaSaLab.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+            apotekaSaLab.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue);
 
             DTOManagerProdajneJedinice.DodajApotekuSaLab(apotekaSaLab);
         }
