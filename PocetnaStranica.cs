@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Farmacy.Forme;
 
 namespace Farmacy
 {
@@ -22,15 +23,34 @@ namespace Farmacy
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnProdajneJedinice_Click(object sender, EventArgs e)
         {
-
+            ProdajnaJedinicaAdminForm form = new ProdajnaJedinicaAdminForm();
+            form.ShowDialog();
         }
 
-        private void btnZaposleni(object sender, EventArgs e)
+        private void btnDistributeri_Click(object sender, EventArgs e)
         {
-            Forme.ZaposleniPrikaz forma=new Forme.ZaposleniPrikaz();
-            forma.ShowDialog();
+            DistributerAdminForm form = new DistributerAdminForm();
+            form.ShowDialog();
+        }
+
+        private void btnProizvodjaci_Click(object sender, EventArgs e)
+        {
+            ProizvodjacAdminForm form = new ProizvodjacAdminForm();
+            form.ShowDialog();
+        }
+
+        private void btnLekovi_Click(object sender, EventArgs e)
+        {
+            LekAdminForm form = new LekAdminForm();
+            form.ShowDialog();
+        }
+
+        private void zaposleniBtn_Click(object sender, EventArgs e)
+        {
+            ZaposleniAdminForm form = new ZaposleniAdminForm();
+            form.ShowDialog();
         }
     }
 }

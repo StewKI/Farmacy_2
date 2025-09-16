@@ -32,8 +32,14 @@ namespace Farmacy.Forme
 
         private void LoadMenadzerApotekaData()
         {
-            if (menadzerApoteka.MBrMenadzera != null)
-                txtMenadzerId.Text = menadzerApoteka.MBrMenadzera.ToString();
+            IList<MenadzerBasic> lista = DTOManagerProdajneJedinice.VratiSveMenadzereUSistemu() ?? new List<MenadzerBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+       
+        
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+           
 
             //if (menadzerApoteka.ProdajnaJedinica != null)
             //    txtProdajnaJedinicaId.Text = menadzerApoteka.ProdajnaJedinica.Id.ToString();
@@ -70,7 +76,7 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrWhiteSpace(txtMenadzerId.Text))
+            if (string.IsNullOrWhiteSpace(comboBox1.Text))
             {
                 MessageBox.Show("ID menadžera je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -98,7 +104,7 @@ namespace Farmacy.Forme
             menadzerApoteka.Od = dtpOd.Value;
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
             menadzerApoteka.ProdajnaJedinicaId =idApoteke;
-            menadzerApoteka.MBrMenadzera = long.Parse(txtMenadzerId.Text);
+            menadzerApoteka.MBrMenadzera = (long)comboBox1.SelectedValue;
             DTOManagerProdajneJedinice.DodeliMenadzeraApoteci(menadzerApoteka);
         }
 

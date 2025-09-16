@@ -25,7 +25,7 @@ namespace Farmacy
             // pokreni glavni prozor (po želji)
             // Application.Run(new MainForm());
             //Application.Run(new PocetnaStranica());
-            Application.Run(new ProdajnaJedinicaAdminForm());
+            Application.Run(new PocetnaStranica());
             //Application.Run(new ZaposleniAdminForm());
             //Application.Run(new LekAdminForm());
         }

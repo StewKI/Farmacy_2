@@ -2,16 +2,16 @@ using System;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
 
-namespace Farmacy_2.Forme
+namespace Farmacy.Forme
 {
     public partial class DistributerEditForm : Form
     {
-        private Distributer distributer;
+        private DistributerBasic distributer;
 
-        public DistributerEditForm(Distributer distributer)
+        public DistributerEditForm(DistributerBasic distributer)
         {
             InitializeComponent();
-            this.distributer = distributer ?? throw new ArgumentNullException(nameof(distributer));
+            this.distributer = distributer;
             LoadDistributerData();
         }
 
@@ -19,25 +19,7 @@ namespace Farmacy_2.Forme
         {
             txtId.Text = distributer.Id.ToString();
             txtNaziv.Text = distributer.Naziv;
-            txtKontakt.Text = distributer.Kontakt ?? "";
-        }
-
-        private bool ValidateForm()
-        {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
-            {
-                MessageBox.Show("Naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNaziv.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private void SaveDistributer()
-        {
-            distributer.Naziv = txtNaziv.Text.Trim();
-            distributer.Kontakt = string.IsNullOrWhiteSpace(txtKontakt.Text) ? null : txtKontakt.Text.Trim();
+            txtKontakt.Text = distributer.Kontakt;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -56,7 +38,42 @@ namespace Farmacy_2.Forme
             Close();
         }
 
-        public Distributer GetDistributer()
+        private bool ValidateForm()
+        {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            {
+                MessageBox.Show("Naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtKontakt.Text))
+            {
+                MessageBox.Show("Kontakt je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void SaveDistributer()
+        {
+            distributer.Naziv = txtNaziv.Text.Trim();
+            distributer.Kontakt = txtKontakt.Text.Trim();
+
+            try
+            {
+                DTOManagerIsporukeZalihe.IzmeniDistributera(distributer);
+                MessageBox.Show("Distributer je uspešno izmenjen!", "Uspešno", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri izmeni distributera:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public DistributerBasic GetDistributer()
         {
             return distributer;
         }

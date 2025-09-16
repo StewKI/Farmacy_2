@@ -28,11 +28,11 @@
         private Button btnObrisi;
         private Button btnIzmeni;
         private GroupBox grpServisi;
-        private Button btnReceptura;
-        private Button btnGalenskiLab;
+        private Button btnProdaja;
+        private Button btnZalihe;
+        private Button btnRadnoVreme;
         private GroupBox grpZaposleni;
         private Button btnZaposleni;
-        private Button btnLekovi;
 
         // kolone grida
         private DataGridViewTextBoxColumn colId;
@@ -59,13 +59,13 @@
             btnSuplementi = new Button();
             btnZaposleni = new Button();
             grpServisi = new GroupBox();
-            btnGalenskiLab = new Button();
-            btnReceptura = new Button();
+            btnProdaja = new Button();
+            btnZalihe = new Button();
+            btnRadnoVreme = new Button();
             grpPodaci = new GroupBox();
             btnIzmeni = new Button();
             btnObrisi = new Button();
             btnDodaj = new Button();
-            btnLekovi = new Button();
             groupBoxLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvApoteke).BeginInit();
             panelDesno.SuspendLayout();
@@ -177,45 +177,57 @@
             // 
             // grpServisi
             // 
-            grpServisi.Controls.Add(btnGalenskiLab);
-            grpServisi.Controls.Add(btnReceptura);
+            grpServisi.Controls.Add(btnRadnoVreme);
+            grpServisi.Controls.Add(btnZalihe);
+            grpServisi.Controls.Add(btnProdaja);
             grpServisi.Dock = DockStyle.Top;
             grpServisi.Location = new Point(12, 192);
             grpServisi.Margin = new Padding(0, 12, 0, 0);
             grpServisi.Name = "grpServisi";
             grpServisi.Padding = new Padding(12);
-            grpServisi.Size = new Size(296, 145);
+            grpServisi.Size = new Size(296, 183);
             grpServisi.TabIndex = 1;
             grpServisi.TabStop = false;
             grpServisi.Text = "Servisi";
             // 
-            // btnGalenskiLab
+            // btnRadnoVreme
             // 
-            btnGalenskiLab.Dock = DockStyle.Top;
-            btnGalenskiLab.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnGalenskiLab.Location = new Point(12, 74);
-            btnGalenskiLab.Name = "btnGalenskiLab";
-            btnGalenskiLab.Size = new Size(272, 46);
-            btnGalenskiLab.TabIndex = 1;
-            btnGalenskiLab.Text = "Prodaj recept";
+            btnRadnoVreme.Dock = DockStyle.Top;
+            btnRadnoVreme.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRadnoVreme.Location = new Point(12, 28);
+            btnRadnoVreme.Name = "btnRadnoVreme";
+            btnRadnoVreme.Size = new Size(272, 46);
+            btnRadnoVreme.TabIndex = 0;
+            btnRadnoVreme.Text = "Radno vreme";
+            btnRadnoVreme.Click += btnRadnoVreme_Click;
             // 
-            // btnReceptura
+            // btnZalihe
             // 
-            btnReceptura.Dock = DockStyle.Top;
-            btnReceptura.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnReceptura.Location = new Point(12, 28);
-            btnReceptura.Name = "btnReceptura";
-            btnReceptura.Size = new Size(272, 46);
-            btnReceptura.TabIndex = 2;
-            btnReceptura.Text = "Realizuj recept";
-            btnReceptura.Click += btnReceptura_Click;
+            btnZalihe.Dock = DockStyle.Top;
+            btnZalihe.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnZalihe.Location = new Point(12, 74);
+            btnZalihe.Name = "btnZalihe";
+            btnZalihe.Size = new Size(272, 46);
+            btnZalihe.TabIndex = 1;
+            btnZalihe.Text = "Zalihe";
+            btnZalihe.Click += btnZalihe_Click;
+            // 
+            // btnProdaja
+            // 
+            btnProdaja.Dock = DockStyle.Top;
+            btnProdaja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnProdaja.Location = new Point(12, 120);
+            btnProdaja.Name = "btnProdaja";
+            btnProdaja.Size = new Size(272, 46);
+            btnProdaja.TabIndex = 2;
+            btnProdaja.Text = "Prodaja";
+            btnProdaja.Click += btnProdaja_Click;
             // 
             // grpPodaci
             // 
             grpPodaci.Controls.Add(btnIzmeni);
             grpPodaci.Controls.Add(btnObrisi);
             grpPodaci.Controls.Add(btnDodaj);
-            grpPodaci.Controls.Add(btnLekovi);
             grpPodaci.Dock = DockStyle.Top;
             grpPodaci.Location = new Point(12, 12);
             grpPodaci.Name = "grpPodaci";
@@ -229,7 +241,7 @@
             // 
             btnIzmeni.Dock = DockStyle.Top;
             btnIzmeni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnIzmeni.Location = new Point(12, 166);
+            btnIzmeni.Location = new Point(12, 120);
             btnIzmeni.Margin = new Padding(6);
             btnIzmeni.Name = "btnIzmeni";
             btnIzmeni.Size = new Size(272, 46);
@@ -241,7 +253,7 @@
             // 
             btnObrisi.Dock = DockStyle.Top;
             btnObrisi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnObrisi.Location = new Point(12, 120);
+            btnObrisi.Location = new Point(12, 74);
             btnObrisi.Margin = new Padding(6);
             btnObrisi.Name = "btnObrisi";
             btnObrisi.Size = new Size(272, 46);
@@ -253,7 +265,7 @@
             // 
             btnDodaj.Dock = DockStyle.Top;
             btnDodaj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnDodaj.Location = new Point(12, 74);
+            btnDodaj.Location = new Point(12, 28);
             btnDodaj.Margin = new Padding(6);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(272, 46);
@@ -263,14 +275,6 @@
             // 
             // btnLekovi
             // 
-            btnLekovi.Dock = DockStyle.Top;
-            btnLekovi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnLekovi.Location = new Point(12, 28);
-            btnLekovi.Name = "btnLekovi";
-            btnLekovi.Size = new Size(272, 46);
-            btnLekovi.TabIndex = 3;
-            btnLekovi.Text = "Lekovi";
-            btnLekovi.Click += btnLekovi_Click;
             // 
             // ProdajnaJedinicaAdminForm
             // 

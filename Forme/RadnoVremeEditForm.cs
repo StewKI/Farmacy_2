@@ -6,13 +6,10 @@ namespace Farmacy.Forme
 {
     public partial class RadnoVremeEditForm : Form
     {
-        private RadnoVreme radnoVreme;
+        private RadnoVremeBasic radnoVreme;
 
-        public RadnoVremeEditForm(RadnoVreme radnoVreme)
+        public RadnoVremeEditForm(RadnoVremeBasic radnoVreme)
         {
-            if (radnoVreme == null)
-                throw new ArgumentNullException(nameof(radnoVreme));
-
             InitializeComponent();
             this.radnoVreme = radnoVreme;
             LoadRadnoVremeData();
@@ -20,18 +17,34 @@ namespace Farmacy.Forme
 
         private void LoadRadnoVremeData()
         {
-            // Učitavamo postojeće podatke
-            if (radnoVreme.ProdajnaJedinica != null)
-                txtProdajnaJedinica.Text = radnoVreme.ProdajnaJedinica.Id.ToString();
-            
-            if (radnoVreme.Dan > 0)
-                cmbDan.SelectedValue = radnoVreme.Dan;
+            if (radnoVreme != null)
+            {
+                txtProdajnaJedinica.Text = radnoVreme.ProdajnaJedinicaNaziv;
+                cboDan.SelectedIndex = radnoVreme.Dan - 1; // Dan je 1-7, indeks je 0-6
+                
+                // Proveri da li postoje vrednosti za radno vreme
+                if (radnoVreme.VremeOd.HasValue)
+                    dtpVremeOd.Value = DateTime.Today.Add(radnoVreme.VremeOd.Value);
+                else
+                    dtpVremeOd.Value = DateTime.Today.Add(new TimeSpan(8, 0, 0)); // Default 08:00
+                    
+                if (radnoVreme.VremeDo.HasValue)
+                    dtpVremeDo.Value = DateTime.Today.Add(radnoVreme.VremeDo.Value);
+                else
+                    dtpVremeDo.Value = DateTime.Today.Add(new TimeSpan(16, 0, 0)); // Default 16:00
+            }
+        }
 
-            
-                dtpVremeOd.Value = DateTime.Today.Add(radnoVreme.VremeOd);
-
-            
-                dtpVremeOd.Value = DateTime.Today.Add(radnoVreme.VremeOd);
+        private void LoadDani()
+        {
+            cboDan.Items.Clear();
+            cboDan.Items.Add("Ponedeljak");
+            cboDan.Items.Add("Utorak");
+            cboDan.Items.Add("Sreda");
+            cboDan.Items.Add("Četvrtak");
+            cboDan.Items.Add("Petak");
+            cboDan.Items.Add("Subota");
+            cboDan.Items.Add("Nedelja");
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -39,29 +52,33 @@ namespace Farmacy.Forme
             if (ValidateForm())
             {
                 SaveRadnoVreme();
-                DialogResult = DialogResult.OK;
-                Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrWhiteSpace(cmbDan.Text))
+            if (cboDan.SelectedIndex == -1)
             {
                 MessageBox.Show("Dan je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cmbDan.Focus();
+                cboDan.Focus();
                 return false;
             }
 
-            if (dtpVremeOd.Value >= dtpVremeDo.Value)
+            TimeSpan vremeOd = dtpVremeOd.Value.TimeOfDay;
+            TimeSpan vremeDo = dtpVremeDo.Value.TimeOfDay;
+
+            if (vremeOd >= vremeDo)
             {
-                MessageBox.Show("Vreme od mora biti pre vremena do!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vreme od mora biti manje od vremena do!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpVremeOd.Focus();
                 return false;
             }
 
@@ -70,14 +87,26 @@ namespace Farmacy.Forme
 
         private void SaveRadnoVreme()
         {
-            radnoVreme.Dan = int.Parse(cmbDan.SelectedValue.ToString());
-            radnoVreme.VremeOd = dtpVremeOd.Value.TimeOfDay;
-            radnoVreme.VremeDo = dtpVremeDo.Value.TimeOfDay;
-
-            // Napomena: ProdajnaJedinica treba postaviti spolja
+            if (radnoVreme != null)
+            {
+                radnoVreme.Dan = cboDan.SelectedIndex + 1; // Indeks je 0-6, Dan je 1-7
+                radnoVreme.VremeOd = dtpVremeOd.Value.TimeOfDay;
+                radnoVreme.VremeDo = dtpVremeDo.Value.TimeOfDay;
+                
+                // Proveri da li postoje radna vremena
+                if (radnoVreme.VremeOd.HasValue && radnoVreme.VremeDo.HasValue)
+                {
+                    DTOManagerProdajneJedinice.IzmeniRadnoVreme(radnoVreme);
+                }
+                else
+                {
+                    // Ako nema radnog vremena, obriši postojeći zapis
+                    DTOManagerProdajneJedinice.ObrisiRadnoVreme(radnoVreme.ProdajnaJedinicaId, radnoVreme.Dan);
+                }
+            }
         }
 
-        public RadnoVreme GetRadnoVreme()
+        public RadnoVremeBasic GetRadnoVreme()
         {
             return radnoVreme;
         }

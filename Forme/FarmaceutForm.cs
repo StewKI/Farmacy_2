@@ -12,9 +12,10 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             InitializeForm();
+            ucitajApoteke();
         }
 
-        public FarmaceutForm(  FarmaceutBasic farmaceut) : this()
+        public FarmaceutForm(FarmaceutBasic farmaceut) : this()
         {
             this.farmaceut = farmaceut;
             LoadFarmaceutData();
@@ -29,7 +30,7 @@ namespace Farmacy.Forme
         {
             if (farmaceut != null)
             {
-                txtMBr.Text = farmaceut.MBr.ToString();
+                //txtMBr.Text = farmaceut.MBr.ToString();
                 txtPrezime.Text = farmaceut.Prezime;
                 txtIme.Text = farmaceut.Ime;
                 dtpDatumRodj.Value = farmaceut.DatumRodj;
@@ -85,6 +86,26 @@ namespace Farmacy.Forme
             return true;
         }
 
+        void ucitajApoteke()
+        {
+            IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Naziv, Value = l.Id }).ToList();
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+
+            var items = new[]
+                                {
+                                    new { Text = "Prva",  Value = 1 },
+                                    new { Text = "Druga", Value = 2 },
+                                    new { Text = "Treća", Value = 3 }
+                                }.ToList();
+
+            cmbSmena.DisplayMember = "Text";
+
+            cmbSmena.ValueMember = "Value";
+            cmbSmena.DataSource = items;
+        }
         private void SaveFarmaceut()
         {
             if (farmaceut == null)
@@ -102,8 +123,12 @@ namespace Farmacy.Forme
             farmaceut.BrLicence = txtBrLicence.Text.Trim();
             farmaceut.DatumPoslednjeObnoveLicence = dtpDatumPoslObnoveLicence.Value;
             farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
+            long idP = (long)comboBox1.SelectedValue;
 
-            DTOManagerZaposleni.DodajFarmaceuta(farmaceut);
+            int smena = (int)cmbSmena.SelectedValue;
+
+
+            DTOManagerZaposleni.DodajFarmaceuta(farmaceut,idP,dateTimePicker1.Value,smena);
 
         }
 
@@ -113,6 +138,11 @@ namespace Farmacy.Forme
         }
 
         private void FarmaceutForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMBr_Click(object sender, EventArgs e)
         {
 
         }

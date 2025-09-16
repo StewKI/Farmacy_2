@@ -29,6 +29,7 @@ namespace Farmacy.Forme
         private void button1_Click(object sender, EventArgs e)
         {
             SaveS();
+            Close();
 
         }
 

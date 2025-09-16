@@ -22,7 +22,11 @@ namespace Farmacy.Forme
 
         private void InitializeForm()
         {
-            // Form initialization logic will be in Designer file
+            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteUSistemu() ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
         }
 
         private void LoadSpecijalizovanaApotekaData()
@@ -38,8 +42,7 @@ namespace Farmacy.Forme
                 txtSpecijalnostTipa.Text = specijalizovanaApoteka.SpecijalnostTipa ?? string.Empty;
                 txtNapomena.Text = specijalizovanaApoteka.Napomena ?? string.Empty;
 
-                if (specijalizovanaApoteka.OdgovorniFarmaceut != null)
-                    txtOdgovorniFarmaceut.Text = specijalizovanaApoteka.OdgovorniFarmaceut.ToString();
+            
             }
         }
 
@@ -120,7 +123,7 @@ namespace Farmacy.Forme
             specijalizovanaApoteka.Mesto = txtMesto.Text.Trim();
             specijalizovanaApoteka.SpecijalnostTipa = txtSpecijalnostTipa.Text.Trim();
             specijalizovanaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
-            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue);
 
             DTOManagerProdajneJedinice.DodajSpecApoteku(specijalizovanaApoteka);
         }

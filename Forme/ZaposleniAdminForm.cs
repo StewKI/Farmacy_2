@@ -132,34 +132,10 @@ namespace Farmacy.Forme
             }
 
 
-            var selektovaniZaposleni = DTOManagerZaposleni.VratiZaposlenog(mbr);
-            if(selektovaniZaposleni is FarmaceutBasic faramaceut)
-            {
-                FarmaceutEditForm form = new FarmaceutEditForm(faramaceut);
-                form.ShowDialog();
-            }
-            else if (selektovaniZaposleni is TehnicarBasic tehnicar)
-            {
-                TehnicarEditForm form = new TehnicarEditForm(tehnicar);
-                form.ShowDialog();
+            var z = DTOManagerZaposleni.VratiZaposlenog(mbr);
+            IzmeniZaposlenogForm form=new IzmeniZaposlenogForm(mbr);
+            form.ShowDialog();
 
-            }
-            else if (selektovaniZaposleni is MenadzerBasic menadzer)
-            { 
-                MenadzerEditForm form=new MenadzerEditForm(menadzer);
-                form.ShowDialog();
-            }
-            else
-            {
-                
-                //// Pozovi formu za editovanje i prosledi zaposlenog
-
-                ZaposleniEditForm form = new ZaposleniEditForm(selektovaniZaposleni);
-                form.ShowDialog();
-
-                //// Nakon zatvaranja forme, možeš refreshovati grid
-            }
-           
 
             popuniPodacima();
         }
@@ -175,6 +151,135 @@ namespace Farmacy.Forme
         private void ZaposleniAdminForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void updatePodatke<T>(IList<T> lista1)
+        {
+            try
+            {
+
+                // 2) Mapiraj kolone (ako već nisu mapirane)
+                dgvZaposleni.AutoGenerateColumns = false;
+                if (colMbr != null) colMbr.DataPropertyName = "MBr";         // pazi na veliko B ako je tako u DTO-u
+                if (colIme != null) colIme.DataPropertyName = "Ime";
+                if (colPrezime != null) colPrezime.DataPropertyName = "Prezime";
+
+                // 3) Veži podatke
+                dgvZaposleni.DataSource = false;   // osveži binding
+                dgvZaposleni.DataSource = lista1;
+
+
+
+
+                if (dgvZaposleni.Columns.Count == 0)
+                {
+                    dgvZaposleni.AutoGenerateColumns = false;
+                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colMbr",
+                        HeaderText = "MBr",
+                        DataPropertyName = "MBr",
+                        Width = 90
+                    });
+                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colIme",
+                        HeaderText = "Ime",
+                        DataPropertyName = "Ime",
+                        Width = 140
+                    });
+                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colPrezime",
+                        HeaderText = "Prezime",
+                        DataPropertyName = "Prezime",
+                        Width = 160
+                    });
+                    //dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju zaposlenih:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void brnPrikaziFarmaceute_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1) Učitaj podatke
+                IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
+                IList<FarmaceutBasic> lista1 = new List<FarmaceutBasic>();
+                foreach (var l in lista)
+                {
+                    var m = DTOManagerZaposleni.VratiZaposlenog(l.MBr);
+                    if (m is FarmaceutBasic f)
+                        lista1.Add(f);
+                }
+                updatePodatke(lista1);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju zaposlenih:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPrikaziSve_Click(object sender, EventArgs e)
+        {
+            popuniPodacima();
+        }
+
+        private void brnPrikaziTehnicare_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1) Učitaj podatke
+                IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
+                IList<TehnicarBasic> lista1 = new List<TehnicarBasic>();
+                foreach (var l in lista)
+                {
+                    var m = DTOManagerZaposleni.VratiZaposlenog(l.MBr);
+                    if (m is TehnicarBasic t)
+                        lista1.Add(t);
+                }
+                updatePodatke(lista1);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju zaposlenih:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPrikaziMenadzere_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1) Učitaj podatke
+                IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
+                IList<MenadzerBasic> lista1 = new List<MenadzerBasic>();
+                foreach (var l in lista)
+                {
+                    var m = DTOManagerZaposleni.VratiZaposlenog(l.MBr);
+                    if (m is MenadzerBasic m1)
+                        lista1.Add(m1);
+                }
+                updatePodatke(lista1);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri učitavanju zaposlenih:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

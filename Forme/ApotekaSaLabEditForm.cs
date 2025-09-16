@@ -25,9 +25,17 @@ namespace Farmacy_2.Forme
             txtBroj.Text = apotekaSaLab.Broj;
             txtPostanskiBroj.Text = apotekaSaLab.PostanskiBroj;
             txtMesto.Text = apotekaSaLab.Mesto;
-            txtOdgovorniFarmaceut.Text = apotekaSaLab.OdgovorniFarmaceut != null
-    ? apotekaSaLab.OdgovorniFarmaceut.MBr.ToString()
-    : "Nije postavljen";
+            //Stavljeno je da apotekar koj je izabran iz globalnog sistema bude odgovaran a ne koj raid ovde se bira od onih sto rade bas u toj prodajnoj jedinici
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(apotekaSaLab.OdgovorniFarmaceut.MBr);
+            IList<Farmacy.FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(apotekaSaLab.Id) ?? new List<Farmacy.FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            var o = new { Text = f.Ime, Value = f.MBr };
+            if(nazivi.Count < 1 )
+                nazivi.Add(o);
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+            comboBox1.SelectedValue = apotekaSaLab.OdgovorniFarmaceut.MBr;
 
             // Load ApotekaSaLab-specific properties
             txtNapomena.Text = apotekaSaLab.Napomena ?? "";
@@ -81,7 +89,7 @@ namespace Farmacy_2.Forme
             apotekaSaLab.Broj = txtBroj.Text.Trim();
             apotekaSaLab.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
-            apotekaSaLab.OdgovorniFarmaceut= DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim())); ;
+            apotekaSaLab.OdgovorniFarmaceut= DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue); ;
             // Save ApotekaSaLab-specific properties
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
 

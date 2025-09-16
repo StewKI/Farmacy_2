@@ -27,9 +27,18 @@ namespace Farmacy.Forme
             txtBroj.Text = standardnaApoteka.Broj;
             txtPostanskiBroj.Text = standardnaApoteka.PostanskiBroj;
             txtMesto.Text = standardnaApoteka.Mesto;
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(standardnaApoteka.OdgovorniFarmaceut.MBr);
+            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(standardnaApoteka.Id) ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            var o = new { Text = f.Ime, Value = f.MBr };
+            if (nazivi.Count < 1)
+                nazivi.Add(o);
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+            comboBox1.SelectedValue =standardnaApoteka.OdgovorniFarmaceut.MBr;
 
-            if (standardnaApoteka.OdgovorniFarmaceut != null)
-                txtOdgovorniFarmaceut.Text = standardnaApoteka.OdgovorniFarmaceut.MBr.ToString();
+            
 
             if (!string.IsNullOrEmpty(standardnaApoteka.Napomena))
                 txtNapomena.Text = standardnaApoteka.Napomena;
@@ -102,8 +111,8 @@ namespace Farmacy.Forme
             standardnaApoteka.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             standardnaApoteka.Mesto = txtMesto.Text.Trim();
             standardnaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
-            standardnaApoteka.OdgovorniFarmaceut= DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
-            // Napomena: OdgovorniFarmaceut treba postaviti spolja
+            standardnaApoteka.OdgovorniFarmaceut= DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue);
+            
 
             DTOManagerProdajneJedinice.IzmeniSApoetku(standardnaApoteka);
         }

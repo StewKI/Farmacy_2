@@ -41,15 +41,15 @@ namespace Farmacy.Forme
             lblMesto = new Label();
             txtMesto = new TextBox();
             lblOdgovorniFarmaceut = new Label();
-            txtOdgovorniFarmaceut = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // lblId
             // 
             lblId.AutoSize = true;
-            lblId.Location = new Point(30, 30);
+            lblId.Location = new Point(21, 30);
             lblId.Name = "lblId";
             lblId.Size = new Size(21, 15);
             lblId.TabIndex = 0;
@@ -67,7 +67,7 @@ namespace Farmacy.Forme
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
-            lblNaziv.Location = new Point(30, 70);
+            lblNaziv.Location = new Point(21, 70);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(39, 15);
             lblNaziv.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace Farmacy.Forme
             // lblUlica
             // 
             lblUlica.AutoSize = true;
-            lblUlica.Location = new Point(30, 110);
+            lblUlica.Location = new Point(21, 110);
             lblUlica.Name = "lblUlica";
             lblUlica.Size = new Size(36, 15);
             lblUlica.TabIndex = 4;
@@ -99,7 +99,7 @@ namespace Farmacy.Forme
             // lblBroj
             // 
             lblBroj.AutoSize = true;
-            lblBroj.Location = new Point(30, 150);
+            lblBroj.Location = new Point(21, 150);
             lblBroj.Name = "lblBroj";
             lblBroj.Size = new Size(31, 15);
             lblBroj.TabIndex = 6;
@@ -115,7 +115,7 @@ namespace Farmacy.Forme
             // lblPostanskiBroj
             // 
             lblPostanskiBroj.AutoSize = true;
-            lblPostanskiBroj.Location = new Point(30, 190);
+            lblPostanskiBroj.Location = new Point(21, 190);
             lblPostanskiBroj.Name = "lblPostanskiBroj";
             lblPostanskiBroj.Size = new Size(84, 15);
             lblPostanskiBroj.TabIndex = 8;
@@ -131,7 +131,7 @@ namespace Farmacy.Forme
             // lblMesto
             // 
             lblMesto.AutoSize = true;
-            lblMesto.Location = new Point(30, 230);
+            lblMesto.Location = new Point(21, 230);
             lblMesto.Name = "lblMesto";
             lblMesto.Size = new Size(43, 15);
             lblMesto.TabIndex = 10;
@@ -147,21 +147,11 @@ namespace Farmacy.Forme
             // lblOdgovorniFarmaceut
             // 
             lblOdgovorniFarmaceut.AutoSize = true;
-            lblOdgovorniFarmaceut.Location = new Point(30, 270);
+            lblOdgovorniFarmaceut.Location = new Point(21, 270);
             lblOdgovorniFarmaceut.Name = "lblOdgovorniFarmaceut";
             lblOdgovorniFarmaceut.Size = new Size(124, 15);
             lblOdgovorniFarmaceut.TabIndex = 12;
             lblOdgovorniFarmaceut.Text = "Odgovorni farmaceut:";
-            // 
-            // txtOdgovorniFarmaceut
-            // 
-            txtOdgovorniFarmaceut.Location = new Point(150, 267);
-            txtOdgovorniFarmaceut.Name = "txtOdgovorniFarmaceut";
-            txtOdgovorniFarmaceut.Size = new Size(200, 23);
-            txtOdgovorniFarmaceut.TabIndex = 13;
-            txtOdgovorniFarmaceut.TabStop = false;
-            txtOdgovorniFarmaceut.UseWaitCursor = true;
-            txtOdgovorniFarmaceut.TextChanged += txtOdgovorniFarmaceut_TextChanged;
             // 
             // btnSave
             // 
@@ -183,14 +173,23 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(150, 267);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(200, 23);
+            comboBox1.TabIndex = 16;
+            // 
             // ProdajnaJedinicaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 371);
+            Controls.Add(comboBox1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
-            Controls.Add(txtOdgovorniFarmaceut);
             Controls.Add(lblOdgovorniFarmaceut);
             Controls.Add(txtMesto);
             Controls.Add(lblMesto);
@@ -230,8 +229,8 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblMesto;
         private System.Windows.Forms.TextBox txtMesto;
         private System.Windows.Forms.Label lblOdgovorniFarmaceut;
-        private System.Windows.Forms.TextBox txtOdgovorniFarmaceut;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private ComboBox comboBox1;
     }
 }

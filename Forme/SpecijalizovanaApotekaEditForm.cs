@@ -27,10 +27,19 @@ namespace Farmacy.Forme
             txtBroj.Text = specijalizovanaApoteka.Broj;
             txtPostanskiBroj.Text = specijalizovanaApoteka.PostanskiBroj;
             txtMesto.Text = specijalizovanaApoteka.Mesto;
-            
-            if (specijalizovanaApoteka.OdgovorniFarmaceut != null)
-                txtOdgovorniFarmaceut.Text = specijalizovanaApoteka.OdgovorniFarmaceut.MBr.ToString();
-            
+
+            //Stavljeno je da apotekar koj je izabran iz globalnog sistema bude odgovaran a ne koj raid ovde se bira od onih sto rade bas u toj prodajnoj jedinici
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(specijalizovanaApoteka.OdgovorniFarmaceut.MBr);
+            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(specijalizovanaApoteka.Id) ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            var o = new { Text = f.Ime, Value = f.MBr };
+            if (nazivi.Count < 1)
+                nazivi.Add(o);
+            comboBox1.DataSource = nazivi;
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+            comboBox1.SelectedValue = specijalizovanaApoteka.OdgovorniFarmaceut.MBr;
+
             if (!string.IsNullOrEmpty(specijalizovanaApoteka.SpecijalnostTipa))
                 txtSpecijalnostTipa.Text = specijalizovanaApoteka.SpecijalnostTipa;
             
@@ -113,7 +122,7 @@ namespace Farmacy.Forme
             specijalizovanaApoteka.Mesto = txtMesto.Text.Trim();
             specijalizovanaApoteka.SpecijalnostTipa = txtSpecijalnostTipa.Text.Trim();
             specijalizovanaApoteka.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
-            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(long.Parse(txtOdgovorniFarmaceut.Text.Trim()));
+            specijalizovanaApoteka.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue);
 
             DTOManagerProdajneJedinice.IzmeniSpecApoetku(specijalizovanaApoteka);
         }

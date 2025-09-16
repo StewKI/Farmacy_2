@@ -6,13 +6,10 @@ namespace Farmacy.Forme
 {
     public partial class ProizvodjacEditForm : Form
     {
-        private Proizvodjac proizvodjac;
+        private ProizvodjacBasic proizvodjac;
 
-        public ProizvodjacEditForm(Proizvodjac proizvodjac)
+        public ProizvodjacEditForm(ProizvodjacBasic proizvodjac)
         {
-            if (proizvodjac == null)
-                throw new ArgumentNullException(nameof(proizvodjac));
-
             InitializeComponent();
             this.proizvodjac = proizvodjac;
             LoadProizvodjacData();
@@ -20,16 +17,11 @@ namespace Farmacy.Forme
 
         private void LoadProizvodjacData()
         {
-            // Učitavamo postojeće podatke
             txtId.Text = proizvodjac.Id.ToString();
             txtNaziv.Text = proizvodjac.Naziv;
             txtZemlja.Text = proizvodjac.Zemlja;
-            
-            if (!string.IsNullOrEmpty(proizvodjac.Telefon))
-                txtTelefon.Text = proizvodjac.Telefon;
-            
-            if (!string.IsNullOrEmpty(proizvodjac.Email))
-                txtEmail.Text = proizvodjac.Email;
+            txtTelefon.Text = proizvodjac.Telefon;
+            txtEmail.Text = proizvodjac.Email;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -53,52 +45,51 @@ namespace Farmacy.Forme
             if (string.IsNullOrWhiteSpace(txtNaziv.Text))
             {
                 MessageBox.Show("Naziv je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNaziv.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtZemlja.Text))
             {
                 MessageBox.Show("Zemlja je obavezna!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtZemlja.Focus();
                 return false;
             }
 
-            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !IsValidEmail(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtTelefon.Text))
             {
-                MessageBox.Show("Email adresa nije validna!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Focus();
+                MessageBox.Show("Telefon je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Email je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             return true;
         }
 
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         private void SaveProizvodjac()
         {
-            if (long.TryParse(txtId.Text, out long id))
-                proizvodjac.Id = id;
-            
             proizvodjac.Naziv = txtNaziv.Text.Trim();
             proizvodjac.Zemlja = txtZemlja.Text.Trim();
-            proizvodjac.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
-            proizvodjac.Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+            proizvodjac.Telefon = txtTelefon.Text.Trim();
+            proizvodjac.Email = txtEmail.Text.Trim();
+
+            try
+            {
+                DTOManagerIsporukeZalihe.IzmeniProizvodjaca(proizvodjac);
+                MessageBox.Show("Proizvodjač je uspešno izmenjen!", "Uspešno", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri izmeni proizvodjača:\n" + ex.Message, "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public Proizvodjac GetProizvodjac()
+        public ProizvodjacBasic GetProizvodjac()
         {
             return proizvodjac;
         }

@@ -28,8 +28,7 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            lblMBr = new Label();
-            txtMBr = new TextBox();
+            Apoteka = new Label();
             lblPrezime = new Label();
             txtPrezime = new TextBox();
             lblIme = new Label();
@@ -52,25 +51,22 @@ namespace Farmacy.Forme
             txtSpecijalnost = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            comboBox1 = new ComboBox();
+            dateTimePicker1 = new DateTimePicker();
+            label1 = new Label();
+            label2 = new Label();
+            cmbSmena = new ComboBox();
             SuspendLayout();
             // 
-            // lblMBr
+            // Apoteka
             // 
-            lblMBr.AutoSize = true;
-            lblMBr.Location = new Point(30, 30);
-            lblMBr.Name = "lblMBr";
-            lblMBr.Size = new Size(35, 15);
-            lblMBr.TabIndex = 0;
-            lblMBr.Text = "M.Br:";
-            // 
-            // txtMBr
-            // 
-            txtMBr.Location = new Point(150, 27);
-            txtMBr.Name = "txtMBr";
-            txtMBr.ReadOnly = true;
-            txtMBr.Size = new Size(200, 23);
-            txtMBr.TabIndex = 1;
-            txtMBr.TabStop = false;
+            Apoteka.AutoSize = true;
+            Apoteka.Location = new Point(30, 30);
+            Apoteka.Name = "Apoteka";
+            Apoteka.Size = new Size(51, 15);
+            Apoteka.TabIndex = 0;
+            Apoteka.Text = "Apoteke";
+            Apoteka.Click += lblMBr_Click;
             // 
             // lblPrezime
             // 
@@ -173,7 +169,7 @@ namespace Farmacy.Forme
             // lblDatumDiplomiranja
             // 
             lblDatumDiplomiranja.AutoSize = true;
-            lblDatumDiplomiranja.Location = new Point(30, 310);
+            lblDatumDiplomiranja.Location = new Point(30, 344);
             lblDatumDiplomiranja.Name = "lblDatumDiplomiranja";
             lblDatumDiplomiranja.Size = new Size(116, 15);
             lblDatumDiplomiranja.TabIndex = 14;
@@ -182,7 +178,7 @@ namespace Farmacy.Forme
             // dtpDatumDiplomiranja
             // 
             dtpDatumDiplomiranja.Format = DateTimePickerFormat.Short;
-            dtpDatumDiplomiranja.Location = new Point(150, 307);
+            dtpDatumDiplomiranja.Location = new Point(150, 341);
             dtpDatumDiplomiranja.Name = "dtpDatumDiplomiranja";
             dtpDatumDiplomiranja.Size = new Size(200, 23);
             dtpDatumDiplomiranja.TabIndex = 15;
@@ -190,7 +186,7 @@ namespace Farmacy.Forme
             // lblBrLicence
             // 
             lblBrLicence.AutoSize = true;
-            lblBrLicence.Location = new Point(30, 350);
+            lblBrLicence.Location = new Point(30, 384);
             lblBrLicence.Name = "lblBrLicence";
             lblBrLicence.Size = new Size(71, 15);
             lblBrLicence.TabIndex = 16;
@@ -198,7 +194,7 @@ namespace Farmacy.Forme
             // 
             // txtBrLicence
             // 
-            txtBrLicence.Location = new Point(150, 347);
+            txtBrLicence.Location = new Point(150, 381);
             txtBrLicence.Name = "txtBrLicence";
             txtBrLicence.Size = new Size(200, 23);
             txtBrLicence.TabIndex = 17;
@@ -206,7 +202,7 @@ namespace Farmacy.Forme
             // lblDatumPoslObnoveLicence
             // 
             lblDatumPoslObnoveLicence.AutoSize = true;
-            lblDatumPoslObnoveLicence.Location = new Point(30, 390);
+            lblDatumPoslObnoveLicence.Location = new Point(30, 424);
             lblDatumPoslObnoveLicence.Name = "lblDatumPoslObnoveLicence";
             lblDatumPoslObnoveLicence.Size = new Size(144, 15);
             lblDatumPoslObnoveLicence.TabIndex = 18;
@@ -215,7 +211,7 @@ namespace Farmacy.Forme
             // dtpDatumPoslObnoveLicence
             // 
             dtpDatumPoslObnoveLicence.Format = DateTimePickerFormat.Short;
-            dtpDatumPoslObnoveLicence.Location = new Point(150, 387);
+            dtpDatumPoslObnoveLicence.Location = new Point(150, 421);
             dtpDatumPoslObnoveLicence.Name = "dtpDatumPoslObnoveLicence";
             dtpDatumPoslObnoveLicence.Size = new Size(200, 23);
             dtpDatumPoslObnoveLicence.TabIndex = 19;
@@ -223,7 +219,7 @@ namespace Farmacy.Forme
             // lblSpecijalnost
             // 
             lblSpecijalnost.AutoSize = true;
-            lblSpecijalnost.Location = new Point(30, 430);
+            lblSpecijalnost.Location = new Point(30, 464);
             lblSpecijalnost.Name = "lblSpecijalnost";
             lblSpecijalnost.Size = new Size(73, 15);
             lblSpecijalnost.TabIndex = 20;
@@ -231,14 +227,14 @@ namespace Farmacy.Forme
             // 
             // txtSpecijalnost
             // 
-            txtSpecijalnost.Location = new Point(150, 427);
+            txtSpecijalnost.Location = new Point(150, 461);
             txtSpecijalnost.Name = "txtSpecijalnost";
             txtSpecijalnost.Size = new Size(200, 23);
             txtSpecijalnost.TabIndex = 21;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(150, 470);
+            btnSave.Location = new Point(150, 542);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 22;
@@ -248,7 +244,7 @@ namespace Farmacy.Forme
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(275, 470);
+            btnCancel.Location = new Point(275, 542);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 23;
@@ -256,13 +252,60 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(150, 30);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(200, 23);
+            comboBox1.TabIndex = 24;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(150, 305);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 26;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(30, 308);
+            label1.Name = "label1";
+            label1.Size = new Size(132, 15);
+            label1.TabIndex = 25;
+            label1.Text = "Datum kraja zaposlenja:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(30, 501);
+            label2.Name = "label2";
+            label2.Size = new Size(72, 15);
+            label2.TabIndex = 27;
+            label2.Text = "Smena rada:";
+            // 
+            // cmbSmena
+            // 
+            cmbSmena.FormattingEnabled = true;
+            cmbSmena.Location = new Point(150, 498);
+            cmbSmena.Name = "cmbSmena";
+            cmbSmena.Size = new Size(200, 23);
+            cmbSmena.TabIndex = 28;
+            // 
             // FarmaceutForm
             // 
             AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new Size(384, 520);
+            ClientSize = new Size(378, 577);
+            Controls.Add(cmbSmena);
+            Controls.Add(label2);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(label1);
+            Controls.Add(comboBox1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtSpecijalnost);
@@ -285,8 +328,7 @@ namespace Farmacy.Forme
             Controls.Add(lblIme);
             Controls.Add(txtPrezime);
             Controls.Add(lblPrezime);
-            Controls.Add(txtMBr);
-            Controls.Add(lblMBr);
+            Controls.Add(Apoteka);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -300,8 +342,7 @@ namespace Farmacy.Forme
 
         #endregion
 
-        private System.Windows.Forms.Label lblMBr;
-        private System.Windows.Forms.TextBox txtMBr;
+        private System.Windows.Forms.Label Apoteka;
         private System.Windows.Forms.Label lblPrezime;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label lblIme;
@@ -324,5 +365,10 @@ namespace Farmacy.Forme
         private System.Windows.Forms.TextBox txtSpecijalnost;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private ComboBox comboBox1;
+        private DateTimePicker dateTimePicker1;
+        private Label label1;
+        private Label label2;
+        private ComboBox cmbSmena;
     }
 }
