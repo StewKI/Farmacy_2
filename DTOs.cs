@@ -7,19 +7,6 @@ using System.Threading.Tasks;
 
 namespace Farmacy
 {
-    public class RasporedRadaBasic
-    {
-        public virtual long MBr { get; set; }
-        public virtual long idProdajne { get; set; } // referenca na drugu tabelu
-        public virtual DateTime Pocetak { get; set; }
-        public virtual DateTime Kraj { get; set; }
-
-        public virtual int smena { get; set; }
-
-        public virtual ISet<Smena> Smene { get; set; } = new HashSet<Smena>();
-
-
-    }
 
     public class ZaposleniBasic
     {
@@ -198,5 +185,29 @@ namespace Farmacy
         public TimeSpan? VremeDo { get; set; }
         public string DanNaziv { get; set; }
         public string ProdajnaJedinicaNaziv { get; set; }
+    }
+
+    public class ZaposleniProdajnaJedinicaBasic
+    {
+        public virtual long MBr { get; set; }
+        public virtual long ProdajnaJedinicaId { get; set; }
+        public virtual DateTime DatumPocetka { get; set; }
+        public virtual DateTime? DatumKraja { get; set; }
+        public virtual string ZaposleniIme { get; set; } = default!;
+        public virtual string ZaposleniPrezime { get; set; } = default!;
+        public virtual string ProdajnaJedinicaNaziv { get; set; } = default!;
+    }
+
+    public class RasporedRadaBasic
+    {
+        public virtual long MBr { get; set; }
+        public virtual long ProdajnaJedinicaId { get; set; }
+        public virtual DateTime Pocetak { get; set; }
+        public virtual DateTime Kraj { get; set; }
+        public virtual int? BrojSmene { get; set; }
+        public virtual string ZaposleniIme { get; set; } = default!;
+        public virtual string ZaposleniPrezime { get; set; } = default!;
+        public virtual string ProdajnaJedinicaNaziv { get; set; } = default!;
+        public virtual string SmenaNaziv { get; set; } = default!;
     }
 }

@@ -31,8 +31,6 @@
         private Button btnProdaja;
         private Button btnZalihe;
         private Button btnRadnoVreme;
-        private GroupBox grpZaposleni;
-        private Button btnZaposleni;
 
         // kolone grida
         private DataGridViewTextBoxColumn colId;
@@ -54,14 +52,11 @@
             dgvApoteke = new DataGridView();
             panelDesno = new Panel();
             grpZaposleni = new GroupBox();
-            button2 = new Button();
-            button1 = new Button();
-            btnSuplementi = new Button();
             btnZaposleni = new Button();
             grpServisi = new GroupBox();
-            btnProdaja = new Button();
-            btnZalihe = new Button();
             btnRadnoVreme = new Button();
+            btnZalihe = new Button();
+            btnProdaja = new Button();
             grpPodaci = new GroupBox();
             btnIzmeni = new Button();
             btnObrisi = new Button();
@@ -79,9 +74,10 @@
             groupBoxLista.Controls.Add(dgvApoteke);
             groupBoxLista.Dock = DockStyle.Fill;
             groupBoxLista.Location = new Point(0, 0);
+            groupBoxLista.Margin = new Padding(6);
             groupBoxLista.Name = "groupBoxLista";
-            groupBoxLista.Padding = new Padding(10);
-            groupBoxLista.Size = new Size(720, 610);
+            groupBoxLista.Padding = new Padding(19, 21, 19, 21);
+            groupBoxLista.Size = new Size(1513, 1474);
             groupBoxLista.TabIndex = 0;
             groupBoxLista.TabStop = false;
             groupBoxLista.Text = "Lista apoteka";
@@ -92,14 +88,17 @@
             dgvApoteke.AllowUserToAddRows = false;
             dgvApoteke.AllowUserToDeleteRows = false;
             dgvApoteke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvApoteke.ColumnHeadersHeight = 46;
             dgvApoteke.Dock = DockStyle.Fill;
-            dgvApoteke.Location = new Point(10, 26);
+            dgvApoteke.Location = new Point(19, 53);
+            dgvApoteke.Margin = new Padding(6);
             dgvApoteke.MultiSelect = false;
             dgvApoteke.Name = "dgvApoteke";
             dgvApoteke.ReadOnly = true;
             dgvApoteke.RowHeadersVisible = false;
+            dgvApoteke.RowHeadersWidth = 82;
             dgvApoteke.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvApoteke.Size = new Size(700, 574);
+            dgvApoteke.Size = new Size(1475, 1400);
             dgvApoteke.TabIndex = 0;
             // 
             // panelDesno
@@ -109,71 +108,37 @@
             panelDesno.Controls.Add(grpServisi);
             panelDesno.Controls.Add(grpPodaci);
             panelDesno.Dock = DockStyle.Right;
-            panelDesno.Location = new Point(720, 0);
+            panelDesno.Location = new Point(1513, 0);
+            panelDesno.Margin = new Padding(6);
             panelDesno.Name = "panelDesno";
-            panelDesno.Padding = new Padding(12);
-            panelDesno.Size = new Size(320, 610);
+            panelDesno.Padding = new Padding(22, 26, 22, 26);
+            panelDesno.Size = new Size(594, 1474);
             panelDesno.TabIndex = 1;
             // 
             // grpZaposleni
             // 
-            grpZaposleni.Controls.Add(button2);
-            grpZaposleni.Controls.Add(button1);
-            grpZaposleni.Controls.Add(btnSuplementi);
             grpZaposleni.Controls.Add(btnZaposleni);
             grpZaposleni.Dock = DockStyle.Top;
-            grpZaposleni.Location = new Point(12, 337);
-            grpZaposleni.Margin = new Padding(0, 12, 0, 0);
+            grpZaposleni.Location = new Point(22, 800);
+            grpZaposleni.Margin = new Padding(0, 26, 0, 0);
             grpZaposleni.Name = "grpZaposleni";
-            grpZaposleni.Padding = new Padding(12);
-            grpZaposleni.Size = new Size(296, 264);
+            grpZaposleni.Padding = new Padding(22, 26, 22, 26);
+            grpZaposleni.Size = new Size(550, 563);
             grpZaposleni.TabIndex = 0;
             grpZaposleni.TabStop = false;
             grpZaposleni.Text = "Zaposleni";
-            // 
-            // button2
-            // 
-            button2.Dock = DockStyle.Top;
-            button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            button2.Location = new Point(12, 166);
-            button2.Name = "button2";
-            button2.Size = new Size(272, 46);
-            button2.TabIndex = 3;
-            button2.Text = "Izmeni menadzera";
-            button2.Click += button2_Click;
-            // 
-            // button1
-            // 
-            button1.Dock = DockStyle.Top;
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            button1.Location = new Point(12, 120);
-            button1.Name = "button1";
-            button1.Size = new Size(272, 46);
-            button1.TabIndex = 2;
-            button1.Text = "Ukloni menadzera";
-            button1.Click += button1_Click;
-            // 
-            // btnSuplementi
-            // 
-            btnSuplementi.Dock = DockStyle.Top;
-            btnSuplementi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnSuplementi.Location = new Point(12, 74);
-            btnSuplementi.Name = "btnSuplementi";
-            btnSuplementi.Size = new Size(272, 46);
-            btnSuplementi.TabIndex = 1;
-            btnSuplementi.Text = "Dodaj menadzera";
-            btnSuplementi.Click += btnSuplementi_Click;
             // 
             // btnZaposleni
             // 
             btnZaposleni.Dock = DockStyle.Top;
             btnZaposleni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnZaposleni.Location = new Point(12, 28);
+            btnZaposleni.Location = new Point(22, 58);
+            btnZaposleni.Margin = new Padding(6);
             btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(272, 46);
+            btnZaposleni.Size = new Size(506, 98);
             btnZaposleni.TabIndex = 0;
             btnZaposleni.Text = "Zaposleni";
-            btnZaposleni.Click += btnZaposleni_Click;
+            btnZaposleni.Click += btnPrikaziZaposlene_Click;
             // 
             // grpServisi
             // 
@@ -181,22 +146,24 @@
             grpServisi.Controls.Add(btnZalihe);
             grpServisi.Controls.Add(btnProdaja);
             grpServisi.Dock = DockStyle.Top;
-            grpServisi.Location = new Point(12, 192);
-            grpServisi.Margin = new Padding(0, 12, 0, 0);
+            grpServisi.Location = new Point(22, 410);
+            grpServisi.Margin = new Padding(0, 26, 0, 0);
             grpServisi.Name = "grpServisi";
-            grpServisi.Padding = new Padding(12);
-            grpServisi.Size = new Size(296, 183);
+            grpServisi.Padding = new Padding(22, 26, 22, 26);
+            grpServisi.Size = new Size(550, 390);
             grpServisi.TabIndex = 1;
             grpServisi.TabStop = false;
             grpServisi.Text = "Servisi";
+            grpServisi.Enter += grpServisi_Enter;
             // 
             // btnRadnoVreme
             // 
             btnRadnoVreme.Dock = DockStyle.Top;
             btnRadnoVreme.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnRadnoVreme.Location = new Point(12, 28);
+            btnRadnoVreme.Location = new Point(22, 254);
+            btnRadnoVreme.Margin = new Padding(6);
             btnRadnoVreme.Name = "btnRadnoVreme";
-            btnRadnoVreme.Size = new Size(272, 46);
+            btnRadnoVreme.Size = new Size(506, 98);
             btnRadnoVreme.TabIndex = 0;
             btnRadnoVreme.Text = "Radno vreme";
             btnRadnoVreme.Click += btnRadnoVreme_Click;
@@ -205,9 +172,10 @@
             // 
             btnZalihe.Dock = DockStyle.Top;
             btnZalihe.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnZalihe.Location = new Point(12, 74);
+            btnZalihe.Location = new Point(22, 156);
+            btnZalihe.Margin = new Padding(6);
             btnZalihe.Name = "btnZalihe";
-            btnZalihe.Size = new Size(272, 46);
+            btnZalihe.Size = new Size(506, 98);
             btnZalihe.TabIndex = 1;
             btnZalihe.Text = "Zalihe";
             btnZalihe.Click += btnZalihe_Click;
@@ -216,9 +184,10 @@
             // 
             btnProdaja.Dock = DockStyle.Top;
             btnProdaja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnProdaja.Location = new Point(12, 120);
+            btnProdaja.Location = new Point(22, 58);
+            btnProdaja.Margin = new Padding(6);
             btnProdaja.Name = "btnProdaja";
-            btnProdaja.Size = new Size(272, 46);
+            btnProdaja.Size = new Size(506, 98);
             btnProdaja.TabIndex = 2;
             btnProdaja.Text = "Prodaja";
             btnProdaja.Click += btnProdaja_Click;
@@ -229,10 +198,11 @@
             grpPodaci.Controls.Add(btnObrisi);
             grpPodaci.Controls.Add(btnDodaj);
             grpPodaci.Dock = DockStyle.Top;
-            grpPodaci.Location = new Point(12, 12);
+            grpPodaci.Location = new Point(22, 26);
+            grpPodaci.Margin = new Padding(6);
             grpPodaci.Name = "grpPodaci";
-            grpPodaci.Padding = new Padding(12);
-            grpPodaci.Size = new Size(296, 180);
+            grpPodaci.Padding = new Padding(22, 26, 22, 26);
+            grpPodaci.Size = new Size(550, 384);
             grpPodaci.TabIndex = 2;
             grpPodaci.TabStop = false;
             grpPodaci.Text = "Podaci o apoteci";
@@ -241,10 +211,10 @@
             // 
             btnIzmeni.Dock = DockStyle.Top;
             btnIzmeni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnIzmeni.Location = new Point(12, 120);
-            btnIzmeni.Margin = new Padding(6);
+            btnIzmeni.Location = new Point(22, 254);
+            btnIzmeni.Margin = new Padding(11, 13, 11, 13);
             btnIzmeni.Name = "btnIzmeni";
-            btnIzmeni.Size = new Size(272, 46);
+            btnIzmeni.Size = new Size(506, 98);
             btnIzmeni.TabIndex = 0;
             btnIzmeni.Text = "Izmeni apoteku";
             btnIzmeni.Click += btnIzmeni_Click;
@@ -253,10 +223,10 @@
             // 
             btnObrisi.Dock = DockStyle.Top;
             btnObrisi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnObrisi.Location = new Point(12, 74);
-            btnObrisi.Margin = new Padding(6);
+            btnObrisi.Location = new Point(22, 156);
+            btnObrisi.Margin = new Padding(11, 13, 11, 13);
             btnObrisi.Name = "btnObrisi";
-            btnObrisi.Size = new Size(272, 46);
+            btnObrisi.Size = new Size(506, 98);
             btnObrisi.TabIndex = 1;
             btnObrisi.Text = "Obriši apoteku";
             btnObrisi.Click += btnObrisi_Click;
@@ -265,27 +235,25 @@
             // 
             btnDodaj.Dock = DockStyle.Top;
             btnDodaj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnDodaj.Location = new Point(12, 28);
-            btnDodaj.Margin = new Padding(6);
+            btnDodaj.Location = new Point(22, 58);
+            btnDodaj.Margin = new Padding(11, 13, 11, 13);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(272, 46);
+            btnDodaj.Size = new Size(506, 98);
             btnDodaj.TabIndex = 2;
             btnDodaj.Text = "Dodaj apoteku";
             btnDodaj.Click += btnDodaj_Click;
             // 
-            // btnLekovi
-            // 
-            // 
             // ProdajnaJedinicaAdminForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 224, 190);
-            ClientSize = new Size(1040, 610);
+            ClientSize = new Size(2107, 1474);
             Controls.Add(groupBoxLista);
             Controls.Add(panelDesno);
             Font = new Font("Segoe UI", 9F);
-            MinimumSize = new Size(980, 580);
+            Margin = new Padding(6);
+            MinimumSize = new Size(1798, 1157);
             Name = "ProdajnaJedinicaAdminForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LISTA APOTEKA";
@@ -301,8 +269,10 @@
 
         #endregion
 
-        private Button btnSuplementi;
+        private GroupBox grpZaposleni;
         private Button button2;
         private Button button1;
+        private Button btnSuplementi;
+        private Button btnZaposleni;
     }
 }

@@ -8,39 +8,34 @@ namespace Farmacy.Forme
     public partial class MenadzerForm : Form
     {
         private MenadzerBasic menadzer;
+        private long prodajnaJedinicaId;
 
         public MenadzerForm()
         {
             InitializeComponent();
             menadzer = new MenadzerBasic();
+            this.prodajnaJedinicaId = 0; // Default value
             ucitajApoteke();
         }
 
-        public MenadzerForm(MenadzerBasic menadzer)
+        public MenadzerForm(long prodajnaJedinicaId)
+        {
+            InitializeComponent();
+            menadzer = new MenadzerBasic();
+            this.prodajnaJedinicaId = prodajnaJedinicaId;
+            ucitajApoteke();
+        }
+
+        public MenadzerForm(MenadzerBasic menadzer, long prodajnaJedinicaId)
         {
             InitializeComponent();
             this.menadzer = menadzer;
+            this.prodajnaJedinicaId = prodajnaJedinicaId;
             LoadMenadzerData();
         }
         void ucitajApoteke()
         {
-            IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Naziv, Value = l.Id }).ToList();
-            comboBox1.DataSource = nazivi;
-            comboBox1.DisplayMember = "Text";
-            comboBox1.ValueMember = "Value";
-
-            var items = new[]
-                                {
-                                    new { Text = "Prva",  Value = 1 },
-                                    new { Text = "Druga", Value = 2 },
-                                    new { Text = "Treća", Value = 3 }
-                                }.ToList();
-
-            cmbSmena.DisplayMember = "Text";
-
-            cmbSmena.ValueMember = "Value";
-            cmbSmena.DataSource = items;
+            // No longer needed - prodajnaJedinicaId is passed as parameter
         }
         private void LoadMenadzerData()
         {
@@ -113,7 +108,11 @@ namespace Farmacy.Forme
 
         private void SaveMenadzer()
         {
-
+            // Generiši MBr ako nije postavljen
+            if (menadzer.MBr == 0)
+            {
+                menadzer.MBr = DateTime.Now.Ticks;
+            }
 
             menadzer.Prezime = txtPrezime.Text.Trim();
             menadzer.Ime = txtIme.Text.Trim();
@@ -121,11 +120,19 @@ namespace Farmacy.Forme
             menadzer.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             menadzer.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             menadzer.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            int smena = (int)cmbSmena.SelectedValue;
 
+            // Dodaj menadžera u sistem
+            DTOManagerZaposleni.DodajMenadzera(menadzer);
 
-            long idP = (long)comboBox1.SelectedValue;
-            DTOManagerZaposleni.DodajMenadzera(menadzer, idP, dateTimePicker1.Value,smena);
+            // Dodaj vezu sa prodajnom jedinicom
+            var veza = new ZaposleniProdajnaJedinicaBasic
+            {
+                MBr = menadzer.MBr,
+                ProdajnaJedinicaId = prodajnaJedinicaId,
+                DatumPocetka = menadzer.DatumZaposlenja,
+                DatumKraja = null
+            };
+            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
         }
 
         //public Entiteti.MenadzerBasic GetMenadzer()

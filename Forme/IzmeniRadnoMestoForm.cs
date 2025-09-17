@@ -34,7 +34,7 @@ namespace Farmacy.Forme
 
         public void ucitaj()
         {
-            var p = DTOManagerProdajneJedinice.VratiProdajnuJedinicu(r.idProdajne);
+            var p = DTOManagerProdajneJedinice.VratiProdajnuJedinicu(r.ProdajnaJedinicaId);
             var naziv = p.Naziv;
 
             txtMbr.Text = r.MBr.ToString();

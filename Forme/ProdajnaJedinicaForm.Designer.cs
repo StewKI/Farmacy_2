@@ -43,6 +43,7 @@ namespace Farmacy.Forme
             lblOdgovorniFarmaceut = new Label();
             btnSave = new Button();
             btnCancel = new Button();
+            btnUpravljajZaposlenima = new Button();
             comboBox1 = new ComboBox();
             SuspendLayout();
             // 
@@ -173,6 +174,16 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // btnUpravljajZaposlenima
+            // 
+            btnUpravljajZaposlenima.Location = new Point(50, 360);
+            btnUpravljajZaposlenima.Name = "btnUpravljajZaposlenima";
+            btnUpravljajZaposlenima.Size = new Size(150, 30);
+            btnUpravljajZaposlenima.TabIndex = 16;
+            btnUpravljajZaposlenima.Text = "Upravljaj zaposlenima";
+            btnUpravljajZaposlenima.UseVisualStyleBackColor = true;
+            btnUpravljajZaposlenima.Click += btnUpravljajZaposlenima_Click;
+            // 
             // comboBox1
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -186,8 +197,9 @@ namespace Farmacy.Forme
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 371);
+            ClientSize = new Size(384, 420);
             Controls.Add(comboBox1);
+            Controls.Add(btnUpravljajZaposlenima);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(lblOdgovorniFarmaceut);
@@ -231,6 +243,7 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblOdgovorniFarmaceut;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnUpravljajZaposlenima;
         private ComboBox comboBox1;
     }
 }

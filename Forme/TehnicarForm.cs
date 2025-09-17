@@ -7,16 +7,27 @@ namespace Farmacy.Forme
     public partial class TehnicarForm : Form
     {
         private TehnicarBasic tehnicar;
+        private long prodajnaJedinicaId;
 
         public TehnicarForm()
         {
             InitializeComponent();
             tehnicar = new TehnicarBasic();
             InitializeForm();
+            this.prodajnaJedinicaId = 0; // Default value
             ucitajApoteke();
         }
 
-        public TehnicarForm(TehnicarBasic tehnicar) : this()
+        public TehnicarForm(long prodajnaJedinicaId)
+        {
+            InitializeComponent();
+            tehnicar = new TehnicarBasic();
+            InitializeForm();
+            this.prodajnaJedinicaId = prodajnaJedinicaId;
+            ucitajApoteke();
+        }
+
+        public TehnicarForm(TehnicarBasic tehnicar, long prodajnaJedinicaId) : this(prodajnaJedinicaId)
         {
             this.tehnicar = tehnicar;
             LoadTehnicarData();
@@ -24,34 +35,15 @@ namespace Farmacy.Forme
 
         void ucitajApoteke()
         {
-            
-            IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Naziv, Value = l.Id }).ToList();
-            comboBox1.DataSource = nazivi;
-            comboBox1.DisplayMember = "Text";
-            comboBox1.ValueMember = "Value";
-
-            var items = new[]
-                                {
-                                    new { Text = "Prva",  Value = 1 },
-                                    new { Text = "Druga", Value = 2 },
-                                    new { Text = "Treća", Value = 3 }
-                                }.ToList();
-
-            cmbSmena.DisplayMember = "Text";
-
-            cmbSmena.ValueMember = "Value";
-            cmbSmena.DataSource = items;
-
+            // Initialize only the education level combo box
             var items2 = new[]
                                 {
-                                    new { Text = "VISI",  Value = 1 },
-                                    new { Text = "SREDNJI", Value = 2 },
+                                    new { Text = "VISI",  Value = "VISI" },
+                                    new { Text = "SREDNJI", Value = "SREDNJI" },
                                    
                                 }.ToList();
 
             cmbNivo.DisplayMember = "Text";
-
             cmbNivo.ValueMember = "Value";
             cmbNivo.DataSource = items2;
         }
@@ -134,7 +126,11 @@ namespace Farmacy.Forme
 
         private void SaveTehnicar()
         {
-           
+            // Generiši MBr ako nije postavljen
+            if (tehnicar.MBr == 0)
+            {
+                tehnicar.MBr = DateTime.Now.Ticks;
+            }
 
             tehnicar.Prezime = txtPrezime.Text.Trim();
             tehnicar.Ime = txtIme.Text.Trim();
@@ -142,13 +138,20 @@ namespace Farmacy.Forme
             tehnicar.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             tehnicar.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             tehnicar.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            tehnicar.NivoObrazovanja = cmbNivo.GetItemText(comboBox1.SelectedItem);
-            long idP = (long)comboBox1.SelectedValue;
-            int smena = (int)cmbSmena.SelectedValue;
+            tehnicar.NivoObrazovanja = cmbNivo.Text;
 
+            // Dodaj tehničara u sistem
+            DTOManagerZaposleni.DodajTehnicara(tehnicar);
 
-
-            DTOManagerZaposleni.DodajTehnicara(tehnicar,idP,dateTimePicker1.Value,smena);
+            // Dodaj vezu sa prodajnom jedinicom
+            var veza = new ZaposleniProdajnaJedinicaBasic
+            {
+                MBr = tehnicar.MBr,
+                ProdajnaJedinicaId = prodajnaJedinicaId,
+                DatumPocetka = tehnicar.DatumZaposlenja,
+                DatumKraja = null
+            };
+            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
         }
 
         //public Tehnicar GetTehnicar()

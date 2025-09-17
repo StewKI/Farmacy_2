@@ -43,11 +43,6 @@ namespace Farmacy.Forme
             dtpDatumZaposlenja = new DateTimePicker();
             btnSave = new Button();
             btnCancel = new Button();
-            dateTimePicker1 = new DateTimePicker();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            label2 = new Label();
-            cmbSmena = new ComboBox();
             SuspendLayout();
             // 
             // lblMBr
@@ -192,62 +187,11 @@ namespace Farmacy.Forme
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(147, 223);
-            dateTimePicker1.Margin = new Padding(4, 3, 4, 3);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(174, 23);
-            dateTimePicker1.TabIndex = 19;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(13, 226);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(132, 15);
-            label1.TabIndex = 18;
-            label1.Text = "Datum kraja zaposlenja:";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(148, 17);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(173, 23);
-            comboBox1.TabIndex = 20;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(14, 255);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 15);
-            label2.TabIndex = 21;
-            label2.Text = "Smena rada:";
-            label2.Click += label2_Click;
-            // 
-            // cmbSmena
-            // 
-            cmbSmena.FormattingEnabled = true;
-            cmbSmena.Location = new Point(148, 252);
-            cmbSmena.Name = "cmbSmena";
-            cmbSmena.Size = new Size(173, 23);
-            cmbSmena.TabIndex = 29;
-            // 
             // MenadzerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(330, 335);
-            Controls.Add(cmbSmena);
-            Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label1);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(dtpDatumZaposlenja);
@@ -292,10 +236,5 @@ namespace Farmacy.Forme
         private System.Windows.Forms.DateTimePicker dtpDatumZaposlenja;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private DateTimePicker dateTimePicker1;
-        private Label label1;
-        private ComboBox comboBox1;
-        private Label label2;
-        private ComboBox cmbSmena;
     }
 }

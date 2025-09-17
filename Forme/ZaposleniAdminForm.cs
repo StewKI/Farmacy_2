@@ -133,7 +133,7 @@ namespace Farmacy.Forme
 
 
             var z = DTOManagerZaposleni.VratiZaposlenog(mbr);
-            IzmeniZaposlenogForm form=new IzmeniZaposlenogForm(mbr);
+            IzmeniZaposlenogForm form=new IzmeniZaposlenogForm(mbr, 0); // Default prodajnaJedinicaId = 0
             form.ShowDialog();
 
 

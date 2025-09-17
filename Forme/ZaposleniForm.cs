@@ -6,16 +6,26 @@ namespace Farmacy.Forme
 {
     public partial class ZaposleniForm : Form
     {
-        private Zaposleni zaposleni;
+        private ZaposleniBasic zaposleni;
+        private long prodajnaJedinicaId;
       
         public ZaposleniForm()
         {
             InitializeComponent();
             InitializeForm();
+            this.prodajnaJedinicaId = 0; // Default value
             ucitajApoteke();
         }
 
-        public ZaposleniForm(Zaposleni zaposleni) : this()
+        public ZaposleniForm(long prodajnaJedinicaId)
+        {
+            InitializeComponent();
+            InitializeForm();
+            this.prodajnaJedinicaId = prodajnaJedinicaId;
+            ucitajApoteke();
+        }
+
+        public ZaposleniForm(ZaposleniBasic zaposleni, long prodajnaJedinicaId) : this(prodajnaJedinicaId)
         {
             this.zaposleni = zaposleni;
             LoadZaposleniData();
@@ -125,7 +135,13 @@ namespace Farmacy.Forme
         {
             if (zaposleni == null)
             {
-                zaposleni = new Zaposleni();
+                zaposleni = new ZaposleniBasic();
+            }
+
+            // Generiši MBr ako nije postavljen
+            if (zaposleni.MBr == 0)
+            {
+                zaposleni.MBr = DateTime.Now.Ticks;
             }
 
             zaposleni.Prezime = txtPrezime.Text.Trim();
@@ -134,14 +150,22 @@ namespace Farmacy.Forme
             zaposleni.Adresa = string.IsNullOrWhiteSpace(txtAdresa.Text) ? null : txtAdresa.Text.Trim();
             zaposleni.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             zaposleni.DatumZaposlenja = dtpDatumZaposlenja.Value;
-            long idP = (long)comboBox1.SelectedValue;
-            int smena = (int)cmbSmena.SelectedValue;
 
-            DTOManagerZaposleni.DodajZaposlenog(zaposleni,idP,dateTimePicker1.Value,smena);
-                
+            // Dodaj zaposlenog u sistem
+            DTOManagerZaposleni.DodajZaposlenog(zaposleni);
+
+            // Dodaj vezu sa prodajnom jedinicom
+            var veza = new ZaposleniProdajnaJedinicaBasic
+            {
+                MBr = zaposleni.MBr,
+                ProdajnaJedinicaId = prodajnaJedinicaId,
+                DatumPocetka = zaposleni.DatumZaposlenja,
+                DatumKraja = null
+            };
+            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
         }
 
-        public Zaposleni GetZaposleni()
+        public ZaposleniBasic GetZaposleni()
         {
             return zaposleni;
         }

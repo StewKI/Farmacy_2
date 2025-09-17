@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace Farmacy.Entiteti
 {
-    public class RasporedRada
+    public class ZaposleniProdajnaJedinica
     {
-        public virtual Zaposleni Zaposleni { get; set; }                         // M_BR
-        public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } // PRODAJNA_JEDINICA_ID (FK)
-        public virtual DateTime Pocetak { get; set; }                // POCETAK (TIMESTAMP)
-        public virtual DateTime Kraj { get; set; }                   // KRAJ (TIMESTAMP)
-        public virtual int? BrojSmene { get; set; }                  // BROJ_SMENE (1, 2, 3)
+        public virtual Zaposleni Zaposleni { get; set; } = default!;
+        public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
+        public virtual DateTime DatumPocetka { get; set; }
+        public virtual DateTime? DatumKraja { get; set; }
 
         public override bool Equals(object obj)
         {
-            var other = obj as RasporedRada;
+            var other = obj as ZaposleniProdajnaJedinica;
             if (ReferenceEquals(this, other)) return true;
             if (other is null) return false;
 
-            // Paziti da reference mogu biti null dok NH ne učita proxije
             var thisZapId = Zaposleni?.MBr ?? 0;
             var otherZapId = other.Zaposleni?.MBr ?? 0;
 
@@ -29,7 +27,7 @@ namespace Farmacy.Entiteti
 
             return thisZapId == otherZapId
                 && thisPjId == otherPjId
-                && Pocetak == other.Pocetak;
+                && DatumPocetka == other.DatumPocetka;
         }
 
         public override int GetHashCode()
@@ -39,7 +37,7 @@ namespace Farmacy.Entiteti
                 int h = 17;
                 h = h * 23 + (Zaposleni?.MBr ?? 0).GetHashCode();
                 h = h * 23 + (ProdajnaJedinica?.Id ?? 0).GetHashCode();
-                h = h * 23 + Pocetak.GetHashCode();
+                h = h * 23 + DatumPocetka.GetHashCode();
                 return h;
             }
         }

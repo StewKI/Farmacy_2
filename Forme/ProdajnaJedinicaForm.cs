@@ -132,5 +132,19 @@ namespace Farmacy.Forme
         {
 
         }
+
+        private void btnUpravljajZaposlenima_Click(object sender, EventArgs e)
+        {
+            if (prodajnaJedinica == null || prodajnaJedinica.Id == 0)
+            {
+                MessageBox.Show("Morate prvo sačuvati prodajnu jedinicu pre upravljanja zaposlenima!", "Greška", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Otvori formu za upravljanje zaposlenima
+            ZaposleniZaProdajnuJedinicuForm form = new ZaposleniZaProdajnuJedinicuForm(prodajnaJedinica.Id);
+            form.ShowDialog();
+        }
     }
 }

@@ -7,15 +7,23 @@ namespace Farmacy.Forme
     public partial class FarmaceutForm : Form
     {
         private FarmaceutBasic farmaceut;
+        private long prodajnaJedinicaId;
 
         public FarmaceutForm()
         {
             InitializeComponent();
             InitializeForm();
-            ucitajApoteke();
+            this.prodajnaJedinicaId = 0; // Default value
         }
 
-        public FarmaceutForm(FarmaceutBasic farmaceut) : this()
+        public FarmaceutForm(long prodajnaJedinicaId)
+        {
+            InitializeComponent();
+            InitializeForm();
+            this.prodajnaJedinicaId = prodajnaJedinicaId;
+        }
+
+        public FarmaceutForm(FarmaceutBasic farmaceut, long prodajnaJedinicaId) : this(prodajnaJedinicaId)
         {
             this.farmaceut = farmaceut;
             LoadFarmaceutData();
@@ -88,29 +96,19 @@ namespace Farmacy.Forme
 
         void ucitajApoteke()
         {
-            IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Naziv, Value = l.Id }).ToList();
-            comboBox1.DataSource = nazivi;
-            comboBox1.DisplayMember = "Text";
-            comboBox1.ValueMember = "Value";
-
-            var items = new[]
-                                {
-                                    new { Text = "Prva",  Value = 1 },
-                                    new { Text = "Druga", Value = 2 },
-                                    new { Text = "Treća", Value = 3 }
-                                }.ToList();
-
-            cmbSmena.DisplayMember = "Text";
-
-            cmbSmena.ValueMember = "Value";
-            cmbSmena.DataSource = items;
+            // No longer needed - prodajnaJedinicaId is passed as parameter
         }
         private void SaveFarmaceut()
         {
             if (farmaceut == null)
             {
                 farmaceut = new FarmaceutBasic();
+            }
+
+            // Generiši MBr ako nije postavljen
+            if (farmaceut.MBr == 0)
+            {
+                farmaceut.MBr = DateTime.Now.Ticks;
             }
 
             farmaceut.Prezime = txtPrezime.Text.Trim();
@@ -123,12 +121,19 @@ namespace Farmacy.Forme
             farmaceut.BrLicence = txtBrLicence.Text.Trim();
             farmaceut.DatumPoslednjeObnoveLicence = dtpDatumPoslObnoveLicence.Value;
             farmaceut.Specijalnost = string.IsNullOrWhiteSpace(txtSpecijalnost.Text) ? null : txtSpecijalnost.Text.Trim();
-            long idP = (long)comboBox1.SelectedValue;
 
-            int smena = (int)cmbSmena.SelectedValue;
+            // Dodaj farmaceuta u sistem
+            DTOManagerZaposleni.DodajFarmaceuta(farmaceut);
 
-
-            DTOManagerZaposleni.DodajFarmaceuta(farmaceut,idP,dateTimePicker1.Value,smena);
+            // Dodaj vezu sa prodajnom jedinicom
+            var veza = new ZaposleniProdajnaJedinicaBasic
+            {
+                MBr = farmaceut.MBr,
+                ProdajnaJedinicaId = prodajnaJedinicaId,
+                DatumPocetka = farmaceut.DatumZaposlenja,
+                DatumKraja = null
+            };
+            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
 
         }
 

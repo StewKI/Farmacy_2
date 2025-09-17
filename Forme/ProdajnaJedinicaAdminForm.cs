@@ -303,5 +303,38 @@ namespace Farmacy.Forme
             ProdajaAdminForm form = new ProdajaAdminForm(id);
             form.ShowDialog();
         }
+
+        private void btnDodajZaposlenog_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati prodajnu jedinicu!");
+                return;
+            }
+            long id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+
+            // Prikaži formu za odabir tipa zaposlenog
+            OdaberiTipZaposlenogForm form = new OdaberiTipZaposlenogForm(id);
+            form.ShowDialog();
+        }
+
+        private void btnPrikaziZaposlene_Click(object sender, EventArgs e)
+        {
+            if (dgvApoteke.CurrentRow == null)
+            {
+                MessageBox.Show("Morate izabrati prodajnu jedinicu!");
+                return;
+            }
+            long id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+
+            // Prikaži formu sa listom zaposlenih za tu prodajnu jedinicu
+            ZaposleniZaProdajnuJedinicuForm form = new ZaposleniZaProdajnuJedinicuForm(id);
+            form.ShowDialog();
+        }
+
+        private void grpServisi_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

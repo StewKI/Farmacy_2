@@ -13,7 +13,7 @@ namespace Farmacy.Mapiranja
         public ZaposleniMap()
         {
             Table("Zaposleni");
-            Id(x => x.MBr).Column("M_BR")
+            Id(x => x.MBr).Column("m_br")
             .GeneratedBy.Sequence("ZAPOSLENI_SEQ");
             Map(x => x.Ime, "ime").Not.Nullable();
             Map(x => x.Prezime, "prezime").Not.Nullable();

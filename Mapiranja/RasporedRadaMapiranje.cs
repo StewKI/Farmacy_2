@@ -8,32 +8,25 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Farmacy.Mapiranja
 {
-    internal class RasporedRadaMapiranje
+    public class RasporedRadaMap : ClassMap<Entiteti.RasporedRada>
     {
-        
-            public class RasporedRadaMap : ClassMap<Entiteti.RasporedRada>
-            {
-                public RasporedRadaMap()
-                {
-                    Table("RASPORED_RADA");
+        public RasporedRadaMap()
+        {
+            Table("Raspored_rada");
 
-                    // Složeni primarni ključ = (M_BR, PRODAJNA_JEDINICA_ID, POCETAK)
-                    CompositeId()
-                        .KeyReference(x => x.Zaposleni, "M_BR")
-                        .KeyReference(x => x.ProdajnaJedinica, "PRODAJNA_JEDINICA_ID")
-                        .KeyProperty(x => x.Pocetak, "POCETAK");
+            // Složeni primarni ključ = (m_br, prodajna_jedinica_id, pocetak)
+            CompositeId()
+                .KeyReference(x => x.Zaposleni, "m_br")
+                .KeyReference(x => x.ProdajnaJedinica, "prodajna_jedinica_id")
+                .KeyProperty(x => x.Pocetak, "pocetak");
 
-                    Map(x => x.Kraj)
-                        .Column("KRAJ")
-                        .Not.Nullable();
+            Map(x => x.Kraj)
+                .Column("kraj")
+                .Not.Nullable();
 
-                    HasMany(x => x.Smene)
-                        .Table("SMENA")
-                        .KeyColumns.Add("M_BR", "PRODAJNA_JEDINICA_ID", "POCETAK")
-                        .Inverse()
-                        .Cascade.AllDeleteOrphan();
-            }
-            }
-        
+            Map(x => x.BrojSmene)
+                .Column("broj_smene")
+                .Nullable();
+        }
     }
 }

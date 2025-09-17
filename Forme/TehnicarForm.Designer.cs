@@ -45,11 +45,6 @@ namespace Farmacy.Forme
             btnSave = new Button();
             btnCancel = new Button();
             btnDodajSertifikaciju = new Button();
-            dateTimePicker1 = new DateTimePicker();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            label2 = new Label();
-            cmbSmena = new ComboBox();
             cmbNivo = new ComboBox();
             SuspendLayout();
             // 
@@ -199,48 +194,6 @@ namespace Farmacy.Forme
             btnDodajSertifikaciju.UseVisualStyleBackColor = true;
             btnDodajSertifikaciju.Click += btnDodajSertifikaciju_Click;
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(159, 304);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 20;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(30, 307);
-            label1.Name = "label1";
-            label1.Size = new Size(132, 15);
-            label1.TabIndex = 19;
-            label1.Text = "Datum kraja zaposlenja:";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(159, 30);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(200, 23);
-            comboBox1.TabIndex = 21;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(30, 389);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 15);
-            label2.TabIndex = 22;
-            label2.Text = "Smena rada:";
-            // 
-            // cmbSmena
-            // 
-            cmbSmena.FormattingEnabled = true;
-            cmbSmena.Location = new Point(159, 389);
-            cmbSmena.Name = "cmbSmena";
-            cmbSmena.Size = new Size(200, 23);
-            cmbSmena.TabIndex = 30;
-            // 
             // cmbNivo
             // 
             cmbNivo.FormattingEnabled = true;
@@ -255,11 +208,6 @@ namespace Farmacy.Forme
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(386, 478);
             Controls.Add(cmbNivo);
-            Controls.Add(cmbSmena);
-            Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label1);
             Controls.Add(btnDodajSertifikaciju);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -307,11 +255,6 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private Button btnDodajSertifikaciju;
-        private DateTimePicker dateTimePicker1;
-        private Label label1;
-        private ComboBox comboBox1;
-        private Label label2;
-        private ComboBox cmbSmena;
         private ComboBox cmbNivo;
     }
 }
