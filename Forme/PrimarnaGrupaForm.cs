@@ -11,6 +11,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += PrimarnaGrupaForm_Load;
+            SetupButtonEffects();
         }
 
         private void PrimarnaGrupaForm_Load(object sender, EventArgs e)
@@ -105,13 +106,61 @@ namespace Farmacy.Forme
 
             if (selektovanaGrupa != null)
             {
-                //IzmeniPrimarnuGrupuForm form = new IzmeniPrimarnuGrupuForm(selektovanaGrupa);
-                //form.ShowDialog();
-                //popuniPodacimaPrimarneGrupe();
+                IzmeniPrimarnuGrupuForm form = new IzmeniPrimarnuGrupuForm(selektovanaGrupa);
+                form.ShowDialog();
+                popuniPodacimaPrimarneGrupe();
             }
             else
             {
                 MessageBox.Show("Greška pri učitavanju podataka o primarnoj grupi!");
+            }
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnNovaPrimarnaGrupa)
+                {
+                    button.BackColor = Color.FromArgb(46, 204, 113); // Tamnija zelena
+                }
+                else if (button == btnObrisiPrimarnuGrupu)
+                {
+                    button.BackColor = Color.FromArgb(231, 76, 60); // Tamnija crvena
+                }
+                else if (button == btnIzmeniPrimarnuGrupu)
+                {
+                    button.BackColor = Color.FromArgb(52, 152, 219); // Tamnija plava
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
             }
         }
     }

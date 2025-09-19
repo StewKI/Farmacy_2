@@ -346,31 +346,31 @@ namespace Farmacy.Forme
                 // Promeni boju na hover
                 if (button == btnDodajNoviLek)
                 {
-                    button.BackColor = Color.FromArgb(142, 68, 173); // Tamnija ljubičasta
+                    button.BackColor = Color.FromArgb(155, 89, 182); // Tamnija ljubičasta
                 }
                 else if (button == btnIzmeniLek)
                 {
-                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                    button.BackColor = Color.FromArgb(52, 152, 219); // Tamnija plava
                 }
                 else if (button == btnObrisiLek)
                 {
-                    button.BackColor = Color.FromArgb(192, 57, 43); // Tamnija crvena
+                    button.BackColor = Color.FromArgb(231, 76, 60); // Tamnija crvena
                 }
                 else if (button == btnPrimarnaGrupa)
                 {
-                    button.BackColor = Color.FromArgb(211, 84, 0); // Tamnija narandžasta
+                    button.BackColor = Color.FromArgb(230, 126, 34); // Tamnija narandžasta
                 }
                 else if (button == btnOblik)
                 {
-                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                    button.BackColor = Color.FromArgb(46, 204, 113); // Tamnija zelena
                 }
                 else if (button == btnSekundarnaGrupa)
                 {
-                    button.BackColor = Color.FromArgb(230, 126, 34); // Tamnija žuta
+                    button.BackColor = Color.FromArgb(241, 196, 15); // Tamnija žuta
                 }
                 else if (button == btnRecept)
                 {
-                    button.BackColor = Color.FromArgb(125, 60, 152); // Tamnija ljubičasta
+                    button.BackColor = Color.FromArgb(142, 68, 173); // Tamnija ljubičasta
                 }
                 
                 button.Cursor = Cursors.Hand;

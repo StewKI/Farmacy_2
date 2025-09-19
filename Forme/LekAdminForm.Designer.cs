@@ -333,7 +333,7 @@
             // 
             // btnDodajNoviLek
             // 
-            btnDodajNoviLek.BackColor = Color.FromArgb(155, 89, 182);
+            btnDodajNoviLek.BackColor = Color.FromArgb(180, 120, 200);
             btnDodajNoviLek.FlatAppearance.BorderSize = 0;
             btnDodajNoviLek.FlatStyle = FlatStyle.Flat;
             btnDodajNoviLek.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -351,7 +351,7 @@
             // 
             // btnIzmeniLek
             // 
-            btnIzmeniLek.BackColor = Color.FromArgb(52, 152, 219);
+            btnIzmeniLek.BackColor = Color.FromArgb(80, 170, 230);
             btnIzmeniLek.FlatAppearance.BorderSize = 0;
             btnIzmeniLek.FlatStyle = FlatStyle.Flat;
             btnIzmeniLek.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -369,7 +369,7 @@
             // 
             // btnObrisiLek
             // 
-            btnObrisiLek.BackColor = Color.FromArgb(231, 76, 60);
+            btnObrisiLek.BackColor = Color.FromArgb(250, 120, 100);
             btnObrisiLek.FlatAppearance.BorderSize = 0;
             btnObrisiLek.FlatStyle = FlatStyle.Flat;
             btnObrisiLek.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -387,7 +387,7 @@
             // 
             // btnOblik
             // 
-            btnOblik.BackColor = Color.FromArgb(46, 204, 113);
+            btnOblik.BackColor = Color.FromArgb(80, 220, 140);
             btnOblik.FlatAppearance.BorderSize = 0;
             btnOblik.FlatStyle = FlatStyle.Flat;
             btnOblik.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -405,7 +405,7 @@
             // 
             // btnPrimarnaGrupa
             // 
-            btnPrimarnaGrupa.BackColor = Color.FromArgb(230, 126, 34);
+            btnPrimarnaGrupa.BackColor = Color.FromArgb(250, 160, 80);
             btnPrimarnaGrupa.FlatAppearance.BorderSize = 0;
             btnPrimarnaGrupa.FlatStyle = FlatStyle.Flat;
             btnPrimarnaGrupa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -423,7 +423,7 @@
             // 
             // btnRecept
             // 
-            btnRecept.BackColor = Color.FromArgb(142, 68, 173);
+            btnRecept.BackColor = Color.FromArgb(170, 100, 200);
             btnRecept.FlatAppearance.BorderSize = 0;
             btnRecept.FlatStyle = FlatStyle.Flat;
             btnRecept.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -441,7 +441,7 @@
             // 
             // btnSekundarnaGrupa
             // 
-            btnSekundarnaGrupa.BackColor = Color.FromArgb(241, 196, 15);
+            btnSekundarnaGrupa.BackColor = Color.FromArgb(255, 220, 80);
             btnSekundarnaGrupa.FlatAppearance.BorderSize = 0;
             btnSekundarnaGrupa.FlatStyle = FlatStyle.Flat;
             btnSekundarnaGrupa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);

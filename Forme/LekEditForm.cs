@@ -19,6 +19,7 @@ namespace Farmacy_2.Forme
             LoadPrimarneGrupeAsync();
             LoadProizvodjaciAsync();
             LoadSekundarneKategorijeAsync();
+            SetupButtonEffects();
         }
 
         private void LoadLekData()
@@ -209,6 +210,50 @@ namespace Farmacy_2.Forme
         private void cmbProizvodjac_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnSacuvaj)
+                {
+                    button.BackColor = Color.FromArgb(46, 204, 113); // Tamnija zelena
+                }
+                else if (button == btnOtkazi)
+                {
+                    button.BackColor = Color.FromArgb(231, 76, 60); // Tamnija crvena
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
         }
     }
 }
