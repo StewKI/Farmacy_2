@@ -37,63 +37,53 @@ namespace Farmacy.Forme
         {
             try
             {
-                // 1) Učitaj podatke
-                IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
+                // 1) Učitaj podatke za svaki tip apoteke
+                IList<ProdajnaJedinicaBasic> osnovneLista = DTOManagerProdajneJedinice.VratiOsnovneProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
+                IList<ApotekaSaLabBasic> saLabLista = DTOManagerProdajneJedinice.VratiApotekeSaLab() ?? new List<ApotekaSaLabBasic>();
+                IList<StandardnaApoteka> standardneLista = DTOManagerProdajneJedinice.VratiStandardneApoteke() ?? new List<StandardnaApoteka>();
+                IList<SpecijalizovanaApoteka> specijalizovaneLista = DTOManagerProdajneJedinice.VratiSpecijalizovaneApoteke() ?? new List<SpecijalizovanaApoteka>();
 
-                // 2) Mapiraj kolone (ako već nisu mapirane)
-                dgvApoteke.AutoGenerateColumns = false;
+                // 2) Konfiguriši i popuni osnovne prodajne jedinice
+                dgvOsnovne.AutoGenerateColumns = false;
                 if (colId != null) colId.DataPropertyName = "Id";
                 if (colNaziv != null) colNaziv.DataPropertyName = "Naziv";
                 if (colUlica != null) colUlica.DataPropertyName = "Ulica";
                 if (colPostanskiBroj != null) colPostanskiBroj.DataPropertyName = "PostanskiBroj";
                 if (colMesto != null) colMesto.DataPropertyName = "Mesto";
+                dgvOsnovne.DataSource = false;
+                dgvOsnovne.DataSource = osnovneLista;
 
-                // 3) Veži podatke
-                dgvApoteke.DataSource = false;   // osveži binding
-                dgvApoteke.DataSource = lista;
+                // 3) Konfiguriši i popuni apoteke sa lab
+                dgvSaLab.AutoGenerateColumns = false;
+                dgvSaLab.DataSource = false;
+                dgvSaLab.DataSource = saLabLista;
 
+                // 4) Konfiguriši i popuni standardne apoteke
+                dgvStandardne.AutoGenerateColumns = false;
+                dgvStandardne.DataSource = false;
+                dgvStandardne.DataSource = standardneLista;
 
+                // 5) Konfiguriši i popuni specijalizovane apoteke
+                dgvSpecijalizovane.AutoGenerateColumns = false;
+                dgvSpecijalizovane.DataSource = false;
+                dgvSpecijalizovane.DataSource = specijalizovaneLista;
 
-
-                if (dgvApoteke.Columns.Count == 0)
+                // Dodaj kolone za sve DataGridView kontrole ako nisu već dodate
+                if (dgvOsnovne.Columns.Count == 0)
                 {
-                    dgvApoteke.AutoGenerateColumns = false;
-                    dgvApoteke.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colId",
-                        HeaderText = "Id",
-                        DataPropertyName = "Id",
-                        Width = 90
-                    });
-                    dgvApoteke.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colNaziv",
-                        HeaderText = "Naziv",
-                        DataPropertyName = "Naziv",
-                        Width = 140
-                    });
-                    dgvApoteke.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colUlica",
-                        HeaderText = "Ulica",
-                        DataPropertyName = "Ulica",
-                        Width = 160
-                    });
-                    dgvApoteke.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colPostanskiBroj",
-                        HeaderText = "Broj",
-                        DataPropertyName = "Broj",
-                        Width = 160
-                    });
-                    dgvApoteke.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colMesto",
-                        HeaderText = "Mesto",
-                        DataPropertyName = "Mesto",
-                        Width = 160
-                    });
-                    //dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                    DodajKolone(dgvOsnovne);
+                }
+                if (dgvSaLab.Columns.Count == 0)
+                {
+                    DodajKolone(dgvSaLab);
+                }
+                if (dgvStandardne.Columns.Count == 0)
+                {
+                    DodajKolone(dgvStandardne);
+                }
+                if (dgvSpecijalizovane.Columns.Count == 0)
+                {
+                    DodajKolone(dgvSpecijalizovane);
                 }
 
             }
@@ -107,9 +97,9 @@ namespace Farmacy.Forme
         private void btnObrisi_Click(object sender, EventArgs e)
         {
             long mbr = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (GetCurrentDataGridView().SelectedRows.Count > 0)
             {
-                mbr = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                mbr = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
                 MessageBox.Show("Selektovan MBr: " + mbr);
 
             }
@@ -129,15 +119,15 @@ namespace Farmacy.Forme
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            if (GetCurrentDataGridView().CurrentRow == null)
             {
                 MessageBox.Show("Morate selektovati prodajnu jedinicu!");
                 return;
             }
             long id = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (GetCurrentDataGridView().SelectedRows.Count > 0)
             {
-                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
                 MessageBox.Show("Selektovan id: " + id);
 
             }
@@ -182,17 +172,70 @@ namespace Farmacy.Forme
             form.ShowDialog();
         }
 
+        private void DodajKolone(DataGridView dgv)
+        {
+            dgv.AutoGenerateColumns = false;
+            dgv.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colId",
+                HeaderText = "Id",
+                DataPropertyName = "Id",
+                Width = 90
+            });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colNaziv",
+                HeaderText = "Naziv",
+                DataPropertyName = "Naziv",
+                Width = 140
+            });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colUlica",
+                HeaderText = "Ulica",
+                DataPropertyName = "Ulica",
+                Width = 160
+            });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colPostanskiBroj",
+                HeaderText = "Broj",
+                DataPropertyName = "Broj",
+                Width = 160
+            });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colMesto",
+                HeaderText = "Mesto",
+                DataPropertyName = "Mesto",
+                Width = 160
+            });
+        }
+
+        private DataGridView GetCurrentDataGridView()
+        {
+            switch (tabControlApoteke.SelectedIndex)
+            {
+                case 0: return dgvOsnovne;
+                case 1: return dgvSaLab;
+                case 2: return dgvStandardne;
+                case 3: return dgvSpecijalizovane;
+                default: return dgvOsnovne;
+            }
+        }
+
         private void btnSuplementi_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            DataGridView currentDgv = GetCurrentDataGridView();
+            if (currentDgv?.CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati apoteku!");
                 return;
             }
             long id = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (currentDgv.SelectedRows.Count > 0)
             {
-                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt64(currentDgv.CurrentRow.Cells[0].Value);
                 MessageBox.Show("Selektovan id: " + id);
 
             }
@@ -208,15 +251,16 @@ namespace Farmacy.Forme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            DataGridView currentDgv = GetCurrentDataGridView();
+            if (currentDgv?.CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati apoteku!");
                 return;
             }
             long id = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (currentDgv.SelectedRows.Count > 0)
             {
-                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt64(currentDgv.CurrentRow.Cells[0].Value);
                 MessageBox.Show("Selektovan id: " + id);
 
             }
@@ -232,15 +276,16 @@ namespace Farmacy.Forme
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            DataGridView currentDgv = GetCurrentDataGridView();
+            if (currentDgv?.CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati apoteku!");
                 return;
             }
             long id = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (currentDgv.SelectedRows.Count > 0)
             {
-                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt64(currentDgv.CurrentRow.Cells[0].Value);
                 MessageBox.Show("Selektovan id: " + id);
 
             }
@@ -256,15 +301,15 @@ namespace Farmacy.Forme
 
         private void btnRadnoVreme_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            if (GetCurrentDataGridView().CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati apoteku!");
                 return;
             }
             long id = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (GetCurrentDataGridView().SelectedRows.Count > 0)
             {
-                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
             }
             else
             {
@@ -284,15 +329,15 @@ namespace Farmacy.Forme
 
         private void btnProdaja_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            if (GetCurrentDataGridView().CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati apoteku!");
                 return;
             }
             long id = 0;
-            if (dgvApoteke.SelectedRows.Count > 0)
+            if (GetCurrentDataGridView().SelectedRows.Count > 0)
             {
-                id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+                id = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
             }
             else
             {
@@ -306,12 +351,12 @@ namespace Farmacy.Forme
 
         private void btnDodajZaposlenog_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            if (GetCurrentDataGridView().CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati prodajnu jedinicu!");
                 return;
             }
-            long id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+            long id = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
 
             // Prikaži formu za odabir tipa zaposlenog
             OdaberiTipZaposlenogForm form = new OdaberiTipZaposlenogForm(id);
@@ -320,12 +365,12 @@ namespace Farmacy.Forme
 
         private void btnPrikaziZaposlene_Click(object sender, EventArgs e)
         {
-            if (dgvApoteke.CurrentRow == null)
+            if (GetCurrentDataGridView().CurrentRow == null)
             {
                 MessageBox.Show("Morate izabrati prodajnu jedinicu!");
                 return;
             }
-            long id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
+            long id = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
 
             // Prikaži formu za raspored rada
             RasporedRadaForm form = new RasporedRadaForm(id);

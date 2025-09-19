@@ -21,7 +21,15 @@
         }
 
         private GroupBox groupBoxLista;
-        private DataGridView dgvApoteke;
+        private TabControl tabControlApoteke;
+        private TabPage tabOsnovne;
+        private TabPage tabSaLab;
+        private TabPage tabStandardne;
+        private TabPage tabSpecijalizovane;
+        private DataGridView dgvOsnovne;
+        private DataGridView dgvSaLab;
+        private DataGridView dgvStandardne;
+        private DataGridView dgvSpecijalizovane;
         private Panel panelDesno;
         private GroupBox grpPodaci;
         private Button btnDodaj;
@@ -49,7 +57,15 @@
         private void InitializeComponent()
         {
             groupBoxLista = new GroupBox();
-            dgvApoteke = new DataGridView();
+            tabControlApoteke = new TabControl();
+            tabOsnovne = new TabPage();
+            dgvOsnovne = new DataGridView();
+            tabSaLab = new TabPage();
+            dgvSaLab = new DataGridView();
+            tabStandardne = new TabPage();
+            dgvStandardne = new DataGridView();
+            tabSpecijalizovane = new TabPage();
+            dgvSpecijalizovane = new DataGridView();
             panelDesno = new Panel();
             grpZaposleni = new GroupBox();
             btnZaposleni = new Button();
@@ -62,7 +78,15 @@
             btnObrisi = new Button();
             btnDodaj = new Button();
             groupBoxLista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvApoteke).BeginInit();
+            tabControlApoteke.SuspendLayout();
+            tabOsnovne.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvOsnovne).BeginInit();
+            tabSaLab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSaLab).BeginInit();
+            tabStandardne.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStandardne).BeginInit();
+            tabSpecijalizovane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSpecijalizovane).BeginInit();
             panelDesno.SuspendLayout();
             grpZaposleni.SuspendLayout();
             grpServisi.SuspendLayout();
@@ -71,7 +95,7 @@
             // 
             // groupBoxLista
             // 
-            groupBoxLista.Controls.Add(dgvApoteke);
+            groupBoxLista.Controls.Add(tabControlApoteke);
             groupBoxLista.Dock = DockStyle.Fill;
             groupBoxLista.Location = new Point(0, 0);
             groupBoxLista.Margin = new Padding(6);
@@ -83,23 +107,134 @@
             groupBoxLista.Text = "Lista apoteka";
             groupBoxLista.Enter += groupBoxLista_Enter;
             // 
-            // dgvApoteke
+            // tabControlApoteke
             // 
-            dgvApoteke.AllowUserToAddRows = false;
-            dgvApoteke.AllowUserToDeleteRows = false;
-            dgvApoteke.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvApoteke.ColumnHeadersHeight = 46;
-            dgvApoteke.Dock = DockStyle.Fill;
-            dgvApoteke.Location = new Point(19, 53);
-            dgvApoteke.Margin = new Padding(6);
-            dgvApoteke.MultiSelect = false;
-            dgvApoteke.Name = "dgvApoteke";
-            dgvApoteke.ReadOnly = true;
-            dgvApoteke.RowHeadersVisible = false;
-            dgvApoteke.RowHeadersWidth = 82;
-            dgvApoteke.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvApoteke.Size = new Size(1475, 1400);
-            dgvApoteke.TabIndex = 0;
+            tabControlApoteke.Controls.Add(tabOsnovne);
+            tabControlApoteke.Controls.Add(tabSaLab);
+            tabControlApoteke.Controls.Add(tabStandardne);
+            tabControlApoteke.Controls.Add(tabSpecijalizovane);
+            tabControlApoteke.Dock = DockStyle.Fill;
+            tabControlApoteke.Location = new Point(19, 53);
+            tabControlApoteke.Name = "tabControlApoteke";
+            tabControlApoteke.SelectedIndex = 0;
+            tabControlApoteke.Size = new Size(1475, 1400);
+            tabControlApoteke.TabIndex = 0;
+            // 
+            // tabOsnovne
+            // 
+            tabOsnovne.Controls.Add(dgvOsnovne);
+            tabOsnovne.Location = new Point(4, 24);
+            tabOsnovne.Name = "tabOsnovne";
+            tabOsnovne.Padding = new Padding(3);
+            tabOsnovne.Size = new Size(1467, 1372);
+            tabOsnovne.TabIndex = 0;
+            tabOsnovne.Text = "Osnovne prodajne jedinice";
+            tabOsnovne.UseVisualStyleBackColor = true;
+            // 
+            // dgvOsnovne
+            // 
+            dgvOsnovne.AllowUserToAddRows = false;
+            dgvOsnovne.AllowUserToDeleteRows = false;
+            dgvOsnovne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvOsnovne.ColumnHeadersHeight = 46;
+            dgvOsnovne.Dock = DockStyle.Fill;
+            dgvOsnovne.Location = new Point(3, 3);
+            dgvOsnovne.Margin = new Padding(6);
+            dgvOsnovne.MultiSelect = false;
+            dgvOsnovne.Name = "dgvOsnovne";
+            dgvOsnovne.ReadOnly = true;
+            dgvOsnovne.RowHeadersVisible = false;
+            dgvOsnovne.RowHeadersWidth = 82;
+            dgvOsnovne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvOsnovne.Size = new Size(1461, 1366);
+            dgvOsnovne.TabIndex = 0;
+            // 
+            // tabSaLab
+            // 
+            tabSaLab.Controls.Add(dgvSaLab);
+            tabSaLab.Location = new Point(4, 24);
+            tabSaLab.Name = "tabSaLab";
+            tabSaLab.Padding = new Padding(3);
+            tabSaLab.Size = new Size(1467, 1372);
+            tabSaLab.TabIndex = 1;
+            tabSaLab.Text = "Apoteke sa laboratorijom";
+            tabSaLab.UseVisualStyleBackColor = true;
+            // 
+            // dgvSaLab
+            // 
+            dgvSaLab.AllowUserToAddRows = false;
+            dgvSaLab.AllowUserToDeleteRows = false;
+            dgvSaLab.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSaLab.ColumnHeadersHeight = 46;
+            dgvSaLab.Dock = DockStyle.Fill;
+            dgvSaLab.Location = new Point(3, 3);
+            dgvSaLab.Margin = new Padding(6);
+            dgvSaLab.MultiSelect = false;
+            dgvSaLab.Name = "dgvSaLab";
+            dgvSaLab.ReadOnly = true;
+            dgvSaLab.RowHeadersVisible = false;
+            dgvSaLab.RowHeadersWidth = 82;
+            dgvSaLab.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSaLab.Size = new Size(1461, 1366);
+            dgvSaLab.TabIndex = 0;
+            // 
+            // tabStandardne
+            // 
+            tabStandardne.Controls.Add(dgvStandardne);
+            tabStandardne.Location = new Point(4, 24);
+            tabStandardne.Name = "tabStandardne";
+            tabStandardne.Padding = new Padding(3);
+            tabStandardne.Size = new Size(1467, 1372);
+            tabStandardne.TabIndex = 2;
+            tabStandardne.Text = "Standardne apoteke";
+            tabStandardne.UseVisualStyleBackColor = true;
+            // 
+            // dgvStandardne
+            // 
+            dgvStandardne.AllowUserToAddRows = false;
+            dgvStandardne.AllowUserToDeleteRows = false;
+            dgvStandardne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStandardne.ColumnHeadersHeight = 46;
+            dgvStandardne.Dock = DockStyle.Fill;
+            dgvStandardne.Location = new Point(3, 3);
+            dgvStandardne.Margin = new Padding(6);
+            dgvStandardne.MultiSelect = false;
+            dgvStandardne.Name = "dgvStandardne";
+            dgvStandardne.ReadOnly = true;
+            dgvStandardne.RowHeadersVisible = false;
+            dgvStandardne.RowHeadersWidth = 82;
+            dgvStandardne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStandardne.Size = new Size(1461, 1366);
+            dgvStandardne.TabIndex = 0;
+            // 
+            // tabSpecijalizovane
+            // 
+            tabSpecijalizovane.Controls.Add(dgvSpecijalizovane);
+            tabSpecijalizovane.Location = new Point(4, 24);
+            tabSpecijalizovane.Name = "tabSpecijalizovane";
+            tabSpecijalizovane.Padding = new Padding(3);
+            tabSpecijalizovane.Size = new Size(1467, 1372);
+            tabSpecijalizovane.TabIndex = 3;
+            tabSpecijalizovane.Text = "Specijalizovane apoteke";
+            tabSpecijalizovane.UseVisualStyleBackColor = true;
+            // 
+            // dgvSpecijalizovane
+            // 
+            dgvSpecijalizovane.AllowUserToAddRows = false;
+            dgvSpecijalizovane.AllowUserToDeleteRows = false;
+            dgvSpecijalizovane.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSpecijalizovane.ColumnHeadersHeight = 46;
+            dgvSpecijalizovane.Dock = DockStyle.Fill;
+            dgvSpecijalizovane.Location = new Point(3, 3);
+            dgvSpecijalizovane.Margin = new Padding(6);
+            dgvSpecijalizovane.MultiSelect = false;
+            dgvSpecijalizovane.Name = "dgvSpecijalizovane";
+            dgvSpecijalizovane.ReadOnly = true;
+            dgvSpecijalizovane.RowHeadersVisible = false;
+            dgvSpecijalizovane.RowHeadersWidth = 82;
+            dgvSpecijalizovane.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSpecijalizovane.Size = new Size(1461, 1366);
+            dgvSpecijalizovane.TabIndex = 0;
             // 
             // panelDesno
             // 
@@ -259,7 +394,15 @@
             Text = "LISTA APOTEKA";
             Load += ProdajnaJedinicaAdminForm_Load;
             groupBoxLista.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvApoteke).EndInit();
+            tabControlApoteke.ResumeLayout(false);
+            tabOsnovne.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvOsnovne).EndInit();
+            tabSaLab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSaLab).EndInit();
+            tabStandardne.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvStandardne).EndInit();
+            tabSpecijalizovane.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSpecijalizovane).EndInit();
             panelDesno.ResumeLayout(false);
             grpZaposleni.ResumeLayout(false);
             grpServisi.ResumeLayout(false);

@@ -340,6 +340,137 @@ namespace Farmacy
             return list;
         }
 
+        public static IList<ProdajnaJedinicaBasic> VratiOsnovneProdajneJedinice()
+        {
+            var list = new List<ProdajnaJedinicaBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                // Uzmi samo osnovne prodajne jedinice (ne nasleđene)
+                var osnovne = s.Query<Entiteti.ProdajnaJedinicaBasic>()
+                    .Where(pj => !(pj is Entiteti.ApotekaSaLabBasic) && 
+                                 !(pj is Entiteti.StandardnaApoteka) && 
+                                 !(pj is Entiteti.SpecijalizovanaApoteka))
+                    .ToList();
+
+                foreach (var pj in osnovne)
+                {
+                    list.Add(new ProdajnaJedinicaBasic
+                    {
+                        Id = pj.Id,
+                        Naziv = pj.Naziv,
+                        Ulica = pj.Ulica,
+                        Broj = pj.Broj,
+                        PostanskiBroj = pj.PostanskiBroj,
+                        Mesto = pj.Mesto,
+                        OdgovorniFarmaceutMbr = pj.OdgovorniFarmaceut?.MBr ?? 0
+                    });
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+                   $"Greška pri izvlacenju podataka o osnovnim prodajnim jedinicama : {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
+            return list;
+        }
+
+        public static IList<ApotekaSaLabBasic> VratiApotekeSaLab()
+        {
+            var list = new List<ApotekaSaLabBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                foreach (var pj in s.Query<Entiteti.ApotekaSaLabBasic>())
+                {
+                    list.Add(new ApotekaSaLabBasic
+                    {
+                        Id = pj.Id,
+                        Naziv = pj.Naziv,
+                        Ulica = pj.Ulica,
+                        Broj = pj.Broj,
+                        PostanskiBroj = pj.PostanskiBroj,
+                        Mesto = pj.Mesto,
+                        OdgovorniFarmaceut = pj.OdgovorniFarmaceut,
+                        Napomena = pj.Napomena
+                    });
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+                   $"Greška pri izvlacenju podataka o apotekama sa lab : {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
+            return list;
+        }
+
+        public static IList<StandardnaApoteka> VratiStandardneApoteke()
+        {
+            var list = new List<StandardnaApoteka>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                foreach (var pj in s.Query<Entiteti.StandardnaApoteka>())
+                {
+                    list.Add(new StandardnaApoteka
+                    {
+                        Id = pj.Id,
+                        Naziv = pj.Naziv,
+                        Ulica = pj.Ulica,
+                        Broj = pj.Broj,
+                        PostanskiBroj = pj.PostanskiBroj,
+                        Mesto = pj.Mesto,
+                        OdgovorniFarmaceut = pj.OdgovorniFarmaceut,
+                        Napomena = pj.Napomena
+                    });
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+                   $"Greška pri izvlacenju podataka o standardnim apotekama : {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
+            return list;
+        }
+
+        public static IList<SpecijalizovanaApoteka> VratiSpecijalizovaneApoteke()
+        {
+            var list = new List<SpecijalizovanaApoteka>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                foreach (var pj in s.Query<Entiteti.SpecijalizovanaApoteka>())
+                {
+                    list.Add(new SpecijalizovanaApoteka
+                    {
+                        Id = pj.Id,
+                        Naziv = pj.Naziv,
+                        Ulica = pj.Ulica,
+                        Broj = pj.Broj,
+                        PostanskiBroj = pj.PostanskiBroj,
+                        Mesto = pj.Mesto,
+                        OdgovorniFarmaceut = pj.OdgovorniFarmaceut,
+                        SpecijalnostTipa = pj.SpecijalnostTipa,
+                        Napomena = pj.Napomena
+                    });
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+                   $"Greška pri izvlacenju podataka o specijalizovanim apotekama : {ex.Message}",
+                   "Greška",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
+            return list;
+        }
+
         public static void IzmeniProdajnuJedinicu(ProdajnaJedinicaBasic dto)
         {
             try
