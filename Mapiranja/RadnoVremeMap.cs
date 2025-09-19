@@ -21,13 +21,13 @@ namespace Farmacy.Mapiranja
 
             Map(x => x.VremeOd, "vreme_od")
                 .Not.Nullable()
-                .CustomType<TimeSpanType>()
-                .CustomSqlType("interval day to second");
+                .CustomType<DateTimeType>()
+                .CustomSqlType("timestamp");
 
             Map(x => x.VremeDo, "vreme_do")
                 .Not.Nullable()
-                .CustomType<TimeSpanType>()
-                .CustomSqlType("interval day to second");
+                .CustomType<DateTimeType>()
+                .CustomSqlType("timestamp");
         }
     }
 }

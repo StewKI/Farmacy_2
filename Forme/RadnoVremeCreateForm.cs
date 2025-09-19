@@ -65,8 +65,8 @@ namespace Farmacy.Forme
                     ProdajnaJedinicaId = prodajnaJedinicaId,
                     Dan = i,
                     DanNaziv = naziviDana[i - 1],
-                    VremeOd = (TimeSpan?)null,
-                    VremeDo = (TimeSpan?)null,
+                    VremeOd = (DateTime?)null,
+                    VremeDo = (DateTime?)null,
                     ProdajnaJedinicaNaziv = txtProdajnaJedinica.Text
                 });
             }
@@ -90,8 +90,8 @@ namespace Farmacy.Forme
                     ProdajnaJedinicaId = prodajnaJedinicaId,
                     Dan = danIndex,
                     DanNaziv = cboDan.Text,
-                    VremeOd = dtpVremeOd.Value.TimeOfDay,
-                    VremeDo = dtpVremeDo.Value.TimeOfDay,
+                    VremeOd = dtpVremeOd.Value,
+                    VremeDo = dtpVremeDo.Value,
                     ProdajnaJedinicaNaziv = txtProdajnaJedinica.Text
                 };
 
@@ -197,8 +197,8 @@ namespace Farmacy.Forme
                             ProdajnaJedinicaId = prodajnaJedinicaId,
                             Dan = i,
                             DanNaziv = naziviDana[i - 1],
-                            VremeOd = (TimeSpan?)null,
-                            VremeDo = (TimeSpan?)null,
+                            VremeOd = (DateTime?)null,
+                            VremeDo = (DateTime?)null,
                             ProdajnaJedinicaNaziv = txtProdajnaJedinica.Text
                         });
                     }

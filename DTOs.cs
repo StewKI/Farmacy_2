@@ -181,8 +181,8 @@ namespace Farmacy
         public long Id { get; set; }
         public long ProdajnaJedinicaId { get; set; }
         public int Dan { get; set; }
-        public TimeSpan? VremeOd { get; set; }
-        public TimeSpan? VremeDo { get; set; }
+        public DateTime? VremeOd { get; set; }
+        public DateTime? VremeDo { get; set; }
         public string DanNaziv { get; set; }
         public string ProdajnaJedinicaNaziv { get; set; }
     }

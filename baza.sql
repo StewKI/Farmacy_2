@@ -74,8 +74,8 @@ CREATE TABLE Specijalizovana_apoteka (
 CREATE TABLE Radno_vreme (
   prodajna_jedinica_id   NUMBER       NOT NULL,
   dan                    NUMBER(1)    NOT NULL,         -- 1=Pon ... 7=Ned
-  vreme_od               INTERVAL DAY TO SECOND NOT NULL,
-  vreme_do               INTERVAL DAY TO SECOND NOT NULL,
+  vreme_od               TIMESTAMP    NOT NULL,
+  vreme_do               TIMESTAMP    NOT NULL,
   CONSTRAINT pk_rv PRIMARY KEY (prodajna_jedinica_id, dan),
   CONSTRAINT fk_rv_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
   CONSTRAINT ck_rv_dan CHECK (dan BETWEEN 1 AND 7)

@@ -602,12 +602,29 @@ namespace Farmacy
                     .FirstOrDefault(x => x.ProdajnaJedinica.Id == dto.ProdajnaJedinicaId && x.Dan == dto.Dan);
                 if (rv != null)
                 {
-                    if (dto.VremeOd.HasValue)
-                        rv.VremeOd = dto.VremeOd.Value;
-                    if (dto.VremeDo.HasValue)
-                        rv.VremeDo = dto.VremeDo.Value;
+                    // Ažuriraj postojeći zapis
+                    rv.VremeOd = dto.VremeOd ?? DateTime.MinValue;
+                    rv.VremeDo = dto.VremeDo ?? DateTime.MinValue;
                     s.Update(rv);
                     s.Flush();
+                }
+                else
+                {
+                    // Kreiraj novi zapis ako ne postoji
+                    var prodajnaJedinica = s.Query<Entiteti.ProdajnaJedinicaBasic>()
+                        .FirstOrDefault(x => x.Id == dto.ProdajnaJedinicaId);
+                    if (prodajnaJedinica != null)
+                    {
+                        var noviRadnoVreme = new RadnoVreme
+                        {
+                            ProdajnaJedinica = prodajnaJedinica,
+                            Dan = dto.Dan,
+                            VremeOd = dto.VremeOd ?? DateTime.MinValue,
+                            VremeDo = dto.VremeDo ?? DateTime.MinValue
+                        };
+                        s.Save(noviRadnoVreme);
+                        s.Flush();
+                    }
                 }
             }
             catch (Exception ex)

@@ -87,8 +87,8 @@ namespace Farmacy.Forme
                             ProdajnaJedinicaId = prodajnaJedinicaId,
                             Dan = i,
                             DanNaziv = naziviDana[i - 1],
-                            VremeOd = (TimeSpan?)null,
-                            VremeDo = (TimeSpan?)null,
+                            VremeOd = (DateTime?)null,
+                            VremeDo = (DateTime?)null,
                             ProdajnaJedinicaNaziv = prodajnaJedinica?.Naziv ?? ""
                         });
                     }
@@ -96,6 +96,7 @@ namespace Farmacy.Forme
                 
                 dgvRadnoVreme.AutoGenerateColumns = false;
                 dgvRadnoVreme.DataSource = listaDana;
+                dgvRadnoVreme.Refresh();
 
                 // Dodaj kolone ako nisu već dodane
                 if (dgvRadnoVreme.Columns.Count == 0)
@@ -136,14 +137,16 @@ namespace Farmacy.Forme
                         Name = "colVremeOd",
                         HeaderText = "Početak rada",
                         DataPropertyName = "VremeOd",
-                        Width = 120
+                        Width = 120,
+                        DefaultCellStyle = new DataGridViewCellStyle { Format = "HH:mm" }
                     });
                     dgvRadnoVreme.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "colVremeDo",
                         HeaderText = "Kraj rada",
                         DataPropertyName = "VremeDo",
-                        Width = 120
+                        Width = 120,
+                        DefaultCellStyle = new DataGridViewCellStyle { Format = "HH:mm" }
                     });
                 }
             }
@@ -181,8 +184,8 @@ namespace Farmacy.Forme
                         ProdajnaJedinicaId = prodajnaJedinicaId,
                         Dan = dan,
                         DanNaziv = naziviDana[dan - 1],
-                        VremeOd = (TimeSpan?)null,
-                        VremeDo = (TimeSpan?)null,
+                        VremeOd = (DateTime?)null,
+                        VremeDo = (DateTime?)null,
                         ProdajnaJedinicaNaziv = txtProdajnaJedinica.Text
                     };
                 }
