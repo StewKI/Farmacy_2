@@ -14,6 +14,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += LekAdminForm_Load;
+            SetupButtonEffects();
         }
 
         private void LekAdminForm_Load(object sender, EventArgs e)
@@ -320,6 +321,70 @@ namespace Farmacy.Forme
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnDodajNoviLek)
+                {
+                    button.BackColor = Color.FromArgb(142, 68, 173); // Tamnija ljubičasta
+                }
+                else if (button == btnIzmeniLek)
+                {
+                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                }
+                else if (button == btnObrisiLek)
+                {
+                    button.BackColor = Color.FromArgb(192, 57, 43); // Tamnija crvena
+                }
+                else if (button == btnPrimarnaGrupa)
+                {
+                    button.BackColor = Color.FromArgb(211, 84, 0); // Tamnija narandžasta
+                }
+                else if (button == btnOblik)
+                {
+                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                }
+                else if (button == btnSekundarnaGrupa)
+                {
+                    button.BackColor = Color.FromArgb(230, 126, 34); // Tamnija žuta
+                }
+                else if (button == btnRecept)
+                {
+                    button.BackColor = Color.FromArgb(125, 60, 152); // Tamnija ljubičasta
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += ProizvodjacAdminForm_Load;
+            SetupButtonEffects();
         }
 
         private void ProizvodjacAdminForm_Load(object sender, EventArgs e)
@@ -122,6 +123,50 @@ namespace Farmacy.Forme
         private void dgvProizvodjaci_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Može se dodati dodatna logika ako je potrebna
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnDodajNoviProizvodjac)
+                {
+                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                }
+                else if (button == btnIzmeniProizvodjac)
+                {
+                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
         }
     }
 }

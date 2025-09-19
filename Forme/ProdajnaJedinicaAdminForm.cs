@@ -19,6 +19,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += ProdajnaJedinicaAdminForm_Load;
+            SetupButtonEffects();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -380,6 +381,76 @@ namespace Farmacy.Forme
         private void grpServisi_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad u svim GroupBox kontrolama
+            foreach (Control groupBox in panelButtons.Controls)
+            {
+                if (groupBox is GroupBox gb)
+                {
+                    foreach (Control control in gb.Controls)
+                    {
+                        if (control is Button button)
+                        {
+                            button.MouseEnter += Button_MouseEnter;
+                            button.MouseLeave += Button_MouseLeave;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnDodaj)
+                {
+                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                }
+                else if (button == btnObrisi)
+                {
+                    button.BackColor = Color.FromArgb(192, 57, 43); // Tamnija crvena
+                }
+                else if (button == btnIzmeni)
+                {
+                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                }
+                else if (button == btnProdaja)
+                {
+                    button.BackColor = Color.FromArgb(142, 68, 173); // Tamnija ljubičasta
+                }
+                else if (button == btnZalihe)
+                {
+                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                }
+                else if (button == btnRadnoVreme)
+                {
+                    button.BackColor = Color.FromArgb(34, 153, 84); // Tamnija zelena
+                }
+                else if (button == btnZaposleni)
+                {
+                    button.BackColor = Color.FromArgb(211, 84, 0); // Tamnija narandžasta
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
         }
     }
 }
