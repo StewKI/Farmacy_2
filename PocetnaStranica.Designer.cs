@@ -33,6 +33,7 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            zaposleniBtn = new Button();
             imageList1 = new ImageList(components);
             label1 = new Label();
             SuspendLayout();
@@ -81,6 +82,17 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += btnLekovi_Click;
             // 
+            // zaposleniBtn
+            // 
+            zaposleniBtn.Location = new Point(1000, 401);
+            zaposleniBtn.Margin = new Padding(6, 6, 6, 6);
+            zaposleniBtn.Name = "zaposleniBtn";
+            zaposleniBtn.Size = new Size(301, 119);
+            zaposleniBtn.TabIndex = 4;
+            zaposleniBtn.Text = "Zaposleni";
+            zaposleniBtn.UseVisualStyleBackColor = true;
+            zaposleniBtn.Click += zaposleniBtn_Click;
+            // 
             // imageList1
             // 
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
@@ -104,6 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1725, 875);
             Controls.Add(label1);
+            Controls.Add(zaposleniBtn);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -122,6 +135,7 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private Button zaposleniBtn;
         private ImageList imageList1;
         private Label label1;
     }

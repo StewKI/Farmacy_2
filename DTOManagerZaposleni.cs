@@ -801,130 +801,6 @@ namespace Farmacy
         }
 
 
-        // ========== ZAPOSLENI PRODAJNA JEDINICA ==========
-
-        public static void DodajZaposleniProdajnaJedinica(ZaposleniProdajnaJedinicaBasic dto)
-        {
-            try
-            {
-                using var s = DataLayer.GetSession();
-                
-                // Debug informacije
-                MessageBox.Show($"Dodajem vezu: MBr={dto.MBr}, ProdajnaJedinicaId={dto.ProdajnaJedinicaId}, DatumPocetka={dto.DatumPocetka}", 
-                    "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                // Proveri da li zaposleni postoji
-                var zaposleni = s.Get<Zaposleni>(dto.MBr);
-                if (zaposleni == null)
-                {
-                    MessageBox.Show($"Zaposleni sa MBr={dto.MBr} ne postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                
-                // Proveri da li prodajna jedinica postoji
-                var prodajnaJedinica = s.Get<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId);
-                if (prodajnaJedinica == null)
-                {
-                    MessageBox.Show($"Prodajna jedinica sa ID={dto.ProdajnaJedinicaId} ne postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                
-                var zp = new ZaposleniProdajnaJedinica
-                {
-                    Zaposleni = zaposleni,
-                    ProdajnaJedinica = prodajnaJedinica,
-                    DatumPocetka = dto.DatumPocetka,
-                    DatumKraja = dto.DatumKraja
-                };
-                s.Save(zp);
-                s.Flush();
-                
-                MessageBox.Show("Veza je uspešno dodana!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Greška pri dodavanju veze zaposleni-prodajna jedinica: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public static IList<ZaposleniProdajnaJedinicaBasic> VratiZaposleneZaProdajnuJedinicu(long prodajnaJedinicaId)
-        {
-            try
-            {
-                using var s = DataLayer.GetSession();
-                var query = s.Query<ZaposleniProdajnaJedinica>()
-                    .Where(zp => zp.ProdajnaJedinica.Id == prodajnaJedinicaId)
-                    .Select(zp => new ZaposleniProdajnaJedinicaBasic
-                    {
-                        MBr = zp.Zaposleni.MBr,
-                        ProdajnaJedinicaId = zp.ProdajnaJedinica.Id,
-                        DatumPocetka = zp.DatumPocetka,
-                        DatumKraja = zp.DatumKraja,
-                        ZaposleniIme = zp.Zaposleni.Ime,
-                        ZaposleniPrezime = zp.Zaposleni.Prezime,
-                        ProdajnaJedinicaNaziv = zp.ProdajnaJedinica.Naziv
-                    });
-                return query.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Greška pri učitavanju zaposlenih za prodajnu jedinicu: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<ZaposleniProdajnaJedinicaBasic>();
-            }
-        }
-
-        public static IList<ZaposleniProdajnaJedinicaBasic> VratiProdajneJediniceZaZaposlenog(long mbr)
-        {
-            try
-            {
-                using var s = DataLayer.GetSession();
-                var query = s.Query<ZaposleniProdajnaJedinica>()
-                    .Where(zp => zp.Zaposleni.MBr == mbr)
-                    .Select(zp => new ZaposleniProdajnaJedinicaBasic
-                    {
-                        MBr = zp.Zaposleni.MBr,
-                        ProdajnaJedinicaId = zp.ProdajnaJedinica.Id,
-                        DatumPocetka = zp.DatumPocetka,
-                        DatumKraja = zp.DatumKraja,
-                        ZaposleniIme = zp.Zaposleni.Ime,
-                        ZaposleniPrezime = zp.Zaposleni.Prezime,
-                        ProdajnaJedinicaNaziv = zp.ProdajnaJedinica.Naziv
-                    });
-                return query.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Greška pri učitavanju prodajnih jedinica za zaposlenog: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<ZaposleniProdajnaJedinicaBasic>();
-            }
-        }
-
-        public static void ZavrsiRadZaposlenog(long mbr, long prodajnaJedinicaId, DateTime datumKraja)
-        {
-            try
-            {
-                using var s = DataLayer.GetSession();
-                var zp = s.Query<ZaposleniProdajnaJedinica>()
-                    .FirstOrDefault(x => x.Zaposleni.MBr == mbr && 
-                                       x.ProdajnaJedinica.Id == prodajnaJedinicaId && 
-                                       x.DatumKraja == null);
-                
-                if (zp != null)
-                {
-                    zp.DatumKraja = datumKraja;
-                    s.Update(zp);
-                    s.Flush();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Greška pri završetku rada zaposlenog: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         // ========== RASPORED RADA ==========
 
@@ -1047,6 +923,54 @@ namespace Farmacy
             catch (Exception ex)
             {
                 MessageBox.Show($"Greška pri učitavanju rasporeda rada: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<RasporedRadaBasic>();
+            }
+        }
+
+        public static IList<RasporedRadaBasic> VratiSveRasporedeRada()
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                
+                // Privremeno rešenje - direktan SQL upit dok se ne restaruje aplikacija
+                var sql = @"
+                    SELECT rr.m_br, rr.prodajna_jedinica_id, rr.pocetak, rr.kraj, rr.broj_smene,
+                           z.ime, z.prezime, pj.naziv
+                    FROM Raspored_rada rr
+                    LEFT JOIN Zaposleni z ON rr.m_br = z.m_br
+                    LEFT JOIN Prodajna_Jedinica pj ON rr.prodajna_jedinica_id = pj.id
+                    ORDER BY rr.pocetak";
+                
+                var query = s.CreateSQLQuery(sql);
+                var results = query.List();
+                var rasporedList = new List<RasporedRadaBasic>();
+                
+                foreach (object[] row in results)
+                {
+                    var raspored = new RasporedRadaBasic
+                    {
+                        MBr = Convert.ToInt64(row[0]),
+                        ProdajnaJedinicaId = Convert.ToInt64(row[1]),
+                        Pocetak = Convert.ToDateTime(row[2]),
+                        Kraj = Convert.ToDateTime(row[3]),
+                        BrojSmene = row[4] != null ? Convert.ToInt32(row[4]) : (int?)null,
+                        ZaposleniIme = row[5]?.ToString() ?? "",
+                        ZaposleniPrezime = row[6]?.ToString() ?? "",
+                        ProdajnaJedinicaNaziv = row[7]?.ToString() ?? "",
+                        SmenaNaziv = row[4] == null ? "Nije dodeljena" : 
+                                   Convert.ToInt32(row[4]) == 1 ? "Prva smena" :
+                                   Convert.ToInt32(row[4]) == 2 ? "Druga smena" : "Treća smena"
+                    };
+                    rasporedList.Add(raspored);
+                }
+                
+                return rasporedList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri učitavanju svih rasporeda rada: {ex.Message}", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new List<RasporedRadaBasic>();
             }

@@ -12,13 +12,14 @@ namespace Farmacy.Forme
 {
     public partial class RasporedRadaForm : Form
     {
-        private long prodajnaJedinicaId;
+        private long? prodajnaJedinicaId;
         private long? selektovaniMBr;
 
-        public RasporedRadaForm(long prodajnaJedinicaId)
+        public RasporedRadaForm(long? prodajnaJedinicaId = null)
         {
             InitializeComponent();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
+            LoadProdajneJedinice();
             LoadZaposlene();
             LoadRasporedRada();
         }
@@ -27,10 +28,10 @@ namespace Farmacy.Forme
         {
             try
             {
-                var zaposleni = DTOManagerZaposleni.VratiZaposleneZaProdajnuJedinicu(prodajnaJedinicaId);
+                var zaposleni = DTOManagerZaposleni.VratiSveZaposlene();
                 
                 cmbZaposleni.DataSource = zaposleni;
-                cmbZaposleni.DisplayMember = "ZaposleniIme";
+                cmbZaposleni.DisplayMember = "Ime";
                 cmbZaposleni.ValueMember = "MBr";
             }
             catch (Exception ex)
@@ -40,11 +41,43 @@ namespace Farmacy.Forme
             }
         }
 
+        private void LoadProdajneJedinice()
+        {
+            try
+            {
+                var prodajneJedinice = DTOManagerProdajneJedinice.VratiSveProdajneJedinice();
+                
+                cmbProdajnaJedinica.DataSource = prodajneJedinice;
+                cmbProdajnaJedinica.DisplayMember = "Naziv";
+                cmbProdajnaJedinica.ValueMember = "Id";
+                
+                // Postavi selektovanu prodajnu jedinicu ako je prosleđena
+                if (prodajnaJedinicaId.HasValue)
+                {
+                    cmbProdajnaJedinica.SelectedValue = prodajnaJedinicaId.Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri učitavanju prodajnih jedinica: {ex.Message}", "Greška", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void LoadRasporedRada()
         {
             try
             {
-                var raspored = DTOManagerZaposleni.VratiRasporedRadaZaProdajnuJedinicu(prodajnaJedinicaId);
+                IList<RasporedRadaBasic> raspored;
+                
+                if (prodajnaJedinicaId.HasValue)
+                {
+                    raspored = DTOManagerZaposleni.VratiRasporedRadaZaProdajnuJedinicu(prodajnaJedinicaId.Value);
+                }
+                else
+                {
+                    raspored = DTOManagerZaposleni.VratiSveRasporedeRada();
+                }
                 
                 dgvRaspored.AutoGenerateColumns = true;
                 dgvRaspored.DataSource = raspored;
@@ -61,6 +94,12 @@ namespace Farmacy.Forme
             if (cmbZaposleni.SelectedValue == null)
             {
                 MessageBox.Show("Molimo odaberite zaposlenog!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbProdajnaJedinica.SelectedValue == null)
+            {
+                MessageBox.Show("Molimo odaberite prodajnu jedinicu!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -81,7 +120,7 @@ namespace Farmacy.Forme
                 var raspored = new RasporedRadaBasic
                 {
                     MBr = (long)cmbZaposleni.SelectedValue,
-                    ProdajnaJedinicaId = prodajnaJedinicaId,
+                    ProdajnaJedinicaId = (long)cmbProdajnaJedinica.SelectedValue,
                     Pocetak = dtpPocetak.Value,
                     Kraj = dtpKraj.Value,
                     BrojSmene = cmbSmena.SelectedIndex + 1
@@ -126,6 +165,20 @@ namespace Farmacy.Forme
         private void btnZatvori_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnFiltriraj_Click(object sender, EventArgs e)
+        {
+            if (cmbProdajnaJedinica.SelectedValue != null)
+            {
+                prodajnaJedinicaId = (long)cmbProdajnaJedinica.SelectedValue;
+            }
+            else
+            {
+                prodajnaJedinicaId = null;
+            }
+            
+            LoadRasporedRada();
         }
 
         private void ClearForm()

@@ -281,5 +281,19 @@ namespace Farmacy.Forme
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnRasporedRada_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RasporedRadaForm form = new RasporedRadaForm();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri otvaranju forme za raspored rada: {ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

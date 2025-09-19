@@ -125,15 +125,6 @@ namespace Farmacy.Forme
             // Dodaj farmaceuta u sistem
             DTOManagerZaposleni.DodajFarmaceuta(farmaceut);
 
-            // Dodaj vezu sa prodajnom jedinicom
-            var veza = new ZaposleniProdajnaJedinicaBasic
-            {
-                MBr = farmaceut.MBr,
-                ProdajnaJedinicaId = prodajnaJedinicaId,
-                DatumPocetka = farmaceut.DatumZaposlenja,
-                DatumKraja = null
-            };
-            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
 
         }
 

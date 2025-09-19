@@ -124,15 +124,6 @@ namespace Farmacy.Forme
             // Dodaj menadžera u sistem
             DTOManagerZaposleni.DodajMenadzera(menadzer);
 
-            // Dodaj vezu sa prodajnom jedinicom
-            var veza = new ZaposleniProdajnaJedinicaBasic
-            {
-                MBr = menadzer.MBr,
-                ProdajnaJedinicaId = prodajnaJedinicaId,
-                DatumPocetka = menadzer.DatumZaposlenja,
-                DatumKraja = null
-            };
-            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
         }
 
         //public Entiteti.MenadzerBasic GetMenadzer()

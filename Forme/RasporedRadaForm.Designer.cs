@@ -42,6 +42,9 @@ namespace Farmacy.Forme
             this.btnZatvori = new System.Windows.Forms.Button();
             this.dgvRaspored = new System.Windows.Forms.DataGridView();
             this.lblRaspored = new System.Windows.Forms.Label();
+            this.lblProdajnaJedinica = new System.Windows.Forms.Label();
+            this.cmbProdajnaJedinica = new System.Windows.Forms.ComboBox();
+            this.btnFiltriraj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRaspored)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,11 +185,42 @@ namespace Farmacy.Forme
             this.lblRaspored.TabIndex = 13;
             this.lblRaspored.Text = "Raspored rada:";
             // 
+            // lblProdajnaJedinica
+            // 
+            this.lblProdajnaJedinica.AutoSize = true;
+            this.lblProdajnaJedinica.Location = new System.Drawing.Point(400, 20);
+            this.lblProdajnaJedinica.Name = "lblProdajnaJedinica";
+            this.lblProdajnaJedinica.Size = new System.Drawing.Size(100, 15);
+            this.lblProdajnaJedinica.TabIndex = 14;
+            this.lblProdajnaJedinica.Text = "Prodajna jedinica:";
+            // 
+            // cmbProdajnaJedinica
+            // 
+            this.cmbProdajnaJedinica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProdajnaJedinica.FormattingEnabled = true;
+            this.cmbProdajnaJedinica.Location = new System.Drawing.Point(520, 17);
+            this.cmbProdajnaJedinica.Name = "cmbProdajnaJedinica";
+            this.cmbProdajnaJedinica.Size = new System.Drawing.Size(200, 23);
+            this.cmbProdajnaJedinica.TabIndex = 15;
+            // 
+            // btnFiltriraj
+            // 
+            this.btnFiltriraj.Location = new System.Drawing.Point(400, 60);
+            this.btnFiltriraj.Name = "btnFiltriraj";
+            this.btnFiltriraj.Size = new System.Drawing.Size(100, 30);
+            this.btnFiltriraj.TabIndex = 16;
+            this.btnFiltriraj.Text = "Filtriraj";
+            this.btnFiltriraj.UseVisualStyleBackColor = true;
+            this.btnFiltriraj.Click += new System.EventHandler(this.btnFiltriraj_Click);
+            // 
             // RasporedRadaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 550);
+            this.Controls.Add(this.btnFiltriraj);
+            this.Controls.Add(this.cmbProdajnaJedinica);
+            this.Controls.Add(this.lblProdajnaJedinica);
             this.Controls.Add(this.lblRaspored);
             this.Controls.Add(this.dgvRaspored);
             this.Controls.Add(this.btnZatvori);
@@ -229,5 +263,8 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Button btnZatvori;
         private System.Windows.Forms.DataGridView dgvRaspored;
         private System.Windows.Forms.Label lblRaspored;
+        private System.Windows.Forms.Label lblProdajnaJedinica;
+        private System.Windows.Forms.ComboBox cmbProdajnaJedinica;
+        private System.Windows.Forms.Button btnFiltriraj;
     }
 }

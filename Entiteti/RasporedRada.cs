@@ -14,7 +14,7 @@ namespace Farmacy.Entiteti
         public virtual DateTime Kraj { get; set; }                   // KRAJ (TIMESTAMP)
         public virtual int? BrojSmene { get; set; }                  // BROJ_SMENE (1, 2, 3)
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             var other = obj as RasporedRada;
             if (ReferenceEquals(this, other)) return true;

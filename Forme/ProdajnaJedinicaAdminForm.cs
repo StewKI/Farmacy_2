@@ -327,8 +327,8 @@ namespace Farmacy.Forme
             }
             long id = Convert.ToInt64(dgvApoteke.CurrentRow.Cells[0].Value);
 
-            // Prikaži formu sa listom zaposlenih za tu prodajnu jedinicu
-            ZaposleniZaProdajnuJedinicuForm form = new ZaposleniZaProdajnuJedinicuForm(id);
+            // Prikaži formu za raspored rada
+            RasporedRadaForm form = new RasporedRadaForm(id);
             form.ShowDialog();
         }
 

@@ -51,16 +51,6 @@ CREATE TABLE Prodajna_jedinica (
   CONSTRAINT fk_pj_farm FOREIGN KEY (odgovorni_farmaceut_mbr) REFERENCES Farmaceut(m_br)
 );
 
-CREATE TABLE Zaposleni_Prodajna_Jedinica (
-  m_br                  NUMBER       NOT NULL,
-  prodajna_jedinica_id  NUMBER       NOT NULL,
-  datum_pocetka         DATE         NOT NULL,
-  datum_kraja           DATE,
-  CONSTRAINT pk_zp PRIMARY KEY (m_br, prodajna_jedinica_id, datum_pocetka),
-  CONSTRAINT fk_zp_mbr FOREIGN KEY (m_br) REFERENCES Zaposleni(m_br),
-  CONSTRAINT fk_zp_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
-  CONSTRAINT ck_zp_datum CHECK (datum_kraja IS NULL OR datum_kraja > datum_pocetka)
-);
 
 CREATE TABLE Standardna_apoteka (
   id        NUMBER PRIMARY KEY,

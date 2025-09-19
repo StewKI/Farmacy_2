@@ -142,8 +142,8 @@ namespace Farmacy.Forme
                 return;
             }
 
-            // Otvori formu za upravljanje zaposlenima
-            ZaposleniZaProdajnuJedinicuForm form = new ZaposleniZaProdajnuJedinicuForm(prodajnaJedinica.Id);
+            // Otvori formu za raspored rada
+            RasporedRadaForm form = new RasporedRadaForm(prodajnaJedinica.Id);
             form.ShowDialog();
         }
     }

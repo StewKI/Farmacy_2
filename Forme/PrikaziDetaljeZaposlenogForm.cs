@@ -79,14 +79,19 @@ namespace Farmacy.Forme
                     pnlMenadzer.Visible = false;
                 }
 
-                // Učitaj vezu sa prodajnom jedinicom
-                var veze = DTOManagerZaposleni.VratiProdajneJediniceZaZaposlenog(mbr);
-                var trenutnaVeza = veze?.FirstOrDefault(v => v.ProdajnaJedinicaId == prodajnaJedinicaId);
-                if (trenutnaVeza != null)
+                // Učitaj informacije o prodajnoj jedinici
+                var prodajnaJedinica = DTOManagerProdajneJedinice.VratiProdajnuJedinicu(prodajnaJedinicaId);
+                if (prodajnaJedinica != null)
                 {
-                    lblProdajnaJedinica.Text = trenutnaVeza.ProdajnaJedinicaNaziv;
-                    lblDatumPocetka.Text = trenutnaVeza.DatumPocetka.ToShortDateString();
-                    lblDatumKraja.Text = trenutnaVeza.DatumKraja?.ToShortDateString() ?? "Aktivan";
+                    lblProdajnaJedinica.Text = prodajnaJedinica.Naziv;
+                    lblDatumPocetka.Text = "N/A"; // Veza se više ne čuva
+                    lblDatumKraja.Text = "N/A"; // Veza se više ne čuva
+                }
+                else
+                {
+                    lblProdajnaJedinica.Text = "Nepoznato";
+                    lblDatumPocetka.Text = "N/A";
+                    lblDatumKraja.Text = "N/A";
                 }
             }
             catch (Exception ex)

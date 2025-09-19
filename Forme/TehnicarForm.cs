@@ -143,15 +143,6 @@ namespace Farmacy.Forme
             // Dodaj tehničara u sistem
             DTOManagerZaposleni.DodajTehnicara(tehnicar);
 
-            // Dodaj vezu sa prodajnom jedinicom
-            var veza = new ZaposleniProdajnaJedinicaBasic
-            {
-                MBr = tehnicar.MBr,
-                ProdajnaJedinicaId = prodajnaJedinicaId,
-                DatumPocetka = tehnicar.DatumZaposlenja,
-                DatumKraja = null
-            };
-            DTOManagerZaposleni.DodajZaposleniProdajnaJedinica(veza);
         }
 
         //public Tehnicar GetTehnicar()

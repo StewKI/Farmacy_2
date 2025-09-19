@@ -187,16 +187,6 @@ namespace Farmacy
         public string ProdajnaJedinicaNaziv { get; set; }
     }
 
-    public class ZaposleniProdajnaJedinicaBasic
-    {
-        public virtual long MBr { get; set; }
-        public virtual long ProdajnaJedinicaId { get; set; }
-        public virtual DateTime DatumPocetka { get; set; }
-        public virtual DateTime? DatumKraja { get; set; }
-        public virtual string ZaposleniIme { get; set; } = default!;
-        public virtual string ZaposleniPrezime { get; set; } = default!;
-        public virtual string ProdajnaJedinicaNaziv { get; set; } = default!;
-    }
 
     public class RasporedRadaBasic
     {

@@ -28,6 +28,7 @@
             groupBoxZaposleni = new GroupBox();
             dgvZaposleni = new DataGridView();
             panelDesno = new Panel();
+            btnRasporedRada = new Button();
             btnPrikaziSve = new Button();
             btnPrikaziMenadzere = new Button();
             brnPrikaziTehnicare = new Button();
@@ -46,9 +47,10 @@
             groupBoxZaposleni.Dock = DockStyle.Left;
             groupBoxZaposleni.Font = new Font("Segoe UI", 9F);
             groupBoxZaposleni.Location = new Point(0, 0);
+            groupBoxZaposleni.Margin = new Padding(6, 6, 6, 6);
             groupBoxZaposleni.Name = "groupBoxZaposleni";
-            groupBoxZaposleni.Padding = new Padding(10);
-            groupBoxZaposleni.Size = new Size(670, 461);
+            groupBoxZaposleni.Padding = new Padding(19, 21, 19, 21);
+            groupBoxZaposleni.Size = new Size(1244, 1082);
             groupBoxZaposleni.TabIndex = 0;
             groupBoxZaposleni.TabStop = false;
             groupBoxZaposleni.Text = "Zaposleni";
@@ -61,17 +63,20 @@
             dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvZaposleni.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvZaposleni.Dock = DockStyle.Fill;
-            dgvZaposleni.Location = new Point(10, 26);
+            dgvZaposleni.Location = new Point(19, 53);
+            dgvZaposleni.Margin = new Padding(6, 6, 6, 6);
             dgvZaposleni.MultiSelect = false;
             dgvZaposleni.Name = "dgvZaposleni";
             dgvZaposleni.ReadOnly = true;
             dgvZaposleni.RowHeadersVisible = false;
+            dgvZaposleni.RowHeadersWidth = 82;
             dgvZaposleni.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvZaposleni.Size = new Size(650, 425);
+            dgvZaposleni.Size = new Size(1206, 1008);
             dgvZaposleni.TabIndex = 0;
             // 
             // panelDesno
             // 
+            panelDesno.Controls.Add(btnRasporedRada);
             panelDesno.Controls.Add(btnPrikaziSve);
             panelDesno.Controls.Add(btnPrikaziMenadzere);
             panelDesno.Controls.Add(brnPrikaziTehnicare);
@@ -80,21 +85,36 @@
             panelDesno.Controls.Add(btnIzmeniZaposlenog);
             panelDesno.Controls.Add(btnDodajNovog);
             panelDesno.Dock = DockStyle.Right;
-            panelDesno.Location = new Point(674, 0);
+            panelDesno.Location = new Point(1280, 0);
+            panelDesno.Margin = new Padding(6, 6, 6, 6);
             panelDesno.Name = "panelDesno";
-            panelDesno.Padding = new Padding(15);
-            panelDesno.Size = new Size(230, 461);
+            panelDesno.Padding = new Padding(28, 32, 28, 32);
+            panelDesno.Size = new Size(427, 1082);
             panelDesno.TabIndex = 1;
+            // 
+            // btnRasporedRada
+            // 
+            btnRasporedRada.Dock = DockStyle.Top;
+            btnRasporedRada.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRasporedRada.Location = new Point(28, 928);
+            btnRasporedRada.Margin = new Padding(0, 21, 0, 0);
+            btnRasporedRada.Name = "btnRasporedRada";
+            btnRasporedRada.Padding = new Padding(7, 9, 7, 9);
+            btnRasporedRada.Size = new Size(371, 128);
+            btnRasporedRada.TabIndex = 0;
+            btnRasporedRada.Text = "Raspored rada";
+            btnRasporedRada.UseVisualStyleBackColor = true;
+            btnRasporedRada.Click += btnRasporedRada_Click;
             // 
             // btnPrikaziSve
             // 
             btnPrikaziSve.Dock = DockStyle.Top;
             btnPrikaziSve.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnPrikaziSve.Location = new Point(15, 375);
-            btnPrikaziSve.Margin = new Padding(0, 10, 0, 0);
+            btnPrikaziSve.Location = new Point(28, 800);
+            btnPrikaziSve.Margin = new Padding(0, 21, 0, 0);
             btnPrikaziSve.Name = "btnPrikaziSve";
-            btnPrikaziSve.Padding = new Padding(4);
-            btnPrikaziSve.Size = new Size(200, 60);
+            btnPrikaziSve.Padding = new Padding(7, 9, 7, 9);
+            btnPrikaziSve.Size = new Size(371, 128);
             btnPrikaziSve.TabIndex = 6;
             btnPrikaziSve.Text = "Prikazi sve";
             btnPrikaziSve.UseVisualStyleBackColor = true;
@@ -104,11 +124,11 @@
             // 
             btnPrikaziMenadzere.Dock = DockStyle.Top;
             btnPrikaziMenadzere.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnPrikaziMenadzere.Location = new Point(15, 315);
-            btnPrikaziMenadzere.Margin = new Padding(0, 10, 0, 0);
+            btnPrikaziMenadzere.Location = new Point(28, 672);
+            btnPrikaziMenadzere.Margin = new Padding(0, 21, 0, 0);
             btnPrikaziMenadzere.Name = "btnPrikaziMenadzere";
-            btnPrikaziMenadzere.Padding = new Padding(4);
-            btnPrikaziMenadzere.Size = new Size(200, 60);
+            btnPrikaziMenadzere.Padding = new Padding(7, 9, 7, 9);
+            btnPrikaziMenadzere.Size = new Size(371, 128);
             btnPrikaziMenadzere.TabIndex = 5;
             btnPrikaziMenadzere.Text = "Prikazi Menadzere";
             btnPrikaziMenadzere.UseVisualStyleBackColor = true;
@@ -118,11 +138,11 @@
             // 
             brnPrikaziTehnicare.Dock = DockStyle.Top;
             brnPrikaziTehnicare.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            brnPrikaziTehnicare.Location = new Point(15, 255);
-            brnPrikaziTehnicare.Margin = new Padding(0, 10, 0, 0);
+            brnPrikaziTehnicare.Location = new Point(28, 544);
+            brnPrikaziTehnicare.Margin = new Padding(0, 21, 0, 0);
             brnPrikaziTehnicare.Name = "brnPrikaziTehnicare";
-            brnPrikaziTehnicare.Padding = new Padding(4);
-            brnPrikaziTehnicare.Size = new Size(200, 60);
+            brnPrikaziTehnicare.Padding = new Padding(7, 9, 7, 9);
+            brnPrikaziTehnicare.Size = new Size(371, 128);
             brnPrikaziTehnicare.TabIndex = 4;
             brnPrikaziTehnicare.Text = "Prikazi tehnicare";
             brnPrikaziTehnicare.UseVisualStyleBackColor = true;
@@ -132,11 +152,11 @@
             // 
             brnPrikaziFarmaceute.Dock = DockStyle.Top;
             brnPrikaziFarmaceute.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            brnPrikaziFarmaceute.Location = new Point(15, 195);
-            brnPrikaziFarmaceute.Margin = new Padding(0, 10, 0, 0);
+            brnPrikaziFarmaceute.Location = new Point(28, 416);
+            brnPrikaziFarmaceute.Margin = new Padding(0, 21, 0, 0);
             brnPrikaziFarmaceute.Name = "brnPrikaziFarmaceute";
-            brnPrikaziFarmaceute.Padding = new Padding(4);
-            brnPrikaziFarmaceute.Size = new Size(200, 60);
+            brnPrikaziFarmaceute.Padding = new Padding(7, 9, 7, 9);
+            brnPrikaziFarmaceute.Size = new Size(371, 128);
             brnPrikaziFarmaceute.TabIndex = 3;
             brnPrikaziFarmaceute.Text = "Prikazi farmaceute";
             brnPrikaziFarmaceute.UseVisualStyleBackColor = true;
@@ -146,11 +166,11 @@
             // 
             btnObrisiZaposlenog.Dock = DockStyle.Top;
             btnObrisiZaposlenog.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnObrisiZaposlenog.Location = new Point(15, 135);
-            btnObrisiZaposlenog.Margin = new Padding(0, 10, 0, 0);
+            btnObrisiZaposlenog.Location = new Point(28, 288);
+            btnObrisiZaposlenog.Margin = new Padding(0, 21, 0, 0);
             btnObrisiZaposlenog.Name = "btnObrisiZaposlenog";
-            btnObrisiZaposlenog.Padding = new Padding(4);
-            btnObrisiZaposlenog.Size = new Size(200, 60);
+            btnObrisiZaposlenog.Padding = new Padding(7, 9, 7, 9);
+            btnObrisiZaposlenog.Size = new Size(371, 128);
             btnObrisiZaposlenog.TabIndex = 2;
             btnObrisiZaposlenog.Text = "Obriši zaposlenog";
             btnObrisiZaposlenog.UseVisualStyleBackColor = true;
@@ -160,11 +180,11 @@
             // 
             btnIzmeniZaposlenog.Dock = DockStyle.Top;
             btnIzmeniZaposlenog.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnIzmeniZaposlenog.Location = new Point(15, 75);
-            btnIzmeniZaposlenog.Margin = new Padding(0, 10, 0, 0);
+            btnIzmeniZaposlenog.Location = new Point(28, 160);
+            btnIzmeniZaposlenog.Margin = new Padding(0, 21, 0, 0);
             btnIzmeniZaposlenog.Name = "btnIzmeniZaposlenog";
-            btnIzmeniZaposlenog.Padding = new Padding(4);
-            btnIzmeniZaposlenog.Size = new Size(200, 60);
+            btnIzmeniZaposlenog.Padding = new Padding(7, 9, 7, 9);
+            btnIzmeniZaposlenog.Size = new Size(371, 128);
             btnIzmeniZaposlenog.TabIndex = 1;
             btnIzmeniZaposlenog.Text = "Izmeni zaposlenog";
             btnIzmeniZaposlenog.UseVisualStyleBackColor = true;
@@ -174,11 +194,11 @@
             // 
             btnDodajNovog.Dock = DockStyle.Top;
             btnDodajNovog.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnDodajNovog.Location = new Point(15, 15);
-            btnDodajNovog.Margin = new Padding(0, 10, 0, 0);
+            btnDodajNovog.Location = new Point(28, 32);
+            btnDodajNovog.Margin = new Padding(0, 21, 0, 0);
             btnDodajNovog.Name = "btnDodajNovog";
-            btnDodajNovog.Padding = new Padding(4);
-            btnDodajNovog.Size = new Size(200, 60);
+            btnDodajNovog.Padding = new Padding(7, 9, 7, 9);
+            btnDodajNovog.Size = new Size(371, 128);
             btnDodajNovog.TabIndex = 0;
             btnDodajNovog.Text = "Dodaj novog zaposlenog";
             btnDodajNovog.UseVisualStyleBackColor = true;
@@ -186,14 +206,15 @@
             // 
             // ZaposleniAdminForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 224, 190);
-            ClientSize = new Size(904, 461);
+            ClientSize = new Size(1707, 1082);
             Controls.Add(panelDesno);
             Controls.Add(groupBoxZaposleni);
             Font = new Font("Segoe UI", 9F);
-            MinimumSize = new Size(920, 500);
+            Margin = new Padding(6, 6, 6, 6);
+            MinimumSize = new Size(1686, 986);
             Name = "ZaposleniAdminForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Apoteka";
@@ -212,6 +233,7 @@
         private System.Windows.Forms.Button btnDodajNovog;
         private System.Windows.Forms.Button btnIzmeniZaposlenog;
         private System.Windows.Forms.Button btnObrisiZaposlenog;
+        private System.Windows.Forms.Button btnRasporedRada;
 
   
         private System.Windows.Forms.DataGridViewTextBoxColumn colMbr;
