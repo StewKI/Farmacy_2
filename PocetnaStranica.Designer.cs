@@ -55,7 +55,7 @@
             panelHeader.Location = new Point(0, 0);
             panelHeader.Margin = new Padding(5, 5, 5, 5);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1950, 240);
+            panelHeader.Size = new Size(1200, 180);
             panelHeader.TabIndex = 0;
             // 
             // lblSubtitle
@@ -63,7 +63,7 @@
             lblSubtitle.AutoSize = true;
             lblSubtitle.Font = new Font("Segoe UI", 12F);
             lblSubtitle.ForeColor = Color.FromArgb(200, 255, 255);
-            lblSubtitle.Location = new Point(81, 144);
+            lblSubtitle.Location = new Point(50, 110);
             lblSubtitle.Margin = new Padding(5, 0, 5, 0);
             lblSubtitle.Name = "lblSubtitle";
             lblSubtitle.Size = new Size(667, 45);
@@ -73,12 +73,12 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 28F, FontStyle.Bold);
+            lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(81, 48);
+            lblTitle.Location = new Point(50, 30);
             lblTitle.Margin = new Padding(5, 0, 5, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(823, 100);
+            lblTitle.Size = new Size(700, 85);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "🏥 FARMACY SYSTEM";
             // 
@@ -91,11 +91,11 @@
             panelMain.Controls.Add(btnDistributeri);
             panelMain.Controls.Add(btnProdajneJedinice);
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Location = new Point(0, 240);
+            panelMain.Location = new Point(0, 180);
             panelMain.Margin = new Padding(5, 5, 5, 5);
             panelMain.Name = "panelMain";
-            panelMain.Padding = new Padding(81, 80, 81, 80);
-            panelMain.Size = new Size(1950, 800);
+            panelMain.Padding = new Padding(50, 50, 50, 50);
+            panelMain.Size = new Size(1200, 600);
             panelMain.TabIndex = 1;
             // 
             // btnZaposleni
@@ -105,10 +105,10 @@
             btnZaposleni.FlatStyle = FlatStyle.Flat;
             btnZaposleni.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnZaposleni.ForeColor = Color.White;
-            btnZaposleni.Location = new Point(81, 352);
+            btnZaposleni.Location = new Point(50, 300);
             btnZaposleni.Margin = new Padding(5, 5, 5, 5);
             btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(325, 192);
+            btnZaposleni.Size = new Size(300, 200);
             btnZaposleni.TabIndex = 4;
             btnZaposleni.Text = "👥\r\nZaposleni";
             btnZaposleni.UseVisualStyleBackColor = false;
@@ -123,10 +123,10 @@
             btnLekovi.FlatStyle = FlatStyle.Flat;
             btnLekovi.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnLekovi.ForeColor = Color.White;
-            btnLekovi.Location = new Point(1300, 80);
+            btnLekovi.Location = new Point(450, 50);
             btnLekovi.Margin = new Padding(5, 5, 5, 5);
             btnLekovi.Name = "btnLekovi";
-            btnLekovi.Size = new Size(325, 192);
+            btnLekovi.Size = new Size(300, 200);
             btnLekovi.TabIndex = 3;
             btnLekovi.Text = "💊\r\nLekovi";
             btnLekovi.UseVisualStyleBackColor = false;
@@ -141,10 +141,10 @@
             btnProizvodjaci.FlatStyle = FlatStyle.Flat;
             btnProizvodjaci.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnProizvodjaci.ForeColor = Color.White;
-            btnProizvodjaci.Location = new Point(894, 80);
+            btnProizvodjaci.Location = new Point(850, 50);
             btnProizvodjaci.Margin = new Padding(5, 5, 5, 5);
             btnProizvodjaci.Name = "btnProizvodjaci";
-            btnProizvodjaci.Size = new Size(325, 192);
+            btnProizvodjaci.Size = new Size(300, 200);
             btnProizvodjaci.TabIndex = 2;
             btnProizvodjaci.Text = "🏭\r\nProizvođači";
             btnProizvodjaci.UseVisualStyleBackColor = false;
@@ -159,10 +159,10 @@
             btnDistributeri.FlatStyle = FlatStyle.Flat;
             btnDistributeri.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnDistributeri.ForeColor = Color.White;
-            btnDistributeri.Location = new Point(488, 80);
+            btnDistributeri.Location = new Point(450, 300);
             btnDistributeri.Margin = new Padding(5, 5, 5, 5);
             btnDistributeri.Name = "btnDistributeri";
-            btnDistributeri.Size = new Size(325, 192);
+            btnDistributeri.Size = new Size(300, 200);
             btnDistributeri.TabIndex = 1;
             btnDistributeri.Text = "🚚\r\nDistributeri";
             btnDistributeri.UseVisualStyleBackColor = false;
@@ -177,10 +177,10 @@
             btnProdajneJedinice.FlatStyle = FlatStyle.Flat;
             btnProdajneJedinice.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnProdajneJedinice.ForeColor = Color.White;
-            btnProdajneJedinice.Location = new Point(81, 80);
+            btnProdajneJedinice.Location = new Point(50, 50);
             btnProdajneJedinice.Margin = new Padding(5, 5, 5, 5);
             btnProdajneJedinice.Name = "btnProdajneJedinice";
-            btnProdajneJedinice.Size = new Size(325, 192);
+            btnProdajneJedinice.Size = new Size(300, 200);
             btnProdajneJedinice.TabIndex = 0;
             btnProdajneJedinice.Text = "🏪\r\nProdajne\r\nJedinice";
             btnProdajneJedinice.UseVisualStyleBackColor = false;
@@ -193,10 +193,10 @@
             panelFooter.BackColor = Color.FromArgb(44, 62, 80);
             panelFooter.Controls.Add(lblFooter);
             panelFooter.Dock = DockStyle.Bottom;
-            panelFooter.Location = new Point(0, 1040);
+            panelFooter.Location = new Point(0, 780);
             panelFooter.Margin = new Padding(5, 5, 5, 5);
             panelFooter.Name = "panelFooter";
-            panelFooter.Size = new Size(1950, 80);
+            panelFooter.Size = new Size(1200, 60);
             panelFooter.TabIndex = 2;
             // 
             // lblFooter
@@ -204,7 +204,7 @@
             lblFooter.AutoSize = true;
             lblFooter.Font = new Font("Segoe UI", 10F);
             lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
-            lblFooter.Location = new Point(81, 24);
+            lblFooter.Location = new Point(50, 15);
             lblFooter.Margin = new Padding(5, 0, 5, 0);
             lblFooter.Name = "lblFooter";
             lblFooter.Size = new Size(553, 37);
@@ -222,7 +222,7 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1950, 1120);
+            ClientSize = new Size(1200, 840);
             Controls.Add(panelMain);
             Controls.Add(panelFooter);
             Controls.Add(panelHeader);

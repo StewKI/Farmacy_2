@@ -17,6 +17,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += ZaposleniPrikaz_Load;
+            SetupButtonEffects();
         }
 
         private void ZaposleniPrikaz_Load(object sender, EventArgs e)
@@ -96,6 +97,36 @@ namespace Farmacy.Forme
         private void btnObrisiZaposlenog_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Add hover effects to all buttons
+            btnObrisiZaposlenog.MouseEnter += Button_MouseEnter;
+            btnObrisiZaposlenog.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Store original color and make button lighter
+                button.BackColor = Color.FromArgb(
+                    Math.Min(255, button.BackColor.R + 30),
+                    Math.Min(255, button.BackColor.G + 30),
+                    Math.Min(255, button.BackColor.B + 30)
+                );
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Restore original color
+                if (button == btnObrisiZaposlenog)
+                    button.BackColor = Color.FromArgb(231, 76, 60);
+            }
         }
     }
 }

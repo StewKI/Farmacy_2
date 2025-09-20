@@ -14,6 +14,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += ZaliheAdminForm_Load;
+            SetupButtonEffects();
         }
 
         private void ZaliheAdminForm_Load(object sender, EventArgs e)
@@ -157,6 +158,44 @@ namespace Farmacy.Forme
         private void dgvZalihe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Može se dodati dodatna logika ako je potrebna
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Add hover effects to all buttons
+            btnDodajNovuZalihu.MouseEnter += Button_MouseEnter;
+            btnDodajNovuZalihu.MouseLeave += Button_MouseLeave;
+            btnIzmeniZalihu.MouseEnter += Button_MouseEnter;
+            btnIzmeniZalihu.MouseLeave += Button_MouseLeave;
+            btnObrisiZalihu.MouseEnter += Button_MouseEnter;
+            btnObrisiZalihu.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Store original color and make button lighter
+                button.BackColor = Color.FromArgb(
+                    Math.Min(255, button.BackColor.R + 30),
+                    Math.Min(255, button.BackColor.G + 30),
+                    Math.Min(255, button.BackColor.B + 30)
+                );
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Restore original color
+                if (button == btnDodajNovuZalihu)
+                    button.BackColor = Color.FromArgb(40, 167, 69);
+                else if (button == btnIzmeniZalihu)
+                    button.BackColor = Color.FromArgb(0, 123, 255);
+                else if (button == btnObrisiZalihu)
+                    button.BackColor = Color.FromArgb(220, 53, 69);
+            }
         }
     }
 }

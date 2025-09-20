@@ -116,30 +116,30 @@
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(2100, 120);
+            panelHeader.Size = new Size(1600, 100);
             panelHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(30, 25);
+            lblTitle.Location = new Point(20, 20);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(400, 45);
+            lblTitle.Size = new Size(350, 37);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "🏪 PRODAJNE JEDINICE";
             // 
             // lblSubtitle
             // 
             lblSubtitle.AutoSize = true;
-            lblSubtitle.Font = new Font("Segoe UI", 11F);
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
             lblSubtitle.ForeColor = Color.FromArgb(200, 255, 200);
-            lblSubtitle.Location = new Point(30, 75);
+            lblSubtitle.Location = new Point(20, 60);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(600, 20);
+            lblSubtitle.Size = new Size(500, 19);
             lblSubtitle.TabIndex = 1;
-            lblSubtitle.Text = "Upravljanje prodajnim jedinicama, apotekama sa laboratorijom i specijalizovanim apotekama";
+            lblSubtitle.Text = "Upravljanje prodajnim jedinicama i apotekama";
             // 
             // panelMain
             // 
@@ -147,10 +147,10 @@
             panelMain.Controls.Add(panelButtons);
             panelMain.Controls.Add(groupBoxLista);
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Location = new Point(0, 120);
+            panelMain.Location = new Point(0, 100);
             panelMain.Name = "panelMain";
-            panelMain.Padding = new Padding(20);
-            panelMain.Size = new Size(2100, 1354);
+            panelMain.Padding = new Padding(15);
+            panelMain.Size = new Size(1600, 860);
             panelMain.TabIndex = 1;
             // 
             // groupBoxLista
@@ -159,10 +159,10 @@
             groupBoxLista.Dock = DockStyle.Fill;
             groupBoxLista.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBoxLista.ForeColor = Color.FromArgb(33, 37, 41);
-            groupBoxLista.Location = new Point(20, 20);
+            groupBoxLista.Location = new Point(15, 15);
             groupBoxLista.Name = "groupBoxLista";
-            groupBoxLista.Padding = new Padding(20);
-            groupBoxLista.Size = new Size(1400, 1314);
+            groupBoxLista.Padding = new Padding(15);
+            groupBoxLista.Size = new Size(1100, 830);
             groupBoxLista.TabIndex = 0;
             groupBoxLista.TabStop = false;
             groupBoxLista.Text = "Lista apoteka";
@@ -175,11 +175,11 @@
             tabControlApoteke.Controls.Add(tabStandardne);
             tabControlApoteke.Controls.Add(tabSpecijalizovane);
             tabControlApoteke.Dock = DockStyle.Fill;
-            tabControlApoteke.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            tabControlApoteke.Location = new Point(20, 50);
+            tabControlApoteke.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            tabControlApoteke.Location = new Point(15, 40);
             tabControlApoteke.Name = "tabControlApoteke";
             tabControlApoteke.SelectedIndex = 0;
-            tabControlApoteke.Size = new Size(1360, 1244);
+            tabControlApoteke.Size = new Size(1070, 775);
             tabControlApoteke.TabIndex = 0;
             // 
             // tabOsnovne
@@ -188,9 +188,9 @@
             tabOsnovne.Location = new Point(4, 24);
             tabOsnovne.Name = "tabOsnovne";
             tabOsnovne.Padding = new Padding(3);
-            tabOsnovne.Size = new Size(1352, 1216);
+            tabOsnovne.Size = new Size(1062, 747);
             tabOsnovne.TabIndex = 0;
-            tabOsnovne.Text = "🏪 Osnovne prodajne jedinice";
+            tabOsnovne.Text = "🏪 Osnovne";
             tabOsnovne.UseVisualStyleBackColor = true;
             // 
             // dgvOsnovne
@@ -201,7 +201,7 @@
             dgvOsnovne.BackgroundColor = Color.White;
             dgvOsnovne.BorderStyle = BorderStyle.None;
             dgvOsnovne.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvOsnovne.ColumnHeadersHeight = 50;
+            dgvOsnovne.ColumnHeadersHeight = 40;
             dgvOsnovne.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvOsnovne.Dock = DockStyle.Fill;
             dgvOsnovne.GridColor = Color.FromArgb(233, 236, 239);
@@ -211,9 +211,9 @@
             dgvOsnovne.ReadOnly = true;
             dgvOsnovne.RowHeadersVisible = false;
             dgvOsnovne.RowHeadersWidth = 51;
-            dgvOsnovne.RowTemplate.Height = 45;
+            dgvOsnovne.RowTemplate.Height = 35;
             dgvOsnovne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvOsnovne.Size = new Size(1346, 1210);
+            dgvOsnovne.Size = new Size(1056, 741);
             dgvOsnovne.TabIndex = 0;
             // 
             // tabSaLab
@@ -222,9 +222,9 @@
             tabSaLab.Location = new Point(4, 24);
             tabSaLab.Name = "tabSaLab";
             tabSaLab.Padding = new Padding(3);
-            tabSaLab.Size = new Size(1352, 1216);
+            tabSaLab.Size = new Size(1062, 747);
             tabSaLab.TabIndex = 1;
-            tabSaLab.Text = "🧪 Apoteke sa laboratorijom";
+            tabSaLab.Text = "🧪 Sa Lab";
             tabSaLab.UseVisualStyleBackColor = true;
             // 
             // dgvSaLab
@@ -256,9 +256,9 @@
             tabStandardne.Location = new Point(4, 24);
             tabStandardne.Name = "tabStandardne";
             tabStandardne.Padding = new Padding(3);
-            tabStandardne.Size = new Size(1352, 1216);
+            tabStandardne.Size = new Size(1062, 747);
             tabStandardne.TabIndex = 2;
-            tabStandardne.Text = "🏥 Standardne apoteke";
+            tabStandardne.Text = "🏥 Standardne";
             tabStandardne.UseVisualStyleBackColor = true;
             // 
             // dgvStandardne
@@ -290,9 +290,9 @@
             tabSpecijalizovane.Location = new Point(4, 24);
             tabSpecijalizovane.Name = "tabSpecijalizovane";
             tabSpecijalizovane.Padding = new Padding(3);
-            tabSpecijalizovane.Size = new Size(1352, 1216);
+            tabSpecijalizovane.Size = new Size(1062, 747);
             tabSpecijalizovane.TabIndex = 3;
-            tabSpecijalizovane.Text = "⚕️ Specijalizovane apoteke";
+            tabSpecijalizovane.Text = "⚕️ Specijalizovane";
             tabSpecijalizovane.UseVisualStyleBackColor = true;
             // 
             // dgvSpecijalizovane
@@ -325,23 +325,23 @@
             panelButtons.Controls.Add(grpServisi);
             panelButtons.Controls.Add(grpPodaci);
             panelButtons.Dock = DockStyle.Right;
-            panelButtons.Location = new Point(1440, 0);
+            panelButtons.Location = new Point(1130, 0);
             panelButtons.Name = "panelButtons";
-            panelButtons.Padding = new Padding(20);
-            panelButtons.Size = new Size(660, 1314);
+            panelButtons.Padding = new Padding(15);
+            panelButtons.Size = new Size(470, 830);
             panelButtons.TabIndex = 1;
             // 
             // grpZaposleni
             // 
             grpZaposleni.Controls.Add(btnZaposleni);
             grpZaposleni.Dock = DockStyle.Top;
-            grpZaposleni.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            grpZaposleni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpZaposleni.ForeColor = Color.FromArgb(33, 37, 41);
-            grpZaposleni.Location = new Point(20, 800);
-            grpZaposleni.Margin = new Padding(0, 20, 0, 0);
+            grpZaposleni.Location = new Point(15, 600);
+            grpZaposleni.Margin = new Padding(0, 15, 0, 0);
             grpZaposleni.Name = "grpZaposleni";
-            grpZaposleni.Padding = new Padding(15);
-            grpZaposleni.Size = new Size(620, 200);
+            grpZaposleni.Padding = new Padding(10);
+            grpZaposleni.Size = new Size(440, 120);
             grpZaposleni.TabIndex = 0;
             grpZaposleni.TabStop = false;
             grpZaposleni.Text = "👥 Zaposleni";
@@ -351,11 +351,11 @@
             btnZaposleni.BackColor = Color.FromArgb(230, 126, 34);
             btnZaposleni.FlatAppearance.BorderSize = 0;
             btnZaposleni.FlatStyle = FlatStyle.Flat;
-            btnZaposleni.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnZaposleni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnZaposleni.ForeColor = Color.White;
-            btnZaposleni.Location = new Point(15, 40);
+            btnZaposleni.Location = new Point(10, 30);
             btnZaposleni.Name = "btnZaposleni";
-            btnZaposleni.Size = new Size(590, 50);
+            btnZaposleni.Size = new Size(420, 40);
             btnZaposleni.TabIndex = 0;
             btnZaposleni.Text = "👥 Zaposleni";
             btnZaposleni.TextAlign = ContentAlignment.MiddleCenter;
@@ -370,13 +370,13 @@
             grpServisi.Controls.Add(btnZalihe);
             grpServisi.Controls.Add(btnProdaja);
             grpServisi.Dock = DockStyle.Top;
-            grpServisi.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            grpServisi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpServisi.ForeColor = Color.FromArgb(33, 37, 41);
-            grpServisi.Location = new Point(20, 410);
-            grpServisi.Margin = new Padding(0, 20, 0, 0);
+            grpServisi.Location = new Point(15, 350);
+            grpServisi.Margin = new Padding(0, 15, 0, 0);
             grpServisi.Name = "grpServisi";
-            grpServisi.Padding = new Padding(15);
-            grpServisi.Size = new Size(620, 390);
+            grpServisi.Padding = new Padding(10);
+            grpServisi.Size = new Size(440, 235);
             grpServisi.TabIndex = 1;
             grpServisi.TabStop = false;
             grpServisi.Text = "🔧 Servisi";
@@ -389,9 +389,9 @@
             btnRadnoVreme.FlatStyle = FlatStyle.Flat;
             btnRadnoVreme.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnRadnoVreme.ForeColor = Color.White;
-            btnRadnoVreme.Location = new Point(15, 250);
+            btnRadnoVreme.Location = new Point(15, 150);
             btnRadnoVreme.Name = "btnRadnoVreme";
-            btnRadnoVreme.Size = new Size(590, 50);
+            btnRadnoVreme.Size = new Size(410, 50);
             btnRadnoVreme.TabIndex = 0;
             btnRadnoVreme.Text = "⏰ Radno vreme";
             btnRadnoVreme.TextAlign = ContentAlignment.MiddleCenter;
@@ -407,9 +407,9 @@
             btnZalihe.FlatStyle = FlatStyle.Flat;
             btnZalihe.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnZalihe.ForeColor = Color.White;
-            btnZalihe.Location = new Point(15, 150);
+            btnZalihe.Location = new Point(15, 100);
             btnZalihe.Name = "btnZalihe";
-            btnZalihe.Size = new Size(590, 50);
+            btnZalihe.Size = new Size(410, 50);
             btnZalihe.TabIndex = 1;
             btnZalihe.Text = "📦 Zalihe";
             btnZalihe.TextAlign = ContentAlignment.MiddleCenter;
@@ -427,7 +427,7 @@
             btnProdaja.ForeColor = Color.White;
             btnProdaja.Location = new Point(15, 50);
             btnProdaja.Name = "btnProdaja";
-            btnProdaja.Size = new Size(590, 50);
+            btnProdaja.Size = new Size(410, 50);
             btnProdaja.TabIndex = 2;
             btnProdaja.Text = "💰 Prodaja";
             btnProdaja.TextAlign = ContentAlignment.MiddleCenter;
@@ -442,12 +442,12 @@
             grpPodaci.Controls.Add(btnObrisi);
             grpPodaci.Controls.Add(btnDodaj);
             grpPodaci.Dock = DockStyle.Top;
-            grpPodaci.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            grpPodaci.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpPodaci.ForeColor = Color.FromArgb(33, 37, 41);
-            grpPodaci.Location = new Point(20, 20);
+            grpPodaci.Location = new Point(15, 15);
             grpPodaci.Name = "grpPodaci";
-            grpPodaci.Padding = new Padding(15);
-            grpPodaci.Size = new Size(620, 390);
+            grpPodaci.Padding = new Padding(10);
+            grpPodaci.Size = new Size(440, 220);
             grpPodaci.TabIndex = 2;
             grpPodaci.TabStop = false;
             grpPodaci.Text = "📋 Podaci o apoteci";
@@ -459,9 +459,9 @@
             btnIzmeni.FlatStyle = FlatStyle.Flat;
             btnIzmeni.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnIzmeni.ForeColor = Color.White;
-            btnIzmeni.Location = new Point(15, 250);
+            btnIzmeni.Location = new Point(15, 150);
             btnIzmeni.Name = "btnIzmeni";
-            btnIzmeni.Size = new Size(590, 50);
+            btnIzmeni.Size = new Size(410, 50);
             btnIzmeni.TabIndex = 0;
             btnIzmeni.Text = "✏️ Izmeni apoteku";
             btnIzmeni.TextAlign = ContentAlignment.MiddleCenter;
@@ -477,9 +477,9 @@
             btnObrisi.FlatStyle = FlatStyle.Flat;
             btnObrisi.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnObrisi.ForeColor = Color.White;
-            btnObrisi.Location = new Point(15, 150);
+            btnObrisi.Location = new Point(15, 100);
             btnObrisi.Name = "btnObrisi";
-            btnObrisi.Size = new Size(590, 50);
+            btnObrisi.Size = new Size(410, 50);
             btnObrisi.TabIndex = 1;
             btnObrisi.Text = "🗑️ Obriši apoteku";
             btnObrisi.TextAlign = ContentAlignment.MiddleCenter;
@@ -497,7 +497,7 @@
             btnDodaj.ForeColor = Color.White;
             btnDodaj.Location = new Point(15, 50);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(590, 50);
+            btnDodaj.Size = new Size(410, 50);
             btnDodaj.TabIndex = 2;
             btnDodaj.Text = "➕ Dodaj apoteku";
             btnDodaj.TextAlign = ContentAlignment.MiddleCenter;
@@ -511,9 +511,9 @@
             panelFooter.BackColor = Color.FromArgb(44, 62, 80);
             panelFooter.Controls.Add(lblFooter);
             panelFooter.Dock = DockStyle.Bottom;
-            panelFooter.Location = new Point(0, 1474);
+            panelFooter.Location = new Point(0, 960);
             panelFooter.Name = "panelFooter";
-            panelFooter.Size = new Size(2100, 40);
+            panelFooter.Size = new Size(1600, 40);
             panelFooter.TabIndex = 2;
             // 
             // lblFooter
@@ -532,7 +532,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(2100, 1514);
+            ClientSize = new Size(1600, 1000);
             Controls.Add(panelMain);
             Controls.Add(panelFooter);
             Controls.Add(panelHeader);
