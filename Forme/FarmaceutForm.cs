@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
 
@@ -14,6 +15,7 @@ namespace Farmacy.Forme
             InitializeComponent();
             InitializeForm();
             this.prodajnaJedinicaId = 0; // Default value
+            SetupButtonEffects();
         }
 
         public FarmaceutForm(long prodajnaJedinicaId)
@@ -21,12 +23,14 @@ namespace Farmacy.Forme
             InitializeComponent();
             InitializeForm();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
+            SetupButtonEffects();
         }
 
         public FarmaceutForm(FarmaceutBasic farmaceut, long prodajnaJedinicaId) : this(prodajnaJedinicaId)
         {
             this.farmaceut = farmaceut;
             LoadFarmaceutData();
+            SetupButtonEffects();
         }
 
         private void InitializeForm()
@@ -141,6 +145,49 @@ namespace Farmacy.Forme
         private void lblMBr_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
+            btnCancel.MouseEnter += Button_MouseEnter;
+            btnCancel.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju samo ako nije već sačuvana
+                if (button.Tag == null)
+                {
+                    button.Tag = button.BackColor;
+                }
+                
+                // Promeni boju na hover
+                if (button == btnSave)
+                {
+                    button.BackColor = Color.FromArgb(33, 136, 56); // Tamnija zelena
+                }
+                else if (button == btnCancel)
+                {
+                    button.BackColor = Color.FromArgb(90, 98, 104); // Tamnija siva
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
         }
     }
 }

@@ -2,6 +2,8 @@ using Farmacy.Entiteti;
 using Farmacy_2.Forme;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Farmacy.Forme
@@ -16,6 +18,8 @@ namespace Farmacy.Forme
             InitializeComponent();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
             this.Load += ProdajaAdminForm_Load;
+            SetupButtonEffects();
+            SetupSearchFunctionality();
         }
 
         private void ProdajaAdminForm_Load(object sender, EventArgs e)
@@ -151,6 +155,116 @@ namespace Farmacy.Forme
         private void dgvProdaje_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Može se dodati dodatna logika ako je potrebna
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za sva dugmad
+            btnDodajNovuProdaju.MouseEnter += Button_MouseEnter;
+            btnDodajNovuProdaju.MouseLeave += Button_MouseLeave;
+            btnObrisiProdaju.MouseEnter += Button_MouseEnter;
+            btnObrisiProdaju.MouseLeave += Button_MouseLeave;
+            btnDetalji.MouseEnter += Button_MouseEnter;
+            btnDetalji.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnDodajNovuProdaju)
+                {
+                    button.BackColor = Color.FromArgb(33, 136, 56); // Tamnija zelena
+                }
+                else if (button == btnObrisiProdaju)
+                {
+                    button.BackColor = Color.FromArgb(200, 35, 51); // Tamnija crvena
+                }
+                else if (button == btnDetalji)
+                {
+                    button.BackColor = Color.FromArgb(0, 86, 179); // Tamnija plava
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
+        }
+
+        private void SetupSearchFunctionality()
+        {
+            txtSearch.TextChanged += TxtSearch_TextChanged;
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void FilterData()
+        {
+            try
+            {
+                string searchText = txtSearch.Text.ToLower().Trim();
+                
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    popuniPodacimaProdaja();
+                    return;
+                }
+
+                IList<ProdajaBasic> allData;
+                
+                if (prodajnaJedinicaId.HasValue)
+                {
+                    allData = DTOManagerIsporukeZalihe.VratiProdajeZaProdajnuJedinicu(prodajnaJedinicaId.Value) ?? new List<ProdajaBasic>();
+                }
+                else
+                {
+                    allData = DTOManagerIsporukeZalihe.VratiSveProdaje() ?? new List<ProdajaBasic>();
+                }
+
+                var filteredData = allData.Where(p => 
+                    (p.ProdajnaJedinicaNaziv?.ToLower().Contains(searchText) == true) ||
+                    (p.BlagajnikIme?.ToLower().Contains(searchText) == true) ||
+                    p.Id.ToString().Contains(searchText)
+                ).ToList();
+
+                dgvProdaje.DataSource = filteredData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri pretrazi: " + ex.Message, "Greška", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnDetalji_Click(object sender, EventArgs e)
+        {
+            if (dgvProdaje.CurrentRow == null)
+            {
+                MessageBox.Show("Morate selektovati prodaju prvo!", "Upozorenje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            long prodajaId = Convert.ToInt64(dgvProdaje.CurrentRow.Cells[0].Value);
+            
+            // Ovde će se implementirati forma za detalje prodaje
+            MessageBox.Show($"Detalji prodaje ID: {prodajaId}\n\nOva funkcionalnost će biti implementirana u sledećoj verziji.", 
+                "Detalji prodaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
