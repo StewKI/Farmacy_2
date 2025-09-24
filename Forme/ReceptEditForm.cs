@@ -116,9 +116,7 @@ namespace Farmacy.Forme
             recept.DatumIzd = dtpDatumIzd.Value;
             recept.Status = cmbStatus.Text;
             recept.NazivUstanove = txtNazivUstanove.Text.Trim();
-            recept.RealizacijaDatum = dtpRealizacijaDatum.Value;
-            
-            // Napomena: RealizovanaProdajnaJedinica i RealizovaoFarmaceut treba postaviti spolja
+            recept.RealizacijaDatum = dtpRealizacijaDatum.Value;   
         }
 
         public Recept GetRecept()

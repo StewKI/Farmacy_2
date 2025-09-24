@@ -23,9 +23,7 @@ namespace Farmacy.Forme
         private Label lblUkupanBroj;
         private TextBox txbBrojZaposlenih;
 
-        private DataGridViewTextBoxColumn colMbr;
-        private DataGridViewTextBoxColumn colIme;
-        private DataGridViewTextBoxColumn colPrezime;
+        // removed unused column field
 
         /// <summary>
         /// Clean up any resources being used.

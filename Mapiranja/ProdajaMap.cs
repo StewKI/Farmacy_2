@@ -14,7 +14,7 @@ namespace Farmacy.Mapiranja
         {
             Table("Prodaja");
 
-            Id(x => x.Id, "id").GeneratedBy.Identity();
+            Id(x => x.Id, "id").GeneratedBy.Sequence("PRODAJA_SEQ");
 
             References(x => x.ProdajnaJedinica, "prodajna_jedinica_id").Not.Nullable();
 

@@ -61,11 +61,7 @@ namespace Farmacy
                 return k.Id;
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                      $"Greška pri dodavanju nove sekundarne kategorije : {ex.Message}",
-                      "Greška",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return 0;
         }
@@ -106,11 +102,7 @@ namespace Farmacy
                 return lek.Id;
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri dodavanju novog leka : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
 
             }
             return 0;
@@ -129,11 +121,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                   $"Greška pri dodavanju novog oblika leka : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return 0;
         }
@@ -160,11 +148,7 @@ namespace Farmacy
                 return p.Id;
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri dodavanju novog pakovanja: {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return 0;
         }
@@ -281,8 +265,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju leka: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return null;
         }
@@ -313,8 +296,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju leka: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return null;
         }
@@ -462,8 +444,6 @@ namespace Farmacy
 
                 if (lek == null)
                 {
-                    MessageBox.Show("Lek sa datim ID ne postoji!", "Greška",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -504,14 +484,10 @@ namespace Farmacy
                 
                 s.Update(lek);
                 s.Flush();
-
-                MessageBox.Show("Lek je uspešno ažuriran!", "Uspeh",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri ažuriranju leka: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -537,14 +513,12 @@ namespace Farmacy
                     s.Delete(lek);
                     s.Flush();
 
-                    MessageBox.Show("Lek je uspešno obrisan!", "Uspeh",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Lek je uspešno obrisan!
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri brisanju leka: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -643,8 +617,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju sekundarne kategorije: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return null;
         }
@@ -664,18 +637,10 @@ namespace Farmacy
                 s.Save(veza);
                 s.Flush();
 
-                MessageBox.Show(
-            $": Uspesno je dodata kategorija",
-            "Uspesno",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+                // Uspesno je dodata kategorija
             }
             catch (Exception ex) {
-                MessageBox.Show(
-           $"Greška pri dodavanju LekSekundarnaKategorija: {ex.Message}",
-           "Greška",
-           MessageBoxButtons.OK,
-           MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             
         }

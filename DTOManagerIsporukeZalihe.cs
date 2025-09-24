@@ -107,19 +107,11 @@ namespace Farmacy
                 s.Save(d1);
                 s.Flush();
 
-                MessageBox.Show(
-            $"Uspesno je dodat distributer",
-            "Uspesno",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+                // Uspesno je dodat distributer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-           $"Greška pri dodavanju LekSekundarnaKategorija: {ex.Message}",
-           "Greška",
-           MessageBoxButtons.OK,
-           MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -140,19 +132,11 @@ namespace Farmacy
                 s.Save(d1);
                 s.Flush();
 
-                MessageBox.Show(
-            $"Uspesno je dodat recept",
-            "Uspesno",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+                // Uspesno je dodat recept
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-           $"Greška pri dodavanju Recepta: {ex.Message}",
-           "Greška",
-           MessageBoxButtons.OK,
-           MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
 
         }
@@ -179,19 +163,11 @@ namespace Farmacy
                 s.Update(r);
                 s.Flush();
 
-                MessageBox.Show(
-            $"Uspesno je realizovan recept",
-            "Uspesno",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+                // Uspesno je realizovan recept
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-           $"Greška pri realizaciji Recepta: {ex.Message}",
-           "Greška",
-           MessageBoxButtons.OK,
-           MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
 
         }
@@ -515,19 +491,11 @@ namespace Farmacy
                 s.Save(p);
                 s.Flush();
 
-                MessageBox.Show(
-                    $"Uspešno je dodat proizvodjač",
-                    "Uspešno",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Uspešno je dodat proizvodjač
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri dodavanju proizvodjača: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -597,19 +565,11 @@ namespace Farmacy
                 s.Save(zaliha);
                 s.Flush();
 
-                MessageBox.Show(
-                    $"Uspešno je dodana zaliha",
-                    "Uspešno",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Uspešno je dodana zaliha
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri dodavanju zalihe: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -880,21 +840,13 @@ namespace Farmacy
                 s.Save(prodaja);
                 s.Flush();
 
-                MessageBox.Show(
-                    $"Uspešno je dodana prodaja",
-                    "Uspešno",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Uspešno je dodana prodaja
 
                 return prodaja.Id;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri dodavanju prodaje: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return 0;
             }
         }

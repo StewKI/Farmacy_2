@@ -46,12 +46,7 @@
             base.Dispose(disposing);
         }
 
-        // kolone grida
-        private DataGridViewTextBoxColumn colId;
-        private DataGridViewTextBoxColumn colNaziv;
-        private DataGridViewTextBoxColumn colUlica;
-        private DataGridViewTextBoxColumn colPostanskiBroj;
-        private DataGridViewTextBoxColumn colMesto;
+        // kolone grida - removed unused columns
 
 
         #region Windows Form Designer generated code

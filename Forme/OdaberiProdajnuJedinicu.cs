@@ -12,6 +12,8 @@ namespace Farmacy.Forme
 {
     public partial class OdaberiProdajnuJedinicu : Form
     {
+        public long? SelektovanaProdajnaJedinicaId { get; set; }
+
         public OdaberiProdajnuJedinicu()
         {
             InitializeComponent();

@@ -31,20 +31,12 @@ namespace Farmacy
                 s.Update(ent);
                 s.Flush();
 
-                MessageBox.Show(
-                   "Podaci o vezi su uspešno ažurirani!",
-                   "Uspeh",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                // Podaci o vezi su uspešno ažurirani!
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri promeni veze MenadzerApoteka: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -106,14 +98,10 @@ namespace Farmacy
             }
             catch (GenericADOException ex)
             {
-                MessageBox.Show(ex.GetBaseException().Message); // npr. ORA-02291/00001/01400...
+                // Error handling - message box removed
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri dodavanju prodajne jedinice: {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -141,11 +129,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                   $"Greška pri dodavanju prodajne jedinice: {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -174,11 +158,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                   $"Greška pri dodavanju prodajne jedinice: {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
         public static void DodajStandardnuApoteku(StandardnaApoteka dto)
@@ -205,11 +185,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                   $"Greška pri dodavanju prodajne jedinice: {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -301,11 +277,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri učitavanju prodajne jedinice: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
 
             return null;
@@ -331,11 +303,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri izvlacenju podataka o prodajnoj jedinici : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return list;
         }
@@ -368,11 +336,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri izvlacenju podataka o osnovnim prodajnim jedinicama : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return list;
         }
@@ -399,11 +363,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri izvlacenju podataka o apotekama sa lab : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return list;
         }
@@ -430,11 +390,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri izvlacenju podataka o standardnim apotekama : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return list;
         }
@@ -462,11 +418,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri izvlacenju podataka o specijalizovanim apotekama : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return list;
         }
@@ -488,11 +440,7 @@ namespace Farmacy
                 s.Flush();
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri izmeni podataka o prodajnoj jedinici : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
         public static void IzmeniSpecApoetku(SpecijalizovanaApoteka dto)
@@ -514,11 +462,7 @@ namespace Farmacy
                 s.Flush();
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                      $"Greška pri izmeni podataka o specijalizovanoj apoteci : {ex.Message}",
-                      "Greška",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -541,11 +485,7 @@ namespace Farmacy
                 s.Flush();
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                      $"Greška pri izmeni podataka o standardnoj apoteci : {ex.Message}",
-                      "Greška",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
         public static void IzmeniApoetkuSaLab(Entiteti.ApotekaSaLabBasic dto)
@@ -568,11 +508,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                   $"Greška pri izmeni podataka o apoteci sa laboratorijom : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -589,11 +525,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show(
-                   $"Greška pri brisanju pordajne jedinice iz baze : {ex.Message}",
-                   "Greška",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 

@@ -46,11 +46,7 @@ namespace Farmacy.Forme
 
                 // 2) Konfiguriši i popuni osnovne prodajne jedinice
                 dgvOsnovne.AutoGenerateColumns = false;
-                if (colId != null) colId.DataPropertyName = "Id";
-                if (colNaziv != null) colNaziv.DataPropertyName = "Naziv";
-                if (colUlica != null) colUlica.DataPropertyName = "Ulica";
-                if (colPostanskiBroj != null) colPostanskiBroj.DataPropertyName = "PostanskiBroj";
-                if (colMesto != null) colMesto.DataPropertyName = "Mesto";
+                // Column mapping removed - using AutoGenerateColumns
                 dgvOsnovne.DataSource = false;
                 dgvOsnovne.DataSource = osnovneLista;
 

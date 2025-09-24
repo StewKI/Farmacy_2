@@ -45,8 +45,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri dodavanju farmaceuta: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -60,8 +59,6 @@ namespace Farmacy
 
                 if (farmaceut == null)
                 {
-                    MessageBox.Show("Farmaceut sa datim MBr ne postoji!", "Greška",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -78,14 +75,10 @@ namespace Farmacy
 
                 s.Update(farmaceut);
                 s.Flush();
-
-                MessageBox.Show("Farmaceut uspešno ažuriran!", "Uspeh",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri ažuriranju farmaceuta: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -130,8 +123,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri dodavanju tehničara: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
         public static void UpdateTehnicara(TehnicarBasic dto)
@@ -144,8 +136,6 @@ namespace Farmacy
 
                 if (tehnicar == null)
                 {
-                    MessageBox.Show("Tehničar sa datim MBr ne postoji!", "Greška",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -159,14 +149,10 @@ namespace Farmacy
 
                 s.Update(tehnicar);
                 s.Flush();
-
-                MessageBox.Show("Tehničar uspešno ažuriran!", "Uspeh",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri ažuriranju tehničara: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -207,8 +193,6 @@ namespace Farmacy
 
                 if (menadzer == null)
                 {
-                    MessageBox.Show("Menadžer sa datim MBr ne postoji!", "Greška",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -221,14 +205,10 @@ namespace Farmacy
 
                 s.Update(menadzer);
                 s.Flush();
-
-                MessageBox.Show("Menadžer uspešno ažuriran!", "Uspeh",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri ažuriranju menadžera: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -255,11 +235,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-            $"Greška pri dodavanju zaposlenog: {ex.Message}",
-            "Greška",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
         public static void UpdateZaposlenog(Zaposleni dto)
@@ -273,11 +249,6 @@ namespace Farmacy
 
                 if (zaposleni == null)
                 {
-                    MessageBox.Show(
-                        "Zaposleni sa datim MBr ne postoji u bazi!",
-                        "Greška",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
                     return;
                 }
 
@@ -292,20 +263,10 @@ namespace Farmacy
                 // Sačuvaj izmene
                 s.Update(zaposleni);
                 s.Flush();
-
-                MessageBox.Show(
-                    "Podaci o zaposlenom su uspešno ažurirani!",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri ažuriranju zaposlenog: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -394,11 +355,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri izvlacenju zaposlenog iz baze: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
             return null;
         }
@@ -430,8 +387,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju farmaceuta: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return null;
             }
         }
@@ -460,8 +416,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju tehničara: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return null;
             }
         }
@@ -489,8 +444,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju menadžera: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return null;
             }
         }
@@ -577,11 +531,7 @@ namespace Farmacy
                             s.Flush();
 
                         }
-                        MessageBox.Show(
-                     "Sertifikacije tehnicara su uspesno obrisane",
-                     "Uspeh",
-                     MessageBoxButtons.OK,
-                     MessageBoxIcon.Information);
+                        // Sertifikacije tehnicara su uspesno obrisane
                     }
 
 
@@ -600,11 +550,7 @@ namespace Farmacy
                             s.Flush();
 
                         }
-                        MessageBox.Show(
-                     "Kontrole apoteka od strane menadzera su obrisane!",
-                     "Uspeh",
-                     MessageBoxButtons.OK,
-                     MessageBoxIcon.Information);
+                        // Kontrole apoteka od strane menadzera su obrisane!
                     }
 
                 }
@@ -621,11 +567,7 @@ namespace Farmacy
                         s.Delete(r);
                         s.Flush();
                     }
-                    MessageBox.Show(
-                    "Obrisan je raspored rada za zaposlenog.",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                    // Obrisan je raspored rada za zaposlenog.
                 }
 
 
@@ -634,19 +576,11 @@ namespace Farmacy
                     s.Delete(z1);
                     s.Flush();
                 }
-                MessageBox.Show(
-                    "Zaposleni uspesno obirsan.",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Zaposleni uspesno obirsan.
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(
-                    $"Greška pri brisanju zaposlenog: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -673,19 +607,11 @@ namespace Farmacy
                 s.Save(radnov);
                 s.Flush();
 
-                MessageBox.Show(
-                    "Kontrola apoteke kreirana uspesno",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Kontrola apoteke kreirana uspesno
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri kreiranju kontrole apoteke: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -713,20 +639,11 @@ namespace Farmacy
 
                 DodajRasporedRada(novi);
                 
-
-                MessageBox.Show(
-                    "Promena radnog mesta uspesna",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Promena radnog mesta uspesna
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška promeni radnog mesta: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -745,19 +662,11 @@ namespace Farmacy
                 s.Delete(raspored);
                 s.Flush();
 
-                MessageBox.Show(
-                    "Raspored rada izbrisan",
-                    "Uspeh",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Raspored rada izbrisan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška promeni radnog mesta: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -789,12 +698,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Greška pri vracanju rasporeda rada: {ex.Message}",
-                    "Greška",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
+                // Error handling - message box removed
                 return null;
             }
 
@@ -814,7 +718,6 @@ namespace Farmacy
                 var zaposleni = s.Get<Zaposleni>(dto.MBr);
                 if (zaposleni == null)
                 {
-                    MessageBox.Show($"Zaposleni sa MBr={dto.MBr} ne postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 
@@ -822,7 +725,6 @@ namespace Farmacy
                 var prodajnaJedinica = s.Get<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId);
                 if (prodajnaJedinica == null)
                 {
-                    MessageBox.Show($"Prodajna jedinica sa ID={dto.ProdajnaJedinicaId} ne postoji!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 
@@ -837,13 +739,10 @@ namespace Farmacy
                 
                 s.Save(raspored);
                 s.Flush();
-                
-                MessageBox.Show("Raspored rada je uspešno dodat!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri dodavanju rasporeda rada: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 
@@ -872,8 +771,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju rasporeda rada: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return new List<RasporedRadaBasic>();
             }
         }
@@ -922,8 +820,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju rasporeda rada: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return new List<RasporedRadaBasic>();
             }
         }
@@ -970,8 +867,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju svih rasporeda rada: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
                 return new List<RasporedRadaBasic>();
             }
         }
@@ -990,17 +886,11 @@ namespace Farmacy
                 {
                     s.Delete(raspored);
                     s.Flush();
-                    MessageBox.Show("Raspored rada je uspešno obrisan!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Raspored rada nije pronađen!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri brisanju rasporeda rada: {ex.Message}", "Greška",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Error handling - message box removed
             }
         }
 

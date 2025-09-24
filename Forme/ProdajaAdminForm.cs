@@ -114,9 +114,32 @@ namespace Farmacy.Forme
 
         private void btnDodajNovuProdaju_Click(object sender, EventArgs e)
         {
-            // Za sada samo poruka, kasnije će se implementirati ProdajaForm
-            MessageBox.Show("Funkcionalnost za dodavanje prodaje će biti implementirana kasnije.", "Info",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                long pjId;
+                if (prodajnaJedinicaId.HasValue)
+                {
+                    pjId = prodajnaJedinicaId.Value;
+                }
+                else
+                {
+                    // Ako forma nije otvorena za konkretnu PJ, traži da korisnik izabere
+                    using var dlg = new OdaberiProdajnuJedinicu();
+                    if (dlg.ShowDialog(this) != DialogResult.OK)
+                        return;
+                    pjId = dlg.SelektovanaProdajnaJedinicaId ?? 0;
+                }
+
+                using var f = new NovaProdajaForm(pjId);
+                if (f.ShowDialog(this) == DialogResult.OK)
+                {
+                    popuniPodacimaProdaja();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnObrisiProdaju_Click(object sender, EventArgs e)

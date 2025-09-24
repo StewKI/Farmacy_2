@@ -341,9 +341,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMbr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIme;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrezime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDatumRodj;
+        // removed unused column fields
     }
 }

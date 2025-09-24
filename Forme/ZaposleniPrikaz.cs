@@ -24,10 +24,8 @@ namespace Farmacy.Forme
         {
             popuniPodacima();
         }
-        int brojZaposlenih = 0;
         public void popuniPodacima()
         {
-            this.brojZaposlenih = 0;
 
             try
             {
@@ -36,9 +34,7 @@ namespace Farmacy.Forme
 
                 // 2) Mapiraj kolone (ako već nisu mapirane)
                 dgvZaposleni.AutoGenerateColumns = false;
-                if (colMbr != null) colMbr.DataPropertyName = "MBr";         // pazi na veliko B ako je tako u DTO-u
-                if (colIme != null) colIme.DataPropertyName = "Ime";
-                if (colPrezime != null) colPrezime.DataPropertyName = "Prezime";
+                // Column mapping removed - using AutoGenerateColumns
 
                 // 3) Veži podatke
                 dgvZaposleni.DataSource = false;   // osveži binding

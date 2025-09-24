@@ -115,6 +115,11 @@ namespace Farmacy
         public string? Ambalaza { get; set; }
         public string? NacinCuvanja { get; set; }
         public int? PreporuceniRokDana { get; set; }
+        
+        // Dodatne informacije za prikaz
+        public string LekNaziv { get; set; }
+        public string OblikNaziv { get; set; }
+        public string PrikazniNaziv => $"{LekNaziv} - {VelicinaPakovanja} ({KolicinaAktivne} {JedinicaMere})";
     }
 
     // === Distributer / isporuka / zaliha ===
@@ -199,5 +204,16 @@ namespace Farmacy
         public virtual string ZaposleniPrezime { get; set; } = default!;
         public virtual string ProdajnaJedinicaNaziv { get; set; } = default!;
         public virtual string SmenaNaziv { get; set; } = default!;
+    }
+
+    public class ReceptBasic
+    {
+        public string SerijskiBroj { get; set; }
+        public string SifraLekara { get; set; }
+        public DateTime DatumIzd { get; set; }
+        public string Status { get; set; }
+        public string NazivUstanove { get; set; }
+        public DateTime? RealizacijaDatum { get; set; }
+        public string PrikazniNaziv => $"{SerijskiBroj} - {NazivUstanove} ({Status})";
     }
 }
