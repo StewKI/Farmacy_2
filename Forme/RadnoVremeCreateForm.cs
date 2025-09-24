@@ -149,10 +149,6 @@ namespace Farmacy.Forme
             }
         }
 
-        private void btnZatvori_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private bool ValidateForm()
         {
@@ -231,8 +227,6 @@ namespace Farmacy.Forme
             btnDodaj.MouseLeave += Button_MouseLeave;
             btnObrisi.MouseEnter += Button_MouseEnter;
             btnObrisi.MouseLeave += Button_MouseLeave;
-            btnZatvori.MouseEnter += Button_MouseEnter;
-            btnZatvori.MouseLeave += Button_MouseLeave;
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
@@ -257,8 +251,6 @@ namespace Farmacy.Forme
                     button.BackColor = Color.FromArgb(46, 204, 113);
                 else if (button == btnObrisi)
                     button.BackColor = Color.FromArgb(231, 76, 60);
-                else if (button == btnZatvori)
-                    button.BackColor = Color.FromArgb(155, 89, 182);
             }
         }
     }

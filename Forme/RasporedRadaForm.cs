@@ -80,8 +80,62 @@ namespace Farmacy.Forme
                     raspored = DTOManagerZaposleni.VratiSveRasporedeRada();
                 }
                 
-                dgvRaspored.AutoGenerateColumns = true;
+                dgvRaspored.AutoGenerateColumns = false;
                 dgvRaspored.DataSource = raspored;
+                
+                // Konfiguriši kolone sa eksplicitnim širinama
+                if (dgvRaspored.Columns.Count == 0)
+                {
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colMBr",
+                        HeaderText = "MBr",
+                        DataPropertyName = "MBr",
+                        Width = 80
+                    });
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colZaposleniIme",
+                        HeaderText = "Ime",
+                        DataPropertyName = "ZaposleniIme",
+                        Width = 120
+                    });
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colZaposleniPrezime",
+                        HeaderText = "Prezime",
+                        DataPropertyName = "ZaposleniPrezime",
+                        Width = 120
+                    });
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colProdajnaJedinicaNaziv",
+                        HeaderText = "Prodajna jedinica",
+                        DataPropertyName = "ProdajnaJedinicaNaziv",
+                        Width = 200
+                    });
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colPocetak",
+                        HeaderText = "Početak",
+                        DataPropertyName = "Pocetak",
+                        Width = 150
+                    });
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colKraj",
+                        HeaderText = "Kraj",
+                        DataPropertyName = "Kraj",
+                        Width = 150
+                    });
+                    dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "colBrojSmene",
+                        HeaderText = "Smena",
+                        DataPropertyName = "BrojSmene",
+                        Width = 80
+                    });
+                }
             }
             catch (Exception ex)
             {
@@ -182,6 +236,74 @@ namespace Farmacy.Forme
             LoadRasporedRada();
         }
 
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            if (dgvRaspored.CurrentRow == null)
+            {
+                MessageBox.Show("Molimo odaberite raspored rada za izmenu!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var raspored = (RasporedRadaBasic)dgvRaspored.CurrentRow.DataBoundItem;
+            
+            // Popuni formu sa podacima za izmenu
+            cmbZaposleni.SelectedValue = raspored.MBr;
+            cmbProdajnaJedinica.SelectedValue = raspored.ProdajnaJedinicaId;
+            dtpPocetak.Value = raspored.Pocetak;
+            dtpKraj.Value = raspored.Kraj;
+            cmbSmena.SelectedIndex = raspored.BrojSmene.HasValue ? raspored.BrojSmene.Value - 1 : -1;
+            
+            MessageBox.Show("Podaci su učitani u formu za izmenu. Izmenite potrebne podatke i kliknite 'Dodaj' za snimanje izmena.", 
+                "Izmena rasporeda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnOcisti_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "CSV fajlovi (*.csv)|*.csv|Excel fajlovi (*.xlsx)|*.xlsx";
+                saveDialog.Title = "Izvezite raspored rada";
+                saveDialog.FileName = $"RasporedRada_{DateTime.Now:yyyyMMdd}.csv";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Implementacija export-a (može se dodati kasnije)
+                    MessageBox.Show($"Export funkcionalnost će biti implementirana u sledećoj verziji.\n\nOdabrani fajl: {saveDialog.FileName}", 
+                        "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri eksportu: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnStampaj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvRaspored.Rows.Count == 0)
+                {
+                    MessageBox.Show("Nema podataka za štampanje!", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Implementacija štampanja (može se dodati kasnije)
+                MessageBox.Show("Štampanje funkcionalnost će biti implementirana u sledećoj verziji.", 
+                    "Štampanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri štampanju: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ClearForm()
         {
             cmbZaposleni.SelectedIndex = -1;
@@ -210,6 +332,14 @@ namespace Farmacy.Forme
             btnZatvori.MouseLeave += Button_MouseLeave;
             btnFiltriraj.MouseEnter += Button_MouseEnter;
             btnFiltriraj.MouseLeave += Button_MouseLeave;
+            btnIzmeni.MouseEnter += Button_MouseEnter;
+            btnIzmeni.MouseLeave += Button_MouseLeave;
+            btnOcisti.MouseEnter += Button_MouseEnter;
+            btnOcisti.MouseLeave += Button_MouseLeave;
+            btnExport.MouseEnter += Button_MouseEnter;
+            btnExport.MouseLeave += Button_MouseLeave;
+            btnStampaj.MouseEnter += Button_MouseEnter;
+            btnStampaj.MouseLeave += Button_MouseLeave;
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
@@ -240,6 +370,14 @@ namespace Farmacy.Forme
                     button.BackColor = Color.FromArgb(230, 126, 34);
                 else if (button == btnFiltriraj)
                     button.BackColor = Color.FromArgb(52, 152, 219);
+                else if (button == btnIzmeni)
+                    button.BackColor = Color.FromArgb(52, 152, 219);
+                else if (button == btnOcisti)
+                    button.BackColor = Color.FromArgb(149, 165, 166);
+                else if (button == btnExport)
+                    button.BackColor = Color.FromArgb(155, 89, 182);
+                else if (button == btnStampaj)
+                    button.BackColor = Color.FromArgb(230, 126, 34);
             }
         }
     }

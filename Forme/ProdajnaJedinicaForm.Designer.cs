@@ -40,8 +40,6 @@ namespace Farmacy.Forme
             lblTitle = new Label();
             lblSubtitle = new Label();
             panelMain = new Panel();
-            lblId = new Label();
-            txtId = new TextBox();
             lblNaziv = new Label();
             txtNaziv = new TextBox();
             lblUlica = new Label();
@@ -115,8 +113,6 @@ namespace Farmacy.Forme
             panelMain.Controls.Add(lblUlica);
             panelMain.Controls.Add(txtNaziv);
             panelMain.Controls.Add(lblNaziv);
-            panelMain.Controls.Add(txtId);
-            panelMain.Controls.Add(lblId);
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 100);
             panelMain.Name = "panelMain";
@@ -124,35 +120,12 @@ namespace Farmacy.Forme
             panelMain.Size = new Size(800, 500);
             panelMain.TabIndex = 1;
             // 
-            // lblId
-            // 
-            lblId.AutoSize = true;
-            lblId.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblId.ForeColor = Color.FromArgb(33, 37, 41);
-            lblId.Location = new Point(30, 30);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(28, 19);
-            lblId.TabIndex = 0;
-            lblId.Text = "ID:";
-            // 
-            // txtId
-            // 
-            txtId.BackColor = Color.FromArgb(248, 249, 250);
-            txtId.BorderStyle = BorderStyle.FixedSingle;
-            txtId.Font = new Font("Segoe UI", 10F);
-            txtId.Location = new Point(250, 27);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(300, 25);
-            txtId.TabIndex = 1;
-            txtId.TabStop = false;
-            // 
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
             lblNaziv.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblNaziv.ForeColor = Color.FromArgb(33, 37, 41);
-            lblNaziv.Location = new Point(30, 70);
+            lblNaziv.Location = new Point(30, 30);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(51, 19);
             lblNaziv.TabIndex = 2;
@@ -163,7 +136,7 @@ namespace Farmacy.Forme
             txtNaziv.BackColor = Color.White;
             txtNaziv.BorderStyle = BorderStyle.FixedSingle;
             txtNaziv.Font = new Font("Segoe UI", 10F);
-            txtNaziv.Location = new Point(250, 67);
+            txtNaziv.Location = new Point(250, 27);
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(300, 25);
             txtNaziv.TabIndex = 3;
@@ -173,7 +146,7 @@ namespace Farmacy.Forme
             lblUlica.AutoSize = true;
             lblUlica.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblUlica.ForeColor = Color.FromArgb(33, 37, 41);
-            lblUlica.Location = new Point(30, 110);
+            lblUlica.Location = new Point(30, 70);
             lblUlica.Name = "lblUlica";
             lblUlica.Size = new Size(46, 19);
             lblUlica.TabIndex = 4;
@@ -184,7 +157,7 @@ namespace Farmacy.Forme
             txtUlica.BackColor = Color.White;
             txtUlica.BorderStyle = BorderStyle.FixedSingle;
             txtUlica.Font = new Font("Segoe UI", 10F);
-            txtUlica.Location = new Point(250, 107);
+            txtUlica.Location = new Point(250, 67);
             txtUlica.Name = "txtUlica";
             txtUlica.Size = new Size(300, 25);
             txtUlica.TabIndex = 5;
@@ -194,7 +167,7 @@ namespace Farmacy.Forme
             lblBroj.AutoSize = true;
             lblBroj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblBroj.ForeColor = Color.FromArgb(33, 37, 41);
-            lblBroj.Location = new Point(30, 150);
+            lblBroj.Location = new Point(30, 110);
             lblBroj.Name = "lblBroj";
             lblBroj.Size = new Size(39, 19);
             lblBroj.TabIndex = 6;
@@ -205,7 +178,7 @@ namespace Farmacy.Forme
             txtBroj.BackColor = Color.White;
             txtBroj.BorderStyle = BorderStyle.FixedSingle;
             txtBroj.Font = new Font("Segoe UI", 10F);
-            txtBroj.Location = new Point(250, 147);
+            txtBroj.Location = new Point(250, 107);
             txtBroj.Name = "txtBroj";
             txtBroj.Size = new Size(300, 25);
             txtBroj.TabIndex = 7;
@@ -215,7 +188,7 @@ namespace Farmacy.Forme
             lblPostanskiBroj.AutoSize = true;
             lblPostanskiBroj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPostanskiBroj.ForeColor = Color.FromArgb(33, 37, 41);
-            lblPostanskiBroj.Location = new Point(30, 190);
+            lblPostanskiBroj.Location = new Point(30, 150);
             lblPostanskiBroj.Name = "lblPostanskiBroj";
             lblPostanskiBroj.Size = new Size(107, 19);
             lblPostanskiBroj.TabIndex = 8;
@@ -226,7 +199,7 @@ namespace Farmacy.Forme
             txtPostanskiBroj.BackColor = Color.White;
             txtPostanskiBroj.BorderStyle = BorderStyle.FixedSingle;
             txtPostanskiBroj.Font = new Font("Segoe UI", 10F);
-            txtPostanskiBroj.Location = new Point(250, 187);
+            txtPostanskiBroj.Location = new Point(250, 147);
             txtPostanskiBroj.Name = "txtPostanskiBroj";
             txtPostanskiBroj.Size = new Size(300, 25);
             txtPostanskiBroj.TabIndex = 9;
@@ -236,7 +209,7 @@ namespace Farmacy.Forme
             lblMesto.AutoSize = true;
             lblMesto.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblMesto.ForeColor = Color.FromArgb(33, 37, 41);
-            lblMesto.Location = new Point(30, 230);
+            lblMesto.Location = new Point(30, 190);
             lblMesto.Name = "lblMesto";
             lblMesto.Size = new Size(54, 19);
             lblMesto.TabIndex = 10;
@@ -247,7 +220,7 @@ namespace Farmacy.Forme
             txtMesto.BackColor = Color.White;
             txtMesto.BorderStyle = BorderStyle.FixedSingle;
             txtMesto.Font = new Font("Segoe UI", 10F);
-            txtMesto.Location = new Point(250, 227);
+            txtMesto.Location = new Point(250, 187);
             txtMesto.Name = "txtMesto";
             txtMesto.Size = new Size(300, 25);
             txtMesto.TabIndex = 11;
@@ -257,7 +230,7 @@ namespace Farmacy.Forme
             lblOdgovorniFarmaceut.AutoSize = true;
             lblOdgovorniFarmaceut.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblOdgovorniFarmaceut.ForeColor = Color.FromArgb(33, 37, 41);
-            lblOdgovorniFarmaceut.Location = new Point(30, 270);
+            lblOdgovorniFarmaceut.Location = new Point(30, 230);
             lblOdgovorniFarmaceut.Name = "lblOdgovorniFarmaceut";
             lblOdgovorniFarmaceut.Size = new Size(160, 19);
             lblOdgovorniFarmaceut.TabIndex = 12;
@@ -269,7 +242,7 @@ namespace Farmacy.Forme
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Segoe UI", 10F);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(250, 267);
+            comboBox1.Location = new Point(250, 227);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(300, 25);
             comboBox1.TabIndex = 16;
@@ -281,7 +254,7 @@ namespace Farmacy.Forme
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(250, 320);
+            btnSave.Location = new Point(250, 280);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(140, 45);
             btnSave.TabIndex = 14;
@@ -298,7 +271,7 @@ namespace Farmacy.Forme
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(410, 320);
+            btnCancel.Location = new Point(410, 280);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(140, 45);
             btnCancel.TabIndex = 15;
@@ -315,7 +288,7 @@ namespace Farmacy.Forme
             btnUpravljajZaposlenima.FlatStyle = FlatStyle.Flat;
             btnUpravljajZaposlenima.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnUpravljajZaposlenima.ForeColor = Color.White;
-            btnUpravljajZaposlenima.Location = new Point(250, 380);
+            btnUpravljajZaposlenima.Location = new Point(250, 340);
             btnUpravljajZaposlenima.Name = "btnUpravljajZaposlenima";
             btnUpravljajZaposlenima.Size = new Size(300, 45);
             btnUpravljajZaposlenima.TabIndex = 16;
@@ -373,8 +346,6 @@ namespace Farmacy.Forme
 
         #endregion
 
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblNaziv;
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label lblUlica;

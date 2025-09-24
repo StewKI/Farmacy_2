@@ -8,10 +8,12 @@ namespace Farmacy.Forme
     public partial class NoviReceptForm : Form
     {
         private Recept recept;
+        private string originalSerijskiBroj;
 
         public NoviReceptForm()
         {
             InitializeComponent();
+            this.Text = "Novi recept";
             InitializeForm();
             SetupButtonEffects();
         }
@@ -19,6 +21,8 @@ namespace Farmacy.Forme
         public NoviReceptForm(Recept recept) : this()
         {
             this.recept = recept;
+            this.originalSerijskiBroj = recept.SerijskiBroj; // Sačuvamo originalni serijski broj
+            this.Text = "Izmena recepta";
             LoadReceptData();
         }
 
@@ -40,11 +44,24 @@ namespace Farmacy.Forme
         {
             if (recept != null)
             {
-                txtSerijskiBroj.Text = recept.SerijskiBroj;
+                // Za postojeći recept, sakrijemo polje za serijski broj jer se ne može menjati
+                lblSerijskiBroj.Visible = false;
+                txtSerijskiBroj.Visible = false;
+                
+                // Postavljamo vrednosti za ostala polja
+                txtSerijskiBroj.Text = recept.SerijskiBroj; // Zadržavamo vrednost za internal use
                 txtSifraLekara.Text = recept.SifraLekara;
                 dtpDatumIzd.Value = recept.DatumIzd;
                 cboStatus.SelectedItem = recept.Status;
                 txtNazivUstanove.Text = recept.NazivUstanove;
+                
+                // Ako ima dodatne podatke o realizaciji, prikaži ih
+                if (recept.RealizovanaProdajnaJedinica != null)
+                    txtRealizovanaProdajnaJedinica.Text = recept.RealizovanaProdajnaJedinica.Id.ToString();
+                if (recept.RealizacijaDatum.HasValue)
+                    dtpRealizacijaDatum.Value = recept.RealizacijaDatum.Value;
+                if (recept.RealizovaoFarmaceut != null)
+                    txtRealizovaoFarmaceut.Text = recept.RealizovaoFarmaceut.MBr.ToString();
             }
         }
 
@@ -66,7 +83,10 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrWhiteSpace(txtSerijskiBroj.Text))
+            bool isNewRecept = (recept == null);
+            
+            // Serijski broj je obavezan samo za nove recepte
+            if (isNewRecept && string.IsNullOrWhiteSpace(txtSerijskiBroj.Text))
             {
                 MessageBox.Show("Serijski broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSerijskiBroj.Focus();
@@ -106,18 +126,28 @@ namespace Farmacy.Forme
 
         private void SaveRecept()
         {
-            if (recept == null)
+            bool isNewRecept = (recept == null);
+            
+            if (isNewRecept)
             {
                 recept = new Recept();
+                recept.SerijskiBroj = txtSerijskiBroj.Text.Trim(); // Serijski broj se postavlja samo za nove recepte
             }
+            // Za postojeće recepte, serijski broj se ne menja (ostaje originalni)
 
-            recept.SerijskiBroj = txtSerijskiBroj.Text.Trim();
             recept.SifraLekara = txtSifraLekara.Text.Trim();
             recept.DatumIzd = dtpDatumIzd.Value;
             recept.Status = cboStatus.SelectedItem.ToString();
             recept.NazivUstanove = txtNazivUstanove.Text.Trim();
 
-            DTOManagerIsporukeZalihe.DodajRecept(recept);
+            if (isNewRecept)
+            {
+                DTOManagerIsporukeZalihe.DodajRecept(recept);
+            }
+            else
+            {
+                DTOManagerIsporukeZalihe.AzurirajRecept(recept, originalSerijskiBroj);
+            }
         }
 
         public Recept GetRecept()

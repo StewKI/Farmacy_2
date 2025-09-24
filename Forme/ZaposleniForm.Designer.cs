@@ -32,7 +32,6 @@ namespace Farmacy.Forme
             lblTitle = new Label();
             lblSubtitle = new Label();
             panelMain = new Panel();
-            lblMBr = new Label();
             lblPrezime = new Label();
             txtPrezime = new TextBox();
             lblIme = new Label();
@@ -49,7 +48,6 @@ namespace Farmacy.Forme
             btnCancel = new Button();
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
-            comboBox1 = new ComboBox();
             label2 = new Label();
             cmbSmena = new ComboBox();
             panelFooter = new Panel();
@@ -97,7 +95,6 @@ namespace Farmacy.Forme
             panelMain.BackColor = Color.FromArgb(245, 248, 250);
             panelMain.Controls.Add(cmbSmena);
             panelMain.Controls.Add(label2);
-            panelMain.Controls.Add(comboBox1);
             panelMain.Controls.Add(dateTimePicker1);
             panelMain.Controls.Add(label1);
             panelMain.Controls.Add(btnCancel);
@@ -114,7 +111,6 @@ namespace Farmacy.Forme
             panelMain.Controls.Add(lblIme);
             panelMain.Controls.Add(txtPrezime);
             panelMain.Controls.Add(lblPrezime);
-            panelMain.Controls.Add(lblMBr);
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 80);
             panelMain.Name = "panelMain";
@@ -122,24 +118,12 @@ namespace Farmacy.Forme
             panelMain.Size = new Size(700, 520);
             panelMain.TabIndex = 1;
             // 
-            // lblMBr
-            // 
-            lblMBr.AutoSize = true;
-            lblMBr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblMBr.ForeColor = Color.FromArgb(44, 62, 80);
-            lblMBr.Location = new Point(50, 30);
-            lblMBr.Name = "lblMBr";
-            lblMBr.Size = new Size(62, 19);
-            lblMBr.TabIndex = 0;
-            lblMBr.Text = "Apoteka";
-            lblMBr.Click += lblMBr_Click;
-            // 
             // lblPrezime
             // 
             lblPrezime.AutoSize = true;
             lblPrezime.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPrezime.ForeColor = Color.FromArgb(44, 62, 80);
-            lblPrezime.Location = new Point(50, 70);
+            lblPrezime.Location = new Point(50, 30);
             lblPrezime.Name = "lblPrezime";
             lblPrezime.Size = new Size(64, 19);
             lblPrezime.TabIndex = 2;
@@ -150,7 +134,7 @@ namespace Farmacy.Forme
             txtPrezime.BackColor = Color.White;
             txtPrezime.BorderStyle = BorderStyle.FixedSingle;
             txtPrezime.Font = new Font("Segoe UI", 10F);
-            txtPrezime.Location = new Point(200, 67);
+            txtPrezime.Location = new Point(200, 27);
             txtPrezime.Name = "txtPrezime";
             txtPrezime.Size = new Size(250, 26);
             txtPrezime.TabIndex = 3;
@@ -160,7 +144,7 @@ namespace Farmacy.Forme
             lblIme.AutoSize = true;
             lblIme.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblIme.ForeColor = Color.FromArgb(44, 62, 80);
-            lblIme.Location = new Point(50, 110);
+            lblIme.Location = new Point(50, 70);
             lblIme.Name = "lblIme";
             lblIme.Size = new Size(37, 19);
             lblIme.TabIndex = 4;
@@ -171,7 +155,7 @@ namespace Farmacy.Forme
             txtIme.BackColor = Color.White;
             txtIme.BorderStyle = BorderStyle.FixedSingle;
             txtIme.Font = new Font("Segoe UI", 10F);
-            txtIme.Location = new Point(200, 107);
+            txtIme.Location = new Point(200, 67);
             txtIme.Name = "txtIme";
             txtIme.Size = new Size(250, 26);
             txtIme.TabIndex = 5;
@@ -181,7 +165,7 @@ namespace Farmacy.Forme
             lblDatumRodj.AutoSize = true;
             lblDatumRodj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDatumRodj.ForeColor = Color.FromArgb(44, 62, 80);
-            lblDatumRodj.Location = new Point(50, 150);
+            lblDatumRodj.Location = new Point(50, 110);
             lblDatumRodj.Name = "lblDatumRodj";
             lblDatumRodj.Size = new Size(109, 19);
             lblDatumRodj.TabIndex = 6;
@@ -191,7 +175,7 @@ namespace Farmacy.Forme
             // 
             dtpDatumRodj.Font = new Font("Segoe UI", 10F);
             dtpDatumRodj.Format = DateTimePickerFormat.Short;
-            dtpDatumRodj.Location = new Point(200, 147);
+            dtpDatumRodj.Location = new Point(200, 107);
             dtpDatumRodj.Name = "dtpDatumRodj";
             dtpDatumRodj.Size = new Size(150, 26);
             dtpDatumRodj.TabIndex = 7;
@@ -201,7 +185,7 @@ namespace Farmacy.Forme
             lblAdresa.AutoSize = true;
             lblAdresa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblAdresa.ForeColor = Color.FromArgb(44, 62, 80);
-            lblAdresa.Location = new Point(50, 190);
+            lblAdresa.Location = new Point(50, 150);
             lblAdresa.Name = "lblAdresa";
             lblAdresa.Size = new Size(56, 19);
             lblAdresa.TabIndex = 8;
@@ -212,7 +196,7 @@ namespace Farmacy.Forme
             txtAdresa.BackColor = Color.White;
             txtAdresa.BorderStyle = BorderStyle.FixedSingle;
             txtAdresa.Font = new Font("Segoe UI", 10F);
-            txtAdresa.Location = new Point(200, 187);
+            txtAdresa.Location = new Point(200, 147);
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(250, 26);
             txtAdresa.TabIndex = 9;
@@ -222,7 +206,7 @@ namespace Farmacy.Forme
             lblTelefon.AutoSize = true;
             lblTelefon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblTelefon.ForeColor = Color.FromArgb(44, 62, 80);
-            lblTelefon.Location = new Point(50, 230);
+            lblTelefon.Location = new Point(50, 190);
             lblTelefon.Name = "lblTelefon";
             lblTelefon.Size = new Size(60, 19);
             lblTelefon.TabIndex = 10;
@@ -233,7 +217,7 @@ namespace Farmacy.Forme
             txtTelefon.BackColor = Color.White;
             txtTelefon.BorderStyle = BorderStyle.FixedSingle;
             txtTelefon.Font = new Font("Segoe UI", 10F);
-            txtTelefon.Location = new Point(200, 227);
+            txtTelefon.Location = new Point(200, 187);
             txtTelefon.Name = "txtTelefon";
             txtTelefon.Size = new Size(250, 26);
             txtTelefon.TabIndex = 11;
@@ -243,7 +227,7 @@ namespace Farmacy.Forme
             lblDatumZaposlenja.AutoSize = true;
             lblDatumZaposlenja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDatumZaposlenja.ForeColor = Color.FromArgb(44, 62, 80);
-            lblDatumZaposlenja.Location = new Point(50, 270);
+            lblDatumZaposlenja.Location = new Point(50, 230);
             lblDatumZaposlenja.Name = "lblDatumZaposlenja";
             lblDatumZaposlenja.Size = new Size(128, 19);
             lblDatumZaposlenja.TabIndex = 12;
@@ -253,7 +237,7 @@ namespace Farmacy.Forme
             // 
             dtpDatumZaposlenja.Font = new Font("Segoe UI", 10F);
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(200, 267);
+            dtpDatumZaposlenja.Location = new Point(200, 227);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
             dtpDatumZaposlenja.Size = new Size(150, 26);
             dtpDatumZaposlenja.TabIndex = 13;
@@ -265,7 +249,7 @@ namespace Farmacy.Forme
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(200, 450);
+            btnSave.Location = new Point(200, 390);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(120, 40);
             btnSave.TabIndex = 14;
@@ -280,7 +264,7 @@ namespace Farmacy.Forme
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(330, 450);
+            btnCancel.Location = new Point(330, 390);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 40);
             btnCancel.TabIndex = 15;
@@ -293,7 +277,7 @@ namespace Farmacy.Forme
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(44, 62, 80);
-            label1.Location = new Point(50, 310);
+            label1.Location = new Point(50, 270);
             label1.Name = "label1";
             label1.Size = new Size(159, 19);
             label1.TabIndex = 16;
@@ -304,30 +288,17 @@ namespace Farmacy.Forme
             // 
             dateTimePicker1.Font = new Font("Segoe UI", 10F);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(200, 307);
+            dateTimePicker1.Location = new Point(200, 267);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(150, 26);
             dateTimePicker1.TabIndex = 17;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.White;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Segoe UI", 10F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(200, 27);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(250, 25);
-            comboBox1.TabIndex = 18;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(44, 62, 80);
-            label2.Location = new Point(50, 350);
+            label2.Location = new Point(50, 310);
             label2.Name = "label2";
             label2.Size = new Size(89, 19);
             label2.TabIndex = 19;
@@ -340,7 +311,7 @@ namespace Farmacy.Forme
             cmbSmena.FlatStyle = FlatStyle.Flat;
             cmbSmena.Font = new Font("Segoe UI", 10F);
             cmbSmena.FormattingEnabled = true;
-            cmbSmena.Location = new Point(200, 347);
+            cmbSmena.Location = new Point(200, 307);
             cmbSmena.Name = "cmbSmena";
             cmbSmena.Size = new Size(250, 25);
             cmbSmena.TabIndex = 30;
@@ -399,7 +370,6 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.Label lblFooter;
-        private System.Windows.Forms.Label lblMBr;
         private System.Windows.Forms.Label lblPrezime;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label lblIme;
@@ -416,7 +386,6 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Button btnCancel;
         private Label label1;
         private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox1;
         private Label label2;
         private ComboBox cmbSmena;
     }

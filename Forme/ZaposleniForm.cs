@@ -14,7 +14,6 @@ namespace Farmacy.Forme
             InitializeComponent();
             InitializeForm();
             this.prodajnaJedinicaId = 0; // Default value
-            ucitajApoteke();
             SetupButtonEffects();
         }
 
@@ -23,7 +22,6 @@ namespace Farmacy.Forme
             InitializeComponent();
             InitializeForm();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
-            ucitajApoteke();
             SetupButtonEffects();
         }
 
@@ -33,29 +31,19 @@ namespace Farmacy.Forme
             LoadZaposleniData();
         }
 
-        void ucitajApoteke()
-        {
-            IList<ProdajnaJedinicaBasic>  lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
-            var nazivi = lista.Select(l=>new { Text=l.Naziv,Value=l.Id }).ToList();
-            comboBox1.DataSource = nazivi;
-            comboBox1.DisplayMember = "Text";
-            comboBox1.ValueMember = "Value";
-
-            var items = new[]
-                                {
-                                    new { Text = "Prva",  Value = 1 },
-                                    new { Text = "Druga", Value = 2 },
-                                    new { Text = "Treća", Value = 3 }
-                                }.ToList();
-
-            cmbSmena.DisplayMember = "Text";
-
-            cmbSmena.ValueMember = "Value";
-            cmbSmena.DataSource = items;
-        }
         private void InitializeForm()
         {
-            // Form initialization logic will be in Designer file
+            // Initialize smena combo box
+            var items = new[]
+            {
+                new { Text = "Prva",  Value = 1 },
+                new { Text = "Druga", Value = 2 },
+                new { Text = "Treća", Value = 3 }
+            }.ToList();
+
+            cmbSmena.DisplayMember = "Text";
+            cmbSmena.ValueMember = "Value";
+            cmbSmena.DataSource = items;
         }
 
         private void LoadZaposleniData()
@@ -177,15 +165,7 @@ namespace Farmacy.Forme
         {
         }
 
-        private void lblMBr_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void SetupButtonEffects()
         {

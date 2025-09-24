@@ -43,7 +43,6 @@ namespace Farmacy.Forme
             this.dtpVremeDo = new System.Windows.Forms.DateTimePicker();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
-            this.btnZatvori = new System.Windows.Forms.Button();
             this.grpLista = new System.Windows.Forms.GroupBox();
             this.dgvRadnoVreme = new System.Windows.Forms.DataGridView();
             this.panelFooter = new System.Windows.Forms.Panel();
@@ -103,7 +102,6 @@ namespace Farmacy.Forme
             // 
             // grpPodaci
             // 
-            this.grpPodaci.Controls.Add(this.btnZatvori);
             this.grpPodaci.Controls.Add(this.btnObrisi);
             this.grpPodaci.Controls.Add(this.btnDodaj);
             this.grpPodaci.Controls.Add(this.dtpVremeDo);
@@ -242,20 +240,6 @@ namespace Farmacy.Forme
             this.btnObrisi.UseVisualStyleBackColor = false;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
-            // btnZatvori
-            // 
-            this.btnZatvori.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
-            this.btnZatvori.FlatAppearance.BorderSize = 0;
-            this.btnZatvori.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZatvori.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnZatvori.ForeColor = System.Drawing.Color.White;
-            this.btnZatvori.Location = new System.Drawing.Point(260, 160);
-            this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(100, 35);
-            this.btnZatvori.TabIndex = 10;
-            this.btnZatvori.Text = "🚪 Zatvori";
-            this.btnZatvori.UseVisualStyleBackColor = false;
-            this.btnZatvori.Click += new System.EventHandler(this.btnZatvori_Click);
             // 
             // grpLista
             // 
@@ -356,7 +340,6 @@ namespace Farmacy.Forme
         private System.Windows.Forms.DateTimePicker dtpVremeDo;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnObrisi;
-        private System.Windows.Forms.Button btnZatvori;
         private System.Windows.Forms.GroupBox grpLista;
         private System.Windows.Forms.DataGridView dgvRadnoVreme;
     }
