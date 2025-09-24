@@ -139,8 +139,8 @@
             // panelMain
             // 
             panelMain.BackColor = Color.FromArgb(245, 248, 250);
-            panelMain.Controls.Add(panelButtons);
             panelMain.Controls.Add(groupBoxLista);
+            panelMain.Controls.Add(panelButtons);
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 100);
             panelMain.Name = "panelMain";

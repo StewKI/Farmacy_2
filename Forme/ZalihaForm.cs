@@ -41,10 +41,18 @@ namespace Farmacy.Forme
                 cmbProdajnaJedinica.ValueMember = "Id";
 
                 // Load Pakovanje data
-                var pakovanja = DTOManagerIsporukeZalihe.VratiSvaPakovanja();
-                cmbPakovanje.DataSource = pakovanja;
-                cmbPakovanje.DisplayMember = "VelicinaPakovanja";
-                cmbPakovanje.ValueMember = "Id";
+                var pakovanja = DTOManagerLek.VratiSvaPakovanja();
+                cmbPakovanje.DataSource = null;
+                cmbPakovanje.Items.Clear();
+                
+                foreach (var p in pakovanja)
+                {
+                    string displayText = $"{p.Lek.KomercijalniNaziv} - {p.VelicinaPakovanja} {p.JedinicaMere}";
+                    cmbPakovanje.Items.Add(new { Value = p.Id, Text = displayText, Pakovanje = p });
+                }
+                
+                cmbPakovanje.DisplayMember = "Text";
+                cmbPakovanje.ValueMember = "Value";
 
                 // Load Magacioneri data
                 var magacioneri = DTOManagerIsporukeZalihe.VratiSveMagacionere();
@@ -66,7 +74,17 @@ namespace Farmacy.Forme
             {
                 // Set ComboBox selections based on zaliha data
                 cmbProdajnaJedinica.SelectedValue = zaliha.ProdajnaJedinicaId;
-                cmbPakovanje.SelectedValue = zaliha.PakovanjeId;
+                
+                // Find and select the packaging in the combo box
+                for (int i = 0; i < cmbPakovanje.Items.Count; i++)
+                {
+                    dynamic item = cmbPakovanje.Items[i];
+                    if (item.Value == zaliha.PakovanjeId)
+                    {
+                        cmbPakovanje.SelectedIndex = i;
+                        break;
+                    }
+                }
                 numKolicina.Value = zaliha.Kolicina;
                 
                 if (zaliha.DatumPoslednjeIsporuke.HasValue)
@@ -104,7 +122,7 @@ namespace Farmacy.Forme
                 return false;
             }
 
-            if (cmbPakovanje.SelectedValue == null)
+            if (cmbPakovanje.SelectedItem == null)
             {
                 MessageBox.Show("Morate selektovati pakovanje!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbPakovanje.Focus();
@@ -142,14 +160,14 @@ namespace Farmacy.Forme
                 return;
             }
 
-            if (cmbPakovanje.SelectedValue == null)
+            if (cmbPakovanje.SelectedItem == null)
             {
                 MessageBox.Show("Morate selektovati pakovanje!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             zaliha.ProdajnaJedinicaId = (long)cmbProdajnaJedinica.SelectedValue;
-            zaliha.PakovanjeId = (long)cmbPakovanje.SelectedValue;
+            zaliha.PakovanjeId = ((dynamic)cmbPakovanje.SelectedItem).Value;
             zaliha.Kolicina = (int)numKolicina.Value;
             zaliha.DatumPoslednjeIsporuke = dtpDatumPoslednjeIsporuke.Value;
 

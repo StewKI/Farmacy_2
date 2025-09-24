@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
 
@@ -34,7 +37,6 @@ namespace Farmacy.Forme
         {
             if (specijalizovanaApoteka != null)
             {
-                txtId.Text = specijalizovanaApoteka.Id.ToString();
                 txtNaziv.Text = specijalizovanaApoteka.Naziv;
                 txtUlica.Text = specijalizovanaApoteka.Ulica;
                 txtBroj.Text = specijalizovanaApoteka.Broj;

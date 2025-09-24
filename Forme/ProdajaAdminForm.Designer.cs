@@ -65,8 +65,7 @@ namespace Farmacy.Forme
             // 
             // dgvProdaje
             // 
-            dgvProdaje.AllowUserToAddRows = false;
-            dgvProdaje.AllowUserToDeleteRows = false;
+            dgvProdaje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 249, 250);
             dgvProdaje.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvProdaje.BackgroundColor = Color.White;
@@ -100,9 +99,9 @@ namespace Farmacy.Forme
             dgvProdaje.ReadOnly = true;
             dgvProdaje.RowHeadersVisible = false;
             dgvProdaje.RowHeadersWidth = 51;
-            dgvProdaje.RowTemplate.Height = 45;
+            dgvProdaje.ScrollBars = ScrollBars.Both;
             dgvProdaje.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProdaje.Size = new Size(1166, 415);
+            dgvProdaje.Size = new Size(1166, 515);
             dgvProdaje.TabIndex = 0;
             dgvProdaje.CellContentClick += dgvProdaje_CellContentClick;
             // 
@@ -113,7 +112,7 @@ namespace Farmacy.Forme
             colId.MinimumWidth = 10;
             colId.Name = "colId";
             colId.ReadOnly = true;
-            colId.Width = 60;
+            colId.Width = 80;
             // 
             // colProdajnaJedinicaNaziv
             // 
@@ -122,7 +121,7 @@ namespace Farmacy.Forme
             colProdajnaJedinicaNaziv.MinimumWidth = 10;
             colProdajnaJedinicaNaziv.Name = "colProdajnaJedinicaNaziv";
             colProdajnaJedinicaNaziv.ReadOnly = true;
-            colProdajnaJedinicaNaziv.Width = 150;
+            colProdajnaJedinicaNaziv.Width = 200;
             // 
             // colDatumVreme
             // 
@@ -131,7 +130,7 @@ namespace Farmacy.Forme
             colDatumVreme.MinimumWidth = 10;
             colDatumVreme.Name = "colDatumVreme";
             colDatumVreme.ReadOnly = true;
-            colDatumVreme.Width = 150;
+            colDatumVreme.Width = 180;
             // 
             // colBlagajnikIme
             // 
@@ -140,7 +139,7 @@ namespace Farmacy.Forme
             colBlagajnikIme.MinimumWidth = 10;
             colBlagajnikIme.Name = "colBlagajnikIme";
             colBlagajnikIme.ReadOnly = true;
-            colBlagajnikIme.Width = 150;
+            colBlagajnikIme.Width = 180;
             // 
             // colUkupnaVrednost
             // 
@@ -149,7 +148,7 @@ namespace Farmacy.Forme
             colUkupnaVrednost.MinimumWidth = 10;
             colUkupnaVrednost.Name = "colUkupnaVrednost";
             colUkupnaVrednost.ReadOnly = true;
-            colUkupnaVrednost.Width = 120;
+            colUkupnaVrednost.Width = 150;
             // 
             // colBrojStavki
             // 
@@ -158,6 +157,7 @@ namespace Farmacy.Forme
             colBrojStavki.MinimumWidth = 10;
             colBrojStavki.Name = "colBrojStavki";
             colBrojStavki.ReadOnly = true;
+            colBrojStavki.Width = 120;
             // 
             // lblProdaje
             // 
@@ -265,7 +265,7 @@ namespace Farmacy.Forme
             panelMain.Margin = new Padding(4, 4, 4, 4);
             panelMain.Name = "panelMain";
             panelMain.Padding = new Padding(26, 26, 26, 26);
-            panelMain.Size = new Size(1560, 897);
+            panelMain.Size = new Size(1560, 997);
             panelMain.TabIndex = 0;
             // 
             // panelSearch
@@ -312,7 +312,7 @@ namespace Farmacy.Forme
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(248, 249, 250);
-            ClientSize = new Size(1560, 897);
+            ClientSize = new Size(1560, 997);
             Controls.Add(panelButtons);
             Controls.Add(panelMain);
             Font = new Font("Segoe UI", 9F);

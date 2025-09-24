@@ -141,6 +141,40 @@ namespace Farmacy
 
         }
 
+        public static void AzurirajRecept(Recept r, string originalSerijskiBroj = null)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+
+                // Ako je prosleđen originalni serijski broj, koristimo ga za pronalaženje
+                // Inače koristimo trenutni serijski broj (za slučaj da se nije menjao)
+                string serijskiBrojZaPretragu = originalSerijskiBroj ?? r.SerijskiBroj;
+                
+                var postojeciRecept = s.Get<Recept>(serijskiBrojZaPretragu);
+                if (postojeciRecept != null)
+                {
+                    // Ažuriramo sve podatke OSIM serijskog broja (jer je to primary key)
+                    postojeciRecept.SifraLekara = r.SifraLekara;
+                    postojeciRecept.DatumIzd = r.DatumIzd;
+                    postojeciRecept.Status = r.Status;
+                    postojeciRecept.NazivUstanove = r.NazivUstanove;
+                    postojeciRecept.RealizacijaDatum = r.RealizacijaDatum;
+                    
+                    s.Update(postojeciRecept);
+                    s.Flush();
+                }
+                else
+                {
+                    throw new Exception($"Recept sa serijskim brojem '{serijskiBrojZaPretragu}' nije pronađen!");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri ažuriranju recepta: " + ex.Message);
+            }
+        }
+
         public static void RealizujRecept(string idR, ProdajnaJedinicaBasic p,DateTime d)
         {
             try
@@ -822,6 +856,82 @@ namespace Farmacy
             }
             catch (Exception) { }
             return null;
+        }
+
+        public static Prodaja VratiProdajuSaStavkama(long id)
+        {
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var prodaja = s.Get<Prodaja>(id);
+                if (prodaja != null)
+                {
+                    // Force loading of related entities within the session
+                    var prodajnaJedinicaNaziv = prodaja.ProdajnaJedinica?.Naziv;
+                    var blagajnikIme = prodaja.Blagajnik?.Ime;
+                    
+                    // Force loading of sale items and their related entities
+                    var stavkeCount = prodaja.Stavke?.Count ?? 0;
+                    
+                    if (prodaja.Stavke != null)
+                    {
+                        var stavkeList = new List<ProdajaStavka>();
+                        foreach (var stavka in prodaja.Stavke)
+                        {
+                            // Force loading of packaging and drug information
+                            var pakovanjeNaziv = stavka.Pakovanje?.Lek?.KomercijalniNaziv;
+                            var pakovanjeVelicina = stavka.Pakovanje?.VelicinaPakovanja;
+                            var pakovanjeJedinica = stavka.Pakovanje?.JedinicaMere;
+                            
+                            // Force loading of prescription information
+                            var receptSerijski = stavka.Recept?.SerijskiBroj;
+                            
+                            // Add to list to ensure data is loaded
+                            stavkeList.Add(stavka);
+                        }
+                        
+                        // Replace the lazy-loaded collection with the fully loaded one
+                        prodaja.Stavke.Clear();
+                        foreach (var stavka in stavkeList)
+                        {
+                            prodaja.Stavke.Add(stavka);
+                        }
+                    }
+                }
+                return prodaja;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri učitavanju prodaje sa stavkama: " + ex.Message);
+            }
+        }
+
+        public static IList<ProdajaStavka> VratiStavkeProdaje(long prodajaId)
+        {
+            var list = new List<ProdajaStavka>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var stavke = s.Query<ProdajaStavka>()
+                    .Where(st => st.Prodaja.Id == prodajaId)
+                    .ToList();
+                
+                foreach (var stavka in stavke)
+                {
+                    // Force loading of related entities
+                    var pakovanjeNaziv = stavka.Pakovanje?.Lek?.KomercijalniNaziv;
+                    var pakovanjeVelicina = stavka.Pakovanje?.VelicinaPakovanja;
+                    var pakovanjeJedinica = stavka.Pakovanje?.JedinicaMere;
+                    var receptSerijski = stavka.Recept?.SerijskiBroj;
+                    
+                    list.Add(stavka);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Greška pri učitavanju stavki prodaje: " + ex.Message);
+            }
+            return list;
         }
 
         public static long DodajProdaju(ProdajaBasic dto)

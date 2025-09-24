@@ -47,61 +47,9 @@ namespace Farmacy.Forme
                 }
 
                 dgvProdaje.AutoGenerateColumns = false;
-                if (colId != null) colId.DataPropertyName = "Id";
-                if (colProdajnaJedinicaNaziv != null) colProdajnaJedinicaNaziv.DataPropertyName = "ProdajnaJedinicaNaziv";
-                if (colDatumVreme != null) colDatumVreme.DataPropertyName = "DatumVreme";
-                if (colBlagajnikIme != null) colBlagajnikIme.DataPropertyName = "BlagajnikIme";
-                if (colUkupnaVrednost != null) colUkupnaVrednost.DataPropertyName = "UkupnaVrednost";
-                if (colBrojStavki != null) colBrojStavki.DataPropertyName = "BrojStavki";
                 dgvProdaje.RowHeadersVisible = false;
-                dgvProdaje.DataSource = false;
+                dgvProdaje.DataSource = null;
                 dgvProdaje.DataSource = lista;
-
-                if (dgvProdaje.Columns.Count == 0)
-                {
-                    dgvProdaje.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colId",
-                        HeaderText = "ID",
-                        DataPropertyName = "Id",
-                        Width = 60
-                    });
-                    dgvProdaje.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colProdajnaJedinicaNaziv",
-                        HeaderText = "Prodajna Jedinica",
-                        DataPropertyName = "ProdajnaJedinicaNaziv",
-                        Width = 150
-                    });
-                    dgvProdaje.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colDatumVreme",
-                        HeaderText = "Datum i Vreme",
-                        DataPropertyName = "DatumVreme",
-                        Width = 150
-                    });
-                    dgvProdaje.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colBlagajnikIme",
-                        HeaderText = "Blagajnik",
-                        DataPropertyName = "BlagajnikIme",
-                        Width = 150
-                    });
-                    dgvProdaje.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colUkupnaVrednost",
-                        HeaderText = "Ukupna Vrednost",
-                        DataPropertyName = "UkupnaVrednost",
-                        Width = 120
-                    });
-                    dgvProdaje.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colBrojStavki",
-                        HeaderText = "Broj Stavki",
-                        DataPropertyName = "BrojStavki",
-                        Width = 100
-                    });
-                }
 
                 brojProdaja = lista.Count;
             }
@@ -283,11 +231,19 @@ namespace Farmacy.Forme
                 return;
             }
 
-            long prodajaId = Convert.ToInt64(dgvProdaje.CurrentRow.Cells[0].Value);
-            
-            // Ovde će se implementirati forma za detalje prodaje
-            MessageBox.Show($"Detalji prodaje ID: {prodajaId}\n\nOva funkcionalnost će biti implementirana u sledećoj verziji.", 
-                "Detalji prodaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                long prodajaId = Convert.ToInt64(dgvProdaje.CurrentRow.Cells[0].Value);
+                
+                // Otvori formu za detalje prodaje
+                using var detaljiForm = new ProdajaDetaljiForm(prodajaId);
+                detaljiForm.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri otvaranju detalja prodaje:\n{ex.Message}", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

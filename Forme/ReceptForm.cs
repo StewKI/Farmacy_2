@@ -1,6 +1,7 @@
 using Farmacy.Entiteti;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Farmacy.Forme
@@ -26,7 +27,6 @@ namespace Farmacy.Forme
                 IList<Recept> lista = DTOManagerIsporukeZalihe.VratiSveRecepte() ?? new List<Recept>();
 
                 dgvRecepti.AutoGenerateColumns = false;
-                if (colId != null) colId.DataPropertyName = "Id";
                 if (colSerijskiBroj != null) colSerijskiBroj.DataPropertyName = "SerijskiBroj";
                 if (colSifraLekara != null) colSifraLekara.DataPropertyName = "SifraLekara";
                 if (colDatumIzd != null) colDatumIzd.DataPropertyName = "DatumIzd";
@@ -40,45 +40,33 @@ namespace Farmacy.Forme
                 {
                     dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        Name = "colId",
-                        HeaderText = "ID",
-                        DataPropertyName = "Id",
-                        Width = 60
-                    });
-                    dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
-                    {
                         Name = "colSerijskiBroj",
                         HeaderText = "Serijski broj",
-                        DataPropertyName = "SerijskiBroj",
-                        Width = 120
+                        DataPropertyName = "SerijskiBroj"
                     });
                     dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "colSifraLekara",
                         HeaderText = "Šifra lekara",
-                        DataPropertyName = "SifraLekara",
-                        Width = 100
+                        DataPropertyName = "SifraLekara"
                     });
                     dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "colDatumIzd",
                         HeaderText = "Datum izdavanja",
-                        DataPropertyName = "DatumIzd",
-                        Width = 120
+                        DataPropertyName = "DatumIzd"
                     });
                     dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "colStatus",
                         HeaderText = "Status",
-                        DataPropertyName = "Status",
-                        Width = 80
+                        DataPropertyName = "Status"
                     });
                     dgvRecepti.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "colNazivUstanove",
                         HeaderText = "Naziv ustanove",
-                        DataPropertyName = "NazivUstanove",
-                        Width = 200
+                        DataPropertyName = "NazivUstanove"
                     });
                 }
             }
@@ -106,7 +94,7 @@ namespace Farmacy.Forme
                 return;
             }
 
-            string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+            string serijskiBroj = dgvRecepti.CurrentRow.Cells[0].Value.ToString(); // Serijski broj is now in column 0
 
             var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete recept sa serijskim brojem: {serijskiBroj}?",
                 "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -137,7 +125,7 @@ namespace Farmacy.Forme
 
             try
             {
-                string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+                string serijskiBroj = dgvRecepti.CurrentRow.Cells[0].Value.ToString(); // Serijski broj is now in column 0
                 var selektovaniRecept = DTOManagerIsporukeZalihe.VratiRecept(serijskiBroj);
 
                 if (selektovaniRecept != null)
@@ -171,7 +159,7 @@ namespace Farmacy.Forme
 
             try
             {
-                string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+                string serijskiBroj = dgvRecepti.CurrentRow.Cells[0].Value.ToString(); // Serijski broj is now in column 0
                 var selektovaniRecept = DTOManagerIsporukeZalihe.VratiRecept(serijskiBroj);
 
                 if (selektovaniRecept != null)
@@ -203,7 +191,7 @@ namespace Farmacy.Forme
 
             try
             {
-                string serijskiBroj = dgvRecepti.CurrentRow.Cells[1].Value.ToString(); // Serijski broj is in column 1
+                string serijskiBroj = dgvRecepti.CurrentRow.Cells[0].Value.ToString(); // Serijski broj is now in column 0
                 var selektovaniRecept = DTOManagerIsporukeZalihe.VratiRecept(serijskiBroj);
 
                 if (selektovaniRecept != null)
