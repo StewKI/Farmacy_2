@@ -28,6 +28,14 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            lblSubtitle = new Label();
+            panelMain = new Panel();
+            panelForm = new Panel();
+            panelButtons = new Panel();
+            grpLicni = new GroupBox();
+            grpProfesionalni = new GroupBox();
             lblMBr = new Label();
             lblPrezime = new Label();
             txtPrezime = new TextBox();
@@ -42,198 +50,386 @@ namespace Farmacy.Forme
             lblDatumZaposlenja = new Label();
             dtpDatumZaposlenja = new DateTimePicker();
             lblNivoObrazovanja = new Label();
+            cmbNivo = new ComboBox();
             btnSave = new Button();
             btnCancel = new Button();
             btnDodajSertifikaciju = new Button();
-            cmbNivo = new ComboBox();
+            panelFooter = new Panel();
+            lblFooter = new Label();
+            panelMain.SuspendLayout();
+            panelHeader.SuspendLayout();
+            panelForm.SuspendLayout();
+            panelButtons.SuspendLayout();
+            grpLicni.SuspendLayout();
+            grpProfesionalni.SuspendLayout();
+            panelFooter.SuspendLayout();
             SuspendLayout();
+            // 
+            // panelMain
+            // 
+            panelMain.BackColor = Color.FromArgb(245, 248, 250);
+            panelMain.Controls.Add(panelFooter);
+            panelMain.Controls.Add(panelButtons);
+            panelMain.Controls.Add(panelForm);
+            panelMain.Controls.Add(panelHeader);
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 0);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(800, 700);
+            panelMain.TabIndex = 0;
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(46, 204, 113);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(800, 100);
+            panelHeader.TabIndex = 1;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(20, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(400, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "🔧 DODAVANJE TEHNIČARA";
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(200, 255, 200);
+            lblSubtitle.Location = new Point(20, 60);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(400, 19);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Unos novih podataka o tehničaru u sistem";
+            // 
+            // panelForm
+            // 
+            panelForm.BackColor = Color.FromArgb(245, 248, 250);
+            panelForm.Controls.Add(grpProfesionalni);
+            panelForm.Controls.Add(grpLicni);
+            panelForm.Dock = DockStyle.Fill;
+            panelForm.Location = new Point(0, 100);
+            panelForm.Name = "panelForm";
+            panelForm.Padding = new Padding(30);
+            panelForm.Size = new Size(800, 500);
+            panelForm.TabIndex = 2;
+            // 
+            // grpLicni
+            // 
+            grpLicni.BackColor = Color.White;
+            grpLicni.Controls.Add(dtpDatumZaposlenja);
+            grpLicni.Controls.Add(lblDatumZaposlenja);
+            grpLicni.Controls.Add(txtTelefon);
+            grpLicni.Controls.Add(lblTelefon);
+            grpLicni.Controls.Add(txtAdresa);
+            grpLicni.Controls.Add(lblAdresa);
+            grpLicni.Controls.Add(dtpDatumRodj);
+            grpLicni.Controls.Add(lblDatumRodj);
+            grpLicni.Controls.Add(txtIme);
+            grpLicni.Controls.Add(lblIme);
+            grpLicni.Controls.Add(txtPrezime);
+            grpLicni.Controls.Add(lblPrezime);
+            grpLicni.Controls.Add(lblMBr);
+            grpLicni.Dock = DockStyle.Top;
+            grpLicni.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            grpLicni.ForeColor = Color.FromArgb(33, 37, 41);
+            grpLicni.Location = new Point(30, 30);
+            grpLicni.Name = "grpLicni";
+            grpLicni.Padding = new Padding(15);
+            grpLicni.Size = new Size(740, 280);
+            grpLicni.TabIndex = 3;
+            grpLicni.TabStop = false;
+            grpLicni.Text = "👤 Lični podaci";
+            // 
+            // grpProfesionalni
+            // 
+            grpProfesionalni.BackColor = Color.White;
+            grpProfesionalni.Controls.Add(cmbNivo);
+            grpProfesionalni.Controls.Add(lblNivoObrazovanja);
+            grpProfesionalni.Dock = DockStyle.Top;
+            grpProfesionalni.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            grpProfesionalni.ForeColor = Color.FromArgb(33, 37, 41);
+            grpProfesionalni.Location = new Point(30, 320);
+            grpProfesionalni.Name = "grpProfesionalni";
+            grpProfesionalni.Padding = new Padding(15);
+            grpProfesionalni.Size = new Size(740, 120);
+            grpProfesionalni.TabIndex = 4;
+            grpProfesionalni.TabStop = false;
+            grpProfesionalni.Text = "🎓 Profesionalni podaci";
+            // 
+            // panelButtons
+            // 
+            panelButtons.BackColor = Color.FromArgb(245, 248, 250);
+            panelButtons.Controls.Add(btnDodajSertifikaciju);
+            panelButtons.Controls.Add(btnCancel);
+            panelButtons.Controls.Add(btnSave);
+            panelButtons.Dock = DockStyle.Bottom;
+            panelButtons.Location = new Point(0, 600);
+            panelButtons.Name = "panelButtons";
+            panelButtons.Padding = new Padding(30, 15, 30, 15);
+            panelButtons.Size = new Size(800, 100);
+            panelButtons.TabIndex = 5;
+            // 
+            // panelFooter
+            // 
+            panelFooter.BackColor = Color.FromArgb(44, 62, 80);
+            panelFooter.Controls.Add(lblFooter);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 700);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(800, 40);
+            panelFooter.TabIndex = 6;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Font = new Font("Segoe UI", 9F);
+            lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
+            lblFooter.Location = new Point(30, 12);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(500, 15);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "Dodavanje tehničara - Upravljanje podacima o tehničarima u sistemu";
             // 
             // lblMBr
             // 
             lblMBr.AutoSize = true;
-            lblMBr.Location = new Point(30, 30);
+            lblMBr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMBr.ForeColor = Color.FromArgb(108, 117, 125);
+            lblMBr.Location = new Point(20, 30);
             lblMBr.Name = "lblMBr";
-            lblMBr.Size = new Size(54, 15);
+            lblMBr.Size = new Size(150, 19);
             lblMBr.TabIndex = 0;
-            lblMBr.Text = "Apoteke:";
+            lblMBr.Text = "Osnovne informacije:";
             // 
             // lblPrezime
             // 
             lblPrezime.AutoSize = true;
-            lblPrezime.Location = new Point(30, 70);
+            lblPrezime.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPrezime.ForeColor = Color.FromArgb(33, 37, 41);
+            lblPrezime.Location = new Point(20, 50);
             lblPrezime.Name = "lblPrezime";
-            lblPrezime.Size = new Size(52, 15);
+            lblPrezime.Size = new Size(62, 19);
             lblPrezime.TabIndex = 2;
             lblPrezime.Text = "Prezime:";
             // 
             // txtPrezime
             // 
-            txtPrezime.Location = new Point(159, 67);
+            txtPrezime.BackColor = Color.White;
+            txtPrezime.BorderStyle = BorderStyle.FixedSingle;
+            txtPrezime.Font = new Font("Segoe UI", 10F);
+            txtPrezime.Location = new Point(200, 47);
             txtPrezime.Name = "txtPrezime";
-            txtPrezime.Size = new Size(200, 23);
+            txtPrezime.Size = new Size(340, 25);
             txtPrezime.TabIndex = 3;
             // 
             // lblIme
             // 
             lblIme.AutoSize = true;
-            lblIme.Location = new Point(30, 110);
+            lblIme.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblIme.ForeColor = Color.FromArgb(33, 37, 41);
+            lblIme.Location = new Point(20, 90);
             lblIme.Name = "lblIme";
-            lblIme.Size = new Size(30, 15);
+            lblIme.Size = new Size(37, 19);
             lblIme.TabIndex = 4;
             lblIme.Text = "Ime:";
             // 
             // txtIme
             // 
-            txtIme.Location = new Point(159, 107);
+            txtIme.BackColor = Color.White;
+            txtIme.BorderStyle = BorderStyle.FixedSingle;
+            txtIme.Font = new Font("Segoe UI", 10F);
+            txtIme.Location = new Point(200, 87);
             txtIme.Name = "txtIme";
-            txtIme.Size = new Size(200, 23);
+            txtIme.Size = new Size(340, 25);
             txtIme.TabIndex = 5;
             // 
             // lblDatumRodj
             // 
             lblDatumRodj.AutoSize = true;
-            lblDatumRodj.Location = new Point(30, 150);
+            lblDatumRodj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDatumRodj.ForeColor = Color.FromArgb(33, 37, 41);
+            lblDatumRodj.Location = new Point(20, 130);
             lblDatumRodj.Name = "lblDatumRodj";
-            lblDatumRodj.Size = new Size(89, 15);
+            lblDatumRodj.Size = new Size(106, 19);
             lblDatumRodj.TabIndex = 6;
             lblDatumRodj.Text = "Datum rođenja:";
             // 
             // dtpDatumRodj
             // 
+            dtpDatumRodj.Font = new Font("Segoe UI", 10F);
             dtpDatumRodj.Format = DateTimePickerFormat.Short;
-            dtpDatumRodj.Location = new Point(159, 147);
+            dtpDatumRodj.Location = new Point(200, 127);
             dtpDatumRodj.Name = "dtpDatumRodj";
-            dtpDatumRodj.Size = new Size(200, 23);
+            dtpDatumRodj.Size = new Size(340, 25);
             dtpDatumRodj.TabIndex = 7;
             // 
             // lblAdresa
             // 
             lblAdresa.AutoSize = true;
-            lblAdresa.Location = new Point(30, 190);
+            lblAdresa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblAdresa.ForeColor = Color.FromArgb(33, 37, 41);
+            lblAdresa.Location = new Point(20, 170);
             lblAdresa.Name = "lblAdresa";
-            lblAdresa.Size = new Size(46, 15);
+            lblAdresa.Size = new Size(56, 19);
             lblAdresa.TabIndex = 8;
             lblAdresa.Text = "Adresa:";
             // 
             // txtAdresa
             // 
-            txtAdresa.Location = new Point(159, 187);
+            txtAdresa.BackColor = Color.White;
+            txtAdresa.BorderStyle = BorderStyle.FixedSingle;
+            txtAdresa.Font = new Font("Segoe UI", 10F);
+            txtAdresa.Location = new Point(200, 167);
             txtAdresa.Name = "txtAdresa";
-            txtAdresa.Size = new Size(200, 23);
+            txtAdresa.Size = new Size(340, 25);
             txtAdresa.TabIndex = 9;
             // 
             // lblTelefon
             // 
             lblTelefon.AutoSize = true;
-            lblTelefon.Location = new Point(30, 230);
+            lblTelefon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTelefon.ForeColor = Color.FromArgb(33, 37, 41);
+            lblTelefon.Location = new Point(20, 210);
             lblTelefon.Name = "lblTelefon";
-            lblTelefon.Size = new Size(49, 15);
+            lblTelefon.Size = new Size(61, 19);
             lblTelefon.TabIndex = 10;
             lblTelefon.Text = "Telefon:";
             // 
             // txtTelefon
             // 
-            txtTelefon.Location = new Point(159, 227);
+            txtTelefon.BackColor = Color.White;
+            txtTelefon.BorderStyle = BorderStyle.FixedSingle;
+            txtTelefon.Font = new Font("Segoe UI", 10F);
+            txtTelefon.Location = new Point(200, 207);
             txtTelefon.Name = "txtTelefon";
-            txtTelefon.Size = new Size(200, 23);
+            txtTelefon.Size = new Size(340, 25);
             txtTelefon.TabIndex = 11;
             // 
             // lblDatumZaposlenja
             // 
             lblDatumZaposlenja.AutoSize = true;
-            lblDatumZaposlenja.Location = new Point(30, 270);
+            lblDatumZaposlenja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDatumZaposlenja.ForeColor = Color.FromArgb(33, 37, 41);
+            lblDatumZaposlenja.Location = new Point(20, 250);
             lblDatumZaposlenja.Name = "lblDatumZaposlenja";
-            lblDatumZaposlenja.Size = new Size(104, 15);
+            lblDatumZaposlenja.Size = new Size(125, 19);
             lblDatumZaposlenja.TabIndex = 12;
             lblDatumZaposlenja.Text = "Datum zaposlenja:";
             // 
             // dtpDatumZaposlenja
             // 
+            dtpDatumZaposlenja.Font = new Font("Segoe UI", 10F);
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(159, 267);
+            dtpDatumZaposlenja.Location = new Point(200, 247);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
-            dtpDatumZaposlenja.Size = new Size(200, 23);
+            dtpDatumZaposlenja.Size = new Size(340, 25);
             dtpDatumZaposlenja.TabIndex = 13;
             // 
             // lblNivoObrazovanja
             // 
             lblNivoObrazovanja.AutoSize = true;
-            lblNivoObrazovanja.Location = new Point(30, 348);
+            lblNivoObrazovanja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNivoObrazovanja.ForeColor = Color.FromArgb(33, 37, 41);
+            lblNivoObrazovanja.Location = new Point(20, 50);
             lblNivoObrazovanja.Name = "lblNivoObrazovanja";
-            lblNivoObrazovanja.Size = new Size(102, 15);
+            lblNivoObrazovanja.Size = new Size(130, 19);
             lblNivoObrazovanja.TabIndex = 14;
             lblNivoObrazovanja.Text = "Nivo obrazovanja:";
             // 
+            // cmbNivo
+            // 
+            cmbNivo.BackColor = Color.White;
+            cmbNivo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbNivo.Font = new Font("Segoe UI", 10F);
+            cmbNivo.FormattingEnabled = true;
+            cmbNivo.Location = new Point(200, 47);
+            cmbNivo.Name = "cmbNivo";
+            cmbNivo.Size = new Size(340, 25);
+            cmbNivo.TabIndex = 15;
+            // 
             // btnSave
             // 
-            btnSave.Location = new Point(171, 429);
+            btnSave.BackColor = Color.FromArgb(46, 204, 113);
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(450, 25);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 23);
+            btnSave.Size = new Size(140, 50);
             btnSave.TabIndex = 16;
-            btnSave.Text = "Sačuvaj";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Text = "💾 Sačuvaj";
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(275, 429);
+            btnCancel.BackColor = Color.FromArgb(231, 76, 60);
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(610, 25);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
+            btnCancel.Size = new Size(140, 50);
             btnCancel.TabIndex = 17;
-            btnCancel.Text = "Otkaži";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Text = "❌ Otkaži";
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // btnDodajSertifikaciju
             // 
-            btnDodajSertifikaciju.Location = new Point(15, 427);
+            btnDodajSertifikaciju.BackColor = Color.FromArgb(52, 152, 219);
+            btnDodajSertifikaciju.FlatAppearance.BorderSize = 0;
+            btnDodajSertifikaciju.FlatStyle = FlatStyle.Flat;
+            btnDodajSertifikaciju.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnDodajSertifikaciju.ForeColor = Color.White;
+            btnDodajSertifikaciju.Location = new Point(30, 25);
             btnDodajSertifikaciju.Name = "btnDodajSertifikaciju";
-            btnDodajSertifikaciju.Size = new Size(104, 39);
+            btnDodajSertifikaciju.Size = new Size(180, 50);
             btnDodajSertifikaciju.TabIndex = 18;
-            btnDodajSertifikaciju.Text = "Dodaj sertifikaciju";
-            btnDodajSertifikaciju.UseVisualStyleBackColor = true;
+            btnDodajSertifikaciju.Text = "📜 Dodaj sertifikaciju";
+            btnDodajSertifikaciju.UseVisualStyleBackColor = false;
             btnDodajSertifikaciju.Click += btnDodajSertifikaciju_Click;
-            // 
-            // cmbNivo
-            // 
-            cmbNivo.FormattingEnabled = true;
-            cmbNivo.Location = new Point(159, 348);
-            cmbNivo.Name = "cmbNivo";
-            cmbNivo.Size = new Size(200, 23);
-            cmbNivo.TabIndex = 31;
             // 
             // TehnicarForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AcceptButton = btnSave;
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(386, 478);
-            Controls.Add(cmbNivo);
-            Controls.Add(btnDodajSertifikaciju);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
-            Controls.Add(lblNivoObrazovanja);
-            Controls.Add(dtpDatumZaposlenja);
-            Controls.Add(lblDatumZaposlenja);
-            Controls.Add(txtTelefon);
-            Controls.Add(lblTelefon);
-            Controls.Add(txtAdresa);
-            Controls.Add(lblAdresa);
-            Controls.Add(dtpDatumRodj);
-            Controls.Add(lblDatumRodj);
-            Controls.Add(txtIme);
-            Controls.Add(lblIme);
-            Controls.Add(txtPrezime);
-            Controls.Add(lblPrezime);
-            Controls.Add(lblMBr);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            BackColor = Color.White;
+            CancelButton = btnCancel;
+            ClientSize = new Size(800, 740);
+            Controls.Add(panelMain);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "TehnicarForm";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Tehničar";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Farmacy System - Dodavanje Tehničara";
             Load += TehnicarForm_Load;
+            panelMain.ResumeLayout(false);
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            panelForm.ResumeLayout(false);
+            panelButtons.ResumeLayout(false);
+            grpLicni.ResumeLayout(false);
+            grpLicni.PerformLayout();
+            grpProfesionalni.ResumeLayout(false);
+            grpProfesionalni.PerformLayout();
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -256,5 +452,15 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Button btnCancel;
         private Button btnDodajSertifikaciju;
         private ComboBox cmbNivo;
+        private Panel panelHeader;
+        private Label lblTitle;
+        private Label lblSubtitle;
+        private Panel panelMain;
+        private Panel panelForm;
+        private Panel panelButtons;
+        private Panel panelFooter;
+        private Label lblFooter;
+        private GroupBox grpLicni;
+        private GroupBox grpProfesionalni;
     }
 }

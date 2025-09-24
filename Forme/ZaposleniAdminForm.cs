@@ -128,11 +128,37 @@ namespace Farmacy.Forme
                 return;
             }
 
+            // Get the employee with their specific type
+            var zaposleni = DTOManagerZaposleni.VratiZaposlenog(mbr);
+            
+            if (zaposleni == null)
+            {
+                MessageBox.Show("Greška pri učitavanju podataka o zaposlenom!");
+                return;
+            }
 
-            var z = DTOManagerZaposleni.VratiZaposlenog(mbr);
-            IzmeniZaposlenogForm form=new IzmeniZaposlenogForm(mbr, 0); // Default prodajnaJedinicaId = 0
-            form.ShowDialog();
-
+            // Open appropriate edit form based on employee type
+            if (zaposleni is FarmaceutBasic farmaceut)
+            {
+                FarmaceutEditForm form = new FarmaceutEditForm(farmaceut);
+                form.ShowDialog();
+            }
+            else if (zaposleni is TehnicarBasic tehnicar)
+            {
+                TehnicarEditForm form = new TehnicarEditForm(tehnicar);
+                form.ShowDialog();
+            }
+            else if (zaposleni is MenadzerBasic menadzer)
+            {
+                MenadzerEditForm form = new MenadzerEditForm(menadzer);
+                form.ShowDialog();
+            }
+            else
+            {
+                // Fallback to generic form for basic employees
+                IzmeniZaposlenogForm form = new IzmeniZaposlenogForm(mbr, 0);
+                form.ShowDialog();
+            }
 
             popuniPodacima();
         }

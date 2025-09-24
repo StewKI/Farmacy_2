@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
 
@@ -16,6 +17,7 @@ namespace Farmacy.Forme
             InitializeForm();
             this.prodajnaJedinicaId = 0; // Default value
             ucitajApoteke();
+            SetupButtonEffects();
         }
 
         public TehnicarForm(long prodajnaJedinicaId)
@@ -25,6 +27,7 @@ namespace Farmacy.Forme
             InitializeForm();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
             ucitajApoteke();
+            SetupButtonEffects();
         }
 
         public TehnicarForm(TehnicarBasic tehnicar, long prodajnaJedinicaId) : this(prodajnaJedinicaId)
@@ -164,6 +167,54 @@ namespace Farmacy.Forme
         {
             DodajSertifikacijuForm form=new DodajSertifikacijuForm(tehnicar);
             form.ShowDialog();
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
+            btnCancel.MouseEnter += Button_MouseEnter;
+            btnCancel.MouseLeave += Button_MouseLeave;
+            btnDodajSertifikaciju.MouseEnter += Button_MouseEnter;
+            btnDodajSertifikaciju.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju samo ako nije već sačuvana
+                if (button.Tag == null)
+                {
+                    button.Tag = button.BackColor;
+                }
+                
+                // Promeni boju na hover
+                if (button == btnSave)
+                {
+                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                }
+                else if (button == btnCancel)
+                {
+                    button.BackColor = Color.FromArgb(192, 57, 43); // Tamnija crvena
+                }
+                else if (button == btnDodajSertifikaciju)
+                {
+                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
+            }
         }
     }
 }

@@ -169,11 +169,11 @@ namespace Farmacy.Forme
                 // Promeni boju na hover
                 if (button == btnSave)
                 {
-                    button.BackColor = Color.FromArgb(33, 136, 56); // Tamnija zelena
+                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
                 }
                 else if (button == btnCancel)
                 {
-                    button.BackColor = Color.FromArgb(90, 98, 104); // Tamnija siva
+                    button.BackColor = Color.FromArgb(192, 57, 43); // Tamnija crvena
                 }
                 
                 button.Cursor = Cursors.Hand;
