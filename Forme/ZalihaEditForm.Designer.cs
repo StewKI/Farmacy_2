@@ -28,281 +28,268 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblSubtitle = new System.Windows.Forms.Label();
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.lblProdajnaJedinica = new System.Windows.Forms.Label();
-            this.txtProdajnaJedinica = new System.Windows.Forms.TextBox();
-            this.lblPakovanje = new System.Windows.Forms.Label();
-            this.txtPakovanje = new System.Windows.Forms.TextBox();
-            this.lblKolicina = new System.Windows.Forms.Label();
-            this.numKolicina = new System.Windows.Forms.NumericUpDown();
-            this.lblDatumPoslednjeIsporuke = new System.Windows.Forms.Label();
-            this.dtpDatumPoslednjeIsporuke = new System.Windows.Forms.DateTimePicker();
-            this.lblOdgovorniMagacioner = new System.Windows.Forms.Label();
-            this.txtOdgovorniMagacioner = new System.Windows.Forms.TextBox();
-            this.panelFooter = new System.Windows.Forms.Panel();
-            this.lblFooter = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.panelHeader.SuspendLayout();
-            this.panelMain.SuspendLayout();
-            this.panelFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).BeginInit();
-            this.SuspendLayout();
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            lblSubtitle = new Label();
+            panelMain = new Panel();
+            btnCancel = new Button();
+            btnSave = new Button();
+            txtOdgovorniMagacioner = new TextBox();
+            lblOdgovorniMagacioner = new Label();
+            dtpDatumPoslednjeIsporuke = new DateTimePicker();
+            lblDatumPoslednjeIsporuke = new Label();
+            numKolicina = new NumericUpDown();
+            lblKolicina = new Label();
+            txtPakovanje = new TextBox();
+            lblPakovanje = new Label();
+            txtProdajnaJedinica = new TextBox();
+            lblProdajnaJedinica = new Label();
+            panelFooter = new Panel();
+            lblFooter = new Label();
+            panelHeader.SuspendLayout();
+            panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numKolicina).BeginInit();
+            panelFooter.SuspendLayout();
+            SuspendLayout();
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panelHeader.Controls.Add(this.lblTitle);
-            this.panelHeader.Controls.Add(this.lblSubtitle);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(800, 80);
-            this.panelHeader.TabIndex = 0;
+            panelHeader.BackColor = Color.FromArgb(41, 128, 185);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(856, 87);
+            panelHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(275, 30);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "✏️ IZMENA ZALIHE";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(0, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(425, 59);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "✏️ IZMENA ZALIHE";
             // 
             // lblSubtitle
             // 
-            this.lblSubtitle.AutoSize = true;
-            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(20, 45);
-            this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(210, 19);
-            this.lblSubtitle.TabIndex = 1;
-            this.lblSubtitle.Text = "Izmena postojećih podataka o zalihi";
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(189, 195, 199);
+            lblSubtitle.Location = new Point(410, 47);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(443, 37);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Izmena postojećih podataka o zalihi";
+            lblSubtitle.Click += lblSubtitle_Click;
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
-            this.panelMain.Controls.Add(this.btnCancel);
-            this.panelMain.Controls.Add(this.btnSave);
-            this.panelMain.Controls.Add(this.txtOdgovorniMagacioner);
-            this.panelMain.Controls.Add(this.lblOdgovorniMagacioner);
-            this.panelMain.Controls.Add(this.dtpDatumPoslednjeIsporuke);
-            this.panelMain.Controls.Add(this.lblDatumPoslednjeIsporuke);
-            this.panelMain.Controls.Add(this.numKolicina);
-            this.panelMain.Controls.Add(this.lblKolicina);
-            this.panelMain.Controls.Add(this.txtPakovanje);
-            this.panelMain.Controls.Add(this.lblPakovanje);
-            this.panelMain.Controls.Add(this.txtProdajnaJedinica);
-            this.panelMain.Controls.Add(this.lblProdajnaJedinica);
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(0, 80);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Padding = new System.Windows.Forms.Padding(20);
-            this.panelMain.Size = new System.Drawing.Size(800, 430);
-            this.panelMain.TabIndex = 1;
-            // 
-            // lblProdajnaJedinica
-            // 
-            this.lblProdajnaJedinica.AutoSize = true;
-            this.lblProdajnaJedinica.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblProdajnaJedinica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblProdajnaJedinica.Location = new System.Drawing.Point(50, 30);
-            this.lblProdajnaJedinica.Name = "lblProdajnaJedinica";
-            this.lblProdajnaJedinica.Size = new System.Drawing.Size(116, 19);
-            this.lblProdajnaJedinica.TabIndex = 0;
-            this.lblProdajnaJedinica.Text = "Prodajna jedinica:";
-            // 
-            // txtProdajnaJedinica
-            // 
-            this.txtProdajnaJedinica.BackColor = System.Drawing.Color.White;
-            this.txtProdajnaJedinica.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProdajnaJedinica.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProdajnaJedinica.Location = new System.Drawing.Point(200, 27);
-            this.txtProdajnaJedinica.Name = "txtProdajnaJedinica";
-            this.txtProdajnaJedinica.ReadOnly = true;
-            this.txtProdajnaJedinica.Size = new System.Drawing.Size(300, 26);
-            this.txtProdajnaJedinica.TabIndex = 1;
-            // 
-            // lblPakovanje
-            // 
-            this.lblPakovanje.AutoSize = true;
-            this.lblPakovanje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPakovanje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblPakovanje.Location = new System.Drawing.Point(50, 80);
-            this.lblPakovanje.Name = "lblPakovanje";
-            this.lblPakovanje.Size = new System.Drawing.Size(80, 19);
-            this.lblPakovanje.TabIndex = 2;
-            this.lblPakovanje.Text = "Pakovanje:";
-            // 
-            // txtPakovanje
-            // 
-            this.txtPakovanje.BackColor = System.Drawing.Color.White;
-            this.txtPakovanje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPakovanje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPakovanje.Location = new System.Drawing.Point(200, 77);
-            this.txtPakovanje.Name = "txtPakovanje";
-            this.txtPakovanje.ReadOnly = true;
-            this.txtPakovanje.Size = new System.Drawing.Size(300, 26);
-            this.txtPakovanje.TabIndex = 3;
-            // 
-            // lblKolicina
-            // 
-            this.lblKolicina.AutoSize = true;
-            this.lblKolicina.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblKolicina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblKolicina.Location = new System.Drawing.Point(50, 130);
-            this.lblKolicina.Name = "lblKolicina";
-            this.lblKolicina.Size = new System.Drawing.Size(64, 19);
-            this.lblKolicina.TabIndex = 4;
-            this.lblKolicina.Text = "Količina:";
-            // 
-            // numKolicina
-            // 
-            this.numKolicina.BackColor = System.Drawing.Color.White;
-            this.numKolicina.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numKolicina.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numKolicina.Location = new System.Drawing.Point(200, 127);
-            this.numKolicina.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numKolicina.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numKolicina.Name = "numKolicina";
-            this.numKolicina.Size = new System.Drawing.Size(150, 26);
-            this.numKolicina.TabIndex = 5;
-            this.numKolicina.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // lblDatumPoslednjeIsporuke
-            // 
-            this.lblDatumPoslednjeIsporuke.AutoSize = true;
-            this.lblDatumPoslednjeIsporuke.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDatumPoslednjeIsporuke.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblDatumPoslednjeIsporuke.Location = new System.Drawing.Point(50, 180);
-            this.lblDatumPoslednjeIsporuke.Name = "lblDatumPoslednjeIsporuke";
-            this.lblDatumPoslednjeIsporuke.Size = new System.Drawing.Size(158, 19);
-            this.lblDatumPoslednjeIsporuke.TabIndex = 6;
-            this.lblDatumPoslednjeIsporuke.Text = "Datum poslednje isporuke:";
-            // 
-            // dtpDatumPoslednjeIsporuke
-            // 
-            this.dtpDatumPoslednjeIsporuke.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dtpDatumPoslednjeIsporuke.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumPoslednjeIsporuke.Location = new System.Drawing.Point(200, 177);
-            this.dtpDatumPoslednjeIsporuke.Name = "dtpDatumPoslednjeIsporuke";
-            this.dtpDatumPoslednjeIsporuke.Size = new System.Drawing.Size(150, 26);
-            this.dtpDatumPoslednjeIsporuke.TabIndex = 7;
-            // 
-            // lblOdgovorniMagacioner
-            // 
-            this.lblOdgovorniMagacioner.AutoSize = true;
-            this.lblOdgovorniMagacioner.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOdgovorniMagacioner.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblOdgovorniMagacioner.Location = new System.Drawing.Point(50, 230);
-            this.lblOdgovorniMagacioner.Name = "lblOdgovorniMagacioner";
-            this.lblOdgovorniMagacioner.Size = new System.Drawing.Size(150, 19);
-            this.lblOdgovorniMagacioner.TabIndex = 8;
-            this.lblOdgovorniMagacioner.Text = "Odgovorni magacioner:";
-            // 
-            // txtOdgovorniMagacioner
-            // 
-            this.txtOdgovorniMagacioner.BackColor = System.Drawing.Color.White;
-            this.txtOdgovorniMagacioner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOdgovorniMagacioner.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOdgovorniMagacioner.Location = new System.Drawing.Point(200, 227);
-            this.txtOdgovorniMagacioner.Name = "txtOdgovorniMagacioner";
-            this.txtOdgovorniMagacioner.ReadOnly = true;
-            this.txtOdgovorniMagacioner.Size = new System.Drawing.Size(200, 26);
-            this.txtOdgovorniMagacioner.TabIndex = 9;
-            // 
-            // panelFooter
-            // 
-            this.panelFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.panelFooter.Controls.Add(this.lblFooter);
-            this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 510);
-            this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(800, 30);
-            this.panelFooter.TabIndex = 2;
-            // 
-            // lblFooter
-            // 
-            this.lblFooter.AutoSize = true;
-            this.lblFooter.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFooter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
-            this.lblFooter.Location = new System.Drawing.Point(20, 8);
-            this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(210, 13);
-            this.lblFooter.TabIndex = 0;
-            this.lblFooter.Text = "Sistem za upravljanje farmaceutskim podacima";
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(200, 300);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 40);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "💾 Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            panelMain.BackColor = Color.FromArgb(245, 248, 250);
+            panelMain.Controls.Add(btnCancel);
+            panelMain.Controls.Add(btnSave);
+            panelMain.Controls.Add(txtOdgovorniMagacioner);
+            panelMain.Controls.Add(lblOdgovorniMagacioner);
+            panelMain.Controls.Add(dtpDatumPoslednjeIsporuke);
+            panelMain.Controls.Add(lblDatumPoslednjeIsporuke);
+            panelMain.Controls.Add(numKolicina);
+            panelMain.Controls.Add(lblKolicina);
+            panelMain.Controls.Add(txtPakovanje);
+            panelMain.Controls.Add(lblPakovanje);
+            panelMain.Controls.Add(txtProdajnaJedinica);
+            panelMain.Controls.Add(lblProdajnaJedinica);
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 87);
+            panelMain.Name = "panelMain";
+            panelMain.Padding = new Padding(20);
+            panelMain.Size = new Size(856, 433);
+            panelMain.TabIndex = 1;
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(350, 300);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 40);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "❌ Otkaži";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.BackColor = Color.FromArgb(231, 76, 60);
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(350, 300);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(120, 58);
+            btnCancel.TabIndex = 11;
+            btnCancel.Text = "❌ Otkaži";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.FromArgb(41, 128, 185);
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(200, 300);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 58);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "💾 Sačuvaj";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
+            // txtOdgovorniMagacioner
+            // 
+            txtOdgovorniMagacioner.BackColor = Color.White;
+            txtOdgovorniMagacioner.BorderStyle = BorderStyle.FixedSingle;
+            txtOdgovorniMagacioner.Font = new Font("Segoe UI", 10F);
+            txtOdgovorniMagacioner.Location = new Point(540, 224);
+            txtOdgovorniMagacioner.Name = "txtOdgovorniMagacioner";
+            txtOdgovorniMagacioner.ReadOnly = true;
+            txtOdgovorniMagacioner.Size = new Size(200, 43);
+            txtOdgovorniMagacioner.TabIndex = 9;
+            // 
+            // lblOdgovorniMagacioner
+            // 
+            lblOdgovorniMagacioner.AutoSize = true;
+            lblOdgovorniMagacioner.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblOdgovorniMagacioner.ForeColor = Color.FromArgb(44, 62, 80);
+            lblOdgovorniMagacioner.Location = new Point(50, 230);
+            lblOdgovorniMagacioner.Name = "lblOdgovorniMagacioner";
+            lblOdgovorniMagacioner.Size = new Size(322, 37);
+            lblOdgovorniMagacioner.TabIndex = 8;
+            lblOdgovorniMagacioner.Text = "Odgovorni magacioner:";
+            // 
+            // dtpDatumPoslednjeIsporuke
+            // 
+            dtpDatumPoslednjeIsporuke.Font = new Font("Segoe UI", 10F);
+            dtpDatumPoslednjeIsporuke.Format = DateTimePickerFormat.Short;
+            dtpDatumPoslednjeIsporuke.Location = new Point(540, 174);
+            dtpDatumPoslednjeIsporuke.Name = "dtpDatumPoslednjeIsporuke";
+            dtpDatumPoslednjeIsporuke.Size = new Size(150, 43);
+            dtpDatumPoslednjeIsporuke.TabIndex = 7;
+            // 
+            // lblDatumPoslednjeIsporuke
+            // 
+            lblDatumPoslednjeIsporuke.AutoSize = true;
+            lblDatumPoslednjeIsporuke.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDatumPoslednjeIsporuke.ForeColor = Color.FromArgb(44, 62, 80);
+            lblDatumPoslednjeIsporuke.Location = new Point(50, 180);
+            lblDatumPoslednjeIsporuke.Name = "lblDatumPoslednjeIsporuke";
+            lblDatumPoslednjeIsporuke.Size = new Size(361, 37);
+            lblDatumPoslednjeIsporuke.TabIndex = 6;
+            lblDatumPoslednjeIsporuke.Text = "Datum poslednje isporuke:";
+            // 
+            // numKolicina
+            // 
+            numKolicina.BackColor = Color.White;
+            numKolicina.BorderStyle = BorderStyle.FixedSingle;
+            numKolicina.Font = new Font("Segoe UI", 10F);
+            numKolicina.Location = new Point(540, 124);
+            numKolicina.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            numKolicina.Name = "numKolicina";
+            numKolicina.Size = new Size(150, 43);
+            numKolicina.TabIndex = 5;
+            // 
+            // lblKolicina
+            // 
+            lblKolicina.AutoSize = true;
+            lblKolicina.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblKolicina.ForeColor = Color.FromArgb(44, 62, 80);
+            lblKolicina.Location = new Point(50, 130);
+            lblKolicina.Name = "lblKolicina";
+            lblKolicina.Size = new Size(127, 37);
+            lblKolicina.TabIndex = 4;
+            lblKolicina.Text = "Količina:";
+            // 
+            // txtPakovanje
+            // 
+            txtPakovanje.BackColor = Color.White;
+            txtPakovanje.BorderStyle = BorderStyle.FixedSingle;
+            txtPakovanje.Font = new Font("Segoe UI", 10F);
+            txtPakovanje.Location = new Point(540, 74);
+            txtPakovanje.Name = "txtPakovanje";
+            txtPakovanje.ReadOnly = true;
+            txtPakovanje.Size = new Size(300, 43);
+            txtPakovanje.TabIndex = 3;
+            // 
+            // lblPakovanje
+            // 
+            lblPakovanje.AutoSize = true;
+            lblPakovanje.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPakovanje.ForeColor = Color.FromArgb(44, 62, 80);
+            lblPakovanje.Location = new Point(50, 80);
+            lblPakovanje.Name = "lblPakovanje";
+            lblPakovanje.Size = new Size(156, 37);
+            lblPakovanje.TabIndex = 2;
+            lblPakovanje.Text = "Pakovanje:";
+            // 
+            // txtProdajnaJedinica
+            // 
+            txtProdajnaJedinica.BackColor = Color.White;
+            txtProdajnaJedinica.BorderStyle = BorderStyle.FixedSingle;
+            txtProdajnaJedinica.Font = new Font("Segoe UI", 10F);
+            txtProdajnaJedinica.Location = new Point(540, 23);
+            txtProdajnaJedinica.Name = "txtProdajnaJedinica";
+            txtProdajnaJedinica.ReadOnly = true;
+            txtProdajnaJedinica.Size = new Size(300, 43);
+            txtProdajnaJedinica.TabIndex = 1;
+            // 
+            // lblProdajnaJedinica
+            // 
+            lblProdajnaJedinica.AutoSize = true;
+            lblProdajnaJedinica.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblProdajnaJedinica.ForeColor = Color.FromArgb(44, 62, 80);
+            lblProdajnaJedinica.Location = new Point(50, 30);
+            lblProdajnaJedinica.Name = "lblProdajnaJedinica";
+            lblProdajnaJedinica.Size = new Size(247, 37);
+            lblProdajnaJedinica.TabIndex = 0;
+            lblProdajnaJedinica.Text = "Prodajna jedinica:";
+            // 
+            // panelFooter
+            // 
+            panelFooter.BackColor = Color.FromArgb(44, 62, 80);
+            panelFooter.Controls.Add(lblFooter);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 520);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(856, 49);
+            panelFooter.TabIndex = 2;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Font = new Font("Segoe UI", 8F);
+            lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
+            lblFooter.Location = new Point(20, 8);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(463, 30);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "Sistem za upravljanje farmaceutskim podacima";
             // 
             // ZalihaEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 540);
-            this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.panelHeader);
-            this.Controls.Add(this.panelFooter);
-            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "ZalihaEditForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Zaliha - Izmena";
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            this.panelMain.ResumeLayout(false);
-            this.panelMain.PerformLayout();
-            this.panelFooter.ResumeLayout(false);
-            this.panelFooter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(15F, 37F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(856, 569);
+            Controls.Add(panelMain);
+            Controls.Add(panelHeader);
+            Controls.Add(panelFooter);
+            Font = new Font("Segoe UI", 10F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "ZalihaEditForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Zaliha - Izmena";
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            panelMain.ResumeLayout(false);
+            panelMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numKolicina).EndInit();
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

@@ -7,6 +7,14 @@ namespace Farmacy.Forme
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        // Header panel and labels
+        private Panel panelHeader;
+        private Label lblTitle;
+        private Label lblSubtitle;
+        private Panel panelMain;
+        private Panel panelFooter;
+        private Label lblFooter;
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -28,6 +36,10 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            lblSubtitle = new Label();
+            panelMain = new Panel();
             lblMBr = new Label();
             txtMBr = new TextBox();
             lblPrezime = new Label();
@@ -46,210 +58,319 @@ namespace Farmacy.Forme
             txtNivoObrazovanja = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            panelFooter = new Panel();
+            lblFooter = new Label();
+            panelHeader.SuspendLayout();
+            panelMain.SuspendLayout();
+            panelFooter.SuspendLayout();
             SuspendLayout();
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(46, 204, 113);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(800, 100);
+            panelHeader.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(20, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(400, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "✏️ IZMENA TEHNIČARA";
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(200, 255, 200);
+            lblSubtitle.Location = new Point(20, 60);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(400, 19);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Ažuriranje postojećih podataka o tehničaru";
+            // 
+            // panelMain
+            // 
+            panelMain.BackColor = Color.FromArgb(245, 248, 250);
+            panelMain.Controls.Add(btnCancel);
+            panelMain.Controls.Add(btnSave);
+            panelMain.Controls.Add(txtNivoObrazovanja);
+            panelMain.Controls.Add(lblNivoObrazovanja);
+            panelMain.Controls.Add(dtpDatumZaposlenja);
+            panelMain.Controls.Add(lblDatumZaposlenja);
+            panelMain.Controls.Add(txtTelefon);
+            panelMain.Controls.Add(lblTelefon);
+            panelMain.Controls.Add(txtAdresa);
+            panelMain.Controls.Add(lblAdresa);
+            panelMain.Controls.Add(dtpDatumRodj);
+            panelMain.Controls.Add(lblDatumRodj);
+            panelMain.Controls.Add(txtIme);
+            panelMain.Controls.Add(lblIme);
+            panelMain.Controls.Add(txtPrezime);
+            panelMain.Controls.Add(lblPrezime);
+            panelMain.Controls.Add(txtMBr);
+            panelMain.Controls.Add(lblMBr);
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 100);
+            panelMain.Name = "panelMain";
+            panelMain.Padding = new Padding(30);
+            panelMain.Size = new Size(800, 400);
+            panelMain.TabIndex = 1;
             // 
             // lblMBr
             // 
             lblMBr.AutoSize = true;
-            lblMBr.Location = new Point(14, 17);
-            lblMBr.Margin = new Padding(4, 0, 4, 0);
+            lblMBr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMBr.ForeColor = Color.FromArgb(33, 37, 41);
+            lblMBr.Location = new Point(30, 30);
             lblMBr.Name = "lblMBr";
-            lblMBr.Size = new Size(74, 15);
+            lblMBr.Size = new Size(100, 19);
             lblMBr.TabIndex = 0;
             lblMBr.Text = "Matični broj:";
             // 
             // txtMBr
             // 
-            txtMBr.Location = new Point(140, 14);
-            txtMBr.Margin = new Padding(4, 3, 4, 3);
+            txtMBr.BackColor = Color.FromArgb(248, 249, 250);
+            txtMBr.BorderStyle = BorderStyle.FixedSingle;
+            txtMBr.Font = new Font("Segoe UI", 10F);
+            txtMBr.Location = new Point(250, 27);
             txtMBr.Name = "txtMBr";
             txtMBr.ReadOnly = true;
-            txtMBr.Size = new Size(233, 23);
+            txtMBr.Size = new Size(300, 25);
             txtMBr.TabIndex = 1;
             // 
             // lblPrezime
             // 
             lblPrezime.AutoSize = true;
-            lblPrezime.Location = new Point(14, 47);
-            lblPrezime.Margin = new Padding(4, 0, 4, 0);
+            lblPrezime.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPrezime.ForeColor = Color.FromArgb(33, 37, 41);
+            lblPrezime.Location = new Point(30, 70);
             lblPrezime.Name = "lblPrezime";
-            lblPrezime.Size = new Size(52, 15);
+            lblPrezime.Size = new Size(70, 19);
             lblPrezime.TabIndex = 2;
             lblPrezime.Text = "Prezime:";
             // 
             // txtPrezime
             // 
-            txtPrezime.Location = new Point(140, 44);
-            txtPrezime.Margin = new Padding(4, 3, 4, 3);
+            txtPrezime.BackColor = Color.White;
+            txtPrezime.BorderStyle = BorderStyle.FixedSingle;
+            txtPrezime.Font = new Font("Segoe UI", 10F);
+            txtPrezime.Location = new Point(250, 67);
             txtPrezime.Name = "txtPrezime";
-            txtPrezime.Size = new Size(233, 23);
+            txtPrezime.Size = new Size(300, 25);
             txtPrezime.TabIndex = 3;
             // 
             // lblIme
             // 
             lblIme.AutoSize = true;
-            lblIme.Location = new Point(14, 77);
-            lblIme.Margin = new Padding(4, 0, 4, 0);
+            lblIme.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblIme.ForeColor = Color.FromArgb(33, 37, 41);
+            lblIme.Location = new Point(30, 110);
             lblIme.Name = "lblIme";
-            lblIme.Size = new Size(30, 15);
+            lblIme.Size = new Size(40, 19);
             lblIme.TabIndex = 4;
             lblIme.Text = "Ime:";
             // 
             // txtIme
             // 
-            txtIme.Location = new Point(140, 74);
-            txtIme.Margin = new Padding(4, 3, 4, 3);
+            txtIme.BackColor = Color.White;
+            txtIme.BorderStyle = BorderStyle.FixedSingle;
+            txtIme.Font = new Font("Segoe UI", 10F);
+            txtIme.Location = new Point(250, 107);
             txtIme.Name = "txtIme";
-            txtIme.Size = new Size(233, 23);
+            txtIme.Size = new Size(300, 25);
             txtIme.TabIndex = 5;
             // 
             // lblDatumRodj
             // 
             lblDatumRodj.AutoSize = true;
-            lblDatumRodj.Location = new Point(14, 107);
-            lblDatumRodj.Margin = new Padding(4, 0, 4, 0);
+            lblDatumRodj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDatumRodj.ForeColor = Color.FromArgb(33, 37, 41);
+            lblDatumRodj.Location = new Point(30, 150);
             lblDatumRodj.Name = "lblDatumRodj";
-            lblDatumRodj.Size = new Size(89, 15);
+            lblDatumRodj.Size = new Size(120, 19);
             lblDatumRodj.TabIndex = 6;
             lblDatumRodj.Text = "Datum rođenja:";
             // 
             // dtpDatumRodj
             // 
+            dtpDatumRodj.Font = new Font("Segoe UI", 10F);
             dtpDatumRodj.Format = DateTimePickerFormat.Short;
-            dtpDatumRodj.Location = new Point(140, 104);
-            dtpDatumRodj.Margin = new Padding(4, 3, 4, 3);
+            dtpDatumRodj.Location = new Point(250, 147);
             dtpDatumRodj.Name = "dtpDatumRodj";
-            dtpDatumRodj.Size = new Size(233, 23);
+            dtpDatumRodj.Size = new Size(300, 25);
             dtpDatumRodj.TabIndex = 7;
             // 
             // lblAdresa
             // 
             lblAdresa.AutoSize = true;
-            lblAdresa.Location = new Point(14, 137);
-            lblAdresa.Margin = new Padding(4, 0, 4, 0);
+            lblAdresa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblAdresa.ForeColor = Color.FromArgb(33, 37, 41);
+            lblAdresa.Location = new Point(30, 190);
             lblAdresa.Name = "lblAdresa";
-            lblAdresa.Size = new Size(46, 15);
+            lblAdresa.Size = new Size(60, 19);
             lblAdresa.TabIndex = 8;
             lblAdresa.Text = "Adresa:";
             // 
             // txtAdresa
             // 
-            txtAdresa.Location = new Point(140, 134);
-            txtAdresa.Margin = new Padding(4, 3, 4, 3);
+            txtAdresa.BackColor = Color.White;
+            txtAdresa.BorderStyle = BorderStyle.FixedSingle;
+            txtAdresa.Font = new Font("Segoe UI", 10F);
+            txtAdresa.Location = new Point(250, 187);
             txtAdresa.Name = "txtAdresa";
-            txtAdresa.Size = new Size(233, 23);
+            txtAdresa.Size = new Size(300, 25);
             txtAdresa.TabIndex = 9;
             // 
             // lblTelefon
             // 
             lblTelefon.AutoSize = true;
-            lblTelefon.Location = new Point(14, 167);
-            lblTelefon.Margin = new Padding(4, 0, 4, 0);
+            lblTelefon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTelefon.ForeColor = Color.FromArgb(33, 37, 41);
+            lblTelefon.Location = new Point(30, 230);
             lblTelefon.Name = "lblTelefon";
-            lblTelefon.Size = new Size(49, 15);
+            lblTelefon.Size = new Size(65, 19);
             lblTelefon.TabIndex = 10;
             lblTelefon.Text = "Telefon:";
             // 
             // txtTelefon
             // 
-            txtTelefon.Location = new Point(140, 164);
-            txtTelefon.Margin = new Padding(4, 3, 4, 3);
+            txtTelefon.BackColor = Color.White;
+            txtTelefon.BorderStyle = BorderStyle.FixedSingle;
+            txtTelefon.Font = new Font("Segoe UI", 10F);
+            txtTelefon.Location = new Point(250, 227);
             txtTelefon.Name = "txtTelefon";
-            txtTelefon.Size = new Size(233, 23);
+            txtTelefon.Size = new Size(300, 25);
             txtTelefon.TabIndex = 11;
             // 
             // lblDatumZaposlenja
             // 
             lblDatumZaposlenja.AutoSize = true;
-            lblDatumZaposlenja.Location = new Point(14, 197);
-            lblDatumZaposlenja.Margin = new Padding(4, 0, 4, 0);
+            lblDatumZaposlenja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDatumZaposlenja.ForeColor = Color.FromArgb(33, 37, 41);
+            lblDatumZaposlenja.Location = new Point(30, 270);
             lblDatumZaposlenja.Name = "lblDatumZaposlenja";
-            lblDatumZaposlenja.Size = new Size(104, 15);
+            lblDatumZaposlenja.Size = new Size(140, 19);
             lblDatumZaposlenja.TabIndex = 12;
             lblDatumZaposlenja.Text = "Datum zaposlenja:";
             // 
             // dtpDatumZaposlenja
             // 
+            dtpDatumZaposlenja.Font = new Font("Segoe UI", 10F);
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(140, 194);
-            dtpDatumZaposlenja.Margin = new Padding(4, 3, 4, 3);
+            dtpDatumZaposlenja.Location = new Point(250, 267);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
-            dtpDatumZaposlenja.Size = new Size(233, 23);
+            dtpDatumZaposlenja.Size = new Size(300, 25);
             dtpDatumZaposlenja.TabIndex = 13;
             // 
             // lblNivoObrazovanja
             // 
             lblNivoObrazovanja.AutoSize = true;
-            lblNivoObrazovanja.Location = new Point(14, 227);
-            lblNivoObrazovanja.Margin = new Padding(4, 0, 4, 0);
+            lblNivoObrazovanja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNivoObrazovanja.ForeColor = Color.FromArgb(33, 37, 41);
+            lblNivoObrazovanja.Location = new Point(30, 310);
             lblNivoObrazovanja.Name = "lblNivoObrazovanja";
-            lblNivoObrazovanja.Size = new Size(102, 15);
+            lblNivoObrazovanja.Size = new Size(150, 19);
             lblNivoObrazovanja.TabIndex = 14;
             lblNivoObrazovanja.Text = "Nivo obrazovanja:";
             // 
             // txtNivoObrazovanja
             // 
-            txtNivoObrazovanja.Location = new Point(140, 224);
-            txtNivoObrazovanja.Margin = new Padding(4, 3, 4, 3);
+            txtNivoObrazovanja.BackColor = Color.White;
+            txtNivoObrazovanja.BorderStyle = BorderStyle.FixedSingle;
+            txtNivoObrazovanja.Font = new Font("Segoe UI", 10F);
+            txtNivoObrazovanja.Location = new Point(250, 307);
             txtNivoObrazovanja.Name = "txtNivoObrazovanja";
-            txtNivoObrazovanja.Size = new Size(233, 23);
+            txtNivoObrazovanja.Size = new Size(300, 25);
             txtNivoObrazovanja.TabIndex = 15;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(140, 265);
-            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.BackColor = Color.FromArgb(46, 204, 113);
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(250, 350);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(88, 27);
+            btnSave.Size = new Size(140, 45);
             btnSave.TabIndex = 16;
-            btnSave.Text = "Sačuvaj";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Text = "💾 Sačuvaj";
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(286, 265);
-            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.BackColor = Color.FromArgb(231, 76, 60);
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(410, 350);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(88, 27);
+            btnCancel.Size = new Size(140, 45);
             btnCancel.TabIndex = 17;
-            btnCancel.Text = "Otkaži";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Text = "❌ Otkaži";
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
+            btnCancel.MouseEnter += Button_MouseEnter;
+            btnCancel.MouseLeave += Button_MouseLeave;
+            // 
+            // panelFooter
+            // 
+            panelFooter.BackColor = Color.FromArgb(44, 62, 80);
+            panelFooter.Controls.Add(lblFooter);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 500);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(800, 40);
+            panelFooter.TabIndex = 2;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Font = new Font("Segoe UI", 9F);
+            lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
+            lblFooter.Location = new Point(30, 12);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(500, 15);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "Izmena tehničara - Upravljanje podacima o tehničarima u sistemu";
             // 
             // TehnicarEditForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 306);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
-            Controls.Add(txtNivoObrazovanja);
-            Controls.Add(lblNivoObrazovanja);
-            Controls.Add(dtpDatumZaposlenja);
-            Controls.Add(lblDatumZaposlenja);
-            Controls.Add(txtTelefon);
-            Controls.Add(lblTelefon);
-            Controls.Add(txtAdresa);
-            Controls.Add(lblAdresa);
-            Controls.Add(dtpDatumRodj);
-            Controls.Add(lblDatumRodj);
-            Controls.Add(txtIme);
-            Controls.Add(lblIme);
-            Controls.Add(txtPrezime);
-            Controls.Add(lblPrezime);
-            Controls.Add(txtMBr);
-            Controls.Add(lblMBr);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4, 3, 4, 3);
+            BackColor = Color.White;
+            ClientSize = new Size(800, 540);
+            Controls.Add(panelMain);
+            Controls.Add(panelFooter);
+            Controls.Add(panelHeader);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "TehnicarEditForm";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Uredi Tehničara";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Farmacy System - Izmena Tehničara";
             Load += TehnicarEditForm_Load;
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            panelMain.ResumeLayout(false);
+            panelMain.PerformLayout();
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

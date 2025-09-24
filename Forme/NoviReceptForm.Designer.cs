@@ -123,7 +123,7 @@ namespace Farmacy.Forme
             panelMain.Location = new Point(0, 100);
             panelMain.Name = "panelMain";
             panelMain.Padding = new Padding(20);
-            panelMain.Size = new Size(800, 400);
+            panelMain.Size = new Size(800, 600);
             panelMain.TabIndex = 1;
             // 
             // lblSerijskiBroj
@@ -151,7 +151,7 @@ namespace Farmacy.Forme
             lblSifraLekara.AutoSize = true;
             lblSifraLekara.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblSifraLekara.ForeColor = Color.FromArgb(33, 37, 41);
-            lblSifraLekara.Location = new Point(20, 60);
+            lblSifraLekara.Location = new Point(20, 80);
             lblSifraLekara.Name = "lblSifraLekara";
             lblSifraLekara.Size = new Size(95, 19);
             lblSifraLekara.TabIndex = 2;
@@ -161,7 +161,7 @@ namespace Farmacy.Forme
             // 
             txtSifraLekara.BorderStyle = BorderStyle.FixedSingle;
             txtSifraLekara.Font = new Font("Segoe UI", 10F);
-            txtSifraLekara.Location = new Point(200, 60);
+            txtSifraLekara.Location = new Point(200, 80);
             txtSifraLekara.Name = "txtSifraLekara";
             txtSifraLekara.Size = new Size(300, 25);
             txtSifraLekara.TabIndex = 3;
@@ -171,7 +171,7 @@ namespace Farmacy.Forme
             lblDatumIzd.AutoSize = true;
             lblDatumIzd.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDatumIzd.ForeColor = Color.FromArgb(33, 37, 41);
-            lblDatumIzd.Location = new Point(20, 100);
+            lblDatumIzd.Location = new Point(20, 140);
             lblDatumIzd.Name = "lblDatumIzd";
             lblDatumIzd.Size = new Size(140, 19);
             lblDatumIzd.TabIndex = 4;
@@ -181,7 +181,7 @@ namespace Farmacy.Forme
             // 
             dtpDatumIzd.Font = new Font("Segoe UI", 10F);
             dtpDatumIzd.Format = DateTimePickerFormat.Short;
-            dtpDatumIzd.Location = new Point(200, 100);
+            dtpDatumIzd.Location = new Point(200, 140);
             dtpDatumIzd.Name = "dtpDatumIzd";
             dtpDatumIzd.Size = new Size(300, 25);
             dtpDatumIzd.TabIndex = 5;
@@ -191,7 +191,7 @@ namespace Farmacy.Forme
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblStatus.ForeColor = Color.FromArgb(33, 37, 41);
-            lblStatus.Location = new Point(20, 140);
+            lblStatus.Location = new Point(20, 200);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(60, 19);
             lblStatus.TabIndex = 6;
@@ -202,7 +202,7 @@ namespace Farmacy.Forme
             cboStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cboStatus.Font = new Font("Segoe UI", 10F);
             cboStatus.FormattingEnabled = true;
-            cboStatus.Location = new Point(200, 140);
+            cboStatus.Location = new Point(200, 200);
             cboStatus.Name = "cboStatus";
             cboStatus.Size = new Size(300, 25);
             cboStatus.TabIndex = 7;
@@ -212,7 +212,7 @@ namespace Farmacy.Forme
             lblNazivUstanove.AutoSize = true;
             lblNazivUstanove.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblNazivUstanove.ForeColor = Color.FromArgb(33, 37, 41);
-            lblNazivUstanove.Location = new Point(20, 180);
+            lblNazivUstanove.Location = new Point(20, 260);
             lblNazivUstanove.Name = "lblNazivUstanove";
             lblNazivUstanove.Size = new Size(130, 19);
             lblNazivUstanove.TabIndex = 8;
@@ -222,7 +222,7 @@ namespace Farmacy.Forme
             // 
             txtNazivUstanove.BorderStyle = BorderStyle.FixedSingle;
             txtNazivUstanove.Font = new Font("Segoe UI", 10F);
-            txtNazivUstanove.Location = new Point(200, 180);
+            txtNazivUstanove.Location = new Point(200, 260);
             txtNazivUstanove.Name = "txtNazivUstanove";
             txtNazivUstanove.Size = new Size(300, 25);
             txtNazivUstanove.TabIndex = 9;
@@ -232,18 +232,18 @@ namespace Farmacy.Forme
             lblRealizovanaProdajnaJedinica.AutoSize = true;
             lblRealizovanaProdajnaJedinica.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblRealizovanaProdajnaJedinica.ForeColor = Color.FromArgb(33, 37, 41);
-            lblRealizovanaProdajnaJedinica.Location = new Point(20, 220);
+            lblRealizovanaProdajnaJedinica.Location = new Point(20, 320);
             lblRealizovanaProdajnaJedinica.Name = "lblRealizovanaProdajnaJedinica";
-            lblRealizovanaProdajnaJedinica.Size = new Size(240, 19);
+            lblRealizovanaProdajnaJedinica.Size = new Size(150, 19);
             lblRealizovanaProdajnaJedinica.TabIndex = 10;
-            lblRealizovanaProdajnaJedinica.Text = "Realizovana prodajna jedinica:";
+            lblRealizovanaProdajnaJedinica.Text = "Prodajna jedinica:";
             // 
             // txtRealizovanaProdajnaJedinica
             // 
             txtRealizovanaProdajnaJedinica.BackColor = Color.FromArgb(233, 236, 239);
             txtRealizovanaProdajnaJedinica.BorderStyle = BorderStyle.FixedSingle;
             txtRealizovanaProdajnaJedinica.Font = new Font("Segoe UI", 10F);
-            txtRealizovanaProdajnaJedinica.Location = new Point(200, 220);
+            txtRealizovanaProdajnaJedinica.Location = new Point(200, 320);
             txtRealizovanaProdajnaJedinica.Name = "txtRealizovanaProdajnaJedinica";
             txtRealizovanaProdajnaJedinica.ReadOnly = true;
             txtRealizovanaProdajnaJedinica.Size = new Size(300, 25);
@@ -255,7 +255,7 @@ namespace Farmacy.Forme
             lblRealizacijaDatum.AutoSize = true;
             lblRealizacijaDatum.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblRealizacijaDatum.ForeColor = Color.FromArgb(33, 37, 41);
-            lblRealizacijaDatum.Location = new Point(20, 260);
+            lblRealizacijaDatum.Location = new Point(20, 380);
             lblRealizacijaDatum.Name = "lblRealizacijaDatum";
             lblRealizacijaDatum.Size = new Size(140, 19);
             lblRealizacijaDatum.TabIndex = 12;
@@ -266,7 +266,7 @@ namespace Farmacy.Forme
             dtpRealizacijaDatum.Enabled = false;
             dtpRealizacijaDatum.Font = new Font("Segoe UI", 10F);
             dtpRealizacijaDatum.Format = DateTimePickerFormat.Short;
-            dtpRealizacijaDatum.Location = new Point(200, 260);
+            dtpRealizacijaDatum.Location = new Point(200, 380);
             dtpRealizacijaDatum.Name = "dtpRealizacijaDatum";
             dtpRealizacijaDatum.Size = new Size(300, 25);
             dtpRealizacijaDatum.TabIndex = 13;
@@ -277,18 +277,18 @@ namespace Farmacy.Forme
             lblRealizovaoFarmaceut.AutoSize = true;
             lblRealizovaoFarmaceut.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblRealizovaoFarmaceut.ForeColor = Color.FromArgb(33, 37, 41);
-            lblRealizovaoFarmaceut.Location = new Point(20, 300);
+            lblRealizovaoFarmaceut.Location = new Point(20, 440);
             lblRealizovaoFarmaceut.Name = "lblRealizovaoFarmaceut";
-            lblRealizovaoFarmaceut.Size = new Size(180, 19);
+            lblRealizovaoFarmaceut.Size = new Size(100, 19);
             lblRealizovaoFarmaceut.TabIndex = 14;
-            lblRealizovaoFarmaceut.Text = "Realizovao farmaceut:";
+            lblRealizovaoFarmaceut.Text = "Farmaceut:";
             // 
             // txtRealizovaoFarmaceut
             // 
             txtRealizovaoFarmaceut.BackColor = Color.FromArgb(233, 236, 239);
             txtRealizovaoFarmaceut.BorderStyle = BorderStyle.FixedSingle;
             txtRealizovaoFarmaceut.Font = new Font("Segoe UI", 10F);
-            txtRealizovaoFarmaceut.Location = new Point(200, 300);
+            txtRealizovaoFarmaceut.Location = new Point(200, 440);
             txtRealizovaoFarmaceut.Name = "txtRealizovaoFarmaceut";
             txtRealizovaoFarmaceut.ReadOnly = true;
             txtRealizovaoFarmaceut.Size = new Size(300, 25);
@@ -301,7 +301,7 @@ namespace Farmacy.Forme
             panelButtons.Controls.Add(btnCancel);
             panelButtons.Controls.Add(btnSave);
             panelButtons.Dock = DockStyle.Bottom;
-            panelButtons.Location = new Point(0, 500);
+            panelButtons.Location = new Point(0, 700);
             panelButtons.Name = "panelButtons";
             panelButtons.Padding = new Padding(20);
             panelButtons.Size = new Size(800, 80);
@@ -348,7 +348,7 @@ namespace Farmacy.Forme
             panelFooter.BackColor = Color.FromArgb(44, 62, 80);
             panelFooter.Controls.Add(lblFooter);
             panelFooter.Dock = DockStyle.Bottom;
-            panelFooter.Location = new Point(0, 580);
+            panelFooter.Location = new Point(0, 780);
             panelFooter.Name = "panelFooter";
             panelFooter.Size = new Size(800, 30);
             panelFooter.TabIndex = 3;
@@ -369,7 +369,7 @@ namespace Farmacy.Forme
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 610);
+            ClientSize = new Size(800, 810);
             Controls.Add(panelMain);
             Controls.Add(panelButtons);
             Controls.Add(panelFooter);

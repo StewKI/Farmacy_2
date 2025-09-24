@@ -25,10 +25,10 @@ namespace Farmacy.Forme
             txtProdajnaJedinica.Text = zaliha.ProdajnaJedinicaId.ToString();
             txtPakovanje.Text = zaliha.PakovanjeId.ToString();
             numKolicina.Value = zaliha.Kolicina;
-            
+
             if (zaliha.DatumPoslednjeIsporuke.HasValue)
                 dtpDatumPoslednjeIsporuke.Value = zaliha.DatumPoslednjeIsporuke.Value;
-            
+
             if (zaliha.OdgovorniMagacionerMbr.HasValue)
                 txtOdgovorniMagacioner.Text = zaliha.OdgovorniMagacionerMbr.ToString();
         }
@@ -71,7 +71,7 @@ namespace Farmacy.Forme
         {
             zaliha.Kolicina = (int)numKolicina.Value;
             zaliha.DatumPoslednjeIsporuke = dtpDatumPoslednjeIsporuke.Value;
-            
+
             if (!string.IsNullOrEmpty(txtOdgovorniMagacioner.Text))
             {
                 if (long.TryParse(txtOdgovorniMagacioner.Text, out long mbr))
@@ -124,6 +124,11 @@ namespace Farmacy.Forme
                 else if (button == btnCancel)
                     button.BackColor = Color.FromArgb(231, 76, 60);
             }
+        }
+
+        private void lblSubtitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
