@@ -7,6 +7,14 @@ namespace Farmacy.Forme
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        // Header panel and labels
+        private Panel panelHeader;
+        private Label lblTitle;
+        private Label lblSubtitle;
+        private Panel panelMain;
+        private Panel panelFooter;
+        private Label lblFooter;
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -28,6 +36,10 @@ namespace Farmacy.Forme
         /// </summary>
         private void InitializeComponent()
         {
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            lblSubtitle = new Label();
+            panelMain = new Panel();
             lblId = new Label();
             txtId = new TextBox();
             lblNaziv = new Label();
@@ -46,193 +58,324 @@ namespace Farmacy.Forme
             btnSave = new Button();
             btnCancel = new Button();
             comboBox1 = new ComboBox();
+            panelFooter = new Panel();
+            lblFooter = new Label();
+            panelHeader.SuspendLayout();
+            panelMain.SuspendLayout();
+            panelFooter.SuspendLayout();
             SuspendLayout();
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(52, 152, 219);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(800, 100);
+            panelHeader.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(20, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(380, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "🏥 STANDARDNA APOTEKA";
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(200, 220, 255);
+            lblSubtitle.Location = new Point(20, 60);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(300, 19);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Dodavanje ili izmena standardne apoteke";
+            // 
+            // panelMain
+            // 
+            panelMain.BackColor = Color.FromArgb(245, 248, 250);
+            panelMain.Controls.Add(btnCancel);
+            panelMain.Controls.Add(btnSave);
+            panelMain.Controls.Add(txtNapomena);
+            panelMain.Controls.Add(lblNapomena);
+            panelMain.Controls.Add(comboBox1);
+            panelMain.Controls.Add(lblOdgovorniFarmaceut);
+            panelMain.Controls.Add(txtMesto);
+            panelMain.Controls.Add(lblMesto);
+            panelMain.Controls.Add(txtPostanskiBroj);
+            panelMain.Controls.Add(lblPostanskiBroj);
+            panelMain.Controls.Add(txtBroj);
+            panelMain.Controls.Add(lblBroj);
+            panelMain.Controls.Add(txtUlica);
+            panelMain.Controls.Add(lblUlica);
+            panelMain.Controls.Add(txtNaziv);
+            panelMain.Controls.Add(lblNaziv);
+            panelMain.Controls.Add(txtId);
+            panelMain.Controls.Add(lblId);
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 100);
+            panelMain.Name = "panelMain";
+            panelMain.Padding = new Padding(30);
+            panelMain.Size = new Size(800, 500);
+            panelMain.TabIndex = 1;
             // 
             // lblId
             // 
             lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblId.ForeColor = Color.FromArgb(33, 37, 41);
             lblId.Location = new Point(30, 30);
             lblId.Name = "lblId";
-            lblId.Size = new Size(21, 15);
+            lblId.Size = new Size(28, 19);
             lblId.TabIndex = 0;
             lblId.Text = "ID:";
             // 
             // txtId
             // 
-            txtId.Location = new Point(150, 27);
+            txtId.BackColor = Color.FromArgb(248, 249, 250);
+            txtId.BorderStyle = BorderStyle.FixedSingle;
+            txtId.Font = new Font("Segoe UI", 10F);
+            txtId.Location = new Point(250, 27);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(200, 23);
+            txtId.Size = new Size(300, 25);
             txtId.TabIndex = 1;
             txtId.TabStop = false;
             // 
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
+            lblNaziv.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNaziv.ForeColor = Color.FromArgb(33, 37, 41);
             lblNaziv.Location = new Point(30, 70);
             lblNaziv.Name = "lblNaziv";
-            lblNaziv.Size = new Size(39, 15);
+            lblNaziv.Size = new Size(51, 19);
             lblNaziv.TabIndex = 2;
             lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
-            txtNaziv.Location = new Point(150, 67);
+            txtNaziv.BackColor = Color.White;
+            txtNaziv.BorderStyle = BorderStyle.FixedSingle;
+            txtNaziv.Font = new Font("Segoe UI", 10F);
+            txtNaziv.Location = new Point(250, 67);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(200, 23);
+            txtNaziv.Size = new Size(300, 25);
             txtNaziv.TabIndex = 3;
             // 
             // lblUlica
             // 
             lblUlica.AutoSize = true;
+            lblUlica.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblUlica.ForeColor = Color.FromArgb(33, 37, 41);
             lblUlica.Location = new Point(30, 110);
             lblUlica.Name = "lblUlica";
-            lblUlica.Size = new Size(36, 15);
+            lblUlica.Size = new Size(46, 19);
             lblUlica.TabIndex = 4;
             lblUlica.Text = "Ulica:";
             // 
             // txtUlica
             // 
-            txtUlica.Location = new Point(150, 107);
+            txtUlica.BackColor = Color.White;
+            txtUlica.BorderStyle = BorderStyle.FixedSingle;
+            txtUlica.Font = new Font("Segoe UI", 10F);
+            txtUlica.Location = new Point(250, 107);
             txtUlica.Name = "txtUlica";
-            txtUlica.Size = new Size(200, 23);
+            txtUlica.Size = new Size(300, 25);
             txtUlica.TabIndex = 5;
             // 
             // lblBroj
             // 
             lblBroj.AutoSize = true;
+            lblBroj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblBroj.ForeColor = Color.FromArgb(33, 37, 41);
             lblBroj.Location = new Point(30, 150);
             lblBroj.Name = "lblBroj";
-            lblBroj.Size = new Size(31, 15);
+            lblBroj.Size = new Size(39, 19);
             lblBroj.TabIndex = 6;
             lblBroj.Text = "Broj:";
             // 
             // txtBroj
             // 
-            txtBroj.Location = new Point(150, 147);
+            txtBroj.BackColor = Color.White;
+            txtBroj.BorderStyle = BorderStyle.FixedSingle;
+            txtBroj.Font = new Font("Segoe UI", 10F);
+            txtBroj.Location = new Point(250, 147);
             txtBroj.Name = "txtBroj";
-            txtBroj.Size = new Size(200, 23);
+            txtBroj.Size = new Size(300, 25);
             txtBroj.TabIndex = 7;
             // 
             // lblPostanskiBroj
             // 
             lblPostanskiBroj.AutoSize = true;
+            lblPostanskiBroj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPostanskiBroj.ForeColor = Color.FromArgb(33, 37, 41);
             lblPostanskiBroj.Location = new Point(30, 190);
             lblPostanskiBroj.Name = "lblPostanskiBroj";
-            lblPostanskiBroj.Size = new Size(84, 15);
+            lblPostanskiBroj.Size = new Size(107, 19);
             lblPostanskiBroj.TabIndex = 8;
             lblPostanskiBroj.Text = "Poštanski broj:";
             // 
             // txtPostanskiBroj
             // 
-            txtPostanskiBroj.Location = new Point(150, 187);
+            txtPostanskiBroj.BackColor = Color.White;
+            txtPostanskiBroj.BorderStyle = BorderStyle.FixedSingle;
+            txtPostanskiBroj.Font = new Font("Segoe UI", 10F);
+            txtPostanskiBroj.Location = new Point(250, 187);
             txtPostanskiBroj.Name = "txtPostanskiBroj";
-            txtPostanskiBroj.Size = new Size(200, 23);
+            txtPostanskiBroj.Size = new Size(300, 25);
             txtPostanskiBroj.TabIndex = 9;
             // 
             // lblMesto
             // 
             lblMesto.AutoSize = true;
+            lblMesto.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMesto.ForeColor = Color.FromArgb(33, 37, 41);
             lblMesto.Location = new Point(30, 230);
             lblMesto.Name = "lblMesto";
-            lblMesto.Size = new Size(43, 15);
+            lblMesto.Size = new Size(54, 19);
             lblMesto.TabIndex = 10;
             lblMesto.Text = "Mesto:";
             // 
             // txtMesto
             // 
-            txtMesto.Location = new Point(150, 227);
+            txtMesto.BackColor = Color.White;
+            txtMesto.BorderStyle = BorderStyle.FixedSingle;
+            txtMesto.Font = new Font("Segoe UI", 10F);
+            txtMesto.Location = new Point(250, 227);
             txtMesto.Name = "txtMesto";
-            txtMesto.Size = new Size(200, 23);
+            txtMesto.Size = new Size(300, 25);
             txtMesto.TabIndex = 11;
             // 
             // lblOdgovorniFarmaceut
             // 
             lblOdgovorniFarmaceut.AutoSize = true;
+            lblOdgovorniFarmaceut.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblOdgovorniFarmaceut.ForeColor = Color.FromArgb(33, 37, 41);
             lblOdgovorniFarmaceut.Location = new Point(30, 270);
             lblOdgovorniFarmaceut.Name = "lblOdgovorniFarmaceut";
-            lblOdgovorniFarmaceut.Size = new Size(124, 15);
+            lblOdgovorniFarmaceut.Size = new Size(160, 19);
             lblOdgovorniFarmaceut.TabIndex = 12;
             lblOdgovorniFarmaceut.Text = "Odgovorni farmaceut:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = Color.White;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Font = new Font("Segoe UI", 10F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(250, 267);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(300, 25);
+            comboBox1.TabIndex = 18;
             // 
             // lblNapomena
             // 
             lblNapomena.AutoSize = true;
+            lblNapomena.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNapomena.ForeColor = Color.FromArgb(33, 37, 41);
             lblNapomena.Location = new Point(30, 310);
             lblNapomena.Name = "lblNapomena";
-            lblNapomena.Size = new Size(69, 15);
+            lblNapomena.Size = new Size(88, 19);
             lblNapomena.TabIndex = 14;
             lblNapomena.Text = "Napomena:";
             // 
             // txtNapomena
             // 
-            txtNapomena.Location = new Point(150, 307);
+            txtNapomena.BackColor = Color.White;
+            txtNapomena.BorderStyle = BorderStyle.FixedSingle;
+            txtNapomena.Font = new Font("Segoe UI", 10F);
+            txtNapomena.Location = new Point(250, 307);
             txtNapomena.Multiline = true;
             txtNapomena.Name = "txtNapomena";
-            txtNapomena.Size = new Size(200, 60);
+            txtNapomena.Size = new Size(300, 60);
             txtNapomena.TabIndex = 15;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(150, 390);
+            btnSave.BackColor = Color.FromArgb(46, 204, 113);
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(250, 390);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 23);
+            btnSave.Size = new Size(140, 45);
             btnSave.TabIndex = 16;
-            btnSave.Text = "Sačuvaj";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Text = "💾 Sačuvaj";
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(275, 390);
+            btnCancel.BackColor = Color.FromArgb(231, 76, 60);
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(410, 390);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
+            btnCancel.Size = new Size(140, 45);
             btnCancel.TabIndex = 17;
-            btnCancel.Text = "Otkaži";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Text = "❌ Otkaži";
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
+            btnCancel.MouseEnter += Button_MouseEnter;
+            btnCancel.MouseLeave += Button_MouseLeave;
             // 
-            // comboBox1
+            // panelFooter
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(150, 267);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(200, 23);
-            comboBox1.TabIndex = 18;
+            panelFooter.BackColor = Color.FromArgb(44, 62, 80);
+            panelFooter.Controls.Add(lblFooter);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 600);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(800, 40);
+            panelFooter.TabIndex = 2;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Font = new Font("Segoe UI", 9F);
+            lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
+            lblFooter.Location = new Point(30, 12);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(350, 15);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "Standardna apoteka - Upravljanje standardnim apotekama";
             // 
             // StandardnaApotekaForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 441);
-            Controls.Add(comboBox1);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
-            Controls.Add(txtNapomena);
-            Controls.Add(lblNapomena);
-            Controls.Add(lblOdgovorniFarmaceut);
-            Controls.Add(txtMesto);
-            Controls.Add(lblMesto);
-            Controls.Add(txtPostanskiBroj);
-            Controls.Add(lblPostanskiBroj);
-            Controls.Add(txtBroj);
-            Controls.Add(lblBroj);
-            Controls.Add(txtUlica);
-            Controls.Add(lblUlica);
-            Controls.Add(txtNaziv);
-            Controls.Add(lblNaziv);
-            Controls.Add(txtId);
-            Controls.Add(lblId);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            BackColor = Color.White;
+            ClientSize = new Size(800, 640);
+            Controls.Add(panelMain);
+            Controls.Add(panelFooter);
+            Controls.Add(panelHeader);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "StandardnaApotekaForm";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Standardna apoteka";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Farmacy System - Standardna Apoteka";
             Load += StandardnaApotekaForm_Load;
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            panelMain.ResumeLayout(false);
+            panelMain.PerformLayout();
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

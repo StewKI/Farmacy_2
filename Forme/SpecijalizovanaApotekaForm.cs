@@ -12,6 +12,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             InitializeForm();
+            SetupButtonEffects();
         }
 
         public SpecijalizovanaApotekaForm(SpecijalizovanaApoteka specijalizovanaApoteka) : this()
@@ -136,6 +137,40 @@ namespace Farmacy.Forme
         private void SpecijalizovanaApotekaForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Add hover effects to all buttons
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
+            btnCancel.MouseEnter += Button_MouseEnter;
+            btnCancel.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Store original color and make button lighter
+                button.BackColor = Color.FromArgb(
+                    Math.Min(255, button.BackColor.R + 30),
+                    Math.Min(255, button.BackColor.G + 30),
+                    Math.Min(255, button.BackColor.B + 30)
+                );
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Restore original color
+                if (button == btnSave)
+                    button.BackColor = Color.FromArgb(46, 204, 113);
+                else if (button == btnCancel)
+                    button.BackColor = Color.FromArgb(231, 76, 60);
+            }
         }
     }
 }

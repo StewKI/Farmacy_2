@@ -19,6 +19,54 @@ namespace Farmacy.Forme
         private void DistributerAdminForm_Load(object sender, EventArgs e)
         {
             popuniPodacimaDistributer();
+            SetupButtonEffects();
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Svetlija verzija boje za hover efekat
+                Color originalColor = button.BackColor;
+                Color hoverColor = Color.FromArgb(
+                    Math.Min(255, originalColor.R + 30),
+                    Math.Min(255, originalColor.G + 30),
+                    Math.Min(255, originalColor.B + 30)
+                );
+                button.BackColor = hoverColor;
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Vrati originalnu boju
+                switch (button.Name)
+                {
+                    case "btnDodajNoviDistributer":
+                        button.BackColor = Color.FromArgb(46, 204, 113);
+                        break;
+                    case "btnIzmeniDistributer":
+                        button.BackColor = Color.FromArgb(52, 152, 219);
+                        break;
+                }
+                button.Cursor = Cursors.Default;
+            }
         }
 
         public void popuniPodacimaDistributer()

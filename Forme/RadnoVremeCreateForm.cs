@@ -15,6 +15,7 @@ namespace Farmacy.Forme
             InitializeComponent();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
             radnaVremena = new List<RadnoVremeBasic>();
+            SetupButtonEffects();
         }
 
         private void RadnoVremeCreateForm_Load(object sender, EventArgs e)
@@ -221,6 +222,44 @@ namespace Farmacy.Forme
             cboDan.SelectedIndex = -1;
             dtpVremeOd.Value = DateTime.Today.AddHours(8); // Podrazumevano 8:00
             dtpVremeDo.Value = DateTime.Today.AddHours(16); // Podrazumevano 16:00
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Add hover effects to all buttons
+            btnDodaj.MouseEnter += Button_MouseEnter;
+            btnDodaj.MouseLeave += Button_MouseLeave;
+            btnObrisi.MouseEnter += Button_MouseEnter;
+            btnObrisi.MouseLeave += Button_MouseLeave;
+            btnZatvori.MouseEnter += Button_MouseEnter;
+            btnZatvori.MouseLeave += Button_MouseLeave;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Store original color and make button lighter
+                button.BackColor = Color.FromArgb(
+                    Math.Min(255, button.BackColor.R + 30),
+                    Math.Min(255, button.BackColor.G + 30),
+                    Math.Min(255, button.BackColor.B + 30)
+                );
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Restore original color
+                if (button == btnDodaj)
+                    button.BackColor = Color.FromArgb(46, 204, 113);
+                else if (button == btnObrisi)
+                    button.BackColor = Color.FromArgb(231, 76, 60);
+                else if (button == btnZatvori)
+                    button.BackColor = Color.FromArgb(155, 89, 182);
+            }
         }
     }
 }

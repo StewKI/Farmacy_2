@@ -4,12 +4,16 @@ namespace Farmacy.Forme
     {
         private System.ComponentModel.IContainer components = null;
 
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+        private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Panel panelFooter;
+        private System.Windows.Forms.Label lblFooter;
         private System.Windows.Forms.DataGridView dgvZalihe;
-        private System.Windows.Forms.Label lblZalihe;
         private System.Windows.Forms.Button btnDodajNovuZalihu;
         private System.Windows.Forms.Button btnIzmeniZalihu;
         private System.Windows.Forms.Button btnObrisiZalihu;
-        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelButtons;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn colProdajnaJedinicaId;
@@ -29,45 +33,72 @@ namespace Farmacy.Forme
 
         private void InitializeComponent()
         {
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            lblSubtitle = new Label();
+            panelMain = new Panel();
             dgvZalihe = new DataGridView();
             colProdajnaJedinicaId = new DataGridViewTextBoxColumn();
             colPakovanjeId = new DataGridViewTextBoxColumn();
             colKolicina = new DataGridViewTextBoxColumn();
             colDatumPoslednjeIsporuke = new DataGridViewTextBoxColumn();
             colOdgovorniMagacionerMbr = new DataGridViewTextBoxColumn();
-            lblZalihe = new Label();
+            panelButtons = new Panel();
             btnDodajNovuZalihu = new Button();
             btnIzmeniZalihu = new Button();
             btnObrisiZalihu = new Button();
-            panelMain = new Panel();
-            panelButtons = new Panel();
+            panelFooter = new Panel();
+            lblFooter = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvZalihe).BeginInit();
+            panelHeader.SuspendLayout();
             panelMain.SuspendLayout();
             panelButtons.SuspendLayout();
+            panelFooter.SuspendLayout();
             SuspendLayout();
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(41, 128, 185);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(1200, 80);
+            panelHeader.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(20, 15);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(275, 30);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "📦 ADMINISTRACIJA ZALIHA";
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(189, 195, 199);
+            lblSubtitle.Location = new Point(20, 45);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(280, 19);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Upravljanje zalihe u magacinu - pregled i izmena";
             // 
             // panelMain
             // 
-            panelMain.BackColor = Color.FromArgb(248, 249, 250);
+            panelMain.BackColor = Color.FromArgb(245, 248, 250);
             panelMain.Controls.Add(dgvZalihe);
-            panelMain.Controls.Add(lblZalihe);
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Location = new Point(0, 0);
+            panelMain.Location = new Point(0, 80);
             panelMain.Name = "panelMain";
             panelMain.Padding = new Padding(20);
-            panelMain.Size = new Size(1200, 600);
-            panelMain.TabIndex = 0;
-            // 
-            // lblZalihe
-            // 
-            lblZalihe.AutoSize = true;
-            lblZalihe.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblZalihe.ForeColor = Color.FromArgb(33, 37, 41);
-            lblZalihe.Location = new Point(20, 20);
-            lblZalihe.Name = "lblZalihe";
-            lblZalihe.Size = new Size(120, 41);
-            lblZalihe.TabIndex = 1;
-            lblZalihe.Text = "Zalihe";
+            panelMain.Size = new Size(950, 470);
+            panelMain.TabIndex = 1;
             // 
             // dgvZalihe
             // 
@@ -79,8 +110,8 @@ namespace Farmacy.Forme
             dgvZalihe.ColumnHeadersHeight = 50;
             dgvZalihe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvZalihe.Columns.AddRange(new DataGridViewColumn[] { colProdajnaJedinicaId, colPakovanjeId, colKolicina, colDatumPoslednjeIsporuke, colOdgovorniMagacionerMbr });
+            dgvZalihe.Dock = DockStyle.Fill;
             dgvZalihe.GridColor = Color.FromArgb(233, 236, 239);
-            dgvZalihe.Location = new Point(20, 80);
             dgvZalihe.MultiSelect = false;
             dgvZalihe.Name = "dgvZalihe";
             dgvZalihe.ReadOnly = true;
@@ -88,7 +119,7 @@ namespace Farmacy.Forme
             dgvZalihe.RowHeadersWidth = 51;
             dgvZalihe.RowTemplate.Height = 40;
             dgvZalihe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvZalihe.Size = new Size(900, 480);
+            dgvZalihe.Size = new Size(910, 430);
             dgvZalihe.TabIndex = 0;
             dgvZalihe.CellContentClick += dgvZalihe_CellContentClick;
             // 
@@ -144,11 +175,11 @@ namespace Farmacy.Forme
             panelButtons.Controls.Add(btnIzmeniZalihu);
             panelButtons.Controls.Add(btnDodajNovuZalihu);
             panelButtons.Dock = DockStyle.Right;
-            panelButtons.Location = new Point(950, 0);
+            panelButtons.Location = new Point(950, 80);
             panelButtons.Name = "panelButtons";
             panelButtons.Padding = new Padding(20);
-            panelButtons.Size = new Size(250, 600);
-            panelButtons.TabIndex = 1;
+            panelButtons.Size = new Size(250, 470);
+            panelButtons.TabIndex = 2;
             // 
             // btnDodajNovuZalihu
             // 
@@ -195,22 +226,51 @@ namespace Farmacy.Forme
             btnObrisiZalihu.Click += btnObrisiZalihu_Click;
             btnIzmeniZalihu.Click += btnIzmeniZalihu_Click;
             // 
+            // panelFooter
+            // 
+            panelFooter.BackColor = Color.FromArgb(44, 62, 80);
+            panelFooter.Controls.Add(lblFooter);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 550);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(1200, 30);
+            panelFooter.TabIndex = 3;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Font = new Font("Segoe UI", 8F);
+            lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
+            lblFooter.Location = new Point(20, 8);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(210, 13);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "Sistem za upravljanje farmaceutskim podacima";
+            // 
             // ZaliheAdminForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(248, 249, 250);
-            ClientSize = new Size(1200, 600);
+            ClientSize = new Size(1200, 580);
             Controls.Add(panelButtons);
             Controls.Add(panelMain);
+            Controls.Add(panelHeader);
+            Controls.Add(panelFooter);
+            Font = new Font("Segoe UI", 10F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ZaliheAdminForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Administracija zaliha";
+            Text = "Administracija zaliha - Upravljanje zalihe";
             Load += ZaliheAdminForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvZalihe).EndInit();
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
             panelMain.ResumeLayout(false);
-            panelMain.PerformLayout();
             panelButtons.ResumeLayout(false);
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
             ResumeLayout(false);
         }
     }

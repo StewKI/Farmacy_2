@@ -11,6 +11,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += ReceptForm_Load;
+            SetupButtonEffects();
         }
 
         private void ReceptForm_Load(object sender, EventArgs e)
@@ -243,6 +244,62 @@ namespace Farmacy.Forme
             {
                 MessageBox.Show("Greška pri učitavanju podataka o receptu:\n" + ex.Message, "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnNoviRecept)
+                {
+                    button.BackColor = Color.FromArgb(46, 204, 113); // Tamnija zelena
+                }
+                else if (button == btnObrisiRecept)
+                {
+                    button.BackColor = Color.FromArgb(231, 76, 60); // Tamnija crvena
+                }
+                else if (button == btnIzmeniRecept)
+                {
+                    button.BackColor = Color.FromArgb(52, 152, 219); // Tamnija plava
+                }
+                else if (button == btnDodajStavku)
+                {
+                    button.BackColor = Color.FromArgb(230, 126, 34); // Tamnija narandžasta
+                }
+                else if (button == btnRealizujRecept)
+                {
+                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
             }
         }
     }

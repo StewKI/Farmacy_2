@@ -1,6 +1,6 @@
 namespace Farmacy.Forme
 {
-    partial class NovaSekundarnaGrupaForm
+    partial class IzmeniPrimarnuGrupuForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -8,7 +8,9 @@ namespace Farmacy.Forme
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblNaziv;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Panel panelButtons;
         private System.Windows.Forms.Button btnSacuvaj;
@@ -31,7 +33,9 @@ namespace Farmacy.Forme
             lblTitle = new Label();
             lblSubtitle = new Label();
             panelMain = new Panel();
+            lblId = new Label();
             lblNaziv = new Label();
+            txtId = new TextBox();
             txtNaziv = new TextBox();
             panelButtons = new Panel();
             btnSacuvaj = new Button();
@@ -46,7 +50,7 @@ namespace Farmacy.Forme
             // 
             // panelHeader
             // 
-            panelHeader.BackColor = Color.FromArgb(255, 220, 80);
+            panelHeader.BackColor = Color.FromArgb(250, 160, 80);
             panelHeader.Controls.Add(lblSubtitle);
             panelHeader.Controls.Add(lblTitle);
             panelHeader.Dock = DockStyle.Top;
@@ -62,26 +66,28 @@ namespace Farmacy.Forme
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(20, 20);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(350, 37);
+            lblTitle.Size = new Size(300, 37);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "➕ NOVA SEKUNDARNA GRUPA";
+            lblTitle.Text = "✏️ IZMENI PRIMARNU GRUPU";
             // 
             // lblSubtitle
             // 
             lblSubtitle.AutoSize = true;
             lblSubtitle.Font = new Font("Segoe UI", 10F);
-            lblSubtitle.ForeColor = Color.FromArgb(255, 240, 150);
+            lblSubtitle.ForeColor = Color.FromArgb(255, 200, 120);
             lblSubtitle.Location = new Point(20, 60);
             lblSubtitle.Name = "lblSubtitle";
             lblSubtitle.Size = new Size(400, 19);
             lblSubtitle.TabIndex = 1;
-            lblSubtitle.Text = "Dodavanje nove sekundarne grupe lekova";
+            lblSubtitle.Text = "Ažuriranje podataka o primarnoj grupi lekova";
             // 
             // panelMain
             // 
             panelMain.BackColor = Color.FromArgb(245, 248, 250);
             panelMain.Controls.Add(txtNaziv);
+            panelMain.Controls.Add(txtId);
             panelMain.Controls.Add(lblNaziv);
+            panelMain.Controls.Add(lblId);
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(0, 100);
             panelMain.Name = "panelMain";
@@ -89,22 +95,45 @@ namespace Farmacy.Forme
             panelMain.Size = new Size(500, 200);
             panelMain.TabIndex = 1;
             // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblId.ForeColor = Color.FromArgb(33, 37, 41);
+            lblId.Location = new Point(20, 20);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(30, 19);
+            lblId.TabIndex = 0;
+            lblId.Text = "ID:";
+            // 
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
             lblNaziv.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblNaziv.ForeColor = Color.FromArgb(33, 37, 41);
-            lblNaziv.Location = new Point(20, 20);
+            lblNaziv.Location = new Point(20, 60);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(50, 19);
-            lblNaziv.TabIndex = 0;
+            lblNaziv.TabIndex = 1;
             lblNaziv.Text = "Naziv:";
+            // 
+            // txtId
+            // 
+            txtId.BackColor = Color.FromArgb(233, 236, 239);
+            txtId.BorderStyle = BorderStyle.FixedSingle;
+            txtId.Font = new Font("Segoe UI", 10F);
+            txtId.Location = new Point(100, 20);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(200, 25);
+            txtId.TabIndex = 0;
+            txtId.TabStop = false;
             // 
             // txtNaziv
             // 
             txtNaziv.BorderStyle = BorderStyle.FixedSingle;
             txtNaziv.Font = new Font("Segoe UI", 10F);
-            txtNaziv.Location = new Point(100, 20);
+            txtNaziv.Location = new Point(100, 60);
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(300, 25);
             txtNaziv.TabIndex = 1;
@@ -154,7 +183,6 @@ namespace Farmacy.Forme
             btnOtkazi.Text = "❌ Otkaži";
             btnOtkazi.TextAlign = ContentAlignment.MiddleCenter;
             btnOtkazi.UseVisualStyleBackColor = false;
-            btnOtkazi.Click += btnOtkazi_Click;
             btnOtkazi.MouseEnter += Button_MouseEnter;
             btnOtkazi.MouseLeave += Button_MouseLeave;
             // 
@@ -177,9 +205,9 @@ namespace Farmacy.Forme
             lblFooter.Name = "lblFooter";
             lblFooter.Size = new Size(250, 13);
             lblFooter.TabIndex = 0;
-            lblFooter.Text = "Sekundarne grupe - Dodavanje nove sekundarne grupe";
+            lblFooter.Text = "Primarne grupe - Ažuriranje podataka o primarnoj grupi";
             // 
-            // NovaSekundarnaGrupaForm
+            // IzmeniPrimarnuGrupuForm
             // 
             AcceptButton = btnSacuvaj;
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -193,9 +221,9 @@ namespace Farmacy.Forme
             Controls.Add(panelHeader);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "NovaSekundarnaGrupaForm";
+            Name = "IzmeniPrimarnuGrupuForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Farmacy System - Nova Sekundarna Grupa";
+            Text = "Farmacy System - Izmeni Primarnu Grupu";
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             panelMain.ResumeLayout(false);
@@ -207,7 +235,3 @@ namespace Farmacy.Forme
         }
     }
 }
-
-
-
-

@@ -4,20 +4,22 @@ using System.Windows.Forms;
 
 namespace Farmacy.Forme
 {
-    public partial class NovaSekundarnaGrupaForm : Form
+    public partial class IzmeniPrimarnuGrupuForm : Form
     {
-        private SekundarnaKategorijaBasic sekundarnaGrupa;
+        private PrimarnaGrupaBasic primarnaGrupa;
 
-        public NovaSekundarnaGrupaForm()
+        public IzmeniPrimarnuGrupuForm(PrimarnaGrupaBasic primarnaGrupa)
         {
             InitializeComponent();
-            InitializeForm();
+            this.primarnaGrupa = primarnaGrupa ?? throw new ArgumentNullException(nameof(primarnaGrupa));
+            LoadPrimarnaGrupaData();
             SetupButtonEffects();
         }
 
-        private void InitializeForm()
+        private void LoadPrimarnaGrupaData()
         {
-            sekundarnaGrupa = new SekundarnaKategorijaBasic();
+            txtId.Text = primarnaGrupa.Id.ToString();
+            txtNaziv.Text = primarnaGrupa.Naziv;
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
@@ -27,34 +29,38 @@ namespace Farmacy.Forme
 
             try
             {
-                sekundarnaGrupa.Naziv = txtNaziv.Text.Trim();
+                // Ažuriraj podatke
+                primarnaGrupa.Naziv = txtNaziv.Text.Trim();
 
-                DTOManagerIsporukeZalihe.DodajSekundarnuGrupu(sekundarnaGrupa);
+                // Sačuvaj u bazu
+                DTOManagerLek.IzmeniPrimarnuGrupu(primarnaGrupa);
 
-                MessageBox.Show("Sekundarna grupa je uspešno dodana!", "Uspeh",
+                MessageBox.Show("Primarna grupa je uspešno ažurirana!", "Uspeh", 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška pri dodavanju sekundarne grupe:\n" + ex.Message, "Greška",
+                MessageBox.Show("Greška pri ažuriranju primarne grupe:\n" + ex.Message, "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnOtkazi_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
         }
 
         private bool ValidateForm()
         {
             if (string.IsNullOrWhiteSpace(txtNaziv.Text))
             {
-                MessageBox.Show("Naziv sekundarne grupe je obavezan!", "Greška",
+                MessageBox.Show("Naziv primarne grupe je obavezan!", "Greška",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNaziv.Focus();
+                return false;
+            }
+
+            if (txtNaziv.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("Naziv primarne grupe mora imati najmanje 2 karaktera!", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNaziv.Focus();
                 return false;
@@ -108,7 +114,3 @@ namespace Farmacy.Forme
         }
     }
 }
-
-
-
-

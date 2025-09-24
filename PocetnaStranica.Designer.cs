@@ -29,69 +29,187 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            zaposleniBtn = new Button();
+            panelHeader = new Panel();
+            lblSubtitle = new Label();
+            lblTitle = new Label();
+            panelMain = new Panel();
+            btnZaposleni = new Button();
+            btnLekovi = new Button();
+            btnProizvodjaci = new Button();
+            btnDistributeri = new Button();
+            btnProdajneJedinice = new Button();
+            panelFooter = new Panel();
+            lblFooter = new Label();
             imageList1 = new ImageList(components);
-            label1 = new Label();
+            panelHeader.SuspendLayout();
+            panelMain.SuspendLayout();
+            panelFooter.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // panelHeader
             // 
-            button1.Location = new Point(201, 401);
-            button1.Margin = new Padding(6, 6, 6, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(301, 119);
-            button1.TabIndex = 0;
-            button1.Text = "Prodajne Jedinice";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += btnProdajneJedinice_Click;
+            panelHeader.BackColor = Color.FromArgb(0, 102, 102);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Margin = new Padding(5, 5, 5, 5);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(1200, 180);
+            panelHeader.TabIndex = 0;
             // 
-            // button2
+            // lblSubtitle
             // 
-            button2.Location = new Point(600, 401);
-            button2.Margin = new Padding(6, 6, 6, 6);
-            button2.Name = "button2";
-            button2.Size = new Size(301, 119);
-            button2.TabIndex = 1;
-            button2.Text = "Distributeri";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += btnDistributeri_Click;
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 12F);
+            lblSubtitle.ForeColor = Color.FromArgb(200, 255, 255);
+            lblSubtitle.Location = new Point(50, 110);
+            lblSubtitle.Margin = new Padding(5, 0, 5, 0);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(667, 45);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Sistem za vođenje evidencije apoteka i lekova";
             // 
-            // button3
+            // lblTitle
             // 
-            button3.Location = new Point(201, 580);
-            button3.Margin = new Padding(6, 6, 6, 6);
-            button3.Name = "button3";
-            button3.Size = new Size(301, 119);
-            button3.TabIndex = 2;
-            button3.Text = "Proizvodjači";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += btnProizvodjaci_Click;
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(50, 30);
+            lblTitle.Margin = new Padding(5, 0, 5, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(700, 85);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "🏥 FARMACY SYSTEM";
             // 
-            // button4
+            // panelMain
             // 
-            button4.Location = new Point(600, 580);
-            button4.Margin = new Padding(6, 6, 6, 6);
-            button4.Name = "button4";
-            button4.Size = new Size(301, 119);
-            button4.TabIndex = 3;
-            button4.Text = "Lekovi";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += btnLekovi_Click;
+            panelMain.BackColor = Color.FromArgb(245, 248, 250);
+            panelMain.Controls.Add(btnZaposleni);
+            panelMain.Controls.Add(btnLekovi);
+            panelMain.Controls.Add(btnProizvodjaci);
+            panelMain.Controls.Add(btnDistributeri);
+            panelMain.Controls.Add(btnProdajneJedinice);
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 180);
+            panelMain.Margin = new Padding(5, 5, 5, 5);
+            panelMain.Name = "panelMain";
+            panelMain.Padding = new Padding(50, 50, 50, 50);
+            panelMain.Size = new Size(1200, 600);
+            panelMain.TabIndex = 1;
             // 
-            // zaposleniBtn
+            // btnZaposleni
             // 
-            zaposleniBtn.Location = new Point(1000, 401);
-            zaposleniBtn.Margin = new Padding(6, 6, 6, 6);
-            zaposleniBtn.Name = "zaposleniBtn";
-            zaposleniBtn.Size = new Size(301, 119);
-            zaposleniBtn.TabIndex = 4;
-            zaposleniBtn.Text = "Zaposleni";
-            zaposleniBtn.UseVisualStyleBackColor = true;
-            zaposleniBtn.Click += zaposleniBtn_Click;
+            btnZaposleni.BackColor = Color.FromArgb(231, 76, 60);
+            btnZaposleni.FlatAppearance.BorderSize = 0;
+            btnZaposleni.FlatStyle = FlatStyle.Flat;
+            btnZaposleni.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnZaposleni.ForeColor = Color.White;
+            btnZaposleni.Location = new Point(50, 300);
+            btnZaposleni.Margin = new Padding(5, 5, 5, 5);
+            btnZaposleni.Name = "btnZaposleni";
+            btnZaposleni.Size = new Size(300, 200);
+            btnZaposleni.TabIndex = 4;
+            btnZaposleni.Text = "👥\r\nZaposleni";
+            btnZaposleni.UseVisualStyleBackColor = false;
+            btnZaposleni.Click += zaposleniBtn_Click;
+            btnZaposleni.MouseEnter += Button_MouseEnter;
+            btnZaposleni.MouseLeave += Button_MouseLeave;
+            // 
+            // btnLekovi
+            // 
+            btnLekovi.BackColor = Color.FromArgb(230, 126, 34);
+            btnLekovi.FlatAppearance.BorderSize = 0;
+            btnLekovi.FlatStyle = FlatStyle.Flat;
+            btnLekovi.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnLekovi.ForeColor = Color.White;
+            btnLekovi.Location = new Point(450, 50);
+            btnLekovi.Margin = new Padding(5, 5, 5, 5);
+            btnLekovi.Name = "btnLekovi";
+            btnLekovi.Size = new Size(300, 200);
+            btnLekovi.TabIndex = 3;
+            btnLekovi.Text = "💊\r\nLekovi";
+            btnLekovi.UseVisualStyleBackColor = false;
+            btnLekovi.Click += btnLekovi_Click;
+            btnLekovi.MouseEnter += Button_MouseEnter;
+            btnLekovi.MouseLeave += Button_MouseLeave;
+            // 
+            // btnProizvodjaci
+            // 
+            btnProizvodjaci.BackColor = Color.FromArgb(155, 89, 182);
+            btnProizvodjaci.FlatAppearance.BorderSize = 0;
+            btnProizvodjaci.FlatStyle = FlatStyle.Flat;
+            btnProizvodjaci.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnProizvodjaci.ForeColor = Color.White;
+            btnProizvodjaci.Location = new Point(850, 50);
+            btnProizvodjaci.Margin = new Padding(5, 5, 5, 5);
+            btnProizvodjaci.Name = "btnProizvodjaci";
+            btnProizvodjaci.Size = new Size(300, 200);
+            btnProizvodjaci.TabIndex = 2;
+            btnProizvodjaci.Text = "🏭\r\nProizvođači";
+            btnProizvodjaci.UseVisualStyleBackColor = false;
+            btnProizvodjaci.Click += btnProizvodjaci_Click;
+            btnProizvodjaci.MouseEnter += Button_MouseEnter;
+            btnProizvodjaci.MouseLeave += Button_MouseLeave;
+            // 
+            // btnDistributeri
+            // 
+            btnDistributeri.BackColor = Color.FromArgb(46, 204, 113);
+            btnDistributeri.FlatAppearance.BorderSize = 0;
+            btnDistributeri.FlatStyle = FlatStyle.Flat;
+            btnDistributeri.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnDistributeri.ForeColor = Color.White;
+            btnDistributeri.Location = new Point(450, 300);
+            btnDistributeri.Margin = new Padding(5, 5, 5, 5);
+            btnDistributeri.Name = "btnDistributeri";
+            btnDistributeri.Size = new Size(300, 200);
+            btnDistributeri.TabIndex = 1;
+            btnDistributeri.Text = "🚚\r\nDistributeri";
+            btnDistributeri.UseVisualStyleBackColor = false;
+            btnDistributeri.Click += btnDistributeri_Click;
+            btnDistributeri.MouseEnter += Button_MouseEnter;
+            btnDistributeri.MouseLeave += Button_MouseLeave;
+            // 
+            // btnProdajneJedinice
+            // 
+            btnProdajneJedinice.BackColor = Color.FromArgb(52, 152, 219);
+            btnProdajneJedinice.FlatAppearance.BorderSize = 0;
+            btnProdajneJedinice.FlatStyle = FlatStyle.Flat;
+            btnProdajneJedinice.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnProdajneJedinice.ForeColor = Color.White;
+            btnProdajneJedinice.Location = new Point(50, 50);
+            btnProdajneJedinice.Margin = new Padding(5, 5, 5, 5);
+            btnProdajneJedinice.Name = "btnProdajneJedinice";
+            btnProdajneJedinice.Size = new Size(300, 200);
+            btnProdajneJedinice.TabIndex = 0;
+            btnProdajneJedinice.Text = "🏪\r\nProdajne\r\nJedinice";
+            btnProdajneJedinice.UseVisualStyleBackColor = false;
+            btnProdajneJedinice.Click += btnProdajneJedinice_Click;
+            btnProdajneJedinice.MouseEnter += Button_MouseEnter;
+            btnProdajneJedinice.MouseLeave += Button_MouseLeave;
+            // 
+            // panelFooter
+            // 
+            panelFooter.BackColor = Color.FromArgb(44, 62, 80);
+            panelFooter.Controls.Add(lblFooter);
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 780);
+            panelFooter.Margin = new Padding(5, 5, 5, 5);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(1200, 60);
+            panelFooter.TabIndex = 2;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Font = new Font("Segoe UI", 10F);
+            lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
+            lblFooter.Location = new Point(50, 15);
+            lblFooter.Margin = new Padding(5, 0, 5, 0);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(553, 37);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "© 2025 Farmacy System - Sva prava zadržana";
             // 
             // imageList1
             // 
@@ -99,44 +217,44 @@
             imageList1.ImageSize = new Size(16, 16);
             imageList1.TransparentColor = Color.Transparent;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 35F);
-            label1.Location = new Point(113, 220);
-            label1.Margin = new Padding(6, 0, 6, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(768, 125);
-            label1.TabIndex = 3;
-            label1.Text = "LANAC APOTEKA";
-            // 
             // PocetnaStranica
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1725, 875);
-            Controls.Add(label1);
-            Controls.Add(zaposleniBtn);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Margin = new Padding(6, 6, 6, 6);
+            BackColor = Color.White;
+            ClientSize = new Size(1200, 840);
+            Controls.Add(panelMain);
+            Controls.Add(panelFooter);
+            Controls.Add(panelHeader);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(5, 5, 5, 5);
+            MaximizeBox = false;
             Name = "PocetnaStranica";
-            Text = "PocetnaStranica";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Farmacy System - Početna stranica";
             Load += PocetnaStranica_Load;
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            panelMain.ResumeLayout(false);
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button zaposleniBtn;
+        private Panel panelHeader;
+        private Label lblTitle;
+        private Label lblSubtitle;
+        private Panel panelMain;
+        private Button btnProdajneJedinice;
+        private Button btnDistributeri;
+        private Button btnProizvodjaci;
+        private Button btnLekovi;
+        private Button btnZaposleni;
+        private Panel panelFooter;
+        private Label lblFooter;
         private ImageList imageList1;
-        private Label label1;
     }
 }

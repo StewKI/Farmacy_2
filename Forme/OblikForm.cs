@@ -11,6 +11,7 @@ namespace Farmacy.Forme
         {
             InitializeComponent();
             this.Load += OblikForm_Load;
+            SetupButtonEffects();
         }
 
         private void OblikForm_Load(object sender, EventArgs e)
@@ -112,6 +113,54 @@ namespace Farmacy.Forme
             else
             {
                 MessageBox.Show("Greška pri učitavanju podataka o obliku!");
+            }
+        }
+
+        private void SetupButtonEffects()
+        {
+            // Dodaj hover efekte za dugmad
+            foreach (Control control in panelButtons.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseEnter += Button_MouseEnter;
+                    button.MouseLeave += Button_MouseLeave;
+                }
+            }
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Sačuvaj originalnu boju
+                button.Tag = button.BackColor;
+                
+                // Promeni boju na hover
+                if (button == btnNoviOblik)
+                {
+                    button.BackColor = Color.FromArgb(46, 204, 113); // Tamnija zelena
+                }
+                else if (button == btnObrisiOblik)
+                {
+                    button.BackColor = Color.FromArgb(231, 76, 60); // Tamnija crvena
+                }
+                else if (button == btnIzmeniOblik)
+                {
+                    button.BackColor = Color.FromArgb(52, 152, 219); // Tamnija plava
+                }
+                
+                button.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.Tag is Color originalColor)
+            {
+                // Vrati originalnu boju
+                button.BackColor = originalColor;
+                button.Cursor = Cursors.Default;
             }
         }
     }
