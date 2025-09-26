@@ -50,7 +50,7 @@ namespace Farmacy.Forme
         {
             if (zaposleni != null)
             {
-                //txtMBr.Text = zaposleni.MBr.ToString();
+                txtMatBr.Text = zaposleni.MatBr;
                 txtPrezime.Text = zaposleni.Prezime;
                 txtIme.Text = zaposleni.Ime;
                 dtpDatumRodj.Value = zaposleni.DatumRodj;
@@ -90,6 +90,13 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
+            if (string.IsNullOrWhiteSpace(txtMatBr.Text))
+            {
+                MessageBox.Show("Matični broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMatBr.Focus();
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
                 MessageBox.Show("Prezime je obavezno!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -128,12 +135,14 @@ namespace Farmacy.Forme
                 zaposleni = new ZaposleniBasic();
             }
 
-            // Generiši MBr ako nije postavljen
-            if (zaposleni.Id == 0)
+            // Za novi zaposleni, kreiraj novi objekat bez Id-a
+            bool isNewZaposleni = (zaposleni.Id == 0);
+            if (isNewZaposleni)
             {
-                zaposleni.Id = DateTime.Now.Ticks;
+                zaposleni = new ZaposleniBasic();
             }
 
+            zaposleni.MatBr = txtMatBr.Text.Trim();
             zaposleni.Prezime = txtPrezime.Text.Trim();
             zaposleni.Ime = txtIme.Text.Trim();
             zaposleni.DatumRodj = dtpDatumRodj.Value;
@@ -141,8 +150,16 @@ namespace Farmacy.Forme
             zaposleni.Telefon = string.IsNullOrWhiteSpace(txtTelefon.Text) ? null : txtTelefon.Text.Trim();
             zaposleni.DatumZaposlenja = dtpDatumZaposlenja.Value;
 
-            // Dodaj zaposlenog u sistem
-            DTOManagerZaposleni.DodajZaposlenog(zaposleni);
+            // Dodaj ili ažuriraj zaposlenog u sistemu
+            if (isNewZaposleni)
+            {
+                DTOManagerZaposleni.DodajZaposlenog(zaposleni);
+            }
+            else
+            {
+                // Za postojeći zaposleni, možda treba UpdateZaposlenog funkcija
+                DTOManagerZaposleni.DodajZaposlenog(zaposleni);
+            }
 
         }
 

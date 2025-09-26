@@ -32,12 +32,10 @@ namespace Farmacy
                 s.Update(ent);
                 s.Flush();
 
-                // Podaci o vezi su uspešno ažurirani!
-
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message, "Greška pri ažuriranju veze menadžer-apoteka");
             }
         }
 
@@ -81,7 +79,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var odgovorni = s.Load<Entiteti.FarmaceutBasic>(dto.OdgovorniFarmaceutMbr);
+                var odgovorni = s.Load<Entiteti.FarmaceutBasic>(dto.OdgovorniFarmaceutId);
 
                 var pj = new Entiteti.ProdajnaJedinicaBasic
                 {
@@ -99,10 +97,11 @@ namespace Farmacy
             }
             catch (GenericADOException ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show("Greška pri dodavanju prodajne jedinice: " + ex.Message, "Greška");
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri dodavanju prodajne jedinice: " + ex.Message, "Greška");
             }
         }
 
@@ -111,7 +110,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                
+
 
                 var pj = new Entiteti.ApotekaSaLabBasic
                 {
@@ -120,8 +119,8 @@ namespace Farmacy
                     Broj = dto.Broj,
                     PostanskiBroj = dto.PostanskiBroj,
                     Mesto = dto.Mesto,
-                    Napomena= dto.Napomena,
-                    OdgovorniFarmaceut=dto.OdgovorniFarmaceut,
+                    Napomena = dto.Napomena,
+                    OdgovorniFarmaceut = dto.OdgovorniFarmaceut,
                 };
 
                 s.Save(pj);
@@ -130,7 +129,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show("Greška pri dodavanju apoteke sa laboratorijom: " + ex.Message, "Greška");
             }
         }
 
@@ -149,8 +148,8 @@ namespace Farmacy
                     PostanskiBroj = dto.PostanskiBroj,
                     Mesto = dto.Mesto,
                     Napomena = dto.Napomena,
-                    SpecijalnostTipa=dto.SpecijalnostTipa,
-                    OdgovorniFarmaceut=dto.OdgovorniFarmaceut,
+                    SpecijalnostTipa = dto.SpecijalnostTipa,
+                    OdgovorniFarmaceut = dto.OdgovorniFarmaceut,
                 };
 
                 s.Save(pj);
@@ -159,7 +158,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show("Greška pri dodavanju specijalizovane apoteke: " + ex.Message, "Greška");
             }
         }
         public static void DodajStandardnuApoteku(StandardnaApoteka dto)
@@ -176,7 +175,7 @@ namespace Farmacy
                     Broj = dto.Broj,
                     PostanskiBroj = dto.PostanskiBroj,
                     Mesto = dto.Mesto,
-                    Napomena = dto.Napomena,         
+                    Napomena = dto.Napomena,
                     OdgovorniFarmaceut = dto.OdgovorniFarmaceut,
                 };
 
@@ -186,7 +185,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show("Greška pri dodavanju standardne apoteke: " + ex.Message, "Greška");
             }
         }
 
@@ -206,7 +205,7 @@ namespace Farmacy
                     Broj = pj.Broj,
                     PostanskiBroj = pj.PostanskiBroj,
                     Mesto = pj.Mesto,
-                    OdgovorniFarmaceutMbr = pj.OdgovorniFarmaceut?.Id ?? 0
+                    OdgovorniFarmaceutId = pj.OdgovorniFarmaceut?.Id ?? 0
                 };
             }
             catch (Exception) { }
@@ -255,7 +254,7 @@ namespace Farmacy
                     };
                 }
 
-                var standardna= s.Get<Entiteti.StandardnaApoteka>(id);
+                var standardna = s.Get<Entiteti.StandardnaApoteka>(id);
                 if (standardna != null)
                 {
                     return new StandardnaApoteka
@@ -266,19 +265,19 @@ namespace Farmacy
                         Broj = standardna.Broj,
                         PostanskiBroj = standardna.PostanskiBroj,
                         Mesto = standardna.Mesto,
-                        OdgovorniFarmaceut= standardna.OdgovorniFarmaceut,
+                        OdgovorniFarmaceut = standardna.OdgovorniFarmaceut,
                         Napomena = standardna.Napomena
                     };
-                        
+
                 }
-                
-                
+
+
 
 
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message, "Greška pri učitavanju prodajne jedinice");
             }
 
             return null;
@@ -303,12 +302,12 @@ namespace Farmacy
                         Broj = pj.Broj,
                         PostanskiBroj = pj.PostanskiBroj,
                         Mesto = pj.Mesto,
-                        OdgovorniFarmaceutMbr = pj.OdgovorniFarmaceut?.Id ?? 0
+                        OdgovorniFarmaceutId = pj.OdgovorniFarmaceut?.Id ?? 0
                     });
                 }
             }
             catch (Exception ex) {
-                // Error handling
+                MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -327,7 +326,7 @@ namespace Farmacy
                 foreach (var pj in sve)
                 {
                     var typeName = pj.GetType().Name;
-                    
+
                     // Proveri da li je osnovna prodajna jedinica (nije nasleđena)
                     if (typeName == "ProdajnaJedinicaBasic")
                     {
@@ -339,13 +338,14 @@ namespace Farmacy
                             Broj = pj.Broj,
                             PostanskiBroj = pj.PostanskiBroj,
                             Mesto = pj.Mesto,
-                            OdgovorniFarmaceutMbr = pj.OdgovorniFarmaceut?.Id ?? 0
+                            OdgovorniFarmaceutId = pj.OdgovorniFarmaceut?.Id ?? 0
                         });
                     }
                 }
             }
-            catch (Exception ex) {
-                // Error handling
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -359,7 +359,7 @@ namespace Farmacy
                 var sve = s.Query<Entiteti.ApotekaSaLabBasic>()
                     .Fetch(x => x.OdgovorniFarmaceut)
                     .ToList();
-                
+
                 foreach (var pj in sve)
                 {
                     list.Add(new ApotekaSaLabBasic
@@ -375,8 +375,9 @@ namespace Farmacy
                     });
                 }
             }
-            catch (Exception ex) {
-                // Error handling
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -407,7 +408,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                // Error handling
+                MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -439,7 +440,7 @@ namespace Farmacy
                 }
             }
             catch (Exception ex) {
-                // Error handling
+                MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -455,13 +456,14 @@ namespace Farmacy
                 pj.Broj = dto.Broj;
                 pj.PostanskiBroj = dto.PostanskiBroj;
                 pj.Mesto = dto.Mesto;
-                pj.OdgovorniFarmaceut = s.Load<Entiteti.FarmaceutBasic>(dto.OdgovorniFarmaceutMbr);
+                pj.OdgovorniFarmaceut = s.Load<Entiteti.FarmaceutBasic>(dto.OdgovorniFarmaceutId);
 
                 s.Update(pj);
                 s.Flush();
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri izmeni prodajne jedinice: " + ex.Message, "Greška");
             }
         }
         public static void IzmeniSpecApoetku(SpecijalizovanaApoteka dto)
@@ -483,7 +485,7 @@ namespace Farmacy
                 s.Flush();
             }
             catch (Exception ex) {
-                // Error handling - message box removed
+                MessageBox.Show("Greška pri izmeni specijalizovane apoteke: " + ex.Message, "Greška");
             }
         }
 
@@ -499,14 +501,15 @@ namespace Farmacy
                 pj.PostanskiBroj = dto.PostanskiBroj;
                 pj.Mesto = dto.Mesto;
                 pj.OdgovorniFarmaceut = dto.OdgovorniFarmaceut;
-                
+
 
 
                 s.Update(pj);
                 s.Flush();
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri izmeni standardne apoteke: " + ex.Message, "Greška");
             }
         }
         public static void IzmeniApoetkuSaLab(Entiteti.ApotekaSaLabBasic dto)
@@ -529,7 +532,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show("Greška pri izmeni apoteke sa laboratorijom: " + ex.Message, "Greška");
             }
         }
 
@@ -545,8 +548,9 @@ namespace Farmacy
                     s.Flush();
                 }
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška pri brisanju prodajne jedinice: " + ex.Message, "Greška");
             }
         }
 
@@ -574,14 +578,14 @@ namespace Farmacy
             catch (Exception) { }
         }
 
-        public static IList<MenadzerApotekaBasic> VratiApotekeMenadzera(long mbrMenadzera)
+        public static IList<MenadzerApotekaBasic> VratiApotekeMenadzera(long idMenadzera)
         {
             var list = new List<MenadzerApotekaBasic>();
             try
             {
                 using var s = DataLayer.GetSession();
                 var veze = s.Query<MenadzerApoteka>()
-                            .Where(x => x.Menadzer.Id == mbrMenadzera).ToList();
+                            .Where(x => x.Menadzer.Id == idMenadzera).ToList();
 
                 list.AddRange(veze.Select(x => new MenadzerApotekaBasic
                 {

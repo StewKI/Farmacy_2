@@ -166,7 +166,7 @@ namespace Farmacy.Forme
                 {
                     ProdajnaJedinicaId = prodajnaJedinicaId,
                     DatumVreme = dtpDatumVreme.Value,
-                    BlagajnikMbr = blagMbr
+                    BlagajnikId = blagMbr
                 };
 
                 if (chkNaRecept.Checked)

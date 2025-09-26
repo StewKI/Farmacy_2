@@ -15,14 +15,13 @@ namespace Farmacy
             {
                 using ISession s = DataLayer.GetSession();
                 var ok = s.CreateSQLQuery("select 'NH OK' from dual").UniqueResult<string>();
-                MessageBox.Show("NHibernate konekcija radi: " + ok, "OK");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "NH init error");
             }
 
-            // pokreni glavni prozor (po želji)
+            // pokreni glavni prozor (po ï¿½elji)
             // Application.Run(new MainForm());
             //Application.Run(new PocetnaStranica());
             Application.Run(new PocetnaStranica());

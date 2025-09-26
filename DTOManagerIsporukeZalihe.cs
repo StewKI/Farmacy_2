@@ -21,7 +21,7 @@ namespace Farmacy
                     Distributer = s.Load<Distributer>(dto.DistributerId),
                     ProdajnaJedinica = s.Load<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId),
                     Datum = dto.Datum,
-                    Magacioner = dto.MagacionerMbr.HasValue ? s.Load<Zaposleni>(dto.MagacionerMbr.Value) : null
+                    Magacioner = dto.MagacionerId.HasValue ? s.Load<Zaposleni>(dto.MagacionerId.Value) : null
                 };
                 s.Save(isp);
 
@@ -35,7 +35,6 @@ namespace Farmacy
                     };
                     s.Save(stavka);
 
-                    // update Zaliha (upsert)
                     var z = s.Query<Zaliha>()
                              .FirstOrDefault(x => x.ProdajnaJedinica.Id == dto.ProdajnaJedinicaId
                                                && x.Pakovanje.Id == st.PakovanjeId);
@@ -85,7 +84,7 @@ namespace Farmacy
                         PakovanjeId = z.Pakovanje.Id,
                         Kolicina = z.Kolicina,
                         DatumPoslednjeIsporuke = z.DatumPoslednjeIsporuke,
-                        OdgovorniMagacionerMbr = z.OdgovorniMagacioner?.Id
+                        OdgovorniMagacionerId = z.OdgovorniMagacioner?.Id
                     });
                 }
             }
@@ -106,12 +105,10 @@ namespace Farmacy
                 };
                 s.Save(d1);
                 s.Flush();
-
-                // Uspesno je dodat distributer
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju distributera");
             }
         }
 
@@ -131,12 +128,10 @@ namespace Farmacy
                 };
                 s.Save(d1);
                 s.Flush();
-
-                // Uspesno je dodat recept
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju recepta");
             }
 
         }
@@ -147,14 +142,11 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                // Ako je prosleđen originalni serijski broj, koristimo ga za pronalaženje
-                // Inače koristimo trenutni serijski broj (za slučaj da se nije menjao)
                 string serijskiBrojZaPretragu = originalSerijskiBroj ?? r.SerijskiBroj;
                 
                 var postojeciRecept = s.Get<Recept>(serijskiBrojZaPretragu);
                 if (postojeciRecept != null)
                 {
-                    // Ažuriramo sve podatke OSIM serijskog broja (jer je to primary key)
                     postojeciRecept.SifraLekara = r.SifraLekara;
                     postojeciRecept.DatumIzd = r.DatumIzd;
                     postojeciRecept.Status = r.Status;
@@ -190,18 +182,16 @@ namespace Farmacy
                 if(r !=null)
                 {
                     r.RealizovanaProdajnaJedinica = p1;
-                    r.RealizovaoFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(p.OdgovorniFarmaceutMbr);
+                    r.RealizovaoFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(p.OdgovorniFarmaceutId);
                     r.RealizacijaDatum = d;
 
                 }
                 s.Update(r);
                 s.Flush();
-
-                // Uspesno je realizovan recept
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri realizaciji recepta");
             }
 
         }
@@ -514,7 +504,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                
+
                 var p = new Proizvodjac
                 {
                     Naziv = dto.Naziv,
@@ -524,12 +514,10 @@ namespace Farmacy
                 };
                 s.Save(p);
                 s.Flush();
-
-                // Uspešno je dodat proizvodjač
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju proizvodjača");
             }
         }
 
@@ -549,7 +537,7 @@ namespace Farmacy
                         PakovanjeId = z.Pakovanje.Id,
                         Kolicina = z.Kolicina,
                         DatumPoslednjeIsporuke = z.DatumPoslednjeIsporuke,
-                        OdgovorniMagacionerMbr = z.OdgovorniMagacioner?.Id
+                        OdgovorniMagacionerId = z.OdgovorniMagacioner?.Id
                     });
                 }
             }
@@ -573,7 +561,7 @@ namespace Farmacy
                         PakovanjeId = zaliha.Pakovanje.Id,
                         Kolicina = zaliha.Kolicina,
                         DatumPoslednjeIsporuke = zaliha.DatumPoslednjeIsporuke,
-                        OdgovorniMagacionerMbr = zaliha.OdgovorniMagacioner?.Id
+                        OdgovorniMagacionerId = zaliha.OdgovorniMagacioner?.Id
                     };
                 }
             }
@@ -586,24 +574,23 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                
+
                 var zaliha = new Zaliha
                 {
                     ProdajnaJedinica = s.Load<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId),
                     Pakovanje = s.Load<Pakovanje>(dto.PakovanjeId),
                     Kolicina = dto.Kolicina,
                     DatumPoslednjeIsporuke = dto.DatumPoslednjeIsporuke,
-                    OdgovorniMagacioner = dto.OdgovorniMagacionerMbr.HasValue ? 
-                        s.Load<Zaposleni>(dto.OdgovorniMagacionerMbr.Value) : null
+                    OdgovorniMagacioner = dto.OdgovorniMagacionerId.HasValue ?
+                        s.Load<Zaposleni>(dto.OdgovorniMagacionerId.Value) : null
                 };
                 s.Save(zaliha);
                 s.Flush();
 
-                // Uspešno je dodana zaliha
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju zalihe");
             }
         }
 
@@ -619,8 +606,8 @@ namespace Farmacy
                 {
                     zaliha.Kolicina = dto.Kolicina;
                     zaliha.DatumPoslednjeIsporuke = dto.DatumPoslednjeIsporuke;
-                    zaliha.OdgovorniMagacioner = dto.OdgovorniMagacionerMbr.HasValue ? 
-                        s.Load<Zaposleni>(dto.OdgovorniMagacionerMbr.Value) : null;
+                    zaliha.OdgovorniMagacioner = dto.OdgovorniMagacionerId.HasValue ? 
+                        s.Load<Zaposleni>(dto.OdgovorniMagacionerId.Value) : null;
                     s.Update(zaliha);
                     s.Flush();
                 }
@@ -761,7 +748,7 @@ namespace Farmacy
                         Id = p.Id,
                         ProdajnaJedinicaId = p.ProdajnaJedinica.Id,
                         DatumVreme = p.DatumVreme,
-                        BlagajnikMbr = p.Blagajnik?.Id,
+                        BlagajnikId = p.Blagajnik?.Id,
                         ProdajnaJedinicaNaziv = p.ProdajnaJedinica.Naziv,
                         BlagajnikIme = p.Blagajnik != null ? $"{p.Blagajnik.Ime} {p.Blagajnik.Prezime}" : "N/A",
                         UkupnaVrednost = ukupnaVrednost,
@@ -804,7 +791,7 @@ namespace Farmacy
                         Id = p.Id,
                         ProdajnaJedinicaId = p.ProdajnaJedinica.Id,
                         DatumVreme = p.DatumVreme,
-                        BlagajnikMbr = p.Blagajnik?.Id,
+                        BlagajnikId = p.Blagajnik?.Id,
                         ProdajnaJedinicaNaziv = p.ProdajnaJedinica.Naziv,
                         BlagajnikIme = p.Blagajnik != null ? $"{p.Blagajnik.Ime} {p.Blagajnik.Prezime}" : "N/A",
                         UkupnaVrednost = ukupnaVrednost,
@@ -847,7 +834,7 @@ namespace Farmacy
                         Id = prodaja.Id,
                         ProdajnaJedinicaId = prodaja.ProdajnaJedinica.Id,
                         DatumVreme = prodaja.DatumVreme,
-                        BlagajnikMbr = prodaja.Blagajnik?.Id,
+                        BlagajnikId = prodaja.Blagajnik?.Id,
                         ProdajnaJedinicaNaziv = prodaja.ProdajnaJedinica.Naziv,
                         BlagajnikIme = prodaja.Blagajnik != null ? $"{prodaja.Blagajnik.Ime} {prodaja.Blagajnik.Prezime}" : "N/A",
                         UkupnaVrednost = ukupnaVrednost,
@@ -867,11 +854,9 @@ namespace Farmacy
                 var prodaja = s.Get<Prodaja>(id);
                 if (prodaja != null)
                 {
-                    // Force loading of related entities within the session
                     var prodajnaJedinicaNaziv = prodaja.ProdajnaJedinica?.Naziv;
                     var blagajnikIme = prodaja.Blagajnik?.Ime;
                     
-                    // Force loading of sale items and their related entities
                     var stavkeCount = prodaja.Stavke?.Count ?? 0;
                     
                     if (prodaja.Stavke != null)
@@ -879,19 +864,15 @@ namespace Farmacy
                         var stavkeList = new List<ProdajaStavka>();
                         foreach (var stavka in prodaja.Stavke)
                         {
-                            // Force loading of packaging and drug information
                             var pakovanjeNaziv = stavka.Pakovanje?.Lek?.KomercijalniNaziv;
                             var pakovanjeVelicina = stavka.Pakovanje?.VelicinaPakovanja;
                             var pakovanjeJedinica = stavka.Pakovanje?.JedinicaMere;
                             
-                            // Force loading of prescription information
                             var receptSerijski = stavka.Recept?.SerijskiBroj;
                             
-                            // Add to list to ensure data is loaded
                             stavkeList.Add(stavka);
                         }
                         
-                        // Replace the lazy-loaded collection with the fully loaded one
                         prodaja.Stavke.Clear();
                         foreach (var stavka in stavkeList)
                         {
@@ -919,7 +900,6 @@ namespace Farmacy
                 
                 foreach (var stavka in stavke)
                 {
-                    // Force loading of related entities
                     var pakovanjeNaziv = stavka.Pakovanje?.Lek?.KomercijalniNaziv;
                     var pakovanjeVelicina = stavka.Pakovanje?.VelicinaPakovanja;
                     var pakovanjeJedinica = stavka.Pakovanje?.JedinicaMere;
@@ -945,19 +925,17 @@ namespace Farmacy
                 {
                     ProdajnaJedinica = s.Load<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId),
                     DatumVreme = dto.DatumVreme,
-                    Blagajnik = dto.BlagajnikMbr.HasValue ? 
-                        s.Load<Zaposleni>(dto.BlagajnikMbr.Value) : null
+                    Blagajnik = dto.BlagajnikId.HasValue ? 
+                        s.Load<Zaposleni>(dto.BlagajnikId.Value) : null
                 };
                 s.Save(prodaja);
                 s.Flush();
-
-                // Uspešno je dodana prodaja
 
                 return prodaja.Id;
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju prodaje");
                 return 0;
             }
         }

@@ -42,7 +42,7 @@ namespace Farmacy.Forme
         }
         private void LoadMenadzerData()
         {
-            //txtMBr.Text = menadzer.MBr.ToString();
+            txtMatBr.Text = menadzer.MatBr;
             txtPrezime.Text = menadzer.Prezime;
             txtIme.Text = menadzer.Ime;
             dtpDatumRodj.Value = menadzer.DatumRodj;
@@ -74,7 +74,12 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
-
+            if (string.IsNullOrWhiteSpace(txtMatBr.Text))
+            {
+                MessageBox.Show("Matični broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMatBr.Focus();
+                return false;
+            }
 
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
@@ -113,12 +118,7 @@ namespace Farmacy.Forme
         {
             try
             {
-                // Generiši MBr ako nije postavljen
-                if (menadzer.Id == 0)
-                {
-                    menadzer.Id = DateTime.Now.Ticks;
-                }
-
+                menadzer.MatBr = txtMatBr.Text.Trim();
                 menadzer.Prezime = txtPrezime.Text.Trim();
                 menadzer.Ime = txtIme.Text.Trim();
                 menadzer.DatumRodj = dtpDatumRodj.Value;
@@ -129,7 +129,7 @@ namespace Farmacy.Forme
                 // Dodaj menadžera u sistem
                 DTOManagerZaposleni.DodajMenadzera(menadzer);
 
-                MessageBox.Show("Menadžer je uspešno dodat!", "Uspešno", 
+                MessageBox.Show("Menadžer je uspešno dodat!", "Uspešno",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -168,7 +168,7 @@ namespace Farmacy.Forme
                 {
                     button.Tag = button.BackColor;
                 }
-                
+
                 // Promeni boju na hover
                 if (button == btnSave)
                 {
@@ -178,7 +178,7 @@ namespace Farmacy.Forme
                 {
                     button.BackColor = Color.FromArgb(90, 98, 104); // Tamnija siva
                 }
-                
+
                 button.Cursor = Cursors.Hand;
             }
         }
@@ -191,6 +191,11 @@ namespace Farmacy.Forme
                 button.BackColor = originalColor;
                 button.Cursor = Cursors.Default;
             }
+        }
+
+        private void lblMatBr_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

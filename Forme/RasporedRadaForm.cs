@@ -30,14 +30,14 @@ namespace Farmacy.Forme
             try
             {
                 var zaposleni = DTOManagerZaposleni.VratiSveZaposlene();
-                
+
                 cmbZaposleni.DataSource = zaposleni;
                 cmbZaposleni.DisplayMember = "Ime";
                 cmbZaposleni.ValueMember = "Id";
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju zaposlenih: {ex.Message}", "Greška", 
+                MessageBox.Show($"Greška pri učitavanju zaposlenih: {ex.Message}", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -47,11 +47,11 @@ namespace Farmacy.Forme
             try
             {
                 var prodajneJedinice = DTOManagerProdajneJedinice.VratiSveProdajneJedinice();
-                
+
                 cmbProdajnaJedinica.DataSource = prodajneJedinice;
                 cmbProdajnaJedinica.DisplayMember = "Naziv";
                 cmbProdajnaJedinica.ValueMember = "Id";
-                
+
                 // Postavi selektovanu prodajnu jedinicu ako je prosleđena
                 if (prodajnaJedinicaId.HasValue)
                 {
@@ -60,7 +60,7 @@ namespace Farmacy.Forme
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju prodajnih jedinica: {ex.Message}", "Greška", 
+                MessageBox.Show($"Greška pri učitavanju prodajnih jedinica: {ex.Message}", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -70,7 +70,7 @@ namespace Farmacy.Forme
             try
             {
                 IList<RasporedRadaBasic> raspored;
-                
+
                 if (prodajnaJedinicaId.HasValue)
                 {
                     raspored = DTOManagerZaposleni.VratiRasporedRadaZaProdajnuJedinicu(prodajnaJedinicaId.Value);
@@ -79,10 +79,10 @@ namespace Farmacy.Forme
                 {
                     raspored = DTOManagerZaposleni.VratiSveRasporedeRada();
                 }
-                
+
                 dgvRaspored.AutoGenerateColumns = false;
                 dgvRaspored.DataSource = raspored;
-                
+
                 // Konfiguriši kolone sa eksplicitnim širinama
                 if (dgvRaspored.Columns.Count == 0)
                 {
@@ -139,7 +139,7 @@ namespace Farmacy.Forme
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri učitavanju rasporeda rada: {ex.Message}", "Greška", 
+                MessageBox.Show($"Greška pri učitavanju rasporeda rada: {ex.Message}", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -187,7 +187,7 @@ namespace Farmacy.Forme
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška pri dodavanju rasporeda rada: {ex.Message}", "Greška", 
+                MessageBox.Show($"Greška pri dodavanju rasporeda rada: {ex.Message}", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -201,8 +201,8 @@ namespace Farmacy.Forme
             }
 
             var raspored = (RasporedRadaBasic)dgvRaspored.CurrentRow.DataBoundItem;
-            
-            var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete raspored rada za {raspored.ZaposleniIme} {raspored.ZaposleniPrezime}?", 
+
+            var result = MessageBox.Show($"Da li ste sigurni da želite da obrišete raspored rada za {raspored.ZaposleniIme} {raspored.ZaposleniPrezime}?",
                 "Potvrda", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -232,7 +232,7 @@ namespace Farmacy.Forme
             {
                 prodajnaJedinicaId = null;
             }
-            
+
             LoadRasporedRada();
         }
 
@@ -245,15 +245,15 @@ namespace Farmacy.Forme
             }
 
             var raspored = (RasporedRadaBasic)dgvRaspored.CurrentRow.DataBoundItem;
-            
+
             // Popuni formu sa podacima za izmenu
             cmbZaposleni.SelectedValue = raspored.IdZaposlenog;
             cmbProdajnaJedinica.SelectedValue = raspored.ProdajnaJedinicaId;
             dtpPocetak.Value = raspored.Pocetak;
             dtpKraj.Value = raspored.Kraj;
             cmbSmena.SelectedIndex = raspored.BrojSmene.HasValue ? raspored.BrojSmene.Value - 1 : -1;
-            
-            MessageBox.Show("Podaci su učitani u formu za izmenu. Izmenite potrebne podatke i kliknite 'Dodaj' za snimanje izmena.", 
+
+            MessageBox.Show("Podaci su učitani u formu za izmenu. Izmenite potrebne podatke i kliknite 'Dodaj' za snimanje izmena.",
                 "Izmena rasporeda", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -274,7 +274,7 @@ namespace Farmacy.Forme
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
                     // Implementacija export-a (može se dodati kasnije)
-                    MessageBox.Show($"Export funkcionalnost će biti implementirana u sledećoj verziji.\n\nOdabrani fajl: {saveDialog.FileName}", 
+                    MessageBox.Show($"Export funkcionalnost će biti implementirana u sledećoj verziji.\n\nOdabrani fajl: {saveDialog.FileName}",
                         "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -295,7 +295,7 @@ namespace Farmacy.Forme
                 }
 
                 // Implementacija štampanja (može se dodati kasnije)
-                MessageBox.Show("Štampanje funkcionalnost će biti implementirana u sledećoj verziji.", 
+                MessageBox.Show("Štampanje funkcionalnost će biti implementirana u sledećoj verziji.",
                     "Štampanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -379,6 +379,11 @@ namespace Farmacy.Forme
                 else if (button == btnStampaj)
                     button.BackColor = Color.FromArgb(230, 126, 34);
             }
+        }
+
+        private void grpActions_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

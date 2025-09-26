@@ -53,7 +53,7 @@ namespace Farmacy
         public string Broj { get; set; }
         public string PostanskiBroj { get; set; }
         public string Mesto { get; set; }
-        public long OdgovorniFarmaceutMbr { get; set; }
+        public long OdgovorniFarmaceutId { get; set; }
     }
 
     public class MenadzerApotekaBasic
@@ -144,7 +144,7 @@ namespace Farmacy
         public long DistributerId { get; set; }
         public long ProdajnaJedinicaId { get; set; }
         public DateTime Datum { get; set; }
-        public long? MagacionerMbr { get; set; }
+        public long? MagacionerId { get; set; }
         public IList<IsporukaStavkaBasic> Stavke { get; set; } = new List<IsporukaStavkaBasic>();
     }
 
@@ -154,7 +154,7 @@ namespace Farmacy
         public long PakovanjeId { get; set; }
         public int Kolicina { get; set; }
         public DateTime? DatumPoslednjeIsporuke { get; set; }
-        public long? OdgovorniMagacionerMbr { get; set; }
+        public long? OdgovorniMagacionerId { get; set; }
     }
 
     public class ProdajaBasic
@@ -162,7 +162,7 @@ namespace Farmacy
         public long Id { get; set; }
         public long ProdajnaJedinicaId { get; set; }
         public DateTime DatumVreme { get; set; }
-        public long? BlagajnikMbr { get; set; }
+        public long? BlagajnikId { get; set; }
         public string ProdajnaJedinicaNaziv { get; set; }
         public string BlagajnikIme { get; set; }
         public decimal UkupnaVrednost { get; set; }

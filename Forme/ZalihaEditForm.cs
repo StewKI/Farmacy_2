@@ -29,8 +29,8 @@ namespace Farmacy.Forme
             if (zaliha.DatumPoslednjeIsporuke.HasValue)
                 dtpDatumPoslednjeIsporuke.Value = zaliha.DatumPoslednjeIsporuke.Value;
 
-            if (zaliha.OdgovorniMagacionerMbr.HasValue)
-                txtOdgovorniMagacioner.Text = zaliha.OdgovorniMagacionerMbr.ToString();
+            if (zaliha.OdgovorniMagacionerId.HasValue)
+                txtOdgovorniMagacioner.Text = zaliha.OdgovorniMagacionerId.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -76,12 +76,12 @@ namespace Farmacy.Forme
             {
                 if (long.TryParse(txtOdgovorniMagacioner.Text, out long mbr))
                 {
-                    zaliha.OdgovorniMagacionerMbr = mbr;
+                    zaliha.OdgovorniMagacionerId = mbr;
                 }
             }
             else
             {
-                zaliha.OdgovorniMagacionerMbr = null;
+                zaliha.OdgovorniMagacionerId = null;
             }
 
             DTOManagerIsporukeZalihe.IzmeniZalihu(zaliha);

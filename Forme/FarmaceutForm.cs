@@ -42,7 +42,7 @@ namespace Farmacy.Forme
         {
             if (farmaceut != null)
             {
-                //txtMBr.Text = farmaceut.MBr.ToString();
+                txtMatBr.Text = farmaceut.MatBr;
                 txtPrezime.Text = farmaceut.Prezime;
                 txtIme.Text = farmaceut.Ime;
                 dtpDatumRodj.Value = farmaceut.DatumRodj;
@@ -74,6 +74,13 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
+            if (string.IsNullOrWhiteSpace(txtMatBr.Text))
+            {
+                MessageBox.Show("Matični broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMatBr.Focus();
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
                 MessageBox.Show("Prezime je obavezno!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,11 +116,8 @@ namespace Farmacy.Forme
                 farmaceut = new FarmaceutBasic();
             }
 
-            // Generiši MBr ako nije postavljen
-            if (farmaceut.Id == 0)
-            {
-                farmaceut.Id = DateTime.Now.Ticks;
-            }
+            // Postavi MatBr iz forme
+            farmaceut.MatBr = txtMatBr.Text.Trim();
 
             farmaceut.Prezime = txtPrezime.Text.Trim();
             farmaceut.Ime = txtIme.Text.Trim();

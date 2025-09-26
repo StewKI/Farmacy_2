@@ -92,8 +92,8 @@ namespace Farmacy.Forme
                 else
                     dtpDatumPoslednjeIsporuke.Value = DateTime.Today;
                 
-                if (zaliha.OdgovorniMagacionerMbr.HasValue)
-                    cmbOdgovorniMagacioner.SelectedValue = zaliha.OdgovorniMagacionerMbr.Value;
+                if (zaliha.OdgovorniMagacionerId.HasValue)
+                    cmbOdgovorniMagacioner.SelectedValue = zaliha.OdgovorniMagacionerId.Value;
             }
         }
 
@@ -173,11 +173,11 @@ namespace Farmacy.Forme
 
             if (cmbOdgovorniMagacioner.SelectedValue != null)
             {
-                zaliha.OdgovorniMagacionerMbr = (long)cmbOdgovorniMagacioner.SelectedValue;
+                zaliha.OdgovorniMagacionerId = (long)cmbOdgovorniMagacioner.SelectedValue;
             }
             else
             {
-                zaliha.OdgovorniMagacionerMbr = null;
+                zaliha.OdgovorniMagacionerId = null;
             }
 
             DTOManagerIsporukeZalihe.DodajZalihu(zaliha);

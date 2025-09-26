@@ -7,7 +7,6 @@ namespace Farmacy
 {
     public static class DTOManagerProdaja
     {
-        // Kreira klasičnu prodaju sa stavkama. Vraća ID prodaje.
         public static long KreirajProdaju(ProdajaBasic prodajaDto, IList<ProdajaStavkaBasic> stavke)
         {
             if (stavke == null || stavke.Count == 0)
@@ -21,14 +20,13 @@ namespace Farmacy
                 {
                     ProdajnaJedinica = s.Get<Entiteti.ProdajnaJedinicaBasic>(prodajaDto.ProdajnaJedinicaId),
                     DatumVreme = prodajaDto.DatumVreme,
-                    Blagajnik = prodajaDto.BlagajnikMbr.HasValue ? s.Load<Zaposleni>(prodajaDto.BlagajnikMbr.Value) : null
+                    Blagajnik = prodajaDto.BlagajnikId.HasValue ? s.Load<Zaposleni>(prodajaDto.BlagajnikId.Value) : null
                 };
 
                 s.Save(prodaja);
 
                 foreach (var st in stavke)
                 {
-                    // Provera zaliha
                     var zaliha = s.Query<Zaliha>()
                                    .FirstOrDefault(z => z.ProdajnaJedinica.Id == prodajaDto.ProdajnaJedinicaId &&
                                                         z.Pakovanje.Id == st.PakovanjeId);
@@ -41,7 +39,6 @@ namespace Farmacy
                         throw new Exception($"Nedovoljna zaliha za pakovanje {st.PakovanjeId}. Traženo: {st.Kolicina}, na stanju: {zaliha.Kolicina}.");
                     }
 
-                    // Kreiraj stavku prodaje (klasična prodaja → recept polja su null)
                     var stavka = new Entiteti.ProdajaStavka
                     {
                         Prodaja = prodaja,
@@ -51,7 +48,6 @@ namespace Farmacy
                     };
                     s.Save(stavka);
 
-                    // Smanji zalihu
                     zaliha.Kolicina -= st.Kolicina;
                     s.Update(zaliha);
                 }
@@ -66,8 +62,6 @@ namespace Farmacy
             }
         }
 
-        // Kreira prodaju NA RECEPT. Sva recept-specifična polja se preuzimaju iz stavke/parametara.
-        // receptSerijskiBroj: zajednički recept za sve stavke ove prodaje (ako treba per-stavka, koristi polje u stavci)
         public static long KreirajProdajuNaRecept(ProdajaBasic prodajaDto, string receptSerijskiBroj, IList<ProdajaStavkaBasic> stavke)
         {
             if (string.IsNullOrWhiteSpace(receptSerijskiBroj))
@@ -79,7 +73,6 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                // Učitaj recept (validacija postojanja)
                 var recept = s.Get<Recept>(receptSerijskiBroj);
                 if (recept == null)
                 {
@@ -90,14 +83,13 @@ namespace Farmacy
                 {
                     ProdajnaJedinica = s.Get<Entiteti.ProdajnaJedinicaBasic>(prodajaDto.ProdajnaJedinicaId),
                     DatumVreme = prodajaDto.DatumVreme,
-                    Blagajnik = prodajaDto.BlagajnikMbr.HasValue ? s.Load<Zaposleni>(prodajaDto.BlagajnikMbr.Value) : null
+                    Blagajnik = prodajaDto.BlagajnikId.HasValue ? s.Load<Zaposleni>(prodajaDto.BlagajnikId.Value) : null
                 };
 
                 s.Save(prodaja);
 
                 foreach (var st in stavke)
                 {
-                    // Provera zaliha
                     var zaliha = s.Query<Zaliha>()
                                    .FirstOrDefault(z => z.ProdajnaJedinica.Id == prodajaDto.ProdajnaJedinicaId &&
                                                         z.Pakovanje.Id == st.PakovanjeId);
@@ -110,7 +102,6 @@ namespace Farmacy
                         throw new Exception($"Nedovoljna zaliha za pakovanje {st.PakovanjeId}. Traženo: {st.Kolicina}, na stanju: {zaliha.Kolicina}.");
                     }
 
-                    // Ako stavka nema eksplicitno zadat recept, koristi zajednički
                     var rsb = string.IsNullOrWhiteSpace(st.ReceptSerijskiBroj) ? receptSerijskiBroj : st.ReceptSerijskiBroj;
 
                     var stavka = new Entiteti.ProdajaStavka
@@ -126,7 +117,6 @@ namespace Farmacy
                     };
                     s.Save(stavka);
 
-                    // Smanji zalihu
                     zaliha.Kolicina -= st.Kolicina;
                     s.Update(zaliha);
                 }

@@ -22,7 +22,7 @@ namespace Farmacy.Forme
 
         public void load1()
         {
-            txtFarmaceut.Text = p.OdgovorniFarmaceutMbr.ToString();
+            txtFarmaceut.Text = p.OdgovorniFarmaceutId.ToString();
             txtProdajnaJedinica.Text = p.Id.ToString();
         }
 

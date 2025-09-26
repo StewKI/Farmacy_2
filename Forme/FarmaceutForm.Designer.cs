@@ -37,6 +37,8 @@ namespace Farmacy.Forme
             grpLicni = new GroupBox();
             grpProfesionalni = new GroupBox();
             Apoteka = new Label();
+            lblMatBr = new Label();
+            txtMatBr = new TextBox();
             lblPrezime = new Label();
             txtPrezime = new TextBox();
             lblIme = new Label();
@@ -143,6 +145,8 @@ namespace Farmacy.Forme
             grpLicni.Controls.Add(lblIme);
             grpLicni.Controls.Add(txtPrezime);
             grpLicni.Controls.Add(lblPrezime);
+            grpLicni.Controls.Add(txtMatBr);
+            grpLicni.Controls.Add(lblMatBr);
             grpLicni.Controls.Add(Apoteka);
             grpLicni.Dock = DockStyle.Top;
             grpLicni.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
@@ -201,15 +205,36 @@ namespace Farmacy.Forme
             Apoteka.Text = "Osnovne informacije:";
             Apoteka.Click += lblMBr_Click;
             // 
+            // lblMatBr
+            // 
+            lblMatBr.AutoSize = true;
+            lblMatBr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMatBr.ForeColor = Color.FromArgb(33, 37, 41);
+            lblMatBr.Location = new Point(20, 50);
+            lblMatBr.Name = "lblMatBr";
+            lblMatBr.Size = new Size(95, 19);
+            lblMatBr.TabIndex = 1;
+            lblMatBr.Text = "Matični broj:";
+            // 
+            // txtMatBr
+            // 
+            txtMatBr.BackColor = Color.White;
+            txtMatBr.BorderStyle = BorderStyle.FixedSingle;
+            txtMatBr.Font = new Font("Segoe UI", 10F);
+            txtMatBr.Location = new Point(200, 47);
+            txtMatBr.Name = "txtMatBr";
+            txtMatBr.Size = new Size(340, 25);
+            txtMatBr.TabIndex = 2;
+            // 
             // lblPrezime
             // 
             lblPrezime.AutoSize = true;
             lblPrezime.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPrezime.ForeColor = Color.FromArgb(33, 37, 41);
-            lblPrezime.Location = new Point(20, 50);
+            lblPrezime.Location = new Point(20, 90);
             lblPrezime.Name = "lblPrezime";
             lblPrezime.Size = new Size(62, 19);
-            lblPrezime.TabIndex = 2;
+            lblPrezime.TabIndex = 3;
             lblPrezime.Text = "Prezime:";
             // 
             // txtPrezime
@@ -217,20 +242,20 @@ namespace Farmacy.Forme
             txtPrezime.BackColor = Color.White;
             txtPrezime.BorderStyle = BorderStyle.FixedSingle;
             txtPrezime.Font = new Font("Segoe UI", 10F);
-            txtPrezime.Location = new Point(200, 47);
+            txtPrezime.Location = new Point(200, 87);
             txtPrezime.Name = "txtPrezime";
             txtPrezime.Size = new Size(340, 25);
-            txtPrezime.TabIndex = 3;
+            txtPrezime.TabIndex = 4;
             // 
             // lblIme
             // 
             lblIme.AutoSize = true;
             lblIme.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblIme.ForeColor = Color.FromArgb(33, 37, 41);
-            lblIme.Location = new Point(20, 90);
+            lblIme.Location = new Point(20, 130);
             lblIme.Name = "lblIme";
             lblIme.Size = new Size(37, 19);
-            lblIme.TabIndex = 4;
+            lblIme.TabIndex = 5;
             lblIme.Text = "Ime:";
             // 
             // txtIme
@@ -238,17 +263,17 @@ namespace Farmacy.Forme
             txtIme.BackColor = Color.White;
             txtIme.BorderStyle = BorderStyle.FixedSingle;
             txtIme.Font = new Font("Segoe UI", 10F);
-            txtIme.Location = new Point(200, 87);
+            txtIme.Location = new Point(200, 127);
             txtIme.Name = "txtIme";
             txtIme.Size = new Size(340, 25);
-            txtIme.TabIndex = 5;
+            txtIme.TabIndex = 6;
             // 
             // lblDatumRodj
             // 
             lblDatumRodj.AutoSize = true;
             lblDatumRodj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDatumRodj.ForeColor = Color.FromArgb(33, 37, 41);
-            lblDatumRodj.Location = new Point(20, 130);
+            lblDatumRodj.Location = new Point(20, 170);
             lblDatumRodj.Name = "lblDatumRodj";
             lblDatumRodj.Size = new Size(106, 19);
             lblDatumRodj.TabIndex = 6;
@@ -258,7 +283,7 @@ namespace Farmacy.Forme
             // 
             dtpDatumRodj.Font = new Font("Segoe UI", 10F);
             dtpDatumRodj.Format = DateTimePickerFormat.Short;
-            dtpDatumRodj.Location = new Point(200, 127);
+            dtpDatumRodj.Location = new Point(200, 167);
             dtpDatumRodj.Name = "dtpDatumRodj";
             dtpDatumRodj.Size = new Size(340, 25);
             dtpDatumRodj.TabIndex = 7;
@@ -268,7 +293,7 @@ namespace Farmacy.Forme
             lblAdresa.AutoSize = true;
             lblAdresa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblAdresa.ForeColor = Color.FromArgb(33, 37, 41);
-            lblAdresa.Location = new Point(20, 170);
+            lblAdresa.Location = new Point(20, 210);
             lblAdresa.Name = "lblAdresa";
             lblAdresa.Size = new Size(56, 19);
             lblAdresa.TabIndex = 8;
@@ -279,7 +304,7 @@ namespace Farmacy.Forme
             txtAdresa.BackColor = Color.White;
             txtAdresa.BorderStyle = BorderStyle.FixedSingle;
             txtAdresa.Font = new Font("Segoe UI", 10F);
-            txtAdresa.Location = new Point(200, 167);
+            txtAdresa.Location = new Point(200, 207);
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(340, 25);
             txtAdresa.TabIndex = 9;
@@ -289,7 +314,7 @@ namespace Farmacy.Forme
             lblTelefon.AutoSize = true;
             lblTelefon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblTelefon.ForeColor = Color.FromArgb(33, 37, 41);
-            lblTelefon.Location = new Point(20, 210);
+            lblTelefon.Location = new Point(20, 250);
             lblTelefon.Name = "lblTelefon";
             lblTelefon.Size = new Size(61, 19);
             lblTelefon.TabIndex = 10;
@@ -300,7 +325,7 @@ namespace Farmacy.Forme
             txtTelefon.BackColor = Color.White;
             txtTelefon.BorderStyle = BorderStyle.FixedSingle;
             txtTelefon.Font = new Font("Segoe UI", 10F);
-            txtTelefon.Location = new Point(200, 207);
+            txtTelefon.Location = new Point(200, 247);
             txtTelefon.Name = "txtTelefon";
             txtTelefon.Size = new Size(340, 25);
             txtTelefon.TabIndex = 11;
@@ -310,7 +335,7 @@ namespace Farmacy.Forme
             lblDatumZaposlenja.AutoSize = true;
             lblDatumZaposlenja.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDatumZaposlenja.ForeColor = Color.FromArgb(33, 37, 41);
-            lblDatumZaposlenja.Location = new Point(20, 250);
+            lblDatumZaposlenja.Location = new Point(20, 290);
             lblDatumZaposlenja.Name = "lblDatumZaposlenja";
             lblDatumZaposlenja.Size = new Size(125, 19);
             lblDatumZaposlenja.TabIndex = 12;
@@ -320,7 +345,7 @@ namespace Farmacy.Forme
             // 
             dtpDatumZaposlenja.Font = new Font("Segoe UI", 10F);
             dtpDatumZaposlenja.Format = DateTimePickerFormat.Short;
-            dtpDatumZaposlenja.Location = new Point(200, 247);
+            dtpDatumZaposlenja.Location = new Point(200, 287);
             dtpDatumZaposlenja.Name = "dtpDatumZaposlenja";
             dtpDatumZaposlenja.Size = new Size(340, 25);
             dtpDatumZaposlenja.TabIndex = 13;
@@ -505,6 +530,8 @@ namespace Farmacy.Forme
         private System.Windows.Forms.GroupBox grpLicni;
         private System.Windows.Forms.GroupBox grpProfesionalni;
         private System.Windows.Forms.Label Apoteka;
+        private System.Windows.Forms.Label lblMatBr;
+        private System.Windows.Forms.TextBox txtMatBr;
         private System.Windows.Forms.Label lblPrezime;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.Label lblIme;

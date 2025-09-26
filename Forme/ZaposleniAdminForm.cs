@@ -37,8 +37,7 @@ namespace Farmacy.Forme
                 // 1) Učitaj podatke
                 IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
 
-                // Debug info
-                MessageBox.Show($"Učitano {lista.Count} zaposlenih", "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Debug info - uklonjen MessageBox
 
                 // 2) Mapiraj kolone
                 dgvZaposleni.AutoGenerateColumns = false;
@@ -72,6 +71,38 @@ namespace Farmacy.Forme
                     DataPropertyName = "Prezime",
                     Width = 160
                 });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colDatumRodj",
+                    HeaderText = "Datum rođenja",
+                    DataPropertyName = "DatumRodj",
+                    Width = 120
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colAdresa",
+                    HeaderText = "Adresa",
+                    DataPropertyName = "Adresa",
+                    Width = 200
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colTelefon",
+                    HeaderText = "Telefon",
+                    DataPropertyName = "Telefon",
+                    Width = 120
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colDatumZaposlenja",
+                    HeaderText = "Datum zaposlenja",
+                    DataPropertyName = "DatumZaposlenja",
+                    Width = 120
+                });
+
+                // Omogući horizontalno skrolovanje
+                dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                dgvZaposleni.ScrollBars = ScrollBars.Both;
 
                 // 3) Veži podatke
                 dgvZaposleni.DataSource = false;   // osveži binding
@@ -215,6 +246,38 @@ namespace Farmacy.Forme
                     DataPropertyName = "Prezime",
                     Width = 160
                 });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colDatumRodj",
+                    HeaderText = "Datum rođenja",
+                    DataPropertyName = "DatumRodj",
+                    Width = 120
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colAdresa",
+                    HeaderText = "Adresa",
+                    DataPropertyName = "Adresa",
+                    Width = 200
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colTelefon",
+                    HeaderText = "Telefon",
+                    DataPropertyName = "Telefon",
+                    Width = 120
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colDatumZaposlenja",
+                    HeaderText = "Datum zaposlenja",
+                    DataPropertyName = "DatumZaposlenja",
+                    Width = 120
+                });
+
+                // Omogući horizontalno skrolovanje
+                dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                dgvZaposleni.ScrollBars = ScrollBars.Both;
 
                 // 3) Veži podatke
                 dgvZaposleni.DataSource = false;   // osveži binding

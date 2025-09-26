@@ -323,29 +323,6 @@ CREATE INDEX ix_rs_pak ON Recept_stavka (pakovanje_id);
 CREATE INDEX ix_pro_pj ON Prodaja (prodajna_jedinica_id);
 CREATE INDEX ix_ps_pak ON Prodaja_stavka (pakovanje_id);
 
-CREATE OR REPLACE TRIGGER trg_isporuka_stavka_ai
-AFTER INSERT ON Isporuka_stavka
-FOR EACH ROW
-DECLARE
-  v_pj   Isporuka.prodajna_jedinica_id%TYPE;
-  v_mag  Isporuka.magacioner_mbr%TYPE;
-BEGIN
-  SELECT prodajna_jedinica_id, magacioner_mbr
-    INTO v_pj, v_mag
-    FROM Isporuka
-   WHERE id = :NEW.isporuka_id;
-
-  MERGE INTO Zaliha z
-  USING (SELECT v_pj AS pj, :NEW.pakovanje_id AS pak FROM dual) x
-     ON (z.prodajna_jedinica_id = x.pj AND z.pakovanje_id = x.pak)
-  WHEN MATCHED THEN
-    UPDATE SET z.kolicina = z.kolicina + :NEW.kolicina,
-               z.datum_poslednje_isporuke = TRUNC(SYSDATE),
-               z.odgovorni_magacioner_mbr = v_mag
-  WHEN NOT MATCHED THEN
-    INSERT (prodajna_jedinica_id, pakovanje_id, kolicina, datum_poslednje_isporuke, odgovorni_magacioner_mbr)
-    VALUES (v_pj, :NEW.pakovanje_id, :NEW.kolicina, TRUNC(SYSDATE), v_mag);
-END;
 
 CREATE OR REPLACE TRIGGER trg_isporuka_stavka_ad
 AFTER DELETE ON Isporuka_stavka

@@ -116,7 +116,7 @@ namespace Farmacy.Forme
             prodajnaJedinica.Broj = txtBroj.Text.Trim();
             prodajnaJedinica.PostanskiBroj = txtPostanskiBroj.Text.Trim();
             prodajnaJedinica.Mesto = txtMesto.Text.Trim();
-            prodajnaJedinica.OdgovorniFarmaceutMbr = (long)comboBox1.SelectedValue;
+            prodajnaJedinica.OdgovorniFarmaceutId = (long)comboBox1.SelectedValue;
             DTOManagerProdajneJedinice.DodajProdajnuJedinicu(prodajnaJedinica);
 
         }

@@ -25,7 +25,6 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var f = new Entiteti.FarmaceutBasic
                 {
-                    Id = dto.Id,
                     MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
@@ -41,12 +40,11 @@ namespace Farmacy
                 s.Save(f);
                 s.Flush();
                 
-                // Ažuriraj MBr u DTO-u
                 dto.Id = f.Id;
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -80,7 +78,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -92,7 +90,6 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var t = new Tehnicar
                 {
-                    Id = dto.Id,
                     MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
@@ -104,8 +101,6 @@ namespace Farmacy
                 };
                 s.Save(t);
                 s.Flush();
-                
-                // Ažuriraj MBr u DTO-u
                 dto.Id = t.Id;
 
                 if (dto.Sertifikacije.Count > 0)
@@ -126,7 +121,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
         public static void UpdateTehnicara(TehnicarBasic dto)
@@ -155,7 +150,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -167,7 +162,6 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var m = new Entiteti.MenadzerBasic
                 {
-                    Id = dto.Id,
                     MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
@@ -178,12 +172,11 @@ namespace Farmacy
                 };
                 s.Save(m);
                 s.Flush();
-                
-                // Ažuriraj MBr u DTO-u
                 dto.Id = m.Id;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -200,6 +193,7 @@ namespace Farmacy
                     return;
                 }
 
+                menadzer.MatBr = dto.MatBr;
                 menadzer.Ime = dto.Ime;
                 menadzer.Prezime = dto.Prezime;
                 menadzer.DatumRodj = dto.DatumRodj;
@@ -212,7 +206,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -223,7 +217,7 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var m = new Zaposleni
                 {
-                    Id = dto.Id,
+                    MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
                     DatumRodj = dto.DatumRodj,
@@ -234,12 +228,11 @@ namespace Farmacy
                 s.Save(m);
                 s.Flush();
                 
-                // Ažuriraj MBr u DTO-u
                 dto.Id = m.Id;
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
         public static void UpdateZaposlenog(Zaposleni dto)
@@ -248,7 +241,6 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                // Pronađi postojećeg zaposlenog u bazi
                 var zaposleni = s.Get<Zaposleni>(dto.Id);
 
                 if (zaposleni == null)
@@ -256,7 +248,6 @@ namespace Farmacy
                     return;
                 }
 
-                // Ažuriraj polja
                 zaposleni.Ime = dto.Ime;
                 zaposleni.Prezime = dto.Prezime;
                 zaposleni.DatumRodj = dto.DatumRodj;
@@ -264,13 +255,12 @@ namespace Farmacy
                 zaposleni.Telefon = dto.Telefon;
                 zaposleni.DatumZaposlenja = dto.DatumZaposlenja;
 
-                // Sačuvaj izmene
                 s.Update(zaposleni);
                 s.Flush();
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -280,7 +270,6 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                // NH polimorfno: prvo probaj specifičan tip
                 var f = s.Get<Entiteti.FarmaceutBasic>(mbr);
                 if (f != null)
                 {
@@ -316,16 +305,6 @@ namespace Farmacy
                         DatumZaposlenja = t.DatumZaposlenja,
                         NivoObrazovanja = t.NivoObrazovanja
                     };
-
-                    //var certs = s.Query<TehnicarSertifikacija>()
-                    //             .Where(x => x.Tehnicar.MBr == t.MBr)
-                    //             .Select(x => new TehnicarSertifikacijaBasic
-                    //             {
-                    //                 MBrTehnicara = x.Tehnicar.MBr,
-                    //                 Naziv = x.Naziv,
-                    //                 Datum = x.Datum
-                    //             }).ToList();
-                    //tb.Sertifikacije = certs;
                     return tb;
                 }
 
@@ -363,7 +342,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
             return null;
         }
@@ -395,7 +374,6 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
                 return null;
             }
         }
@@ -424,7 +402,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
                 return null;
             }
         }
@@ -452,7 +430,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
                 return null;
             }
         }
@@ -463,17 +441,18 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                var f = s.Get<Entiteti.FarmaceutBasic>(id); // ovde NE ide FarmaceutBasic
+                var f = s.Get<Entiteti.FarmaceutBasic>(id);
                 if (f != null)
                 {
                     return f;
                 }
 
-                return null; // ako nema farmaceuta
+                return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null; // ako pukne nešto
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
 
@@ -543,7 +522,6 @@ namespace Farmacy
                             s.Flush();
 
                         }
-                        // Sertifikacije tehnicara su uspesno obrisane
                     }
 
 
@@ -562,9 +540,7 @@ namespace Farmacy
                             s.Flush();
 
                         }
-                        // Kontrole apoteka od strane menadzera su obrisane!
                     }
-
                 }
 
                 var z1 = s.Get<Entiteti.Zaposleni>(mbr);
@@ -579,7 +555,6 @@ namespace Farmacy
                         s.Delete(r);
                         s.Flush();
                     }
-                    // Obrisan je raspored rada za zaposlenog.
                 }
 
 
@@ -588,11 +563,10 @@ namespace Farmacy
                     s.Delete(z1);
                     s.Flush();
                 }
-                // Zaposleni uspesno obirsan.
             }
             catch (Exception ex) 
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -613,17 +587,13 @@ namespace Farmacy
                     Od=dto.Od,
                     datumKontrole=dto.datumKontrole,
                 };
-                   
-
 
                 s.Save(radnov);
                 s.Flush();
-
-                // Kontrola apoteke kreirana uspesno
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -650,12 +620,10 @@ namespace Farmacy
                 s.Flush();
 
                 DodajRasporedRada(novi);
-                
-                // Promena radnog mesta uspesna
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -667,18 +635,12 @@ namespace Farmacy
                 var raspored = s.Query<RasporedRada>()
                     .Where(r => r.Zaposleni.Id == mbr).FirstOrDefault();
 
-                
-
-
-
                 s.Delete(raspored);
                 s.Flush();
-
-                // Raspored rada izbrisan
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -704,13 +666,10 @@ namespace Farmacy
 
                 });
 
-
-
-
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
                 return null;
             }
 
@@ -726,14 +685,12 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 
-                // Proveri da li zaposleni postoji
                 var zaposleni = s.Get<Zaposleni>(dto.IdZaposlenog);
                 if (zaposleni == null)
                 {
                     return;
                 }
                 
-                // Proveri da li prodajna jedinica postoji
                 var prodajnaJedinica = s.Get<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId);
                 if (prodajnaJedinica == null)
                 {
@@ -754,7 +711,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -783,7 +740,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
                 return new List<RasporedRadaBasic>();
             }
         }
@@ -794,45 +751,31 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 
-                // Privremeno rešenje - direktan SQL upit dok se ne restaruje aplikacija
-                var sql = @"
-                    SELECT rr.m_br, rr.prodajna_jedinica_id, rr.pocetak, rr.kraj, rr.broj_smene,
-                           z.ime, z.prezime, pj.naziv
-                    FROM Raspored_rada rr
-                    LEFT JOIN Zaposleni z ON rr.m_br = z.m_br
-                    LEFT JOIN Prodajna_Jedinica pj ON rr.prodajna_jedinica_id = pj.id
-                    WHERE rr.prodajna_jedinica_id = :p0";
-                
-                var query = s.CreateSQLQuery(sql)
-                    .SetParameter("p0", prodajnaJedinicaId);
-                
-                var results = query.List();
-                var rasporedList = new List<RasporedRadaBasic>();
-                
-                foreach (object[] row in results)
-                {
-                    var raspored = new RasporedRadaBasic
+                var query = s.Query<RasporedRada>()
+                    .Where(rr => rr.ProdajnaJedinica.Id == prodajnaJedinicaId)
+                    .Fetch(x => x.Zaposleni)
+                    .Fetch(x => x.ProdajnaJedinica)
+                    .OrderBy(x => x.Pocetak)
+                    .Select(rr => new RasporedRadaBasic
                     {
-                        IdZaposlenog = Convert.ToInt64(row[0]),
-                        ProdajnaJedinicaId = Convert.ToInt64(row[1]),
-                        Pocetak = Convert.ToDateTime(row[2]),
-                        Kraj = Convert.ToDateTime(row[3]),
-                        BrojSmene = row[4] != null ? Convert.ToInt32(row[4]) : (int?)null,
-                        ZaposleniIme = row[5]?.ToString() ?? "",
-                        ZaposleniPrezime = row[6]?.ToString() ?? "",
-                        ProdajnaJedinicaNaziv = row[7]?.ToString() ?? "",
-                        SmenaNaziv = row[4] == null ? "Nije dodeljena" : 
-                                   Convert.ToInt32(row[4]) == 1 ? "Prva smena" :
-                                   Convert.ToInt32(row[4]) == 2 ? "Druga smena" : "Treća smena"
-                    };
-                    rasporedList.Add(raspored);
-                }
+                        IdZaposlenog = rr.Zaposleni.Id,
+                        ProdajnaJedinicaId = rr.ProdajnaJedinica.Id,
+                        Pocetak = rr.Pocetak,
+                        Kraj = rr.Kraj,
+                        BrojSmene = rr.BrojSmene,
+                        ZaposleniIme = rr.Zaposleni.Ime,
+                        ZaposleniPrezime = rr.Zaposleni.Prezime,
+                        ProdajnaJedinicaNaziv = rr.ProdajnaJedinica.Naziv,
+                        SmenaNaziv = rr.BrojSmene == null ? "Nije dodeljena" : 
+                                   rr.BrojSmene == 1 ? "Prva smena" :
+                                   rr.BrojSmene == 2 ? "Druga smena" : "Treća smena"
+                    });
                 
-                return rasporedList;
+                return query.ToList();
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
                 return new List<RasporedRadaBasic>();
             }
         }
@@ -843,43 +786,30 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 
-                // Privremeno rešenje - direktan SQL upit dok se ne restaruje aplikacija
-                var sql = @"
-                    SELECT rr.m_br, rr.prodajna_jedinica_id, rr.pocetak, rr.kraj, rr.broj_smene,
-                           z.ime, z.prezime, pj.naziv
-                    FROM Raspored_rada rr
-                    LEFT JOIN Zaposleni z ON rr.m_br = z.m_br
-                    LEFT JOIN Prodajna_Jedinica pj ON rr.prodajna_jedinica_id = pj.id
-                    ORDER BY rr.pocetak";
-                
-                var query = s.CreateSQLQuery(sql);
-                var results = query.List();
-                var rasporedList = new List<RasporedRadaBasic>();
-                
-                foreach (object[] row in results)
-                {
-                    var raspored = new RasporedRadaBasic
+                var query = s.Query<RasporedRada>()
+                    .Fetch(x => x.Zaposleni)
+                    .Fetch(x => x.ProdajnaJedinica)
+                    .OrderBy(x => x.Pocetak)
+                    .Select(rr => new RasporedRadaBasic
                     {
-                        IdZaposlenog = Convert.ToInt64(row[0]),
-                        ProdajnaJedinicaId = Convert.ToInt64(row[1]),
-                        Pocetak = Convert.ToDateTime(row[2]),
-                        Kraj = Convert.ToDateTime(row[3]),
-                        BrojSmene = row[4] != null ? Convert.ToInt32(row[4]) : (int?)null,
-                        ZaposleniIme = row[5]?.ToString() ?? "",
-                        ZaposleniPrezime = row[6]?.ToString() ?? "",
-                        ProdajnaJedinicaNaziv = row[7]?.ToString() ?? "",
-                        SmenaNaziv = row[4] == null ? "Nije dodeljena" : 
-                                   Convert.ToInt32(row[4]) == 1 ? "Prva smena" :
-                                   Convert.ToInt32(row[4]) == 2 ? "Druga smena" : "Treća smena"
-                    };
-                    rasporedList.Add(raspored);
-                }
+                        IdZaposlenog = rr.Zaposleni.Id,
+                        ProdajnaJedinicaId = rr.ProdajnaJedinica.Id,
+                        Pocetak = rr.Pocetak,
+                        Kraj = rr.Kraj,
+                        BrojSmene = rr.BrojSmene,
+                        ZaposleniIme = rr.Zaposleni.Ime,
+                        ZaposleniPrezime = rr.Zaposleni.Prezime,
+                        ProdajnaJedinicaNaziv = rr.ProdajnaJedinica.Naziv,
+                        SmenaNaziv = rr.BrojSmene == null ? "Nije dodeljena" : 
+                                   rr.BrojSmene == 1 ? "Prva smena" :
+                                   rr.BrojSmene == 2 ? "Druga smena" : "Treća smena"
+                    });
                 
-                return rasporedList;
+                return query.ToList();
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
                 return new List<RasporedRadaBasic>();
             }
         }
@@ -902,7 +832,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.Message);
             }
         }
 

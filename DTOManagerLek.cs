@@ -60,8 +60,9 @@ namespace Farmacy
                 dto.Id = k.Id;
                 return k.Id;
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju sekundarne kategorije");
             }
             return 0;
         }
@@ -102,8 +103,7 @@ namespace Farmacy
                 return lek.Id;
             }
             catch (Exception ex) {
-                // Error handling - message box removed
-
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju leka");
             }
             return 0;
         }
@@ -121,7 +121,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju oblika");
             }
             return 0;
         }
@@ -140,15 +140,16 @@ namespace Farmacy
                     JedinicaMere = dto.JedinicaMere,
                     Ambalaza = dto.Ambalaza,
                     NacinCuvanja = dto.NacinCuvanja,
-                    PreporuceniRokDana = dto.PreporuceniRokDana                    
+                    PreporuceniRokDana = dto.PreporuceniRokDana
                 };
                 s.Save(p);
                 s.Flush();
                 dto.Id = p.Id;
                 return p.Id;
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju pakovanja");
             }
             return 0;
         }
@@ -161,10 +162,8 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var pakovanja = s.Query<Pakovanje>().ToList();
                 
-                // Force loading of related entities within the session
                 foreach (var p in pakovanja)
                 {
-                    // Access the properties to force loading
                     var lekNaziv = p.Lek?.KomercijalniNaziv;
                     var oblikNaziv = p.Oblik?.Naziv;
                     list.Add(p);
@@ -181,7 +180,6 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var pakovanje = s.Get<Pakovanje>(id);
                 
-                // Force loading of related entities within the session
                 if (pakovanje != null)
                 {
                     var lekNaziv = pakovanje.Lek?.KomercijalniNaziv;
@@ -220,14 +218,12 @@ namespace Farmacy
                 using var transaction = s.BeginTransaction();
                 try
                 {
-                    // Load the existing entity
                     var pakovanje = s.Get<Pakovanje>(dto.Id);
                     if (pakovanje == null)
                     {
                         throw new Exception("Pakovanje sa ID " + dto.Id + " nije pronađeno.");
                     }
                     
-                    // Update the properties
                     pakovanje.Lek = s.Load<Lek>(dto.LekId);
                     pakovanje.Oblik = s.Load<Oblik>(dto.OblikId);
                     pakovanje.VelicinaPakovanja = dto.VelicinaPakovanja;
@@ -237,7 +233,6 @@ namespace Farmacy
                     pakovanje.NacinCuvanja = dto.NacinCuvanja;
                     pakovanje.PreporuceniRokDana = dto.PreporuceniRokDana;
                     
-                    // Save the changes
                     s.Update(pakovanje);
                     s.Flush();
                     transaction.Commit();
@@ -254,18 +249,17 @@ namespace Farmacy
             }
         }
 
-        // Dodajte ove metode u DTOManager klasu
         public static Farmacy.Entiteti.Lek? VratiLekEntitet(long id)
         {
             try
             {
                 using var s = DataLayer.GetSession();
                 var lek = s.Get<Lek>(id);
-                return lek; // Vraća direktno entitet
+                return lek;
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri vraćanju leka");
             }
             return null;
         }
@@ -296,7 +290,7 @@ namespace Farmacy
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri vraćanju leka");
             }
             return null;
         }
@@ -447,15 +441,13 @@ namespace Farmacy
                     return;
                 }
 
-                // Ažuriraj osnovne podatke
                 lek.HemijskiNaziv = dto.HemijskiNaziv;
                 lek.KomercijalniNaziv = dto.KomercijalniNaziv;
                 lek.Dejstvo = dto.Dejstvo;
                 lek.Proizvodjac = s.Load<Proizvodjac>(dto.ProizvodjacId);
                 lek.PrimarnaGrupa = s.Load<PrimarnaGrupa>(dto.PrimarnaGrupaId);
 
-                // Obriši stare sekundarne kategorije
-                if(lek.Sekundarne.Count>0)
+                if (lek.Sekundarne.Count > 0)
                 {
                     var stareSekundarne = s.Query<LekSekundarna>()
                                        .Where(x => x.Lek.Id == dto.Id)
@@ -466,8 +458,6 @@ namespace Farmacy
                     }
                 }
 
-
-                // Dodaj nove sekundarne kategorije
                 if (dto.SekundarneKategorijeIds.Count > 0)
                 {
                     foreach (var katId in dto.SekundarneKategorijeIds.Distinct())
@@ -481,13 +471,13 @@ namespace Farmacy
                         s.Save(ls);
                     }
                 }
-                
+
                 s.Update(lek);
                 s.Flush();
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri izmeni leka");
             }
         }
 
@@ -497,7 +487,6 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                // Prvo obriši sve sekundarne kategorije
                 var sekundarne = s.Query<LekSekundarna>()
                                   .Where(x => x.Lek.Id == id)
                                   .ToList();
@@ -506,19 +495,16 @@ namespace Farmacy
                     s.Delete(ls);
                 }
 
-                // Zatim obriši lek
                 var lek = s.Get<Lek>(id);
                 if (lek != null)
                 {
                     s.Delete(lek);
                     s.Flush();
-
-                    // Lek je uspešno obrisan!
                 }
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri brisanju leka");
             }
         }
 
@@ -602,22 +588,22 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var sk= s.Get<SekundarnaKategorija>(id);
+                var sk = s.Get<SekundarnaKategorija>(id);
                 if (sk == null) return null;
 
                 // Učitaj sekundarne kategorije
-               
-                
+
+
 
                 return new SekundarnaKategorija
                 {
-                   Id=sk.Id,
-                   Naziv=sk.Naziv,
+                    Id = sk.Id,
+                    Naziv = sk.Naziv,
                 };
             }
             catch (Exception ex)
             {
-                // Error handling - message box removed
+                MessageBox.Show(ex.ToString(), "Greška pri vraćanju sekundarne kategorije");
             }
             return null;
         }
@@ -631,16 +617,17 @@ namespace Farmacy
                 var lek = s.Get<Lek>(lekId);
                 var veza = new LekSekundarna
                 {
-                    Lek=lek,
-                    Kategorija=sk,
+                    Lek = lek,
+                    Kategorija = sk,
                 };
                 s.Save(veza);
                 s.Flush();
 
                 // Uspesno je dodata kategorija
             }
-            catch (Exception ex) {
-                // Error handling - message box removed
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Greška pri dodavanju veze lek-sekundarna kategorija");
             }
             
         }

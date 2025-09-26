@@ -124,5 +124,15 @@ namespace Farmacy.Forme
                     button.BackColor = Color.FromArgb(231, 76, 60);
             }
         }
+
+        private void groupBoxZaposleni_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSubtitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

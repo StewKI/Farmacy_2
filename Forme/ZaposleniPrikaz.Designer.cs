@@ -50,20 +50,20 @@ namespace Farmacy.Forme
             lblTitle = new Label();
             lblSubtitle = new Label();
             panelMain = new Panel();
-            groupBoxZaposleni = new GroupBox();
-            dgvZaposleni = new DataGridView();
             panelDesno = new Panel();
             lblOpis = new Label();
             btnObrisiZaposlenog = new Button();
             lblUkupanBroj = new Label();
             txbBrojZaposlenih = new TextBox();
+            groupBoxZaposleni = new GroupBox();
+            dgvZaposleni = new DataGridView();
             panelFooter = new Panel();
             lblFooter = new Label();
             panelHeader.SuspendLayout();
             panelMain.SuspendLayout();
+            panelDesno.SuspendLayout();
             groupBoxZaposleni.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvZaposleni).BeginInit();
-            panelDesno.SuspendLayout();
             panelFooter.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,7 +75,7 @@ namespace Farmacy.Forme
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1200, 80);
+            panelHeader.Size = new Size(1200, 97);
             panelHeader.TabIndex = 0;
             // 
             // lblTitle
@@ -85,7 +85,7 @@ namespace Farmacy.Forme
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(20, 15);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(280, 30);
+            lblTitle.Size = new Size(418, 45);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "👥 PREGLED ZAPOSLENIH";
             // 
@@ -94,11 +94,12 @@ namespace Farmacy.Forme
             lblSubtitle.AutoSize = true;
             lblSubtitle.Font = new Font("Segoe UI", 10F);
             lblSubtitle.ForeColor = Color.FromArgb(255, 220, 200);
-            lblSubtitle.Location = new Point(20, 45);
+            lblSubtitle.Location = new Point(20, 60);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(280, 19);
+            lblSubtitle.Size = new Size(303, 28);
             lblSubtitle.TabIndex = 1;
             lblSubtitle.Text = "Pregled svih zaposlenih u sistemu";
+            lblSubtitle.Click += lblSubtitle_Click;
             // 
             // panelMain
             // 
@@ -106,47 +107,10 @@ namespace Farmacy.Forme
             panelMain.Controls.Add(panelDesno);
             panelMain.Controls.Add(groupBoxZaposleni);
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Location = new Point(0, 80);
+            panelMain.Location = new Point(0, 97);
             panelMain.Name = "panelMain";
-            panelMain.Size = new Size(1200, 520);
+            panelMain.Size = new Size(1200, 503);
             panelMain.TabIndex = 1;
-            // 
-            // groupBoxZaposleni
-            // 
-            groupBoxZaposleni.Controls.Add(dgvZaposleni);
-            groupBoxZaposleni.Dock = DockStyle.Fill;
-            groupBoxZaposleni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            groupBoxZaposleni.ForeColor = Color.FromArgb(44, 62, 80);
-            groupBoxZaposleni.Location = new Point(0, 0);
-            groupBoxZaposleni.Name = "groupBoxZaposleni";
-            groupBoxZaposleni.Padding = new Padding(20);
-            groupBoxZaposleni.Size = new Size(900, 520);
-            groupBoxZaposleni.TabIndex = 1;
-            groupBoxZaposleni.TabStop = false;
-            groupBoxZaposleni.Text = "Zaposleni lanca prodavnica igracaka";
-            // 
-            // dgvZaposleni
-            // 
-            dgvZaposleni.AllowUserToAddRows = false;
-            dgvZaposleni.AllowUserToDeleteRows = false;
-            dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvZaposleni.BackgroundColor = Color.White;
-            dgvZaposleni.BorderStyle = BorderStyle.None;
-            dgvZaposleni.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvZaposleni.ColumnHeadersHeight = 50;
-            dgvZaposleni.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvZaposleni.Dock = DockStyle.Fill;
-            dgvZaposleni.GridColor = Color.FromArgb(233, 236, 239);
-            dgvZaposleni.Location = new Point(20, 22);
-            dgvZaposleni.MultiSelect = false;
-            dgvZaposleni.Name = "dgvZaposleni";
-            dgvZaposleni.ReadOnly = true;
-            dgvZaposleni.RowHeadersVisible = false;
-            dgvZaposleni.RowTemplate.Height = 40;
-            dgvZaposleni.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvZaposleni.Size = new Size(860, 478);
-            dgvZaposleni.TabIndex = 0;
-            dgvZaposleni.CellContentClick += dgvZaposleni_CellContentClick;
             // 
             // panelDesno
             // 
@@ -159,7 +123,7 @@ namespace Farmacy.Forme
             panelDesno.Location = new Point(900, 0);
             panelDesno.Name = "panelDesno";
             panelDesno.Padding = new Padding(20);
-            panelDesno.Size = new Size(300, 520);
+            panelDesno.Size = new Size(300, 503);
             panelDesno.TabIndex = 0;
             // 
             // lblOpis
@@ -195,7 +159,7 @@ namespace Farmacy.Forme
             lblUkupanBroj.ForeColor = Color.FromArgb(44, 62, 80);
             lblUkupanBroj.Location = new Point(20, 200);
             lblUkupanBroj.Name = "lblUkupanBroj";
-            lblUkupanBroj.Size = new Size(164, 19);
+            lblUkupanBroj.Size = new Size(240, 28);
             lblUkupanBroj.TabIndex = 2;
             lblUkupanBroj.Text = "Ukupan broj zaposlenih:";
             // 
@@ -207,9 +171,46 @@ namespace Farmacy.Forme
             txbBrojZaposlenih.Location = new Point(20, 225);
             txbBrojZaposlenih.Name = "txbBrojZaposlenih";
             txbBrojZaposlenih.ReadOnly = true;
-            txbBrojZaposlenih.Size = new Size(180, 26);
+            txbBrojZaposlenih.Size = new Size(180, 34);
             txbBrojZaposlenih.TabIndex = 3;
             txbBrojZaposlenih.TextAlign = HorizontalAlignment.Center;
+            // 
+            // groupBoxZaposleni
+            // 
+            groupBoxZaposleni.Controls.Add(dgvZaposleni);
+            groupBoxZaposleni.Dock = DockStyle.Fill;
+            groupBoxZaposleni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            groupBoxZaposleni.ForeColor = Color.FromArgb(44, 62, 80);
+            groupBoxZaposleni.Location = new Point(0, 0);
+            groupBoxZaposleni.Name = "groupBoxZaposleni";
+            groupBoxZaposleni.Padding = new Padding(20);
+            groupBoxZaposleni.Size = new Size(1200, 503);
+            groupBoxZaposleni.TabIndex = 1;
+            groupBoxZaposleni.TabStop = false;
+            groupBoxZaposleni.Enter += groupBoxZaposleni_Enter;
+            // 
+            // dgvZaposleni
+            // 
+            dgvZaposleni.AllowUserToAddRows = false;
+            dgvZaposleni.AllowUserToDeleteRows = false;
+            dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvZaposleni.BackgroundColor = Color.White;
+            dgvZaposleni.BorderStyle = BorderStyle.None;
+            dgvZaposleni.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvZaposleni.ColumnHeadersHeight = 50;
+            dgvZaposleni.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvZaposleni.GridColor = Color.FromArgb(233, 236, 239);
+            dgvZaposleni.Location = new Point(20, 30);
+            dgvZaposleni.MultiSelect = false;
+            dgvZaposleni.Name = "dgvZaposleni";
+            dgvZaposleni.ReadOnly = true;
+            dgvZaposleni.RowHeadersVisible = false;
+            dgvZaposleni.RowHeadersWidth = 62;
+            dgvZaposleni.RowTemplate.Height = 40;
+            dgvZaposleni.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvZaposleni.Size = new Size(860, 450);
+            dgvZaposleni.TabIndex = 0;
+            dgvZaposleni.CellContentClick += dgvZaposleni_CellContentClick;
             // 
             // panelFooter
             // 
@@ -228,13 +229,13 @@ namespace Farmacy.Forme
             lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
             lblFooter.Location = new Point(20, 8);
             lblFooter.Name = "lblFooter";
-            lblFooter.Size = new Size(210, 13);
+            lblFooter.Size = new Size(336, 21);
             lblFooter.TabIndex = 0;
             lblFooter.Text = "Sistem za upravljanje farmaceutskim podacima";
             // 
             // ZaposleniPrikaz
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1200, 630);
@@ -250,10 +251,10 @@ namespace Farmacy.Forme
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             panelMain.ResumeLayout(false);
-            groupBoxZaposleni.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvZaposleni).EndInit();
             panelDesno.ResumeLayout(false);
             panelDesno.PerformLayout();
+            groupBoxZaposleni.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvZaposleni).EndInit();
             panelFooter.ResumeLayout(false);
             panelFooter.PerformLayout();
             ResumeLayout(false);

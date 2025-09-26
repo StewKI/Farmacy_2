@@ -278,7 +278,7 @@
             // 
             dgvZaposleni.AllowUserToAddRows = false;
             dgvZaposleni.AllowUserToDeleteRows = false;
-            dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvZaposleni.BackgroundColor = Color.White;
             dgvZaposleni.BorderStyle = BorderStyle.None;
             dgvZaposleni.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -294,6 +294,7 @@
             dgvZaposleni.RowHeadersVisible = false;
             dgvZaposleni.RowHeadersWidth = 51;
             dgvZaposleni.RowTemplate.Height = 45;
+            dgvZaposleni.ScrollBars = ScrollBars.Both;
             dgvZaposleni.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvZaposleni.Size = new Size(2049, 1126);
             dgvZaposleni.TabIndex = 0;

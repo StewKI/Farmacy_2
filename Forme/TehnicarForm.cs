@@ -60,7 +60,7 @@ namespace Farmacy.Forme
         {
             if (tehnicar != null)
             {
-                //txtMBr.Text = tehnicar.MBr.ToString();
+                txtMatBr.Text = tehnicar.MatBr;
                 txtPrezime.Text = tehnicar.Prezime;
                 txtIme.Text = tehnicar.Ime;
                 dtpDatumRodj.Value = tehnicar.DatumRodj;
@@ -89,6 +89,13 @@ namespace Farmacy.Forme
 
         private bool ValidateForm()
         {
+            if (string.IsNullOrWhiteSpace(txtMatBr.Text))
+            {
+                MessageBox.Show("Matični broj je obavezan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMatBr.Focus();
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txtPrezime.Text))
             {
                 MessageBox.Show("Prezime je obavezno!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -129,12 +136,7 @@ namespace Farmacy.Forme
 
         private void SaveTehnicar()
         {
-            // Generiši MBr ako nije postavljen
-            if (tehnicar.Id == 0)
-            {
-                tehnicar.Id = DateTime.Now.Ticks;
-            }
-
+            tehnicar.MatBr = txtMatBr.Text.Trim();
             tehnicar.Prezime = txtPrezime.Text.Trim();
             tehnicar.Ime = txtIme.Text.Trim();
             tehnicar.DatumRodj = dtpDatumRodj.Value;

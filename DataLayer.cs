@@ -45,7 +45,6 @@ namespace Farmacy
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<ApotekaMapiranja>())
                 .ExposeConfiguration(cfg =>
                 {
-                    // Helpful diagnostics in Output window / console:
                     Console.WriteLine("NH dialect: " + (cfg.Properties.TryGetValue("dialect", out var d) ? d : "<none>"));
                     Console.WriteLine("NH driver: " + (cfg.Properties.TryGetValue("connection.driver_class", out var dr) ? dr : "<none>"));
                     Console.WriteLine("Mappings: " + cfg.ClassMappings.Count);
@@ -70,9 +69,8 @@ namespace Farmacy
                     depth++;
                 }
 
-                // Show everything (or Console.WriteLine in a console app)
                 System.Windows.Forms.MessageBox.Show(sb.ToString(), "NH init error (details)");
-                throw; // rethrow so you can see stacktrace in Output window too
+                throw;
             }
             catch (Exception ex)
             {

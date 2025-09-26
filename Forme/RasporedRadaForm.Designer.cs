@@ -69,8 +69,9 @@ namespace Farmacy.Forme
             panelHeader.Controls.Add(lblSubtitle);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
+            panelHeader.Margin = new Padding(2);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1616, 80);
+            panelHeader.Size = new Size(1366, 81);
             panelHeader.TabIndex = 0;
             // 
             // lblTitle
@@ -78,9 +79,10 @@ namespace Farmacy.Forme
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(20, 15);
+            lblTitle.Location = new Point(15, 12);
+            lblTitle.Margin = new Padding(2, 0, 2, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(449, 59);
+            lblTitle.Size = new Size(342, 45);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "📅 RASPORED RADA";
             // 
@@ -89,9 +91,10 @@ namespace Farmacy.Forme
             lblSubtitle.AutoSize = true;
             lblSubtitle.Font = new Font("Segoe UI", 10F);
             lblSubtitle.ForeColor = Color.FromArgb(200, 255, 200);
-            lblSubtitle.Location = new Point(20, 45);
+            lblSubtitle.Location = new Point(15, 51);
+            lblSubtitle.Margin = new Padding(2, 0, 2, 0);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(497, 37);
+            lblSubtitle.Size = new Size(365, 28);
             lblSubtitle.TabIndex = 1;
             lblSubtitle.Text = "Upravljanje rasporedom rada zaposlenih";
             // 
@@ -102,10 +105,11 @@ namespace Farmacy.Forme
             panelMain.Controls.Add(grpActions);
             panelMain.Controls.Add(grpInputControls);
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Location = new Point(0, 80);
+            panelMain.Location = new Point(0, 81);
+            panelMain.Margin = new Padding(2);
             panelMain.Name = "panelMain";
-            panelMain.Padding = new Padding(20);
-            panelMain.Size = new Size(1616, 981);
+            panelMain.Padding = new Padding(15, 16, 15, 16);
+            panelMain.Size = new Size(1366, 879);
             panelMain.TabIndex = 1;
             // 
             // grpRaspored
@@ -114,10 +118,11 @@ namespace Farmacy.Forme
             grpRaspored.Dock = DockStyle.Fill;
             grpRaspored.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpRaspored.ForeColor = Color.FromArgb(44, 62, 80);
-            grpRaspored.Location = new Point(20, 445);
+            grpRaspored.Location = new Point(15, 385);
+            grpRaspored.Margin = new Padding(2);
             grpRaspored.Name = "grpRaspored";
-            grpRaspored.Padding = new Padding(20);
-            grpRaspored.Size = new Size(1576, 516);
+            grpRaspored.Padding = new Padding(15, 16, 15, 16);
+            grpRaspored.Size = new Size(1336, 478);
             grpRaspored.TabIndex = 2;
             grpRaspored.TabStop = false;
             grpRaspored.Text = "Raspored rada";
@@ -133,14 +138,15 @@ namespace Farmacy.Forme
             dgvRaspored.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvRaspored.Dock = DockStyle.Fill;
             dgvRaspored.GridColor = Color.FromArgb(233, 236, 239);
-            dgvRaspored.Location = new Point(20, 56);
+            dgvRaspored.Location = new Point(15, 43);
+            dgvRaspored.Margin = new Padding(2);
             dgvRaspored.Name = "dgvRaspored";
             dgvRaspored.ReadOnly = true;
             dgvRaspored.RowHeadersVisible = false;
             dgvRaspored.RowHeadersWidth = 82;
             dgvRaspored.RowTemplate.Height = 35;
             dgvRaspored.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRaspored.Size = new Size(1536, 440);
+            dgvRaspored.Size = new Size(1306, 419);
             dgvRaspored.TabIndex = 12;
             // 
             // grpActions
@@ -156,13 +162,15 @@ namespace Farmacy.Forme
             grpActions.Dock = DockStyle.Top;
             grpActions.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpActions.ForeColor = Color.FromArgb(44, 62, 80);
-            grpActions.Location = new Point(20, 294);
+            grpActions.Location = new Point(15, 243);
+            grpActions.Margin = new Padding(2);
             grpActions.Name = "grpActions";
-            grpActions.Padding = new Padding(20);
-            grpActions.Size = new Size(1576, 151);
+            grpActions.Padding = new Padding(15, 16, 15, 16);
+            grpActions.Size = new Size(1336, 142);
             grpActions.TabIndex = 1;
             grpActions.TabStop = false;
             grpActions.Text = "Akcije";
+            grpActions.Enter += grpActions_Enter;
             // 
             // btnStampaj
             // 
@@ -171,9 +179,10 @@ namespace Farmacy.Forme
             btnStampaj.FlatStyle = FlatStyle.Flat;
             btnStampaj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnStampaj.ForeColor = Color.White;
-            btnStampaj.Location = new Point(590, 30);
+            btnStampaj.Location = new Point(466, 45);
+            btnStampaj.Margin = new Padding(2);
             btnStampaj.Name = "btnStampaj";
-            btnStampaj.Size = new Size(120, 98);
+            btnStampaj.Size = new Size(92, 77);
             btnStampaj.TabIndex = 15;
             btnStampaj.Text = "🖨️ Štampaj";
             btnStampaj.UseVisualStyleBackColor = false;
@@ -186,9 +195,10 @@ namespace Farmacy.Forme
             btnExport.FlatStyle = FlatStyle.Flat;
             btnExport.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnExport.ForeColor = Color.White;
-            btnExport.Location = new Point(450, 30);
+            btnExport.Location = new Point(358, 45);
+            btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(120, 98);
+            btnExport.Size = new Size(92, 77);
             btnExport.TabIndex = 14;
             btnExport.Text = "📤 Export";
             btnExport.UseVisualStyleBackColor = false;
@@ -201,9 +211,10 @@ namespace Farmacy.Forme
             btnOcisti.FlatStyle = FlatStyle.Flat;
             btnOcisti.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnOcisti.ForeColor = Color.White;
-            btnOcisti.Location = new Point(310, 30);
+            btnOcisti.Location = new Point(250, 45);
+            btnOcisti.Margin = new Padding(2);
             btnOcisti.Name = "btnOcisti";
-            btnOcisti.Size = new Size(120, 98);
+            btnOcisti.Size = new Size(92, 77);
             btnOcisti.TabIndex = 13;
             btnOcisti.Text = "\U0001f9f9 Očisti";
             btnOcisti.UseVisualStyleBackColor = false;
@@ -216,9 +227,10 @@ namespace Farmacy.Forme
             btnZatvori.FlatStyle = FlatStyle.Flat;
             btnZatvori.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnZatvori.ForeColor = Color.White;
-            btnZatvori.Location = new Point(1010, 30);
+            btnZatvori.Location = new Point(789, 45);
+            btnZatvori.Margin = new Padding(2);
             btnZatvori.Name = "btnZatvori";
-            btnZatvori.Size = new Size(120, 98);
+            btnZatvori.Size = new Size(92, 77);
             btnZatvori.TabIndex = 11;
             btnZatvori.Text = "❌ Zatvori";
             btnZatvori.UseVisualStyleBackColor = false;
@@ -231,9 +243,10 @@ namespace Farmacy.Forme
             btnOsvezi.FlatStyle = FlatStyle.Flat;
             btnOsvezi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnOsvezi.ForeColor = Color.White;
-            btnOsvezi.Location = new Point(870, 30);
+            btnOsvezi.Location = new Point(681, 45);
+            btnOsvezi.Margin = new Padding(2);
             btnOsvezi.Name = "btnOsvezi";
-            btnOsvezi.Size = new Size(120, 98);
+            btnOsvezi.Size = new Size(92, 77);
             btnOsvezi.TabIndex = 10;
             btnOsvezi.Text = "🔄 Osveži";
             btnOsvezi.UseVisualStyleBackColor = false;
@@ -246,9 +259,10 @@ namespace Farmacy.Forme
             btnObrisi.FlatStyle = FlatStyle.Flat;
             btnObrisi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnObrisi.ForeColor = Color.White;
-            btnObrisi.Location = new Point(730, 30);
+            btnObrisi.Location = new Point(574, 45);
+            btnObrisi.Margin = new Padding(2);
             btnObrisi.Name = "btnObrisi";
-            btnObrisi.Size = new Size(120, 98);
+            btnObrisi.Size = new Size(92, 77);
             btnObrisi.TabIndex = 9;
             btnObrisi.Text = "🗑️ Obriši";
             btnObrisi.UseVisualStyleBackColor = false;
@@ -261,9 +275,10 @@ namespace Farmacy.Forme
             btnIzmeni.FlatStyle = FlatStyle.Flat;
             btnIzmeni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnIzmeni.ForeColor = Color.White;
-            btnIzmeni.Location = new Point(170, 30);
+            btnIzmeni.Location = new Point(143, 45);
+            btnIzmeni.Margin = new Padding(2);
             btnIzmeni.Name = "btnIzmeni";
-            btnIzmeni.Size = new Size(120, 98);
+            btnIzmeni.Size = new Size(92, 77);
             btnIzmeni.TabIndex = 12;
             btnIzmeni.Text = "✏️ Izmeni";
             btnIzmeni.UseVisualStyleBackColor = false;
@@ -276,9 +291,10 @@ namespace Farmacy.Forme
             btnDodaj.FlatStyle = FlatStyle.Flat;
             btnDodaj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnDodaj.ForeColor = Color.White;
-            btnDodaj.Location = new Point(30, 30);
+            btnDodaj.Location = new Point(35, 45);
+            btnDodaj.Margin = new Padding(2);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(120, 98);
+            btnDodaj.Size = new Size(92, 77);
             btnDodaj.TabIndex = 8;
             btnDodaj.Text = "➕ Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
@@ -300,10 +316,11 @@ namespace Farmacy.Forme
             grpInputControls.Dock = DockStyle.Top;
             grpInputControls.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpInputControls.ForeColor = Color.FromArgb(44, 62, 80);
-            grpInputControls.Location = new Point(20, 20);
+            grpInputControls.Location = new Point(15, 16);
+            grpInputControls.Margin = new Padding(2);
             grpInputControls.Name = "grpInputControls";
-            grpInputControls.Padding = new Padding(20);
-            grpInputControls.Size = new Size(1576, 274);
+            grpInputControls.Padding = new Padding(15, 16, 15, 16);
+            grpInputControls.Size = new Size(1336, 227);
             grpInputControls.TabIndex = 0;
             grpInputControls.TabStop = false;
             grpInputControls.Text = "Unos podataka o rasporedu rada";
@@ -315,9 +332,10 @@ namespace Farmacy.Forme
             btnFiltriraj.FlatStyle = FlatStyle.Flat;
             btnFiltriraj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnFiltriraj.ForeColor = Color.White;
-            btnFiltriraj.Location = new Point(697, 183);
+            btnFiltriraj.Location = new Point(536, 143);
+            btnFiltriraj.Margin = new Padding(2);
             btnFiltriraj.Name = "btnFiltriraj";
-            btnFiltriraj.Size = new Size(120, 35);
+            btnFiltriraj.Size = new Size(116, 51);
             btnFiltriraj.TabIndex = 16;
             btnFiltriraj.Text = "🔍 Filtriraj";
             btnFiltriraj.UseVisualStyleBackColor = false;
@@ -330,9 +348,10 @@ namespace Farmacy.Forme
             cmbProdajnaJedinica.FlatStyle = FlatStyle.Flat;
             cmbProdajnaJedinica.Font = new Font("Segoe UI", 10F);
             cmbProdajnaJedinica.FormattingEnabled = true;
-            cmbProdajnaJedinica.Location = new Point(807, 90);
+            cmbProdajnaJedinica.Location = new Point(621, 70);
+            cmbProdajnaJedinica.Margin = new Padding(2);
             cmbProdajnaJedinica.Name = "cmbProdajnaJedinica";
-            cmbProdajnaJedinica.Size = new Size(200, 45);
+            cmbProdajnaJedinica.Size = new Size(155, 36);
             cmbProdajnaJedinica.TabIndex = 15;
             // 
             // lblProdajnaJedinica
@@ -340,9 +359,10 @@ namespace Farmacy.Forme
             lblProdajnaJedinica.AutoSize = true;
             lblProdajnaJedinica.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblProdajnaJedinica.ForeColor = Color.FromArgb(44, 62, 80);
-            lblProdajnaJedinica.Location = new Point(496, 93);
+            lblProdajnaJedinica.Location = new Point(382, 73);
+            lblProdajnaJedinica.Margin = new Padding(2, 0, 2, 0);
             lblProdajnaJedinica.Name = "lblProdajnaJedinica";
-            lblProdajnaJedinica.Size = new Size(247, 37);
+            lblProdajnaJedinica.Size = new Size(181, 28);
             lblProdajnaJedinica.TabIndex = 14;
             lblProdajnaJedinica.Text = "Prodajna jedinica:";
             // 
@@ -354,9 +374,10 @@ namespace Farmacy.Forme
             cmbSmena.Font = new Font("Segoe UI", 10F);
             cmbSmena.FormattingEnabled = true;
             cmbSmena.Items.AddRange(new object[] { "Prva smena", "Druga smena", "Treća smena" });
-            cmbSmena.Location = new Point(807, 30);
+            cmbSmena.Location = new Point(621, 23);
+            cmbSmena.Margin = new Padding(2);
             cmbSmena.Name = "cmbSmena";
-            cmbSmena.Size = new Size(200, 45);
+            cmbSmena.Size = new Size(155, 36);
             cmbSmena.TabIndex = 7;
             // 
             // lblSmena
@@ -364,9 +385,10 @@ namespace Farmacy.Forme
             lblSmena.AutoSize = true;
             lblSmena.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblSmena.ForeColor = Color.FromArgb(44, 62, 80);
-            lblSmena.Location = new Point(496, 38);
+            lblSmena.Location = new Point(382, 30);
+            lblSmena.Margin = new Padding(2, 0, 2, 0);
             lblSmena.Name = "lblSmena";
-            lblSmena.Size = new Size(110, 37);
+            lblSmena.Size = new Size(80, 28);
             lblSmena.TabIndex = 6;
             lblSmena.Text = "Smena:";
             // 
@@ -374,9 +396,10 @@ namespace Farmacy.Forme
             // 
             dtpKraj.CustomFormat = "dd.MM.yyyy HH:mm";
             dtpKraj.Format = DateTimePickerFormat.Custom;
-            dtpKraj.Location = new Point(199, 184);
+            dtpKraj.Location = new Point(153, 144);
+            dtpKraj.Margin = new Padding(2);
             dtpKraj.Name = "dtpKraj";
-            dtpKraj.Size = new Size(250, 43);
+            dtpKraj.Size = new Size(193, 34);
             dtpKraj.TabIndex = 5;
             // 
             // lblKraj
@@ -384,9 +407,10 @@ namespace Farmacy.Forme
             lblKraj.AutoSize = true;
             lblKraj.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblKraj.ForeColor = Color.FromArgb(44, 62, 80);
-            lblKraj.Location = new Point(30, 189);
+            lblKraj.Location = new Point(23, 148);
+            lblKraj.Margin = new Padding(2, 0, 2, 0);
             lblKraj.Name = "lblKraj";
-            lblKraj.Size = new Size(76, 37);
+            lblKraj.Size = new Size(55, 28);
             lblKraj.TabIndex = 4;
             lblKraj.Text = "Kraj:";
             // 
@@ -394,9 +418,10 @@ namespace Farmacy.Forme
             // 
             dtpPocetak.CustomFormat = "dd.MM.yyyy HH:mm";
             dtpPocetak.Format = DateTimePickerFormat.Custom;
-            dtpPocetak.Location = new Point(199, 110);
+            dtpPocetak.Location = new Point(153, 86);
+            dtpPocetak.Margin = new Padding(2);
             dtpPocetak.Name = "dtpPocetak";
-            dtpPocetak.Size = new Size(250, 43);
+            dtpPocetak.Size = new Size(193, 34);
             dtpPocetak.TabIndex = 3;
             // 
             // lblPocetak
@@ -404,9 +429,10 @@ namespace Farmacy.Forme
             lblPocetak.AutoSize = true;
             lblPocetak.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPocetak.ForeColor = Color.FromArgb(44, 62, 80);
-            lblPocetak.Location = new Point(30, 116);
+            lblPocetak.Location = new Point(23, 91);
+            lblPocetak.Margin = new Padding(2, 0, 2, 0);
             lblPocetak.Name = "lblPocetak";
-            lblPocetak.Size = new Size(127, 37);
+            lblPocetak.Size = new Size(92, 28);
             lblPocetak.TabIndex = 2;
             lblPocetak.Text = "Početak:";
             // 
@@ -417,9 +443,10 @@ namespace Farmacy.Forme
             cmbZaposleni.FlatStyle = FlatStyle.Flat;
             cmbZaposleni.Font = new Font("Segoe UI", 10F);
             cmbZaposleni.FormattingEnabled = true;
-            cmbZaposleni.Location = new Point(199, 38);
+            cmbZaposleni.Location = new Point(153, 30);
+            cmbZaposleni.Margin = new Padding(2);
             cmbZaposleni.Name = "cmbZaposleni";
-            cmbZaposleni.Size = new Size(250, 45);
+            cmbZaposleni.Size = new Size(193, 36);
             cmbZaposleni.TabIndex = 1;
             // 
             // lblZaposleni
@@ -427,9 +454,10 @@ namespace Farmacy.Forme
             lblZaposleni.AutoSize = true;
             lblZaposleni.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblZaposleni.ForeColor = Color.FromArgb(44, 62, 80);
-            lblZaposleni.Location = new Point(30, 41);
+            lblZaposleni.Location = new Point(23, 32);
+            lblZaposleni.Margin = new Padding(2, 0, 2, 0);
             lblZaposleni.Name = "lblZaposleni";
-            lblZaposleni.Size = new Size(148, 37);
+            lblZaposleni.Size = new Size(108, 28);
             lblZaposleni.TabIndex = 0;
             lblZaposleni.Text = "Zaposleni:";
             // 
@@ -438,9 +466,10 @@ namespace Farmacy.Forme
             panelFooter.BackColor = Color.FromArgb(39, 174, 96);
             panelFooter.Controls.Add(lblFooter);
             panelFooter.Dock = DockStyle.Bottom;
-            panelFooter.Location = new Point(0, 1061);
+            panelFooter.Location = new Point(0, 960);
+            panelFooter.Margin = new Padding(2);
             panelFooter.Name = "panelFooter";
-            panelFooter.Size = new Size(1616, 40);
+            panelFooter.Size = new Size(1366, 31);
             panelFooter.TabIndex = 2;
             // 
             // lblFooter
@@ -448,21 +477,23 @@ namespace Farmacy.Forme
             lblFooter.AutoSize = true;
             lblFooter.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
             lblFooter.ForeColor = Color.White;
-            lblFooter.Location = new Point(20, 10);
+            lblFooter.Location = new Point(15, 8);
+            lblFooter.Margin = new Padding(2, 0, 2, 0);
             lblFooter.Name = "lblFooter";
-            lblFooter.Size = new Size(475, 32);
+            lblFooter.Size = new Size(355, 25);
             lblFooter.TabIndex = 0;
             lblFooter.Text = "Farmacy - Sistem za upravljanje farmacijom";
             // 
             // RasporedRadaForm
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1616, 1101);
+            ClientSize = new Size(1366, 991);
             Controls.Add(panelMain);
             Controls.Add(panelHeader);
             Controls.Add(panelFooter);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "RasporedRadaForm";
