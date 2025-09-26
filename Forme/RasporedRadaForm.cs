@@ -33,7 +33,7 @@ namespace Farmacy.Forme
                 
                 cmbZaposleni.DataSource = zaposleni;
                 cmbZaposleni.DisplayMember = "Ime";
-                cmbZaposleni.ValueMember = "MBr";
+                cmbZaposleni.ValueMember = "Id";
             }
             catch (Exception ex)
             {
@@ -174,7 +174,7 @@ namespace Farmacy.Forme
             {
                 var raspored = new RasporedRadaBasic
                 {
-                    MBr = (long)cmbZaposleni.SelectedValue,
+                    IdZaposlenog = (long)cmbZaposleni.SelectedValue,
                     ProdajnaJedinicaId = (long)cmbProdajnaJedinica.SelectedValue,
                     Pocetak = dtpPocetak.Value,
                     Kraj = dtpKraj.Value,
@@ -207,7 +207,7 @@ namespace Farmacy.Forme
 
             if (result == DialogResult.Yes)
             {
-                DTOManagerZaposleni.ObrisiRasporedRada(raspored.MBr, raspored.ProdajnaJedinicaId, raspored.Pocetak);
+                DTOManagerZaposleni.ObrisiRasporedRada(raspored.IdZaposlenog, raspored.ProdajnaJedinicaId, raspored.Pocetak);
                 LoadRasporedRada();
             }
         }
@@ -247,7 +247,7 @@ namespace Farmacy.Forme
             var raspored = (RasporedRadaBasic)dgvRaspored.CurrentRow.DataBoundItem;
             
             // Popuni formu sa podacima za izmenu
-            cmbZaposleni.SelectedValue = raspored.MBr;
+            cmbZaposleni.SelectedValue = raspored.IdZaposlenog;
             cmbProdajnaJedinica.SelectedValue = raspored.ProdajnaJedinicaId;
             dtpPocetak.Value = raspored.Pocetak;
             dtpKraj.Value = raspored.Kraj;

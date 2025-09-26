@@ -20,7 +20,7 @@ namespace Farmacy_2.Forme
         private void LoadFarmaceutData()
         {
             // Load inherited properties from Zaposleni
-            txtMBr.Text = farmaceut.MBr.ToString();
+            txtMBr.Text = farmaceut.Id.ToString();
             txtPrezime.Text = farmaceut.Prezime;
             txtIme.Text = farmaceut.Ime;
             dtpDatumRodj.Value = farmaceut.DatumRodj;

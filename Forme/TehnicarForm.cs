@@ -130,9 +130,9 @@ namespace Farmacy.Forme
         private void SaveTehnicar()
         {
             // Generiši MBr ako nije postavljen
-            if (tehnicar.MBr == 0)
+            if (tehnicar.Id == 0)
             {
-                tehnicar.MBr = DateTime.Now.Ticks;
+                tehnicar.Id = DateTime.Now.Ticks;
             }
 
             tehnicar.Prezime = txtPrezime.Text.Trim();

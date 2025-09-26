@@ -129,9 +129,9 @@ namespace Farmacy.Forme
             }
 
             // Generiši MBr ako nije postavljen
-            if (zaposleni.MBr == 0)
+            if (zaposleni.Id == 0)
             {
-                zaposleni.MBr = DateTime.Now.Ticks;
+                zaposleni.Id = DateTime.Now.Ticks;
             }
 
             zaposleni.Prezime = txtPrezime.Text.Trim();

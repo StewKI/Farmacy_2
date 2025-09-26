@@ -10,7 +10,8 @@ namespace Farmacy
 
     public class ZaposleniBasic
     {
-        public long MBr { get; set; }
+        public long Id { get; set; }
+        public string MatBr { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public DateTime DatumRodj { get; set; }
@@ -36,7 +37,7 @@ namespace Farmacy
 
     public class TehnicarSertifikacijaBasic
     {
-        public long MBrTehnicara { get; set; }
+        public long IdTehnicara { get; set; }
         public string Naziv { get; set; }
         public DateTime Datum { get; set; }
     }
@@ -57,7 +58,7 @@ namespace Farmacy
 
     public class MenadzerApotekaBasic
     {
-        public long MBrMenadzera { get; set; }
+        public long IdMenadzera { get; set; }
         public long ProdajnaJedinicaId { get; set; }
         public DateTime Od { get; set; }
         public DateTime? Do { get; set; }
@@ -195,7 +196,7 @@ namespace Farmacy
 
     public class RasporedRadaBasic
     {
-        public virtual long MBr { get; set; }
+        public virtual long IdZaposlenog { get; set; }
         public virtual long ProdajnaJedinicaId { get; set; }
         public virtual DateTime Pocetak { get; set; }
         public virtual DateTime Kraj { get; set; }

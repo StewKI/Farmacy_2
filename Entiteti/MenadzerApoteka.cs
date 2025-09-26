@@ -20,8 +20,8 @@ namespace Farmacy.Entiteti
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            var thisMenId = Menadzer?.MBr;
-            var otherMenId = other.Menadzer?.MBr;
+            var thisMenId = Menadzer?.Id;
+            var otherMenId = other.Menadzer?.Id;
             var thisPjId = ProdajnaJedinica?.Id;
             var otherPjId = other.ProdajnaJedinica?.Id;
 
@@ -37,7 +37,7 @@ namespace Farmacy.Entiteti
             unchecked
             {
                 int h = 17;
-                h = h * 23 + (Menadzer?.MBr.GetHashCode() ?? 0);
+                h = h * 23 + (Menadzer?.Id.GetHashCode() ?? 0);
                 h = h * 23 + (ProdajnaJedinica?.Id.GetHashCode() ?? 0);
                 h = h * 23 + Od.GetHashCode();
                 return h;

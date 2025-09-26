@@ -13,7 +13,7 @@ namespace Farmacy.Mapiranja
         public MenadzerMap()
         {
             Table("Menadzer");
-            KeyColumn("m_br");
+            KeyColumn("id");
         }
     }
 }

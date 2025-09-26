@@ -21,7 +21,7 @@ namespace Farmacy_2.Forme
             txtDistributer.Text = isporuka.Distributer?.Id.ToString() ?? "Nije postavljen";
             txtProdajnaJedinica.Text = isporuka.ProdajnaJedinica?.Id.ToString() ?? "Nije postavljen";
             dtpDatum.Value = isporuka.Datum;
-            txtMagacioner.Text = isporuka.Magacioner?.MBr.ToString() ?? "Nije postavljen";
+            txtMagacioner.Text = isporuka.Magacioner?.Id.ToString() ?? "Nije postavljen";
         }
 
         private bool ValidateForm()

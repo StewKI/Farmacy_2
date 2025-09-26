@@ -110,9 +110,9 @@ namespace Farmacy.Forme
             }
 
             // Generiši MBr ako nije postavljen
-            if (farmaceut.MBr == 0)
+            if (farmaceut.Id == 0)
             {
-                farmaceut.MBr = DateTime.Now.Ticks;
+                farmaceut.Id = DateTime.Now.Ticks;
             }
 
             farmaceut.Prezime = txtPrezime.Text.Trim();

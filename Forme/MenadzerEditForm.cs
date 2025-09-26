@@ -22,7 +22,7 @@ namespace Farmacy.Forme
         private void LoadMenadzerData()
         {
             // Učitavamo postojeće podatke
-            txtMBr.Text = menadzer.MBr.ToString();
+            txtMBr.Text = menadzer.Id.ToString();
             txtPrezime.Text = menadzer.Prezime;
             txtIme.Text = menadzer.Ime;
             dtpDatumRodj.Value = menadzer.DatumRodj;
@@ -96,7 +96,7 @@ namespace Farmacy.Forme
         private void SaveMenadzer()
         {
             if (long.TryParse(txtMBr.Text, out long mbr))
-                menadzer.MBr = mbr;
+                menadzer.Id = mbr;
 
             menadzer.Prezime = txtPrezime.Text.Trim();
             menadzer.Ime = txtIme.Text.Trim();

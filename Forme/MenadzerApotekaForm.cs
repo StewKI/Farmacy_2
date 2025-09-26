@@ -33,7 +33,7 @@ namespace Farmacy.Forme
         private void LoadMenadzerApotekaData()
         {
             IList<MenadzerBasic> lista = DTOManagerProdajneJedinice.VratiSveMenadzereUSistemu() ?? new List<MenadzerBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
        
         
             comboBox1.DataSource = nazivi;
@@ -104,7 +104,7 @@ namespace Farmacy.Forme
             menadzerApoteka.Od = dtpOd.Value;
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
             menadzerApoteka.ProdajnaJedinicaId =idApoteke;
-            menadzerApoteka.MBrMenadzera = (long)comboBox1.SelectedValue;
+            menadzerApoteka.IdMenadzera = (long)comboBox1.SelectedValue;
             DTOManagerProdajneJedinice.DodeliMenadzeraApoteci(menadzerApoteka);
         }
 

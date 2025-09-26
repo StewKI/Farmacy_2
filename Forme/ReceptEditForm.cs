@@ -39,7 +39,7 @@ namespace Farmacy.Forme
                 dtpRealizacijaDatum.Value = recept.RealizacijaDatum.Value;
             
             if (recept.RealizovaoFarmaceut != null)
-                txtRealizovaoFarmaceut.Text = recept.RealizovaoFarmaceut.MBr.ToString();
+                txtRealizovaoFarmaceut.Text = recept.RealizovaoFarmaceut.Id.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

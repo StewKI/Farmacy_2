@@ -22,7 +22,7 @@ namespace Farmacy.Forme
         private void LoadTehnicarData()
         {
             // Učitavamo postojeće podatke
-            txtMBr.Text = tehnicar.MBr.ToString();
+            txtMBr.Text = tehnicar.Id.ToString();
             txtPrezime.Text = tehnicar.Prezime;
             txtIme.Text = tehnicar.Ime;
             dtpDatumRodj.Value = tehnicar.DatumRodj;
@@ -112,7 +112,7 @@ namespace Farmacy.Forme
             TehnicarBasic t= new TehnicarBasic();
 
             if (long.TryParse(txtMBr.Text, out long mbr))
-                t.MBr = mbr;
+                t.Id = mbr;
 
             t.Prezime = txtPrezime.Text.Trim();
             t.Ime = txtIme.Text.Trim();

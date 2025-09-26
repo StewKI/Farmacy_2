@@ -37,43 +37,45 @@ namespace Farmacy.Forme
                 // 1) Učitaj podatke
                 IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
 
-                // 2) Mapiraj kolone (ako već nisu mapirane)
+                // Debug info
+                MessageBox.Show($"Učitano {lista.Count} zaposlenih", "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 2) Mapiraj kolone
                 dgvZaposleni.AutoGenerateColumns = false;
-                // Column mapping removed - using AutoGenerateColumns
+                dgvZaposleni.Columns.Clear(); // Obriši sve postojeće kolone
+
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colId",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    Width = 60
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colMbr",
+                    HeaderText = "MBr",
+                    DataPropertyName = "MatBr",
+                    Width = 90
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colIme",
+                    HeaderText = "Ime",
+                    DataPropertyName = "Ime",
+                    Width = 140
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colPrezime",
+                    HeaderText = "Prezime",
+                    DataPropertyName = "Prezime",
+                    Width = 160
+                });
 
                 // 3) Veži podatke
                 dgvZaposleni.DataSource = false;   // osveži binding
                 dgvZaposleni.DataSource = lista;
-
-
-
-
-                if (dgvZaposleni.Columns.Count == 0)
-                {
-                    dgvZaposleni.AutoGenerateColumns = false;
-                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colMbr",
-                        HeaderText = "MBr",
-                        DataPropertyName = "MBr",
-                        Width = 90
-                    });
-                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colIme",
-                        HeaderText = "Ime",
-                        DataPropertyName = "Ime",
-                        Width = 140
-                    });
-                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colPrezime",
-                        HeaderText = "Prezime",
-                        DataPropertyName = "Prezime",
-                        Width = 160
-                    });
-                    //dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                }
 
             }
             catch (Exception ex)
@@ -130,7 +132,7 @@ namespace Farmacy.Forme
 
             // Get the employee with their specific type
             var zaposleni = DTOManagerZaposleni.VratiZaposlenog(mbr);
-            
+
             if (zaposleni == null)
             {
                 MessageBox.Show("Greška pri učitavanju podataka o zaposlenom!");
@@ -181,43 +183,42 @@ namespace Farmacy.Forme
             try
             {
 
-                // 2) Mapiraj kolone (ako već nisu mapirane)
+                // 2) Mapiraj kolone
                 dgvZaposleni.AutoGenerateColumns = false;
-                // Column mapping removed - using AutoGenerateColumns
+                dgvZaposleni.Columns.Clear(); // Obriši sve postojeće kolone
+
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colId",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    Width = 60
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colMbr",
+                    HeaderText = "MBr",
+                    DataPropertyName = "MatBr",
+                    Width = 90
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colIme",
+                    HeaderText = "Ime",
+                    DataPropertyName = "Ime",
+                    Width = 140
+                });
+                dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "colPrezime",
+                    HeaderText = "Prezime",
+                    DataPropertyName = "Prezime",
+                    Width = 160
+                });
 
                 // 3) Veži podatke
                 dgvZaposleni.DataSource = false;   // osveži binding
                 dgvZaposleni.DataSource = lista1;
-
-
-
-
-                if (dgvZaposleni.Columns.Count == 0)
-                {
-                    dgvZaposleni.AutoGenerateColumns = false;
-                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colMbr",
-                        HeaderText = "MBr",
-                        DataPropertyName = "MBr",
-                        Width = 90
-                    });
-                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colIme",
-                        HeaderText = "Ime",
-                        DataPropertyName = "Ime",
-                        Width = 140
-                    });
-                    dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "colPrezime",
-                        HeaderText = "Prezime",
-                        DataPropertyName = "Prezime",
-                        Width = 160
-                    });
-                    //dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                }
 
             }
             catch (Exception ex)
@@ -238,7 +239,7 @@ namespace Farmacy.Forme
                 IList<FarmaceutBasic> lista1 = new List<FarmaceutBasic>();
                 foreach (var l in lista)
                 {
-                    var m = DTOManagerZaposleni.VratiZaposlenog(l.MBr);
+                    var m = DTOManagerZaposleni.VratiZaposlenog(l.Id);
                     if (m is FarmaceutBasic f)
                         lista1.Add(f);
                 }
@@ -266,7 +267,7 @@ namespace Farmacy.Forme
                 IList<TehnicarBasic> lista1 = new List<TehnicarBasic>();
                 foreach (var l in lista)
                 {
-                    var m = DTOManagerZaposleni.VratiZaposlenog(l.MBr);
+                    var m = DTOManagerZaposleni.VratiZaposlenog(l.Id);
                     if (m is TehnicarBasic t)
                         lista1.Add(t);
                 }
@@ -289,7 +290,7 @@ namespace Farmacy.Forme
                 IList<MenadzerBasic> lista1 = new List<MenadzerBasic>();
                 foreach (var l in lista)
                 {
-                    var m = DTOManagerZaposleni.VratiZaposlenog(l.MBr);
+                    var m = DTOManagerZaposleni.VratiZaposlenog(l.Id);
                     if (m is MenadzerBasic m1)
                         lista1.Add(m1);
                 }
@@ -336,7 +337,7 @@ namespace Farmacy.Forme
             {
                 // Sačuvaj originalnu boju
                 button.Tag = button.BackColor;
-                
+
                 // Promeni boju na hover
                 if (button == btnDodajNovog)
                 {
@@ -370,7 +371,7 @@ namespace Farmacy.Forme
                 {
                     button.BackColor = Color.FromArgb(34, 153, 84); // Tamnija zelena
                 }
-                
+
                 button.Cursor = Cursors.Hand;
             }
         }
@@ -383,6 +384,11 @@ namespace Farmacy.Forme
                 button.BackColor = originalColor;
                 button.Cursor = Cursors.Default;
             }
+        }
+
+        private void dgvZaposleni_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

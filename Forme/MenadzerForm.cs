@@ -114,9 +114,9 @@ namespace Farmacy.Forme
             try
             {
                 // Generiši MBr ako nije postavljen
-                if (menadzer.MBr == 0)
+                if (menadzer.Id == 0)
                 {
-                    menadzer.MBr = DateTime.Now.Ticks;
+                    menadzer.Id = DateTime.Now.Ticks;
                 }
 
                 menadzer.Prezime = txtPrezime.Text.Trim();

@@ -13,8 +13,7 @@ namespace Farmacy.Mapiranja
         public TehnicarMap()
         {
             Table("Tehnicar");
-            KeyColumn("m_br");  // PK isti kao Zaposleni
-
+            KeyColumn("id");
             Map(x => x.NivoObrazovanja, "nivo_obrazovanja").Not.Nullable();
         }
     }

@@ -20,7 +20,7 @@ namespace Farmacy_2.Forme
         private void LoadZaposleniData()
         {
 
-            txtMBr.Text = zaposleni.MBr.ToString();
+            txtMBr.Text = zaposleni.Id.ToString();
             txtPrezime.Text = zaposleni.Prezime;
             txtIme.Text = zaposleni.Ime;
             dtpDatumRodj.Value = zaposleni.DatumRodj;
@@ -81,7 +81,7 @@ namespace Farmacy_2.Forme
 
             Zaposleni z = new Zaposleni();
             if (long.TryParse(txtMBr.Text, out long mbr))
-                z.MBr = mbr;
+                z.Id = mbr;
 
            
             z.Prezime = txtPrezime.Text.Trim();

@@ -27,8 +27,8 @@ namespace Farmacy_2.Forme
             //Stavljeno je da apotekar koj je izabran iz globalnog sistema bude odgovaran a ne koj raid ovde se bira od onih sto rade bas u toj prodajnoj jedinici
             var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(prodajnaJedinica.OdgovorniFarmaceutMbr);
             IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(prodajnaJedinica.Id) ?? new List<FarmaceutBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
-            var o = new { Text =f.Ime, Value = f.MBr };
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
+            var o = new { Text =f.Ime, Value = f.Id };
             if (nazivi.Count < 1)
                 nazivi.Add(o);
             comboBox1.DataSource = nazivi;

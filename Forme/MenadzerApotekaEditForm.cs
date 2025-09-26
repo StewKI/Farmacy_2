@@ -34,7 +34,7 @@ namespace Farmacy.Forme
         {
             // Učitavamo postojeće podatke
             IList<MenadzerBasic> lista = DTOManagerProdajneJedinice.VratiMenadzereZaApoteku(idA) ?? new List<MenadzerBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
 
 
             comboBox1.DataSource = nazivi;
@@ -102,7 +102,7 @@ namespace Farmacy.Forme
             // jer ova forma samo prikazuje ID-ove
             menadzerApoteka.Od = dtpOd.Value;
             menadzerApoteka.Do = chkDo.Checked ? null : dtpDo.Value;
-            menadzerApoteka.MBrMenadzera = (long)comboBox1.SelectedValue;
+            menadzerApoteka.IdMenadzera = (long)comboBox1.SelectedValue;
             menadzerApoteka.ProdajnaJedinicaId = idA;
             DTOManagerProdajneJedinice.IzmeniMenadzerApoteka(menadzerApoteka);
 

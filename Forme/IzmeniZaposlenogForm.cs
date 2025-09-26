@@ -94,7 +94,7 @@ namespace Farmacy.Forme
                 {
                     var farmaceut = new FarmaceutBasic
                     {
-                        MBr = mbr,
+                        Id = mbr,
                         Ime = txtIme.Text.Trim(),
                         Prezime = txtPrezime.Text.Trim(),
                         DatumRodj = dtpDatumRodj.Value,
@@ -112,7 +112,7 @@ namespace Farmacy.Forme
                 {
                     var tehnicar = new TehnicarBasic
                     {
-                        MBr = mbr,
+                        Id = mbr,
                         Ime = txtIme.Text.Trim(),
                         Prezime = txtPrezime.Text.Trim(),
                         DatumRodj = dtpDatumRodj.Value,
@@ -127,7 +127,7 @@ namespace Farmacy.Forme
                 {
                     var menadzer = new MenadzerBasic
                     {
-                        MBr = mbr,
+                        Id = mbr,
                         Ime = txtIme.Text.Trim(),
                         Prezime = txtPrezime.Text.Trim(),
                         DatumRodj = dtpDatumRodj.Value,

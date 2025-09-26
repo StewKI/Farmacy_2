@@ -85,7 +85,7 @@ namespace Farmacy
                         PakovanjeId = z.Pakovanje.Id,
                         Kolicina = z.Kolicina,
                         DatumPoslednjeIsporuke = z.DatumPoslednjeIsporuke,
-                        OdgovorniMagacionerMbr = z.OdgovorniMagacioner?.MBr
+                        OdgovorniMagacionerMbr = z.OdgovorniMagacioner?.Id
                     });
                 }
             }
@@ -549,7 +549,7 @@ namespace Farmacy
                         PakovanjeId = z.Pakovanje.Id,
                         Kolicina = z.Kolicina,
                         DatumPoslednjeIsporuke = z.DatumPoslednjeIsporuke,
-                        OdgovorniMagacionerMbr = z.OdgovorniMagacioner?.MBr
+                        OdgovorniMagacionerMbr = z.OdgovorniMagacioner?.Id
                     });
                 }
             }
@@ -573,7 +573,7 @@ namespace Farmacy
                         PakovanjeId = zaliha.Pakovanje.Id,
                         Kolicina = zaliha.Kolicina,
                         DatumPoslednjeIsporuke = zaliha.DatumPoslednjeIsporuke,
-                        OdgovorniMagacionerMbr = zaliha.OdgovorniMagacioner?.MBr
+                        OdgovorniMagacionerMbr = zaliha.OdgovorniMagacioner?.Id
                     };
                 }
             }
@@ -716,8 +716,9 @@ namespace Farmacy
                 {
                     list.Add(new ZaposleniBasic
                     {
-                        MBr = m.MBr,
+                        Id = m.Id,
                         Ime = m.Ime,
+                        MatBr = m.MatBr,
                         Prezime = m.Prezime,
                         DatumRodj = m.DatumRodj,
                         Adresa = m.Adresa,
@@ -760,7 +761,7 @@ namespace Farmacy
                         Id = p.Id,
                         ProdajnaJedinicaId = p.ProdajnaJedinica.Id,
                         DatumVreme = p.DatumVreme,
-                        BlagajnikMbr = p.Blagajnik?.MBr,
+                        BlagajnikMbr = p.Blagajnik?.Id,
                         ProdajnaJedinicaNaziv = p.ProdajnaJedinica.Naziv,
                         BlagajnikIme = p.Blagajnik != null ? $"{p.Blagajnik.Ime} {p.Blagajnik.Prezime}" : "N/A",
                         UkupnaVrednost = ukupnaVrednost,
@@ -803,7 +804,7 @@ namespace Farmacy
                         Id = p.Id,
                         ProdajnaJedinicaId = p.ProdajnaJedinica.Id,
                         DatumVreme = p.DatumVreme,
-                        BlagajnikMbr = p.Blagajnik?.MBr,
+                        BlagajnikMbr = p.Blagajnik?.Id,
                         ProdajnaJedinicaNaziv = p.ProdajnaJedinica.Naziv,
                         BlagajnikIme = p.Blagajnik != null ? $"{p.Blagajnik.Ime} {p.Blagajnik.Prezime}" : "N/A",
                         UkupnaVrednost = ukupnaVrednost,
@@ -846,7 +847,7 @@ namespace Farmacy
                         Id = prodaja.Id,
                         ProdajnaJedinicaId = prodaja.ProdajnaJedinica.Id,
                         DatumVreme = prodaja.DatumVreme,
-                        BlagajnikMbr = prodaja.Blagajnik?.MBr,
+                        BlagajnikMbr = prodaja.Blagajnik?.Id,
                         ProdajnaJedinicaNaziv = prodaja.ProdajnaJedinica.Naziv,
                         BlagajnikIme = prodaja.Blagajnik != null ? $"{prodaja.Blagajnik.Ime} {prodaja.Blagajnik.Prezime}" : "N/A",
                         UkupnaVrednost = ukupnaVrednost,
@@ -993,9 +994,10 @@ namespace Farmacy
                 {
                     list.Add(new ZaposleniBasic
                     {
-                        MBr = b.MBr,
+                        Id = b.Id,
                         Ime = b.Ime,
                         Prezime = b.Prezime,
+                        MatBr = b.MatBr,
                         DatumRodj = b.DatumRodj,
                         Adresa = b.Adresa,
                         Telefon = b.Telefon,

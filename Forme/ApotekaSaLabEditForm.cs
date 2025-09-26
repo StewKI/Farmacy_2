@@ -27,16 +27,16 @@ namespace Farmacy_2.Forme
             txtPostanskiBroj.Text = apotekaSaLab.PostanskiBroj;
             txtMesto.Text = apotekaSaLab.Mesto;
             //Stavljeno je da apotekar koj je izabran iz globalnog sistema bude odgovaran a ne koj raid ovde se bira od onih sto rade bas u toj prodajnoj jedinici
-            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(apotekaSaLab.OdgovorniFarmaceut.MBr);
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(apotekaSaLab.OdgovorniFarmaceut.Id);
             IList<Farmacy.FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(apotekaSaLab.Id) ?? new List<Farmacy.FarmaceutBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
-            var o = new { Text = f.Ime, Value = f.MBr };
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id}).ToList();
+            var o = new { Text = f.Ime, Value = f.Id };
             if(nazivi.Count < 1 )
                 nazivi.Add(o);
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
-            comboBox1.SelectedValue = apotekaSaLab.OdgovorniFarmaceut.MBr;
+            comboBox1.SelectedValue = apotekaSaLab.OdgovorniFarmaceut.Id;
 
             // Load ApotekaSaLab-specific properties
             txtNapomena.Text = apotekaSaLab.Napomena ?? "";

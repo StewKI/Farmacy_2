@@ -215,9 +215,10 @@ namespace Farmacy
                 {
                     list.Add(new ZaposleniBasic
                     {
-                        MBr = b.MBr,
+                        Id = b.Id,
                         Ime = b.Ime,
                         Prezime = b.Prezime,
+                        MatBr = b.MatBr,
                         DatumRodj = b.DatumRodj,
                         Adresa = b.Adresa,
                         Telefon = b.Telefon,

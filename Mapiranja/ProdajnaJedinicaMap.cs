@@ -13,14 +13,14 @@ namespace Farmacy.Mapiranja
         public ProdajnaJedinicaMap()
         {
             Table("Prodajna_jedinica");
-            Id(x => x.Id, "id").GeneratedBy.Sequence("PRODAJNA_JEDINICA_SEQ");
+            Id(x => x.Id, "id").GeneratedBy.Identity();
             Map(x => x.Naziv, "naziv").Not.Nullable();
             Map(x => x.Ulica, "ulica").Not.Nullable();
             Map(x => x.Broj, "broj").Not.Nullable();
             Map(x => x.PostanskiBroj, "postanski_broj").Not.Nullable();
             Map(x => x.Mesto, "mesto").Not.Nullable();
 
-            References(x => x.OdgovorniFarmaceut, "odgovorni_farmaceut_mbr").Not.Nullable();
+            References(x => x.OdgovorniFarmaceut, "odgovorni_farmaceut_id").Not.Nullable();
 
             HasMany(x => x.RadnaVremena)
                 .KeyColumn("prodajna_jedinica_id")

@@ -27,7 +27,7 @@ namespace Farmacy.Forme
         {
             long idP = (long)cmbNovoR.SelectedValue;
             int smena=(int)cmbSmena.SelectedValue;
-            DTOManagerZaposleni.IzmeniRadnoMesto(r.MBr, idP, smena);
+            DTOManagerZaposleni.IzmeniRadnoMesto(r.IdZaposlenog, idP, smena);
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -37,7 +37,7 @@ namespace Farmacy.Forme
             var p = DTOManagerProdajneJedinice.VratiProdajnuJedinicu(r.ProdajnaJedinicaId);
             var naziv = p.Naziv;
 
-            txtMbr.Text = r.MBr.ToString();
+            txtMbr.Text = r.IdZaposlenog.ToString();
             txtRadnoMesto.Text = naziv;
 
             IList<ProdajnaJedinicaBasic> lista = DTOManagerProdajneJedinice.VratiSveProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();

@@ -30,7 +30,7 @@ namespace Farmacy.Forme
 
                 lblIme.Text = zaposleni.Ime;
                 lblPrezime.Text = zaposleni.Prezime;
-                lblMBr.Text = zaposleni.MBr.ToString();
+                lblMBr.Text = zaposleni.Id.ToString();
                 lblDatumRodj.Text = zaposleni.DatumRodj.ToShortDateString();
                 lblAdresa.Text = zaposleni.Adresa ?? "Nije uneseno";
                 lblTelefon.Text = zaposleni.Telefon ?? "Nije uneseno";

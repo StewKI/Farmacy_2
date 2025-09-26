@@ -1,5 +1,9 @@
-﻿CREATE TABLE Zaposleni (
-  m_br               NUMBER PRIMARY KEY,
+﻿CREATE SEQUENCE ZAPOSLENI_SEQ START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE Zaposleni (
+  id                 NUMBER PRIMARY KEY,
+  mbr                VARCHAR2(13) NOT NULL UNIQUE
+                         CONSTRAINT ck_zaposleni_mbr CHECK (REGEXP_LIKE(mbr, '^[0-9]{13}$')),
   prezime            VARCHAR2(50)    NOT NULL,
   ime                VARCHAR2(50)    NOT NULL,
   datum_rodj         DATE            NOT NULL,
@@ -9,33 +13,33 @@
 );
 
 CREATE TABLE Farmaceut (
-  m_br                               NUMBER PRIMARY KEY,
+  id                                 NUMBER PRIMARY KEY,
   datum_diplomiranja                 DATE            NOT NULL,
   br_licence                         VARCHAR2(50)    NOT NULL,
   datum_poslednje_obnove_licence     DATE            NOT NULL,
   specijalnost                       VARCHAR2(100),
-  CONSTRAINT fk_farm_zap FOREIGN KEY (m_br) REFERENCES Zaposleni(m_br),
+  CONSTRAINT fk_farm_zap FOREIGN KEY (id) REFERENCES Zaposleni(id),
   CONSTRAINT uq_farm_licenca UNIQUE (br_licence)
 );
 
 CREATE TABLE Tehnicar (
-  m_br               NUMBER PRIMARY KEY,
+  id                 NUMBER PRIMARY KEY,
   nivo_obrazovanja   VARCHAR2(10) NOT NULL,
-  CONSTRAINT fk_teh_zap FOREIGN KEY (m_br) REFERENCES Zaposleni(m_br),
+  CONSTRAINT fk_teh_zap FOREIGN KEY (id) REFERENCES Zaposleni(id),
   CONSTRAINT ck_teh_nivo CHECK (nivo_obrazovanja IN ('SREDNJI','VISI'))
 );
 
 CREATE TABLE Menadzer (
-  m_br  NUMBER PRIMARY KEY,
-  CONSTRAINT fk_mng_zap FOREIGN KEY (m_br) REFERENCES Zaposleni(m_br)
+  id  NUMBER PRIMARY KEY,
+  CONSTRAINT fk_mng_zap FOREIGN KEY (id) REFERENCES Zaposleni(id)
 );
 
 CREATE TABLE Tehnicar_sertifikacija (
-  m_br_tehnicara NUMBER       NOT NULL,
+  id_tehnicara   NUMBER       NOT NULL,
   naziv          VARCHAR2(100) NOT NULL,
   datum          DATE          NOT NULL,
-  CONSTRAINT pk_teh_cert PRIMARY KEY (m_br_tehnicara, naziv),
-  CONSTRAINT fk_teh_cert FOREIGN KEY (m_br_tehnicara) REFERENCES Tehnicar(m_br)
+  CONSTRAINT pk_teh_cert PRIMARY KEY (id_tehnicara, naziv),
+  CONSTRAINT fk_teh_cert FOREIGN KEY (id_tehnicara) REFERENCES Tehnicar(id)
 );
 
 
@@ -46,9 +50,9 @@ CREATE TABLE Prodajna_jedinica (
   broj                       VARCHAR2(10)  NOT NULL,
   postanski_broj             VARCHAR2(10)  NOT NULL,
   mesto                      VARCHAR2(50)  NOT NULL,
-  odgovorni_farmaceut_mbr    NUMBER        NOT NULL,
+  odgovorni_farmaceut_id     NUMBER        NOT NULL,
   CONSTRAINT ck_postanski_broj CHECK (REGEXP_LIKE(postanski_broj, '^\d{5}$')),
-  CONSTRAINT fk_pj_farm FOREIGN KEY (odgovorni_farmaceut_mbr) REFERENCES Farmaceut(m_br)
+  CONSTRAINT fk_pj_farm FOREIGN KEY (odgovorni_farmaceut_id) REFERENCES Farmaceut(id)
 );
 
 
@@ -82,24 +86,24 @@ CREATE TABLE Radno_vreme (
 );
 
 CREATE TABLE Raspored_rada (
-  m_br                  NUMBER       NOT NULL,
+  id_zaposlenog         NUMBER       NOT NULL,
   prodajna_jedinica_id  NUMBER       NOT NULL,
   pocetak               TIMESTAMP    NOT NULL,
   kraj                  TIMESTAMP    NOT NULL,
   broj_smene            NUMBER(1),
-  CONSTRAINT pk_rr PRIMARY KEY (m_br, prodajna_jedinica_id, pocetak),
-  CONSTRAINT fk_rr_mbr FOREIGN KEY (m_br) REFERENCES Zaposleni(m_br),
+  CONSTRAINT pk_rr PRIMARY KEY (id_zaposlenog, prodajna_jedinica_id, pocetak),
+  CONSTRAINT fk_rr_mbr FOREIGN KEY (id_zaposlenog) REFERENCES Zaposleni(id),
   CONSTRAINT fk_rr_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
   CONSTRAINT ck_rr_interval CHECK (kraj > pocetak),
   CONSTRAINT ck_rr_smena CHECK (broj_smene IS NULL OR broj_smene BETWEEN 1 AND 3)
 );
 
 CREATE TABLE Kontrola (
-  m_br_menadzera        NUMBER     NOT NULL,
+  id_menadzera          NUMBER     NOT NULL,
   datum_kontrole        DATE       NOT NULL,
   prodajna_jedinica_id  NUMBER     NOT NULL,
-  CONSTRAINT pk_kontrola PRIMARY KEY (m_br_menadzera, datum_kontrole),
-  CONSTRAINT fk_kon_mng FOREIGN KEY (m_br_menadzera) REFERENCES Menadzer(m_br),
+  CONSTRAINT pk_kontrola PRIMARY KEY (id_menadzera, datum_kontrole),
+  CONSTRAINT fk_kon_mng FOREIGN KEY (id_menadzera) REFERENCES Menadzer(id),
   CONSTRAINT fk_kon_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id)
 );
 
@@ -209,10 +213,10 @@ CREATE TABLE Isporuka (
   distributer_id         NUMBER      NOT NULL,
   prodajna_jedinica_id   NUMBER      NOT NULL,
   datum                  DATE        NOT NULL,
-  magacioner_mbr         NUMBER,
+  magacioner_id          NUMBER,
   CONSTRAINT fk_isp_dist FOREIGN KEY (distributer_id) REFERENCES Distributer(id),
   CONSTRAINT fk_isp_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
-  CONSTRAINT fk_isp_mag FOREIGN KEY (magacioner_mbr) REFERENCES Zaposleni(m_br)
+  CONSTRAINT fk_isp_mag FOREIGN KEY (magacioner_id) REFERENCES Zaposleni(id)
 );
 
 CREATE TABLE Isporuka_stavka (
@@ -229,11 +233,11 @@ CREATE TABLE Zaliha (
   pakovanje_id               NUMBER   NOT NULL,
   kolicina                   NUMBER   NOT NULL,
   datum_poslednje_isporuke   DATE,
-  odgovorni_magacioner_mbr   NUMBER,
+  odgovorni_magacioner_id    NUMBER,
   CONSTRAINT pk_zal PRIMARY KEY (prodajna_jedinica_id, pakovanje_id),
   CONSTRAINT fk_zal_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
   CONSTRAINT fk_zal_pak FOREIGN KEY (pakovanje_id) REFERENCES Pakovanje(id),
-  CONSTRAINT fk_zal_mag FOREIGN KEY (odgovorni_magacioner_mbr) REFERENCES Zaposleni(m_br)
+  CONSTRAINT fk_zal_mag FOREIGN KEY (odgovorni_magacioner_id) REFERENCES Zaposleni(id)
 );
 
 CREATE TABLE Recept (
@@ -244,10 +248,10 @@ CREATE TABLE Recept (
   naziv_ustanove             VARCHAR2(150) NOT NULL,
   realiz_prod_jed_id         NUMBER,
   realizacija_datum          DATE,
-  realizovao_farmaceut_mbr   NUMBER,
+  realizovao_farmaceut_id    NUMBER,
   CONSTRAINT ck_rec_status CHECK (status IN ('IZDAT','CEKANJE','ODBIJEN')),
   CONSTRAINT fk_rec_pj FOREIGN KEY (realiz_prod_jed_id) REFERENCES Prodajna_jedinica(id),
-  CONSTRAINT fk_rec_far FOREIGN KEY (realizovao_farmaceut_mbr) REFERENCES Farmaceut(m_br)
+  CONSTRAINT fk_rec_far FOREIGN KEY (realizovao_farmaceut_id) REFERENCES Farmaceut(id)
 );
 
 CREATE TABLE Recept_stavka (
@@ -265,9 +269,9 @@ CREATE TABLE Prodaja (
   id                    NUMBER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
   prodajna_jedinica_id  NUMBER      NOT NULL,
   datum_vreme           TIMESTAMP   NOT NULL,
-  blagajnik_mbr         NUMBER,
+  blagajnik_id          NUMBER,
   CONSTRAINT fk_pro_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
-  CONSTRAINT fk_pro_blag FOREIGN KEY (blagajnik_mbr) REFERENCES Zaposleni(m_br)
+  CONSTRAINT fk_pro_blag FOREIGN KEY (blagajnik_id) REFERENCES Zaposleni(id)
 );
 
 CREATE TABLE Prodaja_stavka (
@@ -288,12 +292,12 @@ CREATE TABLE Prodaja_stavka (
 );
 
 CREATE TABLE Menadzer_Apoteka (
-  m_br_menadzera       NUMBER NOT NULL,
+  id_menadzera         NUMBER NOT NULL,
   prodajna_jedinica_id NUMBER NOT NULL,
   od                   DATE   NOT NULL,
   do                   DATE,
-  CONSTRAINT pk_men_ap PRIMARY KEY (m_br_menadzera, prodajna_jedinica_id, od),
-  CONSTRAINT fk_men_ap_m FOREIGN KEY (m_br_menadzera) REFERENCES Menadzer(m_br),
+  CONSTRAINT pk_men_ap PRIMARY KEY (id_menadzera, prodajna_jedinica_id, od),
+  CONSTRAINT fk_men_ap_m FOREIGN KEY (id_menadzera) REFERENCES Menadzer(id),
   CONSTRAINT fk_men_ap_pj FOREIGN KEY (prodajna_jedinica_id) REFERENCES Prodajna_jedinica(id),
   CONSTRAINT ck_men_ap_od_do CHECK (do IS NULL OR do > od)
 );
@@ -301,7 +305,7 @@ CREATE TABLE Menadzer_Apoteka (
 
 CREATE INDEX ix_rv_pj ON Radno_vreme (prodajna_jedinica_id);
 CREATE INDEX ix_rr_pj ON Raspored_rada (prodajna_jedinica_id);
-CREATE INDEX ix_rr_mbr ON Raspored_rada (m_br);
+CREATE INDEX ix_rr_mbr ON Raspored_rada (id_zaposlenog);
 
 CREATE INDEX ix_lek_hemi ON Lek (hemijski_naziv);
 CREATE INDEX ix_pak_lek ON Pakovanje (lek_id);
@@ -368,7 +372,7 @@ END;
 
 -- Pomoćna funkcija da proveri preklapanje intervala
 CREATE OR REPLACE FUNCTION postoji_preklapanje_rr(
-  p_mbr IN NUMBER,
+  p_id_zaposlenog IN NUMBER,
   p_pj  IN NUMBER,
   p_od  IN TIMESTAMP,
   p_do  IN TIMESTAMP,
@@ -379,7 +383,7 @@ BEGIN
   SELECT COUNT(*)
     INTO v_cnt
     FROM Raspored_rada rr
-   WHERE rr.m_br = p_mbr
+   WHERE rr.id_zaposlenog = p_id_zaposlenog
      AND rr.prodajna_jedinica_id = p_pj
      AND NOT (rr.kraj <= p_od OR rr.pocetak >= p_do)
      AND (p_od_izuzetak IS NULL OR rr.pocetak <> p_od_izuzetak);
@@ -395,7 +399,7 @@ DECLARE
   v_cnt NUMBER;
   v_hour NUMBER;
 BEGIN
-  v_cnt := postoji_preklapanje_rr(:NEW.m_br, :NEW.prodajna_jedinica_id, :NEW.pocetak, :NEW.kraj,
+  v_cnt := postoji_preklapanje_rr(:NEW.id_zaposlenog, :NEW.prodajna_jedinica_id, :NEW.pocetak, :NEW.kraj,
                                   CASE WHEN INSERTING THEN NULL ELSE :OLD.pocetak END);
   IF v_cnt > 0 THEN
     RAISE_APPLICATION_ERROR(-20010, 'Postoji preklapanje smene za datog zaposlenog u toj prodajnoj jedinici.');

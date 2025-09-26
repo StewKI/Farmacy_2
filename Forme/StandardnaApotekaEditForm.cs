@@ -28,16 +28,16 @@ namespace Farmacy.Forme
             txtBroj.Text = standardnaApoteka.Broj;
             txtPostanskiBroj.Text = standardnaApoteka.PostanskiBroj;
             txtMesto.Text = standardnaApoteka.Mesto;
-            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(standardnaApoteka.OdgovorniFarmaceut.MBr);
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(standardnaApoteka.OdgovorniFarmaceut.Id);
             IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(standardnaApoteka.Id) ?? new List<FarmaceutBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
-            var o = new { Text = f.Ime, Value = f.MBr };
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
+            var o = new { Text = f.Ime, Value = f.Id };
             if (nazivi.Count < 1)
                 nazivi.Add(o);
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
-            comboBox1.SelectedValue =standardnaApoteka.OdgovorniFarmaceut.MBr;
+            comboBox1.SelectedValue =standardnaApoteka.OdgovorniFarmaceut.Id;
 
             
 

@@ -14,9 +14,8 @@ namespace Farmacy.Mapiranja
         {
             Table("Raspored_rada");
 
-            // Složeni primarni ključ = (m_br, prodajna_jedinica_id, pocetak)
             CompositeId()
-                .KeyReference(x => x.Zaposleni, "m_br")
+                .KeyReference(x => x.Zaposleni, "id_zaposlenog")
                 .KeyReference(x => x.ProdajnaJedinica, "prodajna_jedinica_id")
                 .KeyProperty(x => x.Pocetak, "pocetak");
 

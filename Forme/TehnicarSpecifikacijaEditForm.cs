@@ -22,7 +22,7 @@ namespace Farmacy.Forme
         {
             // Učitavamo postojeće podatke
             if (tehnicarSpecifikacija.Tehnicar != null)
-                txtTehnicar.Text = tehnicarSpecifikacija.Tehnicar.MBr.ToString();
+                txtTehnicar.Text = tehnicarSpecifikacija.Tehnicar.Id.ToString();
             
             if (!string.IsNullOrEmpty(tehnicarSpecifikacija.Naziv))
                 txtNaziv.Text = tehnicarSpecifikacija.Naziv;

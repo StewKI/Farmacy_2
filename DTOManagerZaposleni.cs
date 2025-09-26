@@ -25,7 +25,8 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var f = new Entiteti.FarmaceutBasic
                 {
-                    MBr = dto.MBr,
+                    Id = dto.Id,
+                    MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
                     DatumRodj = dto.DatumRodj,
@@ -41,7 +42,7 @@ namespace Farmacy
                 s.Flush();
                 
                 // Ažuriraj MBr u DTO-u
-                dto.MBr = f.MBr;
+                dto.Id = f.Id;
             }
             catch (Exception ex)
             {
@@ -55,13 +56,14 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                var farmaceut = s.Get<Entiteti.FarmaceutBasic>(dto.MBr);
+                var farmaceut = s.Get<Entiteti.FarmaceutBasic>(dto.Id);
 
                 if (farmaceut == null)
                 {
                     return;
                 }
 
+                farmaceut.MatBr = dto.MatBr;
                 farmaceut.Ime = dto.Ime;
                 farmaceut.Prezime = dto.Prezime;
                 farmaceut.DatumRodj = dto.DatumRodj;
@@ -90,7 +92,8 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var t = new Tehnicar
                 {
-                    MBr = dto.MBr,
+                    Id = dto.Id,
+                    MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
                     DatumRodj = dto.DatumRodj,
@@ -103,7 +106,7 @@ namespace Farmacy
                 s.Flush();
                 
                 // Ažuriraj MBr u DTO-u
-                dto.MBr = t.MBr;
+                dto.Id = t.Id;
 
                 if (dto.Sertifikacije.Count > 0)
                 {
@@ -132,7 +135,7 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                var tehnicar = s.Get<Tehnicar>(dto.MBr);
+                var tehnicar = s.Get<Tehnicar>(dto.Id);
 
                 if (tehnicar == null)
                 {
@@ -164,7 +167,8 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var m = new Entiteti.MenadzerBasic
                 {
-                    MBr = dto.MBr,
+                    Id = dto.Id,
+                    MatBr = dto.MatBr,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
                     DatumRodj = dto.DatumRodj,
@@ -176,7 +180,7 @@ namespace Farmacy
                 s.Flush();
                 
                 // Ažuriraj MBr u DTO-u
-                dto.MBr = m.MBr;
+                dto.Id = m.Id;
             }
             catch (Exception)
             {
@@ -189,7 +193,7 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                var menadzer = s.Get<Entiteti.MenadzerBasic>(dto.MBr);
+                var menadzer = s.Get<Entiteti.MenadzerBasic>(dto.Id);
 
                 if (menadzer == null)
                 {
@@ -219,7 +223,7 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 var m = new Zaposleni
                 {
-                    MBr = dto.MBr,
+                    Id = dto.Id,
                     Ime = dto.Ime,
                     Prezime = dto.Prezime,
                     DatumRodj = dto.DatumRodj,
@@ -231,7 +235,7 @@ namespace Farmacy
                 s.Flush();
                 
                 // Ažuriraj MBr u DTO-u
-                dto.MBr = m.MBr;
+                dto.Id = m.Id;
             }
             catch (Exception ex)
             {
@@ -245,7 +249,7 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
 
                 // Pronađi postojećeg zaposlenog u bazi
-                var zaposleni = s.Get<Zaposleni>(dto.MBr);
+                var zaposleni = s.Get<Zaposleni>(dto.Id);
 
                 if (zaposleni == null)
                 {
@@ -282,7 +286,8 @@ namespace Farmacy
                 {
                     return new FarmaceutBasic
                     {
-                        MBr = f.MBr,
+                        Id = f.Id,
+                        MatBr = f.MatBr,
                         Ime = f.Ime,
                         Prezime = f.Prezime,
                         DatumRodj = f.DatumRodj,
@@ -301,7 +306,8 @@ namespace Farmacy
                 {
                     var tb = new TehnicarBasic
                     {
-                        MBr = t.MBr,
+                        Id = t.Id,
+                        MatBr = t.MatBr,
                         Ime = t.Ime,
                         Prezime = t.Prezime,
                         DatumRodj = t.DatumRodj,
@@ -328,7 +334,8 @@ namespace Farmacy
                 {
                     return new MenadzerBasic
                     {
-                        MBr = m.MBr,
+                        Id = m.Id,
+                        MatBr = m.MatBr,
                         Ime = m.Ime,
                         Prezime = m.Prezime,
                         DatumRodj = m.DatumRodj,
@@ -343,7 +350,8 @@ namespace Farmacy
                 {
                     return new ZaposleniBasic
                     {
-                        MBr = z.MBr,
+                        Id = z.Id,
+                        MatBr = z.MatBr,
                         Ime = z.Ime,
                         Prezime = z.Prezime,
                         DatumRodj = z.DatumRodj,
@@ -370,7 +378,7 @@ namespace Farmacy
                 {
                     return new FarmaceutBasic
                     {
-                        MBr = f.MBr,
+                        Id = f.Id,
                         Ime = f.Ime,
                         Prezime = f.Prezime,
                         DatumRodj = f.DatumRodj,
@@ -402,7 +410,7 @@ namespace Farmacy
                 {
                     return new TehnicarBasic
                     {
-                        MBr = t.MBr,
+                        Id = t.Id,
                         Ime = t.Ime,
                         Prezime = t.Prezime,
                         DatumRodj = t.DatumRodj,
@@ -431,7 +439,7 @@ namespace Farmacy
                 {
                     return new MenadzerBasic
                     {
-                        MBr = m.MBr,
+                        Id = m.Id,
                         Ime = m.Ime,
                         Prezime = m.Prezime,
                         DatumRodj = m.DatumRodj,
@@ -476,12 +484,14 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var svi = s.Query<Zaposleni>().ToList();
+                Console.WriteLine("svi " + svi.Count);
                 foreach (var z in svi)
                 {
                     list.Add(new ZaposleniBasic
                     {
-                        MBr = z.MBr,
+                        Id = z.Id,
                         Ime = z.Ime,
+                        MatBr = z.MatBr,
                         Prezime = z.Prezime,
                         DatumRodj = z.DatumRodj,
                         Adresa = z.Adresa,
@@ -490,7 +500,9 @@ namespace Farmacy
                     });
                 }
             }
-            catch (Exception) { }
+            catch (Exception e) {
+                MessageBox.Show(e.Message);
+            }
             return list;
         }
 
@@ -590,7 +602,7 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                var m = s.Get<Entiteti.MenadzerBasic>(dto.MBrMenadzera);
+                var m = s.Get<Entiteti.MenadzerBasic>(dto.IdMenadzera);
                 var p = s.Get<Entiteti.ProdajnaJedinicaBasic>(dto.ProdajnaJedinicaId);
 
                 var radnov = new MenadzerApoteka
@@ -621,14 +633,14 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var raspored=s.Query<RasporedRada>()
-                    .Where(r => r.Zaposleni.MBr==mbr).FirstOrDefault();
+                    .Where(r => r.Zaposleni.Id==mbr).FirstOrDefault();
 
                 
 
                 var novi = new RasporedRadaBasic
                 {
                     ProdajnaJedinicaId = idRadnogMesta,
-                    MBr = mbr,
+                    IdZaposlenog = mbr,
                     Pocetak = raspored.Pocetak,
                     Kraj = raspored.Kraj,
                     BrojSmene = smena1
@@ -653,7 +665,7 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var raspored = s.Query<RasporedRada>()
-                    .Where(r => r.Zaposleni.MBr == mbr).FirstOrDefault();
+                    .Where(r => r.Zaposleni.Id == mbr).FirstOrDefault();
 
                 
 
@@ -676,7 +688,7 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var raspored = s.Query<RasporedRada>()
-                    .Where(r => r.Zaposleni.MBr == mbr).FirstOrDefault();
+                    .Where(r => r.Zaposleni.Id == mbr).FirstOrDefault();
 
                 if (raspored == null)
                 {
@@ -686,7 +698,7 @@ namespace Farmacy
                 return (new RasporedRadaBasic
                 {
                     ProdajnaJedinicaId = raspored.ProdajnaJedinica.Id,
-                    MBr = raspored.Zaposleni.MBr,
+                    IdZaposlenog = raspored.Zaposleni.Id,
                     Pocetak = raspored.Pocetak,
                     Kraj = raspored.Kraj,
 
@@ -715,7 +727,7 @@ namespace Farmacy
                 using var s = DataLayer.GetSession();
                 
                 // Proveri da li zaposleni postoji
-                var zaposleni = s.Get<Zaposleni>(dto.MBr);
+                var zaposleni = s.Get<Zaposleni>(dto.IdZaposlenog);
                 if (zaposleni == null)
                 {
                     return;
@@ -752,10 +764,10 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var query = s.Query<RasporedRada>()
-                    .Where(rr => rr.Zaposleni.MBr == mbr)
+                    .Where(rr => rr.Zaposleni.Id == mbr)
                     .Select(rr => new RasporedRadaBasic
                     {
-                        MBr = rr.Zaposleni.MBr,
+                        IdZaposlenog = rr.Zaposleni.Id,
                         ProdajnaJedinicaId = rr.ProdajnaJedinica.Id,
                         Pocetak = rr.Pocetak,
                         Kraj = rr.Kraj,
@@ -801,7 +813,7 @@ namespace Farmacy
                 {
                     var raspored = new RasporedRadaBasic
                     {
-                        MBr = Convert.ToInt64(row[0]),
+                        IdZaposlenog = Convert.ToInt64(row[0]),
                         ProdajnaJedinicaId = Convert.ToInt64(row[1]),
                         Pocetak = Convert.ToDateTime(row[2]),
                         Kraj = Convert.ToDateTime(row[3]),
@@ -848,7 +860,7 @@ namespace Farmacy
                 {
                     var raspored = new RasporedRadaBasic
                     {
-                        MBr = Convert.ToInt64(row[0]),
+                        IdZaposlenog = Convert.ToInt64(row[0]),
                         ProdajnaJedinicaId = Convert.ToInt64(row[1]),
                         Pocetak = Convert.ToDateTime(row[2]),
                         Kraj = Convert.ToDateTime(row[3]),
@@ -878,7 +890,7 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var raspored = s.Query<RasporedRada>()
-                    .FirstOrDefault(rr => rr.Zaposleni.MBr == mbr 
+                    .FirstOrDefault(rr => rr.Zaposleni.Id == mbr 
                                        && rr.ProdajnaJedinica.Id == prodajnaJedinicaId 
                                        && rr.Pocetak == pocetak);
                 

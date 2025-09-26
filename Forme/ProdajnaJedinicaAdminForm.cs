@@ -38,11 +38,13 @@ namespace Farmacy.Forme
         {
             try
             {
+
                 // 1) Učitaj podatke za svaki tip apoteke
                 IList<ProdajnaJedinicaBasic> osnovneLista = DTOManagerProdajneJedinice.VratiOsnovneProdajneJedinice() ?? new List<ProdajnaJedinicaBasic>();
                 IList<ApotekaSaLabBasic> saLabLista = DTOManagerProdajneJedinice.VratiApotekeSaLab() ?? new List<ApotekaSaLabBasic>();
                 IList<StandardnaApoteka> standardneLista = DTOManagerProdajneJedinice.VratiStandardneApoteke() ?? new List<StandardnaApoteka>();
                 IList<SpecijalizovanaApoteka> specijalizovaneLista = DTOManagerProdajneJedinice.VratiSpecijalizovaneApoteke() ?? new List<SpecijalizovanaApoteka>();
+
 
                 // 2) Konfiguriši i popuni osnovne prodajne jedinice
                 dgvOsnovne.AutoGenerateColumns = false;
@@ -65,28 +67,16 @@ namespace Farmacy.Forme
                 dgvSpecijalizovane.DataSource = false;
                 dgvSpecijalizovane.DataSource = specijalizovaneLista;
 
-                // Dodaj kolone za sve DataGridView kontrole ako nisu već dodate
-                if (dgvOsnovne.Columns.Count == 0)
-                {
-                    DodajKolone(dgvOsnovne);
-                }
-                if (dgvSaLab.Columns.Count == 0)
-                {
-                    DodajKolone(dgvSaLab);
-                }
-                if (dgvStandardne.Columns.Count == 0)
-                {
-                    DodajKolone(dgvStandardne);
-                }
-                if (dgvSpecijalizovane.Columns.Count == 0)
-                {
-                    DodajKolone(dgvSpecijalizovane);
-                }
+                // Dodaj kolone za sve DataGridView kontrole
+                DodajKolone(dgvOsnovne);
+                DodajKolone(dgvSaLab);
+                DodajKolone(dgvStandardne);
+                DodajKolone(dgvSpecijalizovane);
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška pri učitavanju zaposlenih:\n" + ex.Message, "Greška",
+                MessageBox.Show("Greška pri učitavanju prodajnih jedinica:\n" + ex.Message, "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -172,6 +162,8 @@ namespace Farmacy.Forme
         private void DodajKolone(DataGridView dgv)
         {
             dgv.AutoGenerateColumns = false;
+            dgv.Columns.Clear(); // Clear existing columns first
+            
             dgv.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "colId",
@@ -195,10 +187,17 @@ namespace Farmacy.Forme
             });
             dgv.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "colPostanskiBroj",
+                Name = "colBroj",
                 HeaderText = "Broj",
                 DataPropertyName = "Broj",
-                Width = 160
+                Width = 80
+            });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colPostanskiBroj",
+                HeaderText = "Poštanski broj",
+                DataPropertyName = "PostanskiBroj",
+                Width = 100
             });
             dgv.Columns.Add(new DataGridViewTextBoxColumn
             {

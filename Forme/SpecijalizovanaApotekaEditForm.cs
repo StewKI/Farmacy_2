@@ -30,16 +30,16 @@ namespace Farmacy.Forme
             txtMesto.Text = specijalizovanaApoteka.Mesto;
 
             //Stavljeno je da apotekar koj je izabran iz globalnog sistema bude odgovaran a ne koj raid ovde se bira od onih sto rade bas u toj prodajnoj jedinici
-            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(specijalizovanaApoteka.OdgovorniFarmaceut.MBr);
+            var f = DTOManagerZaposleni.VratiOdgovornogFarmaceuta(specijalizovanaApoteka.OdgovorniFarmaceut.Id);
             IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteZaApoteku(specijalizovanaApoteka.Id) ?? new List<FarmaceutBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.MBr }).ToList();
-            var o = new { Text = f.Ime, Value = f.MBr };
+            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
+            var o = new { Text = f.Ime, Value = f.Id };
             if (nazivi.Count < 1)
                 nazivi.Add(o);
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
-            comboBox1.SelectedValue = specijalizovanaApoteka.OdgovorniFarmaceut.MBr;
+            comboBox1.SelectedValue = specijalizovanaApoteka.OdgovorniFarmaceut.Id;
 
             if (!string.IsNullOrEmpty(specijalizovanaApoteka.SpecijalnostTipa))
                 txtSpecijalnostTipa.Text = specijalizovanaApoteka.SpecijalnostTipa;
