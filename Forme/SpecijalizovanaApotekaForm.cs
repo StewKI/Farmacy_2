@@ -26,8 +26,8 @@ namespace Farmacy.Forme
 
         private void InitializeForm()
         {
-            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteUSistemu() ?? new List<FarmaceutBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
+            IList<FarmaceutBasic> lista = DTOManagerZaposleni.VratiSveFarmaceute() ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = $"{l.Ime} {l.Prezime}", Value = l.Id }).ToList();
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";

@@ -12,10 +12,10 @@ namespace Farmacy.Entiteti
         public virtual Pakovanje Pakovanje { get; set; } = default!;
         public virtual int Kolicina { get; set; }
         public virtual decimal? Cena { get; set; }
-        public virtual Recept? Recept { get; set; } // nullable if OTC
+        public virtual Recept? Recept { get; set; }
         public virtual int? KontrolisanaKol { get; set; }
         public virtual decimal? ProcenatParticip { get; set; }
-        public virtual string? NeophodanIzvestaj { get; set; } // 'Y'/'N'
+        public virtual string? NeophodanIzvestaj { get; set; }
 
         public virtual bool Equals(ProdajaStavka? o) =>
             o != null && Equals(Prodaja?.Id, o.Prodaja?.Id) &&

@@ -11,7 +11,6 @@ namespace Farmacy.Entiteti
         public virtual Lek Lek { get; set; } = default!;
         public virtual SekundarnaKategorija Kategorija { get; set; } = default!;
 
-        // (opciono) dodatna polja... npr. Napomena, DatumOd...
 
         public virtual bool Equals(LekSekundarna? other)
         {

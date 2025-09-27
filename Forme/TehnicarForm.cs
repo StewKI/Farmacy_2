@@ -15,7 +15,7 @@ namespace Farmacy.Forme
             InitializeComponent();
             tehnicar = new TehnicarBasic();
             InitializeForm();
-            this.prodajnaJedinicaId = 0; // Default value
+            this.prodajnaJedinicaId = 0;
             ucitajApoteke();
             SetupButtonEffects();
         }

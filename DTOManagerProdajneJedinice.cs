@@ -12,7 +12,6 @@ namespace Farmacy
 {
     public static class DTOManagerProdajneJedinice
     {
-        // ========== PRODAJNE JEDINICE ==========
 
         public static void IzmeniMenadzerApoteka(MenadzerApotekaBasic dto)
         {
@@ -111,6 +110,10 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
+                if (dto.OdgovorniFarmaceut == null)
+                {
+                    throw new Exception("Odgovorni farmaceut je obavezan!");
+                }
 
                 var pj = new Entiteti.ApotekaSaLabBasic
                 {
@@ -218,7 +221,6 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
 
-                // 1) Apoteka sa laboratorijom
                 var lab = s.Get<Entiteti.ApotekaSaLabBasic>(id); // <-- ako ti se entitet zove drugačije, promeni ovde
                 if (lab != null)
                 {
@@ -230,13 +232,11 @@ namespace Farmacy
                         Broj = lab.Broj,
                         PostanskiBroj = lab.PostanskiBroj,
                         Mesto = lab.Mesto,
-                        // ako imaš navigaciono svojstvo:
                         OdgovorniFarmaceut = lab.OdgovorniFarmaceut,
                         Napomena = lab.Napomena
                     };
                 }
 
-                // 2) Specijalizovana apoteka
                 var spec = s.Get<Entiteti.SpecijalizovanaApoteka>(id);
                 if (spec != null)
                 {
@@ -318,7 +318,6 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
-                // Uzmi sve prodajne jedinice i filtriraj na osnovu tipa
                 var sve = s.Query<Entiteti.ProdajnaJedinicaBasic>()
                     .Fetch(x => x.OdgovorniFarmaceut)
                     .ToList();
@@ -327,7 +326,6 @@ namespace Farmacy
                 {
                     var typeName = pj.GetType().Name;
 
-                    // Proveri da li je osnovna prodajna jedinica (nije nasleđena)
                     if (typeName == "ProdajnaJedinicaBasic")
                     {
                         list.Add(new ProdajnaJedinicaBasic
@@ -554,7 +552,6 @@ namespace Farmacy
             }
         }
 
-        // ========== MENADŽER – APOTEKA ==========
 
         public static void DodeliMenadzeraApoteci(MenadzerApotekaBasic dto)
         {
@@ -617,7 +614,6 @@ namespace Farmacy
             catch (Exception) { }
         }
 
-        // ========== RADNO VREME ==========
 
         public static IList<RadnoVremeBasic> VratiRadnoVremeZaProdajnuJedinicu(long prodajnaJedinicaId)
         {
@@ -690,7 +686,6 @@ namespace Farmacy
                     .FirstOrDefault(x => x.ProdajnaJedinica.Id == dto.ProdajnaJedinicaId && x.Dan == dto.Dan);
                 if (rv != null)
                 {
-                    // Ažuriraj postojeći zapis
                     rv.VremeOd = dto.VremeOd ?? DateTime.MinValue;
                     rv.VremeDo = dto.VremeDo ?? DateTime.MinValue;
                     s.Update(rv);
@@ -698,7 +693,6 @@ namespace Farmacy
                 }
                 else
                 {
-                    // Kreiraj novi zapis ako ne postoji
                     var prodajnaJedinica = s.Query<Entiteti.ProdajnaJedinicaBasic>()
                         .FirstOrDefault(x => x.Id == dto.ProdajnaJedinicaId);
                     if (prodajnaJedinica != null)
@@ -725,7 +719,6 @@ namespace Farmacy
         {
             try
             {
-                // Proveri da li postoje vrednosti za radno vreme
                 if (!dto.VremeOd.HasValue || !dto.VremeDo.HasValue)
                 {
                     throw new Exception("Morate uneti i početno i krajnje vreme!");

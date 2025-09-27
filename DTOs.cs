@@ -30,7 +30,6 @@ namespace Farmacy
 
     public class TehnicarBasic : ZaposleniBasic
     {
-        // 'SREDNJI' / 'VISI'
         public string NivoObrazovanja { get; set; }
         public IList<TehnicarSertifikacijaBasic> Sertifikacije { get; set; } = new List<TehnicarSertifikacijaBasic>();
     }
@@ -44,7 +43,6 @@ namespace Farmacy
 
     public class MenadzerBasic : ZaposleniBasic { }
 
-    // === Prodajne jedinice ===
     public class ProdajnaJedinicaBasic
     {
         public long Id { get; set; }
@@ -66,7 +64,6 @@ namespace Farmacy
 
     }
 
-    // === Proizvođači / grupe / lekovi ===
     public class ProizvodjacBasic
     {
         public long Id { get; set; }
@@ -117,13 +114,11 @@ namespace Farmacy
         public string? NacinCuvanja { get; set; }
         public int? PreporuceniRokDana { get; set; }
         
-        // Dodatne informacije za prikaz
         public string LekNaziv { get; set; }
         public string OblikNaziv { get; set; }
         public string PrikazniNaziv => $"{LekNaziv} - {VelicinaPakovanja} ({KolicinaAktivne} {JedinicaMere})";
     }
 
-    // === Distributer / isporuka / zaliha ===
     public class DistributerBasic
     {
         public long Id { get; set; }

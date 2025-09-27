@@ -12,13 +12,11 @@ namespace Farmacy.Entiteti
         public virtual Pakovanje Pakovanje { get; set; } = default!;
         public virtual int Kolicina { get; set; }
 
-        // IMPORTANT: equality over the composite key (isporuka_id, pakovanje_id)
         public virtual bool Equals(IsporukaStavka? other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            // Compare by ids to avoid proxy reference differences
             var thisIspId = Isporuka?.Id;
             var otherIspId = other.Isporuka?.Id;
             var thisPakId = Pakovanje?.Id;

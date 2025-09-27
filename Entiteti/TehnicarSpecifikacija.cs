@@ -12,7 +12,6 @@ namespace Farmacy.Entiteti
         public virtual string Naziv { get; set; } = default!;
         public virtual DateTime Datum { get; set; }
 
-        // ---- Equality za composite-id (Tehnicar.MBr, Naziv) ----
         public virtual bool Equals(TehnicarSertifikacija? other)
         {
             if (ReferenceEquals(null, other)) return false;

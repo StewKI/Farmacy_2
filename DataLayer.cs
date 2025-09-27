@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using NHibernate.Dialect;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using System;
@@ -17,7 +18,6 @@ namespace Farmacy
 
         public static ISession GetSession()
         {
-            //ukoliko session factory nije kreiran
             if (_factory == null)
             {
                 lock (objLock)
@@ -28,6 +28,18 @@ namespace Farmacy
             }
 
             return _factory.OpenSession();
+        }
+
+        public static void ResetSessionFactory()
+        {
+            lock (objLock)
+            {
+                if (_factory != null)
+                {
+                    _factory.Dispose();
+                    _factory = null;
+                }
+            }
         }
 
         private static ISessionFactory CreateSessionFactory()
@@ -45,6 +57,10 @@ namespace Farmacy
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<ApotekaMapiranja>())
                 .ExposeConfiguration(cfg =>
                 {
+                    // Eksplicitno postavi da se koriste sekvence umesto default hibernate_sequence
+                    cfg.SetProperty("hibernate.id.new_generator_mappings", "true");
+                    cfg.SetProperty("hibernate.connection.provider", "NHibernate.Connection.DriverConnectionProvider");
+                    
                     Console.WriteLine("NH dialect: " + (cfg.Properties.TryGetValue("dialect", out var d) ? d : "<none>"));
                     Console.WriteLine("NH driver: " + (cfg.Properties.TryGetValue("connection.driver_class", out var dr) ? dr : "<none>"));
                     Console.WriteLine("Mappings: " + cfg.ClassMappings.Count);

@@ -34,14 +34,11 @@ namespace Farmacy.Forme
 
             try
             {
-                // 1) Učitaj podatke
                 IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
 
-                // Debug info - uklonjen MessageBox
 
-                // 2) Mapiraj kolone
                 dgvZaposleni.AutoGenerateColumns = false;
-                dgvZaposleni.Columns.Clear(); // Obriši sve postojeće kolone
+                dgvZaposleni.Columns.Clear();
 
                 dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
                 {
@@ -100,12 +97,10 @@ namespace Farmacy.Forme
                     Width = 120
                 });
 
-                // Omogući horizontalno skrolovanje
                 dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dgvZaposleni.ScrollBars = ScrollBars.Both;
 
-                // 3) Veži podatke
-                dgvZaposleni.DataSource = false;   // osveži binding
+                dgvZaposleni.DataSource = false;
                 dgvZaposleni.DataSource = lista;
 
             }
@@ -161,7 +156,6 @@ namespace Farmacy.Forme
                 return;
             }
 
-            // Get the employee with their specific type
             var zaposleni = DTOManagerZaposleni.VratiZaposlenog(mbr);
 
             if (zaposleni == null)
@@ -170,7 +164,6 @@ namespace Farmacy.Forme
                 return;
             }
 
-            // Open appropriate edit form based on employee type
             if (zaposleni is FarmaceutBasic farmaceut)
             {
                 FarmaceutEditForm form = new FarmaceutEditForm(farmaceut);
@@ -188,7 +181,6 @@ namespace Farmacy.Forme
             }
             else
             {
-                // Fallback to generic form for basic employees
                 IzmeniZaposlenogForm form = new IzmeniZaposlenogForm(mbr, 0);
                 form.ShowDialog();
             }
@@ -214,9 +206,8 @@ namespace Farmacy.Forme
             try
             {
 
-                // 2) Mapiraj kolone
                 dgvZaposleni.AutoGenerateColumns = false;
-                dgvZaposleni.Columns.Clear(); // Obriši sve postojeće kolone
+                dgvZaposleni.Columns.Clear();
 
                 dgvZaposleni.Columns.Add(new DataGridViewTextBoxColumn
                 {
@@ -275,12 +266,10 @@ namespace Farmacy.Forme
                     Width = 120
                 });
 
-                // Omogući horizontalno skrolovanje
                 dgvZaposleni.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dgvZaposleni.ScrollBars = ScrollBars.Both;
 
-                // 3) Veži podatke
-                dgvZaposleni.DataSource = false;   // osveži binding
+                dgvZaposleni.DataSource = false;
                 dgvZaposleni.DataSource = lista1;
 
             }
@@ -297,7 +286,6 @@ namespace Farmacy.Forme
         {
             try
             {
-                // 1) Učitaj podatke
                 IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
                 IList<FarmaceutBasic> lista1 = new List<FarmaceutBasic>();
                 foreach (var l in lista)
@@ -325,7 +313,6 @@ namespace Farmacy.Forme
         {
             try
             {
-                // 1) Učitaj podatke
                 IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
                 IList<TehnicarBasic> lista1 = new List<TehnicarBasic>();
                 foreach (var l in lista)
@@ -348,7 +335,6 @@ namespace Farmacy.Forme
         {
             try
             {
-                // 1) Učitaj podatke
                 IList<ZaposleniBasic> lista = DTOManagerZaposleni.VratiSveZaposlene() ?? new List<ZaposleniBasic>();
                 IList<MenadzerBasic> lista1 = new List<MenadzerBasic>();
                 foreach (var l in lista)
@@ -383,7 +369,6 @@ namespace Farmacy.Forme
 
         private void SetupButtonEffects()
         {
-            // Dodaj hover efekte za dugmad
             foreach (Control control in panelButtons.Controls)
             {
                 if (control is Button button)
@@ -398,41 +383,39 @@ namespace Farmacy.Forme
         {
             if (sender is Button button)
             {
-                // Sačuvaj originalnu boju
                 button.Tag = button.BackColor;
 
-                // Promeni boju na hover
                 if (button == btnDodajNovog)
                 {
-                    button.BackColor = Color.FromArgb(211, 84, 0); // Tamnija narandžasta
+                    button.BackColor = Color.FromArgb(211, 84, 0);
                 }
                 else if (button == btnIzmeniZaposlenog)
                 {
-                    button.BackColor = Color.FromArgb(41, 128, 185); // Tamnija plava
+                    button.BackColor = Color.FromArgb(41, 128, 185);
                 }
                 else if (button == btnObrisiZaposlenog)
                 {
-                    button.BackColor = Color.FromArgb(192, 57, 43); // Tamnija crvena
+                    button.BackColor = Color.FromArgb(192, 57, 43);
                 }
                 else if (button == brnPrikaziFarmaceute)
                 {
-                    button.BackColor = Color.FromArgb(39, 174, 96); // Tamnija zelena
+                    button.BackColor = Color.FromArgb(39, 174, 96);
                 }
                 else if (button == brnPrikaziTehnicare)
                 {
-                    button.BackColor = Color.FromArgb(142, 68, 173); // Tamnija ljubičasta
+                    button.BackColor = Color.FromArgb(142, 68, 173);
                 }
                 else if (button == btnPrikaziMenadzere)
                 {
-                    button.BackColor = Color.FromArgb(230, 126, 34); // Tamnija žuta
+                    button.BackColor = Color.FromArgb(230, 126, 34);
                 }
                 else if (button == btnPrikaziSve)
                 {
-                    button.BackColor = Color.FromArgb(125, 60, 152); // Tamnija ljubičasta
+                    button.BackColor = Color.FromArgb(125, 60, 152);
                 }
                 else if (button == btnRasporedRada)
                 {
-                    button.BackColor = Color.FromArgb(34, 153, 84); // Tamnija zelena
+                    button.BackColor = Color.FromArgb(34, 153, 84);
                 }
 
                 button.Cursor = Cursors.Hand;
@@ -443,7 +426,6 @@ namespace Farmacy.Forme
         {
             if (sender is Button button && button.Tag is Color originalColor)
             {
-                // Vrati originalnu boju
                 button.BackColor = originalColor;
                 button.Cursor = Cursors.Default;
             }

@@ -26,8 +26,8 @@ namespace Farmacy.Forme
 
         private void InitializeForm()
         {
-            IList<FarmaceutBasic> lista = DTOManagerProdajneJedinice.VratiSveFarmaceuteUSistemu() ?? new List<FarmaceutBasic>();
-            var nazivi = lista.Select(l => new { Text = l.Ime, Value = l.Id }).ToList();
+            IList<FarmaceutBasic> lista = DTOManagerZaposleni.VratiSveFarmaceute() ?? new List<FarmaceutBasic>();
+            var nazivi = lista.Select(l => new { Text = $"{l.Ime} {l.Prezime}", Value = l.Id }).ToList();
             comboBox1.DataSource = nazivi;
             comboBox1.DisplayMember = "Text";
             comboBox1.ValueMember = "Value";
@@ -120,7 +120,20 @@ namespace Farmacy.Forme
             apotekaSaLab.Mesto = txtMesto.Text.Trim();
             apotekaSaLab.Napomena = string.IsNullOrWhiteSpace(txtNapomena.Text) ? null : txtNapomena.Text.Trim();
 
-            apotekaSaLab.OdgovorniFarmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue);
+            if (comboBox1.SelectedValue == null)
+            {
+                MessageBox.Show("Morate izabrati odgovornog farmaceuta!");
+                return;
+            }
+            
+            var farmaceut = DTOManagerZaposleni.VratiOdgovornogFarmaceuta((long)comboBox1.SelectedValue);
+            if (farmaceut == null)
+            {
+                MessageBox.Show("Greška pri učitavanju farmaceuta!");
+                return;
+            }
+            
+            apotekaSaLab.OdgovorniFarmaceut = farmaceut;
 
             DTOManagerProdajneJedinice.DodajApotekuSaLab(apotekaSaLab);
         }

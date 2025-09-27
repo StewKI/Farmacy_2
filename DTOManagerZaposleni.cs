@@ -16,7 +16,6 @@ namespace Farmacy
 {
     public static class DTOManagerZaposleni
     {
-        // ========== ZAPOSLENI & PODTIPOVI ==========
 
         public static void DodajFarmaceuta(FarmaceutBasic dto)
         {
@@ -485,6 +484,38 @@ namespace Farmacy
             return list;
         }
 
+        public static IList<FarmaceutBasic> VratiSveFarmaceute()
+        {
+            var list = new List<FarmaceutBasic>();
+            try
+            {
+                using var s = DataLayer.GetSession();
+                var farmaceuti = s.Query<Entiteti.FarmaceutBasic>().ToList();
+                foreach (var f in farmaceuti)
+                {
+                    list.Add(new FarmaceutBasic
+                    {
+                        Id = f.Id,
+                        Ime = f.Ime,
+                        Prezime = f.Prezime,
+                        MatBr = f.MatBr,
+                        DatumRodj = f.DatumRodj,
+                        Adresa = f.Adresa,
+                        Telefon = f.Telefon,
+                        DatumZaposlenja = f.DatumZaposlenja,
+                        DatumDiplomiranja = f.DatumDiplomiranja,
+                        BrLicence = f.BrLicence,
+                        DatumPoslednjeObnoveLicence = f.DatumPoslObnoveLicence,
+                        Specijalnost = f.Specijalnost
+                    });
+                }
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.Message);
+            }
+            return list;
+        }
+
         public static void ObrisiZaposlenog(long mbr)
         {
             try
@@ -677,7 +708,6 @@ namespace Farmacy
 
 
 
-        // ========== RASPORED RADA ==========
 
         public static void DodajRasporedRada(RasporedRadaBasic dto)
         {

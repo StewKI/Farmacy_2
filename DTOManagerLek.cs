@@ -11,7 +11,6 @@ namespace Farmacy
 {
     public static class DTOManagerLek
     {
-        // ========== PROIZVOĐAČ / GRUPE / LEK / OBLIK / PAKOVANJE ==========
 
         public static long DodajProizvodjaca(ProizvodjacBasic dto)
         {
@@ -82,7 +81,6 @@ namespace Farmacy
                 };
                 s.Save(lek);
 
-                // M:N sekundarne kategorije
                 if (dto.SekundarneKategorijeIds.Count>0)
                 {
                     foreach (var kid in dto.SekundarneKategorijeIds.Distinct())
@@ -271,7 +269,6 @@ namespace Farmacy
                 var lek = s.Get<Lek>(id);
                 if (lek == null) return null;
 
-                // Učitaj sekundarne kategorije
                 var secIds = s.Query<LekSekundarna>()
                               .Where(x => x.Lek.Id == id)
                               .Select(x => x.Kategorija.Id)
@@ -591,7 +588,6 @@ namespace Farmacy
                 var sk = s.Get<SekundarnaKategorija>(id);
                 if (sk == null) return null;
 
-                // Učitaj sekundarne kategorije
 
 
 
@@ -623,7 +619,6 @@ namespace Farmacy
                 s.Save(veza);
                 s.Flush();
 
-                // Uspesno je dodata kategorija
             }
             catch (Exception ex)
             {

@@ -13,6 +13,9 @@ namespace Farmacy
 
             try
             {
+                // Resetuj session factory da se primeni nova konfiguracija
+                DataLayer.ResetSessionFactory();
+                
                 using ISession s = DataLayer.GetSession();
                 var ok = s.CreateSQLQuery("select 'NH OK' from dual").UniqueResult<string>();
             }
@@ -22,11 +25,7 @@ namespace Farmacy
             }
 
             // pokreni glavni prozor (po �elji)
-            // Application.Run(new MainForm());
-            //Application.Run(new PocetnaStranica());
             Application.Run(new PocetnaStranica());
-            //Application.Run(new ZaposleniAdminForm());
-            //Application.Run(new LekAdminForm());
         }
     }
 }

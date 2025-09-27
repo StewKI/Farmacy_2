@@ -9,11 +9,10 @@ namespace Farmacy.Entiteti
     public class RadnoVreme : IEquatable<RadnoVreme>
     {
         public virtual ProdajnaJedinicaBasic ProdajnaJedinica { get; set; } = default!;
-        public virtual int Dan { get; set; }            // 1..7
-        public virtual DateTime VremeOd { get; set; }   // TIMESTAMP
-        public virtual DateTime VremeDo { get; set; }   // TIMESTAMP
+        public virtual int Dan { get; set; }
+        public virtual DateTime VremeOd { get; set; }
+        public virtual DateTime VremeDo { get; set; }
 
-        // ----- Equality za CompositeId -----
         public virtual bool Equals(RadnoVreme? other)
         {
             if (ReferenceEquals(null, other)) return false;

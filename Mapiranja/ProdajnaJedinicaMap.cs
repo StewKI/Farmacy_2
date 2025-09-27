@@ -1,4 +1,5 @@
 ﻿using Farmacy.Entiteti;
+using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Mapping;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Farmacy.Mapiranja
         public ProdajnaJedinicaMap()
         {
             Table("Prodajna_jedinica");
-            Id(x => x.Id, "id").GeneratedBy.Identity();
+            Id(x => x.Id, "id").GeneratedBy.Sequence("PRODAJNA_JEDINICA_SEQ");
             Map(x => x.Naziv, "naziv").Not.Nullable();
             Map(x => x.Ulica, "ulica").Not.Nullable();
             Map(x => x.Broj, "broj").Not.Nullable();
@@ -26,6 +27,7 @@ namespace Farmacy.Mapiranja
                 .KeyColumn("prodajna_jedinica_id")
                 .Cascade.All()
                 .Inverse();
+                
         }
     }
 }

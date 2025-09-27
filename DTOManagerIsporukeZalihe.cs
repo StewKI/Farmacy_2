@@ -374,7 +374,6 @@ namespace Farmacy
             }
         }
 
-        // === Distributer CRUD operacije ===
         public static IList<DistributerBasic> VratiSveDistributere()
         {
             var list = new List<DistributerBasic>();
@@ -454,7 +453,6 @@ namespace Farmacy
             }
         }
 
-        // === Proizvodjac CRUD operacije ===
         public static ProizvodjacBasic VratiProizvodjaca(long id)
         {
             try
@@ -521,7 +519,6 @@ namespace Farmacy
             }
         }
 
-        // === Zaliha CRUD operacije ===
         public static IList<ZalihaBasic> VratiSveZalihe()
         {
             var list = new List<ZalihaBasic>();
@@ -638,7 +635,6 @@ namespace Farmacy
             }
         }
 
-        // === Helper funkcije za dropdown liste ===
         public static IList<ProdajnaJedinicaBasic> VratiSveProdajneJedinice()
         {
             var list = new List<ProdajnaJedinicaBasic>();
@@ -718,7 +714,6 @@ namespace Farmacy
             return list;
         }
 
-        // === Prodaja CRUD operacije ===
         public static IList<ProdajaBasic> VratiSveProdaje()
         {
             var list = new List<ProdajaBasic>();
@@ -958,7 +953,6 @@ namespace Farmacy
             }
         }
 
-        // === Helper funkcije za Prodaja ===
         public static IList<ZaposleniBasic> VratiSveBlagajnike()
         {
             var list = new List<ZaposleniBasic>();
