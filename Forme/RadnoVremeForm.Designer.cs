@@ -63,7 +63,7 @@ namespace Farmacy.Forme
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(3, 9);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(410, 59);
+            lblTitle.Size = new Size(209, 30);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "🕐 RADNO VREME";
             // 
@@ -74,7 +74,7 @@ namespace Farmacy.Forme
             lblSubtitle.ForeColor = Color.FromArgb(189, 195, 199);
             lblSubtitle.Location = new Point(20, 59);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(485, 37);
+            lblSubtitle.Size = new Size(249, 19);
             lblSubtitle.TabIndex = 1;
             lblSubtitle.Text = "Pregled i upravljanje radnim vremenom";
             // 
@@ -150,7 +150,7 @@ namespace Farmacy.Forme
             txtProdajnaJedinica.Location = new Point(313, 58);
             txtProdajnaJedinica.Name = "txtProdajnaJedinica";
             txtProdajnaJedinica.ReadOnly = true;
-            txtProdajnaJedinica.Size = new Size(300, 43);
+            txtProdajnaJedinica.Size = new Size(300, 25);
             txtProdajnaJedinica.TabIndex = 1;
             txtProdajnaJedinica.TabStop = false;
             // 
@@ -161,7 +161,7 @@ namespace Farmacy.Forme
             lblProdajnaJedinica.ForeColor = Color.FromArgb(44, 62, 80);
             lblProdajnaJedinica.Location = new Point(50, 60);
             lblProdajnaJedinica.Name = "lblProdajnaJedinica";
-            lblProdajnaJedinica.Size = new Size(247, 37);
+            lblProdajnaJedinica.Size = new Size(130, 19);
             lblProdajnaJedinica.TabIndex = 0;
             lblProdajnaJedinica.Text = "Prodajna jedinica:";
             // 
@@ -182,13 +182,13 @@ namespace Farmacy.Forme
             lblFooter.ForeColor = Color.FromArgb(189, 195, 199);
             lblFooter.Location = new Point(20, 8);
             lblFooter.Name = "lblFooter";
-            lblFooter.Size = new Size(463, 30);
+            lblFooter.Size = new Size(244, 13);
             lblFooter.TabIndex = 0;
             lblFooter.Text = "Sistem za upravljanje farmaceutskim podacima";
             // 
             // RadnoVremeForm
             // 
-            AutoScaleDimensions = new SizeF(15F, 37F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1064, 798);
@@ -201,6 +201,7 @@ namespace Farmacy.Forme
             Name = "RadnoVremeForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Radno Vreme - Pregled i upravljanje";
+            Load += RadnoVremeForm_Load;
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             panelMain.ResumeLayout(false);

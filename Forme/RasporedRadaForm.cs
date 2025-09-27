@@ -88,9 +88,9 @@ namespace Farmacy.Forme
                 {
                     dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        Name = "colMBr",
-                        HeaderText = "MBr",
-                        DataPropertyName = "MBr",
+                        Name = "colIdZaposlenog",
+                        HeaderText = "Id",
+                        DataPropertyName = "IdZaposlenog",
                         Width = 80
                     });
                     dgvRaspored.Columns.Add(new DataGridViewTextBoxColumn

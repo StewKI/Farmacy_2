@@ -87,12 +87,12 @@ namespace Farmacy.Forme
             if (GetCurrentDataGridView().SelectedRows.Count > 0)
             {
                 mbr = Convert.ToInt64(GetCurrentDataGridView().CurrentRow.Cells[0].Value);
-                MessageBox.Show("Selektovan MBr: " + mbr);
+                MessageBox.Show("Selektovan ID: " + mbr);
 
             }
             else
             {
-                MessageBox.Show("Morate izabrati radnika prvo!");
+                MessageBox.Show("Morate izabrati prodajnu jedinicu prvo!");
                 return;
             }
             DTOManagerProdajneJedinice.ObrisiProdajnuJedinicu(mbr);
@@ -314,7 +314,11 @@ namespace Farmacy.Forme
             }
 
             RadnoVremeForm form = new RadnoVremeForm(id);
-            form.ShowDialog();
+            if(form.napravljeno)
+            {
+                form.ShowDialog();
+            }
+            
         }
 
         private void btnZalihe_Click(object sender, EventArgs e)

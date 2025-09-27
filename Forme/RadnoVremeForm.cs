@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Farmacy.Entiteti;
+using FluentNHibernate.Conventions;
 
 namespace Farmacy.Forme
 {
     public partial class RadnoVremeForm : Form
     {
         private long prodajnaJedinicaId;
-
+        public bool napravljeno = false;
         public RadnoVremeForm(long prodajnaJedinicaId)
         {
             InitializeComponent();
             this.prodajnaJedinicaId = prodajnaJedinicaId;
             SetupButtonEffects();
-            
+
             // Proveri da li postoji radno vreme za ovu prodajnu jedinicu
             try
             {
                 bool postojiRadnoVreme = DTOManagerProdajneJedinice.PostojiRadnoVremeZaProdajnuJedinicu(prodajnaJedinicaId);
-                
+
                 if (!postojiRadnoVreme)
                 {
                     // Nema radnog vremena - otvori formu za kreiranje
                     RadnoVremeCreateForm createForm = new RadnoVremeCreateForm(prodajnaJedinicaId);
                     createForm.ShowDialog();
-                    
+
                     // Nakon zatvaranja forme za kreiranje, zatvori i ovu formu
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -41,7 +42,7 @@ namespace Farmacy.Forme
                 this.Close();
                 return;
             }
-            
+
             InitializeForm();
         }
 
@@ -63,17 +64,21 @@ namespace Farmacy.Forme
 
                 // Učitaj radno vreme za prodajnu jedinicu
                 var radnaVremena = DTOManagerProdajneJedinice.VratiRadnoVremeZaProdajnuJedinicu(prodajnaJedinicaId);
-                
+                //Provera ako se otvori forma za pravljenje radnog vremena a ne napravi se vreme, i onda kod showDialoga bi bila greska jer opet nema sta da se otovri za radno vreme
+                if (!radnaVremena.IsEmpty())
+                {
+                    napravljeno = true;
+                }
                 // Kreiraj listu sa svim danima u nedelji
                 var listaDana = new List<RadnoVremeBasic>();
-                
+
                 // Nazivi dana u nedelji
                 string[] naziviDana = { "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota", "Nedelja" };
-                
+
                 for (int i = 1; i <= 7; i++) // Dani su numerisani od 1 do 7
                 {
                     var radnoVremeZaDan = radnaVremena?.FirstOrDefault(rv => rv.Dan == i);
-                    
+
                     if (radnoVremeZaDan != null)
                     {
                         // Postoji radno vreme za ovaj dan
@@ -94,7 +99,7 @@ namespace Farmacy.Forme
                         });
                     }
                 }
-                
+
                 dgvRadnoVreme.AutoGenerateColumns = false;
                 dgvRadnoVreme.DataSource = listaDana;
                 dgvRadnoVreme.Refresh();
@@ -162,7 +167,7 @@ namespace Farmacy.Forme
         {
             if (dgvRadnoVreme.CurrentRow == null)
             {
-                MessageBox.Show("Morate selektovati dan za izmenu!", "Greška", 
+                MessageBox.Show("Morate selektovati dan za izmenu!", "Greška",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -171,10 +176,10 @@ namespace Farmacy.Forme
             {
                 long prodajnaJedinicaId = Convert.ToInt64(dgvRadnoVreme.CurrentRow.Cells["colProdajnaJedinicaId"].Value);
                 int dan = Convert.ToInt32(dgvRadnoVreme.CurrentRow.Cells["colDan"].Value);
-                
+
                 // Uvek pokušaj da učitamo radno vreme za taj dan
                 var radnoVreme = DTOManagerProdajneJedinice.VratiRadnoVreme(prodajnaJedinicaId, dan);
-                
+
                 // Ako ne postoji, kreiraj novi DTO sa osnovnim podacima
                 if (radnoVreme == null)
                 {
@@ -190,7 +195,7 @@ namespace Farmacy.Forme
                         ProdajnaJedinicaNaziv = txtProdajnaJedinica.Text
                     };
                 }
-                
+
                 RadnoVremeEditForm editForm = new RadnoVremeEditForm(radnoVreme);
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
@@ -242,6 +247,11 @@ namespace Farmacy.Forme
                 else if (button == btnCancel)
                     button.BackColor = Color.FromArgb(231, 76, 60);
             }
+        }
+
+        private void RadnoVremeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

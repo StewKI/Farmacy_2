@@ -23,13 +23,13 @@ namespace Farmacy.Forme
                 LoadDani(); // Učitaj dane pre postavljanja SelectedIndex
                 txtProdajnaJedinica.Text = radnoVreme.ProdajnaJedinicaNaziv;
                 cboDan.SelectedIndex = radnoVreme.Dan - 1; // Dan je 1-7, indeks je 0-6
-                
+
                 // Proveri da li postoje vrednosti za radno vreme
                 if (radnoVreme.VremeOd.HasValue && radnoVreme.VremeOd.Value != DateTime.MinValue)
                     dtpVremeOd.Value = radnoVreme.VremeOd.Value;
                 else
                     dtpVremeOd.Value = DateTime.Today.Add(new TimeSpan(8, 0, 0)); // Default 08:00
-                    
+
                 if (radnoVreme.VremeDo.HasValue && radnoVreme.VremeDo.Value != DateTime.MinValue)
                     dtpVremeDo.Value = radnoVreme.VremeDo.Value;
                 else
@@ -94,17 +94,17 @@ namespace Farmacy.Forme
                 radnoVreme.Dan = cboDan.SelectedIndex + 1; // Indeks je 0-6, Dan je 1-7
                 radnoVreme.VremeOd = dtpVremeOd.Value;
                 radnoVreme.VremeDo = dtpVremeDo.Value;
-                
+
                 // Uvek pozovi IzmeniRadnoVreme - metoda će proveriti da li postoje vrednosti
                 try
                 {
                     DTOManagerProdajneJedinice.IzmeniRadnoVreme(radnoVreme);
-                    MessageBox.Show("Radno vreme je uspešno sačuvano!", "Uspeh", 
+                    MessageBox.Show("Radno vreme je uspešno sačuvano!", "Uspeh",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Greška pri čuvanju radnog vremena: {ex.Message}", "Greška", 
+                    MessageBox.Show($"Greška pri čuvanju radnog vremena: {ex.Message}", "Greška",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -147,6 +147,11 @@ namespace Farmacy.Forme
                 else if (button == btnCancel)
                     button.BackColor = Color.FromArgb(231, 76, 60);
             }
+        }
+
+        private void RadnoVremeEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

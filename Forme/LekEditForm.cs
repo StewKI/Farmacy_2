@@ -127,7 +127,7 @@ namespace Farmacy_2.Forme
                 cmbPrimarnaGrupa.Items.AddRange(
                     list.Select(x => x.Naziv).OrderBy(n => n).ToArray()
                 );
-                cmbPrimarnaGrupa.SelectedIndex = 1;
+                cmbPrimarnaGrupa.SelectedIndex = 0;
 
                 // čitanje
 
