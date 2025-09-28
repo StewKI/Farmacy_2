@@ -23,7 +23,11 @@ namespace Farmacy.Mapiranja
             References(x => x.PrimarnaGrupa, "primarna_grupa_id").Not.Nullable();
 
             HasMany(x => x.Pakovanja).KeyColumn("lek_id").Inverse().Cascade.All();
-            HasMany(x => x.Sekundarne).KeyColumn("lek_id").Inverse().Cascade.All();
+            HasMany(x => x.Sekundarne)
+            .KeyColumn("LEK_ID")
+            .Inverse()
+            .Cascade.AllDeleteOrphan()
+            .AsSet();
         }
     }
 }

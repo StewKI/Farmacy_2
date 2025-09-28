@@ -53,12 +53,13 @@ namespace Farmacy.Forme
                 
                 cmbPakovanje.DisplayMember = "Text";
                 cmbPakovanje.ValueMember = "Value";
+                cmbPakovanje.SelectedIndex = 0;
 
                 // Load Magacioneri data
                 var magacioneri = DTOManagerIsporukeZalihe.VratiSveMagacionere();
                 cmbOdgovorniMagacioner.DataSource = magacioneri;
                 cmbOdgovorniMagacioner.DisplayMember = "Ime";
-                cmbOdgovorniMagacioner.ValueMember = "MBr";
+                cmbOdgovorniMagacioner.ValueMember = "Id";
                 cmbOdgovorniMagacioner.SelectedIndex = -1; // No selection by default
             }
             catch (Exception ex)

@@ -71,7 +71,7 @@ namespace Farmacy.Forme
                 }
 
                 string selectedPakovanje = cmbLek.SelectedItem.ToString();
-                var pakovanje = pakovanjaList.FirstOrDefault(p => 
+                var pakovanje = pakovanjaList.FirstOrDefault(p =>
                     $"{p.Lek.KomercijalniNaziv} - {p.VelicinaPakovanja} {p.JedinicaMere}" == selectedPakovanje);
 
                 if (pakovanje == null)
@@ -164,7 +164,7 @@ namespace Farmacy.Forme
             {
                 // Sačuvaj originalnu boju
                 button.Tag = button.BackColor;
-                
+
                 // Promeni boju na hover
                 if (button == btnDodajStavku)
                 {
@@ -178,7 +178,7 @@ namespace Farmacy.Forme
                 {
                     button.BackColor = Color.FromArgb(52, 152, 219); // Tamnija plava
                 }
-                
+
                 button.Cursor = Cursors.Hand;
             }
         }
@@ -191,6 +191,11 @@ namespace Farmacy.Forme
                 button.BackColor = originalColor;
                 button.Cursor = Cursors.Default;
             }
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Farmacy.Forme
                 if (colPakovanjeId != null) colPakovanjeId.DataPropertyName = "PakovanjeId";
                 if (colKolicina != null) colKolicina.DataPropertyName = "Kolicina";
                 if (colDatumPoslednjeIsporuke != null) colDatumPoslednjeIsporuke.DataPropertyName = "DatumPoslednjeIsporuke";
-                if (colOdgovorniMagacionerMbr != null) colOdgovorniMagacionerMbr.DataPropertyName = "OdgovorniMagacionerMbr";
+                if (colOdgovorniMagacionerMbr != null) colOdgovorniMagacionerMbr.DataPropertyName = "OdgovorniMagacionerId";
                 dgvZalihe.RowHeadersVisible = false;
                 dgvZalihe.DataSource = false;
                 dgvZalihe.DataSource = lista;
@@ -70,9 +70,9 @@ namespace Farmacy.Forme
                     });
                     dgvZalihe.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        Name = "colOdgovorniMagacionerMbr",
-                        HeaderText = "Magacioner MBR",
-                        DataPropertyName = "OdgovorniMagacionerMbr",
+                        Name = "colOdgovorniMagacionerId",
+                        HeaderText = "Magacioner Id",
+                        DataPropertyName = "OdgovorniMagacionerId",
                         Width = 150
                     });
                 }

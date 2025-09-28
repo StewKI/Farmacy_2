@@ -103,7 +103,7 @@ namespace Farmacy.Forme
                 var blagajnici = DTOManagerProdaja.VratiSveBlagajnike();
                 cmbBlagajnik.DataSource = blagajnici;
                 cmbBlagajnik.DisplayMember = "Ime";
-                cmbBlagajnik.ValueMember = "MBr";
+                cmbBlagajnik.ValueMember = "Id";
                 cmbBlagajnik.SelectedIndex = -1;
 
                 // Učitaj recepte

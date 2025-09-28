@@ -213,7 +213,7 @@ namespace Farmacy.Forme
                             
                             DTOManagerIsporukeZalihe.RealizujRecept(serijskiBroj, defaultProdajnaJedinica, DateTime.Now);
                             popuniPodacimaRecepti();
-                            MessageBox.Show("Recept je uspešno realizovan!");
+                           
                         }
                         catch (Exception ex)
                         {

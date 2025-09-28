@@ -714,7 +714,23 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
+                var raspored = s.Query<RasporedRada>()
+                         .FirstOrDefault(r => r.Zaposleni.Id ==dto.IdZaposlenog 
+                      && r.ProdajnaJedinica.Id == dto.ProdajnaJedinicaId
+                      && r.Pocetak.Date == dto.Pocetak.Date);
+
+                if(raspored != null)
+                {
+                    if (raspored.Kraj.Date == dto.Kraj.Date && raspored.BrojSmene == dto.BrojSmene)
+                    {
+                        throw new Exception("Raspored rada za ovog radnika je vec kreiran!")
+                    }
+                    s.Delete(raspored);
+                    s.Flush();
+                }
                 
+
+
                 var zaposleni = s.Get<Zaposleni>(dto.IdZaposlenog);
                 if (zaposleni == null)
                 {
@@ -727,7 +743,7 @@ namespace Farmacy
                     return;
                 }
                 
-                var raspored = new RasporedRada
+                var raspored1 = new RasporedRada
                 {
                     Zaposleni = zaposleni,
                     ProdajnaJedinica = prodajnaJedinica,
@@ -736,7 +752,7 @@ namespace Farmacy
                     BrojSmene = dto.BrojSmene
                 };
                 
-                s.Save(raspored);
+                s.Save(raspored1);
                 s.Flush();
             }
             catch (Exception ex)

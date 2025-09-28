@@ -188,6 +188,7 @@ namespace Farmacy
                 }
                 s.Update(r);
                 s.Flush();
+                MessageBox.Show("Recept je uspešno realizovan!");
             }
             catch (Exception ex)
             {
@@ -348,6 +349,13 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var recept = s.Get<Recept>(serijskiBroj);
+                var stavke=s.Query<ReceptStavka>().Where(r=>r.Recept.SerijskiBroj==serijskiBroj).ToList();
+                foreach(var s1 in stavke)
+                {
+                    s.Delete(s1);
+                    s.Flush();
+                }
+
                 if (recept != null)
                 {
                     s.Delete(recept);
@@ -693,21 +701,24 @@ namespace Farmacy
             {
                 using var s = DataLayer.GetSession();
                 var magacioneri = s.Query<Zaposleni>()
-                                   .Where(x => x.GetType().Name == "Magacioner")
                                    .ToList();
                 foreach (var m in magacioneri)
                 {
-                    list.Add(new ZaposleniBasic
+                    if(m.GetType() == typeof(Zaposleni))
                     {
-                        Id = m.Id,
-                        Ime = m.Ime,
-                        MatBr = m.MatBr,
-                        Prezime = m.Prezime,
-                        DatumRodj = m.DatumRodj,
-                        Adresa = m.Adresa,
-                        Telefon = m.Telefon,
-                        DatumZaposlenja = m.DatumZaposlenja
-                    });
+                        list.Add(new ZaposleniBasic
+                        {
+                            Id = m.Id,
+                            Ime = m.Ime,
+                            MatBr = m.MatBr,
+                            Prezime = m.Prezime,
+                            DatumRodj = m.DatumRodj,
+                            Adresa = m.Adresa,
+                            Telefon = m.Telefon,
+                            DatumZaposlenja = m.DatumZaposlenja
+                        });
+                    }
+                   
                 }
             }
             catch (Exception) { }

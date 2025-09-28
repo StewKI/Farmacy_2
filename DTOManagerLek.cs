@@ -431,6 +431,19 @@ namespace Farmacy
             try
             {
                 using var s = DataLayer.GetSession();
+
+               //Mora prvo da se obrisu sekundarne pre nego sto se lek ucita sa Get jer ako se posle brise javlja se greska kaskadnog brisanja
+                    var stareSekundarne = s.Query<LekSekundarna>()
+                                       .Where(x => x.Lek.Id == dto.Id)
+                                       .ToList();
+                    foreach (var ls in stareSekundarne)
+                    {
+                        s.Delete(ls);
+                        s.Flush();
+                    }
+                
+
+
                 var lek = s.Get<Lek>(dto.Id);
 
                 if (lek == null)
@@ -444,16 +457,7 @@ namespace Farmacy
                 lek.Proizvodjac = s.Load<Proizvodjac>(dto.ProizvodjacId);
                 lek.PrimarnaGrupa = s.Load<PrimarnaGrupa>(dto.PrimarnaGrupaId);
 
-                if (lek.Sekundarne.Count > 0)
-                {
-                    var stareSekundarne = s.Query<LekSekundarna>()
-                                       .Where(x => x.Lek.Id == dto.Id)
-                                       .ToList();
-                    foreach (var ls in stareSekundarne)
-                    {
-                        s.Delete(ls);
-                    }
-                }
+                
 
                 if (dto.SekundarneKategorijeIds.Count > 0)
                 {
@@ -466,6 +470,7 @@ namespace Farmacy
                             Kategorija = kategorija
                         };
                         s.Save(ls);
+                        s.Flush();
                     }
                 }
 
@@ -490,6 +495,7 @@ namespace Farmacy
                 foreach (var ls in sekundarne)
                 {
                     s.Delete(ls);
+                    s.Flush();
                 }
 
                 var lek = s.Get<Lek>(id);
