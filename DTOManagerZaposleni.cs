@@ -723,7 +723,7 @@ namespace Farmacy
                 {
                     if (raspored.Kraj.Date == dto.Kraj.Date && raspored.BrojSmene == dto.BrojSmene)
                     {
-                        throw new Exception("Raspored rada za ovog radnika je vec kreiran!")
+                        throw new Exception("Raspored rada za ovog radnika je vec kreiran!");
                     }
                     s.Delete(raspored);
                     s.Flush();
